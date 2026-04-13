@@ -10,323 +10,239 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          border: 'hsl(var(--border))',
+          background: 'hsl(var(--background))',
+          foreground: 'hsl(var(--foreground))',
+          muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+          card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' },
+          primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+          accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+        },
+        borderRadius: { lg: 'var(--radius)', md: 'calc(var(--radius) - 2px)', sm: 'calc(var(--radius) - 4px)' },
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+          serif: ['Fraunces', 'Georgia', 'serif'],
+        },
+      }
+    }
+  }
+</script>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --primary: #2c6e7f;
-    --primary-dark: #1f5260;
-    --accent: #e8b7a8;
-    --bg: #fbf7f3;
-    --surface: #ffffff;
-    --text: #22333b;
-    --muted: #6b7a80;
-    --whatsapp: #25d366;
-    --whatsapp-dark: #1ebe5a;
-    --shadow: 0 8px 28px rgba(34, 51, 59, 0.08);
-    --shadow-lg: 0 16px 48px rgba(34, 51, 59, 0.12);
+    --background: 36 40% 98%;
+    --foreground: 200 25% 14%;
+    --muted: 30 20% 94%;
+    --muted-foreground: 200 10% 42%;
+    --card: 0 0% 100%;
+    --card-foreground: 200 25% 14%;
+    --border: 30 15% 88%;
+    --primary: 192 47% 33%;
+    --primary-foreground: 0 0% 100%;
+    --accent: 14 55% 78%;
+    --accent-foreground: 200 25% 14%;
+    --radius: 0.75rem;
   }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-  h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
-  .container { width: 100%; max-width: 680px; margin: 0 auto; padding: 0 20px; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: hsl(var(--background)); color: hsl(var(--foreground)); -webkit-font-smoothing: antialiased; }
+  section { scroll-margin-top: 80px; }
+  .font-serif { font-family: 'Fraunces', Georgia, serif; letter-spacing: -0.01em; }
 
-  /* Hero */
-  .hero {
-    background: linear-gradient(165deg, #2c6e7f 0%, #1f5260 100%);
-    color: #fff;
-    padding: 56px 0 64px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; top: -80px; right: -80px;
-    width: 240px; height: 240px;
-    background: radial-gradient(circle, rgba(232,183,168,0.25), transparent 70%);
-    border-radius: 50%;
-  }
-  .hero-badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(8px);
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: 500;
-    margin-bottom: 18px;
-    letter-spacing: 0.02em;
-  }
-  .hero h1 { font-size: clamp(28px, 7vw, 40px); margin-bottom: 14px; }
-  .hero p.tagline { font-size: 17px; opacity: 0.92; margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; }
-  .stars { color: #ffc857; font-size: 18px; margin-bottom: 8px; }
-  .rating-line { font-size: 14px; opacity: 0.9; margin-bottom: 24px; }
-
-  .btn-whatsapp {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: var(--whatsapp);
-    color: #fff;
-    padding: 16px 28px;
-    border-radius: 14px;
-    font-weight: 600;
-    font-size: 17px;
-    text-decoration: none;
-    box-shadow: 0 10px 24px rgba(37, 211, 102, 0.35);
-    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-    width: 100%;
-    max-width: 340px;
-  }
-  .btn-whatsapp:hover { background: var(--whatsapp-dark); transform: translateY(-2px); box-shadow: 0 14px 30px rgba(37, 211, 102, 0.45); }
-  .btn-whatsapp svg { width: 22px; height: 22px; }
-
-  section { padding: 52px 0; }
-  section h2 { font-size: clamp(24px, 5.5vw, 30px); margin-bottom: 12px; color: var(--primary-dark); }
-  section .lead { color: var(--muted); margin-bottom: 28px; font-size: 16px; }
-
-  /* Sobre */
-  .about p { font-size: 16px; margin-bottom: 14px; color: #3a4a52; }
-
-  /* Diferenciais */
-  .features { display: grid; gap: 14px; }
-  .feature {
-    background: var(--surface);
-    padding: 20px 22px;
-    border-radius: 16px;
-    box-shadow: var(--shadow);
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    border: 1px solid rgba(44, 110, 127, 0.08);
-  }
-  .feature-icon {
-    flex-shrink: 0;
-    width: 42px; height: 42px;
-    background: linear-gradient(135deg, #e8b7a8, #f4d2c7);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-  }
-  .feature h3 { font-size: 17px; margin-bottom: 4px; color: var(--primary-dark); }
-  .feature p { color: var(--muted); font-size: 15px; }
-
-  /* Reviews */
-  .reviews { background: linear-gradient(180deg, #fbf7f3 0%, #f3ebe4 100%); }
-  .review-grid { display: grid; gap: 16px; }
-  .review {
-    background: var(--surface);
-    padding: 22px;
-    border-radius: 16px;
-    box-shadow: var(--shadow);
-    border-left: 4px solid var(--accent);
-  }
-  .review .stars-small { color: #ffc857; font-size: 15px; margin-bottom: 10px; }
-  .review blockquote {
-    font-size: 15px;
-    color: #3a4a52;
-    font-style: italic;
-    margin-bottom: 12px;
-    line-height: 1.65;
-  }
-  .review blockquote::before { content: '"'; color: var(--accent); font-size: 30px; font-family: 'Fraunces', serif; line-height: 0; margin-right: 4px; vertical-align: -10px; }
-  .review cite { font-style: normal; font-weight: 600; color: var(--primary-dark); font-size: 14px; }
-
-  /* Info */
-  .info-card {
-    background: var(--surface);
-    border-radius: 18px;
-    padding: 8px 4px;
-    box-shadow: var(--shadow);
-    overflow: hidden;
-  }
-  .info-item {
-    display: flex;
-    gap: 14px;
-    padding: 18px 20px;
-    border-bottom: 1px solid #f0ebe6;
-    align-items: flex-start;
-  }
-  .info-item:last-child { border-bottom: none; }
-  .info-item .ico {
-    flex-shrink: 0;
-    width: 38px; height: 38px;
-    background: #eaf2f4;
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-  }
-  .info-item h4 { font-size: 14px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; font-family: 'Inter', sans-serif; }
-  .info-item a { color: var(--primary); text-decoration: none; font-weight: 500; }
-  .info-item a:hover { text-decoration: underline; }
-  .info-item p, .info-item a { font-size: 15px; line-height: 1.5; }
-  .hours { display: grid; gap: 4px; font-size: 14px; color: #3a4a52; }
-  .hours span:last-child { font-weight: 500; }
-  .hours-row { display: flex; justify-content: space-between; }
-  .hours-row.closed span:last-child { color: #c44; }
-
-  /* Final CTA */
-  .final-cta {
-    background: linear-gradient(165deg, #2c6e7f 0%, #1f5260 100%);
-    color: #fff;
-    text-align: center;
-    padding: 56px 0;
-  }
-  .final-cta h2 { color: #fff; margin-bottom: 12px; }
-  .final-cta p { opacity: 0.9; margin-bottom: 26px; font-size: 16px; }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 28px 20px;
-    font-size: 12px;
-    color: var(--muted);
-    background: #f3ebe4;
-  }
-
-  @media (min-width: 640px) {
-    .hero { padding: 80px 0 88px; }
-    section { padding: 72px 0; }
-    .review-grid { grid-template-columns: 1fr; }
-  }
-
-  /* Floating WhatsApp */
-  .fab-whatsapp {
-    position: fixed;
-    right: 18px;
-    bottom: 18px;
-    width: 60px; height: 60px;
-    background: var(--whatsapp);
-    color: #fff;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
-    z-index: 99;
-    text-decoration: none;
-    animation: fabPulse 2.2s ease-in-out infinite;
-    transition: transform 0.15s ease;
-  }
-  .fab-whatsapp:hover { transform: scale(1.08); animation: none; }
-  .fab-whatsapp svg { width: 32px; height: 32px; }
+  /* Floating WhatsApp pulse */
+  .fab-pulse { animation: fabPulse 2.2s ease-in-out infinite; }
   @keyframes fabPulse {
     0%, 100% { box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45), 0 0 0 0 rgba(37, 211, 102, 0.55); }
     50% { box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45), 0 0 0 14px rgba(37, 211, 102, 0); }
   }
+  .hero-glow::before {
+    content: ''; position: absolute; top: -120px; right: -120px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, hsl(var(--accent) / 0.35), transparent 70%);
+    border-radius: 50%; pointer-events: none;
+  }
 </style>
 </head>
-<body>
+<body class="antialiased">
 
-<header class="hero">
-  <div class="container">
-    <span class="hero-badge">Policlínica · Batel, Curitiba</span>
-    <h1>Dra. Deyse Lisowski</h1>
-    <p class="tagline">Atendimento humanizado, acolhedor e em horários que cabem na sua rotina.</p>
-    <div class="stars">★★★★★</div>
-    <div class="rating-line">5,0 no Google · 237 avaliações</div>
-    <a href="https://wa.me/5541998876585" class="btn-whatsapp" aria-label="Chamar no WhatsApp">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.84 12.84 0 0 0-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-      Chamar no WhatsApp
-    </a>
+<!-- Topbar -->
+<header class="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
+  <div class="max-w-5xl mx-auto px-5 h-16 flex items-center justify-between">
+    <a href="#top" class="font-serif text-lg font-semibold text-primary">Dra. Deyse Lisowski</a>
+    <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground">
+      <a href="#sobre" class="hover:text-foreground transition">Sobre</a>
+      <a href="#diferenciais" class="hover:text-foreground transition">Diferenciais</a>
+      <a href="#avaliacoes" class="hover:text-foreground transition">Avaliações</a>
+      <a href="#contato" class="hover:text-foreground transition">Contato</a>
+      <a href="https://wa.me/5541998876585" class="inline-flex items-center gap-2 bg-[#25d366] hover:bg-[#1ebe5a] text-white px-4 py-2 rounded-md font-semibold transition">
+        <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
+      </a>
+    </nav>
+    <button id="menuBtn" class="md:hidden p-2 -mr-2 text-foreground" aria-label="Menu">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-border/60 bg-background">
+    <nav class="flex flex-col px-5 py-3 text-sm font-medium">
+      <a href="#sobre" class="py-2 text-muted-foreground hover:text-foreground">Sobre</a>
+      <a href="#diferenciais" class="py-2 text-muted-foreground hover:text-foreground">Diferenciais</a>
+      <a href="#avaliacoes" class="py-2 text-muted-foreground hover:text-foreground">Avaliações</a>
+      <a href="#contato" class="py-2 text-muted-foreground hover:text-foreground">Contato</a>
+      <a href="https://wa.me/5541998876585" class="mt-2 mb-1 inline-flex items-center justify-center gap-2 bg-[#25d366] text-white py-2.5 rounded-md font-semibold">
+        <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
+      </a>
+    </nav>
   </div>
 </header>
 
-<section class="about">
-  <div class="container">
-    <h2>Cuidado de verdade, do começo ao fim</h2>
-    <p>A Dra. Deyse Lisowski comanda uma policlínica no Batel reconhecida por um atendimento que combina técnica apurada e acolhimento genuíno. Cada paciente é recebido com atenção, escuta e clareza sobre o que vai acontecer em cada etapa.</p>
-    <p>Horários estendidos — inclusive à noite e aos sábados — para quem tem agenda corrida e não consegue cuidar da saúde em horário comercial.</p>
+<!-- Hero -->
+<section id="top" class="relative hero-glow overflow-hidden bg-gradient-to-b from-muted/40 to-background">
+  <div class="max-w-5xl mx-auto px-5 pt-16 pb-20 md:pt-24 md:pb-28 text-center relative z-10">
+    <div class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground mb-6">
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#25d366]"></span>
+      Policlínica · Batel, Curitiba
+    </div>
+    <h1 class="font-serif text-4xl md:text-6xl font-semibold text-foreground mb-5 leading-tight">Cuidado sério,<br>atendimento que acolhe.</h1>
+    <p class="text-base md:text-lg text-muted-foreground max-w-xl mx-auto mb-6">Policlínica da Dra. Deyse Lisowski no Batel — atendimento humanizado e horários que cabem na sua rotina.</p>
+    <div class="flex items-center justify-center gap-1 text-amber-500 text-sm mb-1">
+      <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+      <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+      <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+      <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+      <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+      <span class="ml-2 text-muted-foreground">5,0 · 237 avaliações no Google</span>
+    </div>
+    <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+      <a href="https://wa.me/5541998876585" class="inline-flex items-center justify-center gap-2 bg-[#25d366] hover:bg-[#1ebe5a] text-white px-6 py-3.5 rounded-lg font-semibold shadow-lg shadow-[#25d366]/30 transition w-full sm:w-auto">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        Chamar no WhatsApp
+      </a>
+      <a href="#contato" class="inline-flex items-center justify-center gap-2 border border-border bg-card hover:bg-muted text-foreground px-6 py-3.5 rounded-lg font-medium transition w-full sm:w-auto">
+        Ver endereço e horário
+      </a>
+    </div>
   </div>
 </section>
 
-<section style="background:#fff;">
-  <div class="container">
-    <h2>Por que tantos pacientes indicam</h2>
-    <p class="lead">Os motivos que mais aparecem nas avaliações do Google.</p>
-    <div class="features">
-      <div class="feature">
-        <div class="feature-icon">💗</div>
-        <div>
-          <h3>Atendimento acolhedor</h3>
-          <p>Equipe atenciosa que explica cada etapa e faz você se sentir em boas mãos desde a primeira consulta.</p>
+<!-- Sobre -->
+<section id="sobre" class="py-20 md:py-24">
+  <div class="max-w-3xl mx-auto px-5">
+    <span class="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Sobre</span>
+    <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-2 mb-5 text-foreground">Cuidado de verdade, do começo ao fim</h2>
+    <p class="text-muted-foreground text-base md:text-lg mb-4 leading-relaxed">A Dra. Deyse Lisowski comanda uma policlínica no Batel reconhecida por combinar técnica apurada com acolhimento genuíno. Cada paciente é recebido com atenção, escuta e clareza sobre cada etapa do atendimento.</p>
+    <p class="text-muted-foreground text-base md:text-lg leading-relaxed">Horários estendidos — inclusive à noite e aos sábados — para quem tem agenda corrida e não consegue cuidar da saúde em horário comercial.</p>
+  </div>
+</section>
+
+<!-- Diferenciais -->
+<section id="diferenciais" class="py-20 md:py-24 bg-muted/40 border-y border-border">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="text-center mb-12">
+      <span class="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Por que escolher</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-2 text-foreground">Motivos que aparecem nas avaliações</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="bg-card border border-border rounded-xl p-6 shadow-sm">
+        <div class="w-11 h-11 rounded-lg bg-accent/40 flex items-center justify-center mb-4">
+          <i data-lucide="heart-handshake" class="w-5 h-5 text-primary"></i>
         </div>
+        <h3 class="font-serif text-lg font-semibold mb-1.5">Atendimento acolhedor</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">Equipe atenciosa que explica cada etapa e faz você se sentir em boas mãos desde a primeira consulta.</p>
       </div>
-      <div class="feature">
-        <div class="feature-icon">⏰</div>
-        <div>
-          <h3>Horários diferenciados</h3>
-          <p>Atendimento até às 22h durante a semana e aos sábados pela manhã — ideal para quem tem rotina apertada.</p>
+      <div class="bg-card border border-border rounded-xl p-6 shadow-sm">
+        <div class="w-11 h-11 rounded-lg bg-accent/40 flex items-center justify-center mb-4">
+          <i data-lucide="clock" class="w-5 h-5 text-primary"></i>
         </div>
+        <h3 class="font-serif text-lg font-semibold mb-1.5">Horários diferenciados</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">Atendimento até às 22h durante a semana e aos sábados pela manhã — ideal pra quem tem rotina apertada.</p>
       </div>
-      <div class="feature">
-        <div class="feature-icon">✨</div>
-        <div>
-          <h3>Profissional de excelência</h3>
-          <p>Simpática, autêntica e tecnicamente impecável. Resultados que os próprios pacientes fazem questão de compartilhar.</p>
+      <div class="bg-card border border-border rounded-xl p-6 shadow-sm">
+        <div class="w-11 h-11 rounded-lg bg-accent/40 flex items-center justify-center mb-4">
+          <i data-lucide="sparkles" class="w-5 h-5 text-primary"></i>
         </div>
+        <h3 class="font-serif text-lg font-semibold mb-1.5">Profissional de excelência</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">Simpática, autêntica e tecnicamente impecável. Resultados que os pacientes fazem questão de compartilhar.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="reviews">
-  <div class="container">
-    <h2>O que dizem os pacientes</h2>
-    <p class="lead">Avaliações reais publicadas no Google.</p>
-    <div class="review-grid">
-      <div class="review">
-        <div class="stars-small">★★★★★</div>
-        <blockquote>Conheci o trabalho da Dra. Deyse sem querer, rs e foi uma grata surpresa. Para quem tem agenda corrida, ela atende em horários diferenciados que ajuda demais. Logo no primeiro atendimento já gostei.</blockquote>
-        <cite>— Claudia Lopes</cite>
-      </div>
-      <div class="review">
-        <div class="stars-small">★★★★★</div>
-        <blockquote>Gostaria de deixar o meu relato referente ao atendimento da equipe da Dra. Deyse. Ainda em tratamento, mas já estou satisfeita com a evolução do procedimento realizado. Tenho certeza que o desfecho será excelente.</blockquote>
-        <cite>— Vanessa Naizer</cite>
-      </div>
-      <div class="review">
-        <div class="stars-small">★★★★★</div>
-        <blockquote>Indico de olhos fechados! Dra. Deyse é uma profissional excelente, muito simpática, atenciosa, autêntica e fez do meu atendimento uma verdadeira experiência. Desde o início me explicou exatamente o que seria feito.</blockquote>
-        <cite>— Roberta de Paula Ferreira</cite>
-      </div>
+<!-- Avaliações -->
+<section id="avaliacoes" class="py-20 md:py-24">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="text-center mb-12">
+      <span class="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Depoimentos</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-2 text-foreground">O que dizem os pacientes</h2>
+      <p class="text-muted-foreground mt-3">Avaliações reais publicadas no Google</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <figure class="bg-card border border-border rounded-xl p-6 shadow-sm">
+        <div class="flex gap-0.5 text-amber-500 mb-3">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <blockquote class="text-sm text-foreground/90 leading-relaxed mb-4">"Conheci o trabalho da Dra. Deyse sem querer e foi uma grata surpresa. Para quem tem agenda corrida, ela atende em horários diferenciados que ajuda demais. Logo no primeiro atendimento já gostei."</blockquote>
+        <figcaption class="text-sm font-semibold text-primary">Claudia Lopes</figcaption>
+      </figure>
+      <figure class="bg-card border border-border rounded-xl p-6 shadow-sm">
+        <div class="flex gap-0.5 text-amber-500 mb-3">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <blockquote class="text-sm text-foreground/90 leading-relaxed mb-4">"Gostaria de deixar meu relato referente ao atendimento da equipe da Dra. Deyse. Ainda em tratamento, mas já estou satisfeita com a evolução do procedimento. Tenho certeza que o desfecho será excelente."</blockquote>
+        <figcaption class="text-sm font-semibold text-primary">Vanessa Naizer</figcaption>
+      </figure>
+      <figure class="bg-card border border-border rounded-xl p-6 shadow-sm">
+        <div class="flex gap-0.5 text-amber-500 mb-3">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <blockquote class="text-sm text-foreground/90 leading-relaxed mb-4">"Indico de olhos fechados! Dra. Deyse é uma profissional excelente, muito simpática, atenciosa, autêntica e fez do meu atendimento uma verdadeira experiência. Desde o início me explicou exatamente o que seria feito."</blockquote>
+        <figcaption class="text-sm font-semibold text-primary">Roberta de Paula Ferreira</figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="container">
-    <h2>Informações e contato</h2>
-    <p class="lead">Estamos no coração do Batel, com fácil acesso.</p>
-    <div class="info-card">
-      <div class="info-item">
-        <div class="ico">📍</div>
-        <div>
-          <h4>Endereço</h4>
-          <a href="https://maps.google.com/?cid=16311758941849089678" target="_blank" rel="noopener">Av. Sete de Setembro, 5402 — Batel, Curitiba/PR</a>
+<!-- Contato -->
+<section id="contato" class="py-20 md:py-24 bg-muted/40 border-t border-border">
+  <div class="max-w-3xl mx-auto px-5">
+    <div class="text-center mb-10">
+      <span class="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Contato</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-2 text-foreground">Onde nos encontrar</h2>
+    </div>
+    <div class="bg-card border border-border rounded-xl shadow-sm divide-y divide-border">
+      <a href="https://maps.google.com/?cid=16311758941849089678" target="_blank" rel="noopener" class="flex items-start gap-4 p-5 hover:bg-muted/40 transition">
+        <div class="w-10 h-10 rounded-lg bg-accent/40 flex items-center justify-center shrink-0">
+          <i data-lucide="map-pin" class="w-5 h-5 text-primary"></i>
         </div>
-      </div>
-      <div class="info-item">
-        <div class="ico">📞</div>
         <div>
-          <h4>Telefone</h4>
-          <a href="tel:+5541998876585">(41) 99887-6585</a>
+          <div class="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">Endereço</div>
+          <div class="text-foreground font-medium">Av. Sete de Setembro, 5402</div>
+          <div class="text-sm text-muted-foreground">Batel, Curitiba/PR · 80240-000</div>
         </div>
-      </div>
-      <div class="info-item">
-        <div class="ico">🕐</div>
-        <div style="flex:1;">
-          <h4>Horário</h4>
-          <div class="hours">
-            <div class="hours-row"><span>Segunda a sexta</span><span>13h — 22h</span></div>
-            <div class="hours-row"><span>Sábado</span><span>09h — 14h</span></div>
-            <div class="hours-row closed"><span>Domingo</span><span>Fechado</span></div>
+      </a>
+      <a href="tel:+5541998876585" class="flex items-start gap-4 p-5 hover:bg-muted/40 transition">
+        <div class="w-10 h-10 rounded-lg bg-accent/40 flex items-center justify-center shrink-0">
+          <i data-lucide="phone" class="w-5 h-5 text-primary"></i>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">Telefone</div>
+          <div class="text-foreground font-medium">(41) 99887-6585</div>
+        </div>
+      </a>
+      <div class="flex items-start gap-4 p-5">
+        <div class="w-10 h-10 rounded-lg bg-accent/40 flex items-center justify-center shrink-0">
+          <i data-lucide="clock" class="w-5 h-5 text-primary"></i>
+        </div>
+        <div class="flex-1">
+          <div class="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-2">Horário</div>
+          <div class="space-y-1 text-sm">
+            <div class="flex justify-between"><span class="text-muted-foreground">Segunda a sexta</span><span class="text-foreground font-medium">13h — 22h</span></div>
+            <div class="flex justify-between"><span class="text-muted-foreground">Sábado</span><span class="text-foreground font-medium">09h — 14h</span></div>
+            <div class="flex justify-between"><span class="text-muted-foreground">Domingo</span><span class="text-red-600 font-medium">Fechado</span></div>
           </div>
         </div>
       </div>
@@ -334,24 +250,35 @@
   </div>
 </section>
 
-<section class="final-cta">
-  <div class="container">
-    <h2>Vamos conversar?</h2>
-    <p>Chama no WhatsApp — respondemos rapidinho e te ajudamos a agendar o melhor horário.</p>
-    <a href="https://wa.me/5541998876585" class="btn-whatsapp" aria-label="Chamar no WhatsApp">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.84 12.84 0 0 0-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-      Chamar no WhatsApp
+<!-- CTA final -->
+<section class="py-20 md:py-24 bg-primary text-primary-foreground">
+  <div class="max-w-2xl mx-auto px-5 text-center">
+    <h2 class="font-serif text-3xl md:text-4xl font-semibold mb-4">Vamos conversar?</h2>
+    <p class="text-primary-foreground/85 mb-8 text-lg">Chama no WhatsApp — respondemos rapidinho e te ajudamos a agendar o melhor horário.</p>
+    <a href="https://wa.me/5541998876585" class="inline-flex items-center justify-center gap-2 bg-[#25d366] hover:bg-[#1ebe5a] text-white px-7 py-4 rounded-lg font-semibold shadow-xl shadow-[#25d366]/30 transition">
+      <i data-lucide="message-circle" class="w-5 h-5"></i>
+      Chamar no WhatsApp agora
     </a>
   </div>
 </section>
 
-<a href="https://wa.me/5541998876585" class="fab-whatsapp" aria-label="Falar no WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.84 12.84 0 0 0-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-</a>
-
-<footer>
+<footer class="py-8 text-center text-xs text-muted-foreground border-t border-border bg-background">
   Página criada para divulgação — dados públicos do Google. Entre em contato para remover.
 </footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/5541998876585" aria-label="Falar no WhatsApp" class="fab-pulse fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25d366] hover:bg-[#1ebe5a] text-white flex items-center justify-center transition hover:scale-110">
+  <svg viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.84 12.84 0 0 0-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+</a>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+</script>
 
 </body>
 </html>
