@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BH Barbearia — Praça Rui Barbosa, Centro Curitiba</title>
+<meta name="description" content="Corte e barba de qualidade no Centro de Curitiba. Preço justo, atendimento rápido, por ordem de chegada. Chame no WhatsApp." />
+<meta property="og:title" content="BH Barbearia — Centro de Curitiba" />
+<meta property="og:description" content="Corte e barba diferenciados, preço justo e atendimento rápido. Praça Rui Barbosa, Curitiba." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          background: 'hsl(var(--background))',
+          foreground: 'hsl(var(--foreground))',
+          primary: {
+            DEFAULT: 'hsl(var(--primary))',
+            foreground: 'hsl(var(--primary-foreground))'
+          },
+          muted: {
+            DEFAULT: 'hsl(var(--muted))',
+            foreground: 'hsl(var(--muted-foreground))'
+          },
+          card: 'hsl(var(--card))',
+          border: 'hsl(var(--border))'
+        },
+        borderRadius: {
+          xl: 'var(--radius)'
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          serif: ['Fraunces', 'serif']
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 24 10% 10%;
+    --primary: 36 45% 48%;
+    --primary-foreground: 0 0% 100%;
+    --muted: 30 8% 96%;
+    --muted-foreground: 25 5% 45%;
+    --card: 0 0% 100%;
+    --border: 30 10% 90%;
+    --radius: 0.75rem;
+  }
+  html { scroll-behavior: smooth; }
+  section { scroll-margin-top: 90px; }
+  body { font-family: 'Inter', sans-serif; background: hsl(var(--background)); color: hsl(var(--foreground)); }
+  .font-serif { font-family: 'Fraunces', serif; }
+
+  /* Glow accent header */
+  .glow-header {
+    background: linear-gradient(180deg, #0f0c0a 0%, #17120e 100%);
+    box-shadow:
+      0 0 40px rgba(201, 154, 85, 0.18),
+      0 0 80px rgba(201, 154, 85, 0.08),
+      0 1px 0 rgba(255,255,255,0.05) inset;
+    border-bottom: 1px solid rgba(201, 154, 85, 0.15);
+  }
+  .glow-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 120%, rgba(201,154,85,0.25), transparent 60%);
+    pointer-events: none;
+  }
+  .glow-header a.nav-link {
+    position: relative;
+    color: rgba(255,255,255,0.78);
+    transition: color .2s;
+  }
+  .glow-header a.nav-link:hover { color: #e7c690; }
+
+  /* Whatsapp pulse */
+  .wa-float {
+    box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+  }
+  .wa-float::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: #25d366;
+    animation: pulse 2s ease-out infinite;
+    z-index: -1;
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: .6; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+
+  .hero-bg {
+    background:
+      radial-gradient(ellipse at top right, rgba(201,154,85,0.12), transparent 60%),
+      radial-gradient(ellipse at bottom left, rgba(201,154,85,0.08), transparent 50%),
+      hsl(var(--background));
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- Header: glow-accent style -->
+<header class="glow-header sticky top-0 z-40 relative">
+  <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between relative z-10">
+    <a href="#" class="flex items-center gap-2">
+      <span class="font-serif text-xl md:text-2xl font-bold text-white tracking-tight">BH <span style="color:#e7c690">Barbearia</span></span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="#sobre" class="nav-link">Sobre</a>
+      <a href="#diferenciais" class="nav-link">Diferenciais</a>
+      <a href="#avaliacoes" class="nav-link">Avaliações</a>
+      <a href="#contato" class="nav-link">Contato</a>
+      <a href="https://wa.me/5541999589276" class="px-4 py-2 rounded-full text-sm font-semibold text-black" style="background:#e7c690">Agendar</a>
+    </nav>
+    <button id="menuBtn" class="md:hidden text-white" aria-label="Menu">
+      <i data-lucide="menu"></i>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 relative z-10">
+    <div class="px-5 py-4 flex flex-col gap-3 text-sm font-medium">
+      <a href="#sobre" class="nav-link py-1">Sobre</a>
+      <a href="#diferenciais" class="nav-link py-1">Diferenciais</a>
+      <a href="#avaliacoes" class="nav-link py-1">Avaliações</a>
+      <a href="#contato" class="nav-link py-1">Contato</a>
+      <a href="https://wa.me/5541999589276" class="mt-2 px-4 py-2 rounded-full text-sm font-semibold text-black text-center" style="background:#e7c690">Agendar no WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero-bg">
+  <div class="max-w-6xl mx-auto px-5 py-16 md:py-24">
+    <div class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground mb-6 shadow-sm">
+      <i data-lucide="star" class="w-3.5 h-3.5 text-yellow-500 fill-yellow-500"></i>
+      <span>5,0 no Google · 8 avaliações</span>
+    </div>
+    <h1 class="font-serif text-4xl md:text-6xl font-bold leading-tight tracking-tight text-foreground max-w-3xl">
+      Corte e barba com <span style="color:hsl(var(--primary))">capricho</span>, no coração de Curitiba.
+    </h1>
+    <p class="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
+      Atendimento rápido, preço justo e aquele corte diferenciado. Sem agenda — chegou, foi atendido por ordem de chegada. Na Praça Rui Barbosa.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="https://wa.me/5541999589276" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white shadow-lg hover:opacity-90 transition" style="background:#25d366">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        Chamar no WhatsApp
+      </a>
+      <a href="#contato" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold border border-border bg-card hover:bg-muted transition">
+        <i data-lucide="map-pin" class="w-5 h-5"></i>
+        Como chegar
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Sobre -->
+<section id="sobre" class="py-20 border-t border-border">
+  <div class="max-w-4xl mx-auto px-5">
+    <span class="text-sm font-semibold uppercase tracking-wider" style="color:hsl(var(--primary))">Sobre</span>
+    <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 mb-6">Uma barbearia feita pra quem valoriza tempo e bom gosto.</h2>
+    <p class="text-lg text-muted-foreground leading-relaxed">
+      A BH Barbearia fica na Praça Rui Barbosa, no Centro de Curitiba, e virou referência pra quem procura corte e barba bem feitos sem complicação. Preço mais do que justo, serviço prático e aquele acabamento que só quem entende do ofício consegue entregar.
+    </p>
+  </div>
+</section>
+
+<!-- Diferenciais -->
+<section id="diferenciais" class="py-20 bg-muted/50 border-t border-border">
+  <div class="max-w-6xl mx-auto px-5">
+    <span class="text-sm font-semibold uppercase tracking-wider" style="color:hsl(var(--primary))">Diferenciais</span>
+    <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 mb-12">Por que escolher a BH.</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background:hsl(var(--primary)); color:hsl(var(--primary-foreground))">
+          <i data-lucide="scissors" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-bold mb-2">Corte diferenciado</h3>
+        <p class="text-muted-foreground leading-relaxed">Acabamento preciso em corte e barba, com atenção aos detalhes que fazem diferença.</p>
+      </div>
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background:hsl(var(--primary)); color:hsl(var(--primary-foreground))">
+          <i data-lucide="badge-dollar-sign" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-bold mb-2">Preço justo</h3>
+        <p class="text-muted-foreground leading-relaxed">Qualidade alta sem cobrar caro. Relação custo-benefício que os clientes destacam nas avaliações.</p>
+      </div>
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background:hsl(var(--primary)); color:hsl(var(--primary-foreground))">
+          <i data-lucide="zap" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-bold mb-2">Rápido e prático</h3>
+        <p class="text-muted-foreground leading-relaxed">Sem agenda — atendimento por ordem de chegada. Você entra, senta e sai renovado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Avaliações -->
+<section id="avaliacoes" class="py-20 border-t border-border">
+  <div class="max-w-6xl mx-auto px-5">
+    <span class="text-sm font-semibold uppercase tracking-wider" style="color:hsl(var(--primary))">Avaliações</span>
+    <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 mb-12">O que nossos clientes dizem.</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="flex gap-0.5 mb-4">
+          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
+        </div>
+        <p class="font-serif text-lg leading-relaxed mb-5">"Preço mais do que justo e serviço de ótima qualidade. Muito prático e rápido, ganhou mais um cliente."</p>
+        <p class="text-sm font-semibold text-muted-foreground">— Hermano Tanure</p>
+      </div>
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="flex gap-0.5 mb-4">
+          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
+        </div>
+        <p class="font-serif text-lg leading-relaxed mb-5">"Atendimento de qualidade por um preço justo. Corte e barba diferenciados. Recomendo!"</p>
+        <p class="text-sm font-semibold text-muted-foreground">— Gian Carlo Semmer Orsatto</p>
+      </div>
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="flex gap-0.5 mb-4">
+          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
+          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
+        </div>
+        <p class="font-serif text-lg leading-relaxed mb-5">"Preço justo, corte rápido, não agenda, por ordem de chegada."</p>
+        <p class="text-sm font-semibold text-muted-foreground">— Marcos Costa Curitiba</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contato -->
+<section id="contato" class="py-20 bg-muted/50 border-t border-border">
+  <div class="max-w-6xl mx-auto px-5">
+    <span class="text-sm font-semibold uppercase tracking-wider" style="color:hsl(var(--primary))">Contato</span>
+    <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 mb-12">Venha nos visitar.</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <a href="https://maps.google.com/?cid=12177865177530506285" target="_blank" rel="noopener" class="bg-card border border-border rounded-xl p-7 shadow-sm hover:shadow-md transition block">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background:hsl(var(--primary)); color:hsl(var(--primary-foreground))">
+          <i data-lucide="map-pin" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-bold mb-2">Endereço</h3>
+        <p class="text-muted-foreground leading-relaxed">R. Des. Westphalen, 253<br>Centro, Curitiba — PR<br>80010-110</p>
+      </a>
+      <a href="tel:+5541999589276" class="bg-card border border-border rounded-xl p-7 shadow-sm hover:shadow-md transition block">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background:hsl(var(--primary)); color:hsl(var(--primary-foreground))">
+          <i data-lucide="phone" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-bold mb-2">Telefone</h3>
+        <p class="text-muted-foreground leading-relaxed">(41) 99958-9276</p>
+      </a>
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background:hsl(var(--primary)); color:hsl(var(--primary-foreground))">
+          <i data-lucide="clock" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-bold mb-2">Horário</h3>
+        <p class="text-muted-foreground leading-relaxed text-sm">
+          Seg – Sex: 08:20 – 21:20<br>
+          Sáb e Dom: Fechado
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA final -->
+<section class="py-20 border-t border-border">
+  <div class="max-w-3xl mx-auto px-5 text-center">
+    <h2 class="font-serif text-3xl md:text-5xl font-bold mb-5">Bora tirar o visual do papel?</h2>
+    <p class="text-lg text-muted-foreground mb-8">Chama no WhatsApp e venha conhecer a barbearia que virou referência no Centro.</p>
+    <a href="https://wa.me/5541999589276" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-white text-lg shadow-lg hover:opacity-90 transition" style="background:#25d366">
+      <i data-lucide="message-circle" class="w-5 h-5"></i>
+      Chamar no WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-border py-8">
+  <div class="max-w-6xl mx-auto px-5 text-center text-xs text-muted-foreground">
+    Página criada para divulgação — dados públicos do Google. Entre em contato para remover.
+  </div>
+</footer>
+
+<!-- Whatsapp flutuante -->
+<a href="https://wa.me/5541999589276" class="wa-float fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center text-white" style="background:#25d366" aria-label="WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  btn?.addEventListener('click', () => menu.classList.toggle('hidden'));
+  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+</script>
+</body>
+</html>
