@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Confeitaria Gênova - Bolos e Doces | Curitiba</title>
+<meta name="description" content="Confeitaria Gênova em Curitiba — bolos, tortas e doces artesanais no bairro Rebouças. Tradição, carinho e sabor desde sempre. Peça pelo WhatsApp." />
+<meta property="og:title" content="Confeitaria Gênova - Bolos e Doces" />
+<meta property="og:description" content="Tortas folhadas, bolos de aniversário e doces artesanais em Curitiba. Atendimento caloroso no coração do Rebouças." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          border: 'hsl(var(--border))',
+          background: 'hsl(var(--background))',
+          foreground: 'hsl(var(--foreground))',
+          primary: {
+            DEFAULT: 'hsl(var(--primary))',
+            foreground: 'hsl(var(--primary-foreground))'
+          },
+          muted: {
+            DEFAULT: 'hsl(var(--muted))',
+            foreground: 'hsl(var(--muted-foreground))'
+          },
+          card: {
+            DEFAULT: 'hsl(var(--card))',
+            foreground: 'hsl(var(--card-foreground))'
+          }
+        },
+        borderRadius: {
+          lg: 'var(--radius)',
+          xl: 'calc(var(--radius) + 4px)'
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          serif: ['Fraunces', 'Georgia', 'serif']
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  :root {
+    --background: 35 40% 98%;
+    --foreground: 20 30% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 30% 12%;
+    --primary: 14 65% 42%;
+    --primary-foreground: 35 40% 98%;
+    --muted: 30 20% 95%;
+    --muted-foreground: 20 15% 40%;
+    --border: 30 20% 88%;
+    --radius: 0.75rem;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+  .font-serif { font-family: 'Fraunces', serif; }
+  section[id] { scroll-margin-top: 100px; }
+
+  /* Floating pill header */
+  .pill-header {
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    background: hsla(35, 40%, 98%, 0.75);
+    border: 1px solid hsla(20, 20%, 20%, 0.08);
+    box-shadow: 0 4px 20px -4px hsla(20, 30%, 12%, 0.08), 0 1px 3px hsla(20, 30%, 12%, 0.04);
+  }
+
+  /* WhatsApp pulse */
+  @keyframes pulse-ring {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    80%, 100% { transform: scale(1.6); opacity: 0; }
+  }
+  .wa-pulse::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: #25d366;
+    animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    z-index: -1;
+  }
+
+  /* Hero decorative gradient */
+  .hero-bg {
+    background:
+      radial-gradient(ellipse at top left, hsla(14, 65%, 42%, 0.08), transparent 50%),
+      radial-gradient(ellipse at bottom right, hsla(35, 80%, 60%, 0.12), transparent 55%),
+      hsl(var(--background));
+  }
+
+  .mobile-menu { transition: max-height 0.3s ease, opacity 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
+  .mobile-menu.open { max-height: 400px; opacity: 1; }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- FLOATING PILL HEADER -->
+<header class="fixed top-0 left-0 right-0 z-50 px-3 pt-3 sm:px-6 sm:pt-4">
+  <div class="pill-header max-w-6xl mx-auto rounded-full px-5 py-3 sm:px-7 sm:py-3 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2 group">
+      <span class="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-serif font-semibold">G</span>
+      <span class="font-serif font-semibold text-base sm:text-lg leading-tight">Confeitaria Gênova</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground">
+      <a href="#sobre" class="hover:text-foreground transition">Sobre</a>
+      <a href="#diferenciais" class="hover:text-foreground transition">Diferenciais</a>
+      <a href="#avaliacoes" class="hover:text-foreground transition">Avaliações</a>
+      <a href="#contato" class="hover:text-foreground transition">Contato</a>
+    </nav>
+
+    <a href="https://wa.me/554133338643" class="hidden md:inline-flex items-center gap-2 bg-primary text-primary-foreground text-sm font-medium px-4 py-2 rounded-full hover:opacity-90 transition">
+      <i data-lucide="message-circle" class="w-4 h-4"></i>
+      Pedir agora
+    </a>
+
+    <button id="menuBtn" class="md:hidden p-2 -mr-2 text-foreground" aria-label="Menu">
+      <i data-lucide="menu" class="w-5 h-5"></i>
+    </button>
+  </div>
+
+  <div id="mobileMenu" class="mobile-menu md:hidden max-w-6xl mx-auto mt-2 rounded-2xl pill-header px-6 py-4">
+    <nav class="flex flex-col gap-3 text-sm font-medium">
+      <a href="#sobre" class="py-2 border-b border-border/50">Sobre</a>
+      <a href="#diferenciais" class="py-2 border-b border-border/50">Diferenciais</a>
+      <a href="#avaliacoes" class="py-2 border-b border-border/50">Avaliações</a>
+      <a href="#contato" class="py-2 border-b border-border/50">Contato</a>
+      <a href="https://wa.me/554133338643" class="mt-2 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-4 py-2.5 rounded-full">
+        <i data-lucide="message-circle" class="w-4 h-4"></i> Chamar no WhatsApp
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="hero-bg pt-32 pb-20 sm:pt-40 sm:pb-28 px-5">
+  <div class="max-w-5xl mx-auto text-center">
+    <div class="inline-flex items-center gap-2 bg-card border border-border rounded-full px-4 py-1.5 shadow-sm mb-7">
+      <div class="flex items-center gap-0.5 text-amber-500">
+        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+      </div>
+      <span class="text-xs sm:text-sm font-medium"><strong>4.6</strong> · 802 avaliações no Google</span>
+    </div>
+
+    <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-semibold leading-[1.05] tracking-tight mb-6">
+      Bolos, tortas e doces<br class="hidden sm:block" />
+      <span class="italic text-primary">com alma artesanal</span>
+    </h1>
+
+    <p class="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+      Há anos fazendo as comemorações do Rebouças e de Curitiba ficarem mais doces. Torta folhada, bolos de aniversário e aquele cafezinho com carinho que você lembra.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+      <a href="https://wa.me/554133338643" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25d366] hover:bg-[#1ebe5d] text-white font-semibold px-7 py-4 rounded-full shadow-lg shadow-emerald-500/20 transition">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        Chamar no WhatsApp
+      </a>
+      <a href="#contato" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-card border border-border text-foreground font-medium px-7 py-4 rounded-full hover:bg-muted transition">
+        <i data-lucide="map-pin" class="w-5 h-5"></i>
+        Ver endereço
+      </a>
+    </div>
+
+    <p class="mt-6 text-xs text-muted-foreground flex items-center justify-center gap-2">
+      <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+      Seg a Sex · 08:30 – 18:00 &nbsp;|&nbsp; Sáb · 08:30 – 17:00
+    </p>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="py-20 sm:py-28 px-5">
+  <div class="max-w-3xl mx-auto text-center">
+    <span class="text-xs uppercase tracking-widest text-primary font-semibold">Sobre a confeitaria</span>
+    <h2 class="font-serif text-3xl sm:text-5xl font-semibold mt-3 mb-6 leading-tight">Um pedacinho de Curitiba que todo mundo reconhece</h2>
+    <p class="text-base sm:text-lg text-muted-foreground leading-relaxed">
+      A Confeitaria Gênova é uma das mais tradicionais do Rebouças. Aqui, cada torta folhada, cada bolo e cada doce sai com o cuidado de quem faz por amor — do balcão à limpeza, a equipe inteira entende que você veio buscar um momento, não só uma sobremesa.
+    </p>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais" class="py-20 sm:py-28 px-5 bg-muted/40 border-y border-border">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="text-xs uppercase tracking-widest text-primary font-semibold">Diferenciais</span>
+      <h2 class="font-serif text-3xl sm:text-5xl font-semibold mt-3">Por que tanta gente volta sempre</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <i data-lucide="cake-slice" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Torta folhada inesquecível</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">A torta folhada é presença garantida nas comemorações dos clientes — tem quem diga que é "a melhor que já experimentou".</p>
+      </div>
+
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Atendimento com carinho</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">Todo mundo trabalha com amor — da entrada até a limpeza. É aquele acolhimento que transforma a visita em um momento especial.</p>
+      </div>
+
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <i data-lucide="landmark" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Tradição do Rebouças</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">Uma referência de bolos e doces em Curitiba, com mais de 800 avaliações positivas no Google e famílias que comemoram há gerações aqui.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AVALIAÇÕES -->
+<section id="avaliacoes" class="py-20 sm:py-28 px-5">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="text-xs uppercase tracking-widest text-primary font-semibold">Avaliações reais</span>
+      <h2 class="font-serif text-3xl sm:text-5xl font-semibold mt-3 mb-3">O que os clientes dizem</h2>
+      <p class="text-muted-foreground">Depoimentos publicados no Google Maps.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      <article class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="flex items-center gap-0.5 text-amber-500 mb-4">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <p class="font-serif text-lg italic leading-relaxed mb-5">"A melhor torta folhada que já experimentei. Aqui é sempre presente nas comemorações… Uma delícia."</p>
+        <p class="text-sm font-semibold">Viviane Malfatti</p>
+      </article>
+
+      <article class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="flex items-center gap-0.5 text-amber-500 mb-4">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <p class="font-serif text-lg italic leading-relaxed mb-5">"Dignos de elogios desde a entrada da Confeitaria até o pessoal da limpeza — todos têm amor no que fazem e atendem muito bem. Parabéns e muito sucesso!"</p>
+        <p class="text-sm font-semibold">Lucia Ribeiro</p>
+      </article>
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="https://maps.google.com/?cid=7181990140942022454" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
+        Ver todas as 802 avaliações no Google
+        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="py-20 sm:py-28 px-5 bg-muted/40 border-y border-border">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="text-xs uppercase tracking-widest text-primary font-semibold">Contato</span>
+      <h2 class="font-serif text-3xl sm:text-5xl font-semibold mt-3">Venha nos visitar</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <a href="https://maps.google.com/?cid=7181990140942022454" target="_blank" rel="noopener" class="bg-card border border-border rounded-xl p-7 shadow-sm hover:shadow-md transition group">
+        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <i data-lucide="map-pin" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Endereço</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">Rua 24 de Maio, 1333<br/>Rebouças, Curitiba - PR<br/>80230-080</p>
+        <span class="text-xs text-primary font-medium mt-3 inline-flex items-center gap-1 group-hover:underline">Ver no mapa <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></span>
+      </a>
+
+      <a href="tel:+554133338643" class="bg-card border border-border rounded-xl p-7 shadow-sm hover:shadow-md transition group">
+        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <i data-lucide="phone" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Telefone</h3>
+        <p class="text-sm text-muted-foreground">(41) 3333-8643</p>
+        <span class="text-xs text-primary font-medium mt-3 inline-flex items-center gap-1 group-hover:underline">Ligar agora <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></span>
+      </a>
+
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <i data-lucide="clock" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Horário</h3>
+        <ul class="text-sm text-muted-foreground space-y-1">
+          <li class="flex justify-between"><span>Seg – Sex</span><span>08:30 – 18:00</span></li>
+          <li class="flex justify-between"><span>Sábado</span><span>08:30 – 17:00</span></li>
+          <li class="flex justify-between"><span>Domingo</span><span class="text-foreground/60">Fechado</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="py-20 sm:py-28 px-5">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="font-serif text-3xl sm:text-5xl font-semibold mb-5 leading-tight">Vamos adoçar seu dia?</h2>
+    <p class="text-muted-foreground text-base sm:text-lg mb-9">Peça seu bolo, torta ou encomenda direto pelo WhatsApp. A gente responde rapidinho.</p>
+    <a href="https://wa.me/554133338643" class="inline-flex items-center gap-2 bg-[#25d366] hover:bg-[#1ebe5d] text-white font-semibold px-8 py-4 rounded-full shadow-lg shadow-emerald-500/20 transition text-lg">
+      <i data-lucide="message-circle" class="w-5 h-5"></i>
+      Chamar no WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-border py-8 px-5">
+  <div class="max-w-5xl mx-auto text-center text-xs text-muted-foreground">
+    Página criada para divulgação — dados públicos do Google. Entre em contato para remover.
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/554133338643" aria-label="Chamar no WhatsApp" class="fixed bottom-5 right-5 z-40 w-14 h-14 bg-[#25d366] text-white rounded-full flex items-center justify-center shadow-xl wa-pulse relative hover:scale-105 transition">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  lucide.createIcons();
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+</script>
+
+</body>
+</html>
