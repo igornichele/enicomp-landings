@@ -3,16 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Salão Laiola — Beleza e cuidado no Centro de Curitiba</title>
-<meta name="description" content="Salão Laiola no Centro de Curitiba. Corte, coloração, escova, sobrancelha e unhas. Agende pelo WhatsApp.">
-<meta property="og:title" content="Salão Laiola — Centro de Curitiba">
-<meta property="og:description" content="Corte, coloração, escova, sobrancelha e unhas. Atendimento cuidadoso no coração de Curitiba.">
-<meta property="og:type" content="website">
+<title>Salão Laiola · Cabelo, estética e beleza no Centro de Curitiba</title>
+<meta name="description" content="Salão de beleza no coração de Curitiba. Corte, coloração, escova, sobrancelha e unhas com profissionais experientes. 4,6★ no Google.">
+<meta property="og:title" content="Salão Laiola · Beleza no Centro de Curitiba">
+<meta property="og:description" content="Profissionais experientes, ambiente acolhedor e resultados que levantam a autoestima. Agende pelo WhatsApp.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
 <script>
   tailwind.config = {
     theme: {
@@ -21,14 +20,19 @@
           background: 'hsl(var(--background))',
           foreground: 'hsl(var(--foreground))',
           primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+          accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
           muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
-          card: 'hsl(var(--card))',
+          card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' },
           border: 'hsl(var(--border))',
         },
-        borderRadius: { xl: 'var(--radius)' },
         fontFamily: {
           sans: ['Inter', 'system-ui', 'sans-serif'],
-          serif: ['Fraunces', 'serif'],
+          serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        },
+        borderRadius: {
+          lg: 'var(--radius)',
+          md: 'calc(var(--radius) - 2px)',
+          sm: 'calc(var(--radius) - 4px)',
         },
       },
     },
@@ -36,229 +40,482 @@
 </script>
 <style>
   :root {
-    --background: 30 30% 98%;
-    --foreground: 25 20% 12%;
-    --primary: 340 55% 48%;
-    --primary-foreground: 0 0% 100%;
-    --muted: 30 20% 94%;
-    --muted-foreground: 25 10% 40%;
+    --background: 20 30% 97%;
+    --foreground: 340 25% 12%;
+    --primary: 340 40% 22%;
+    --primary-foreground: 30 40% 96%;
+    --accent: 28 65% 55%;
+    --accent-foreground: 340 40% 15%;
+    --muted: 20 20% 93%;
+    --muted-foreground: 340 10% 42%;
     --card: 0 0% 100%;
-    --border: 25 15% 88%;
-    --radius: 0.75rem;
+    --card-foreground: 340 25% 12%;
+    --border: 340 15% 88%;
+    --radius: 0.875rem;
   }
   html { scroll-behavior: smooth; }
-  section { scroll-margin-top: 96px; }
-  body { font-family: 'Inter', sans-serif; background: hsl(var(--background)); color: hsl(var(--foreground)); }
-  .font-serif { font-family: 'Fraunces', serif; }
-  @keyframes pulse-ring {
-    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
-    70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+  body {
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', sans-serif;
   }
-  .wa-float { animation: pulse-ring 2s infinite; }
-  .hero-bg {
-    background:
-      radial-gradient(circle at 20% 20%, hsla(340, 55%, 85%, 0.4) 0%, transparent 50%),
-      radial-gradient(circle at 80% 70%, hsla(340, 55%, 75%, 0.3) 0%, transparent 50%),
-      hsl(var(--background));
+  section { scroll-margin-top: 80px; }
+  .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+  .dot-pattern {
+    background-image: radial-gradient(hsl(var(--primary) / 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
+  .blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(70px);
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: hsl(var(--accent));
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+  }
+  .eyebrow::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 48px;
+    height: 2px;
+    background: hsl(var(--accent));
+  }
+  .review-card { position: relative; overflow: hidden; }
+  .review-card::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    right: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 140px;
+    color: hsl(var(--accent) / 0.14);
+    line-height: 1;
+    font-weight: 700;
+  }
+  .service-card { transition: all 0.3s ease; }
+  .service-card:hover {
+    transform: translateY(-4px);
+    border-color: hsl(var(--accent) / 0.5);
+    box-shadow: 0 20px 40px -20px hsl(var(--primary) / 0.2);
+  }
+  .contact-card { transition: all 0.25s ease; }
+  .contact-card:hover { transform: translateY(-2px); }
+  .contact-card:hover .contact-icon { color: hsl(var(--accent)); }
+  .liquid-header {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: hsl(var(--background) / 0.65);
+    border-bottom: 1px solid hsl(var(--border) / 0.5);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 20px -10px hsl(var(--primary) / 0.15);
+  }
+  .whatsapp-pulse { animation: pulse 2s infinite; }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+    50% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+  }
+  .hero-img-frame {
+    border: 4px solid hsl(var(--accent) / 0.25);
+    box-shadow: 0 30px 60px -30px hsl(var(--primary) / 0.4);
+  }
+  .star { color: hsl(var(--accent)); }
 </style>
 </head>
 <body class="antialiased">
 
-<!-- Header: floating-pill -->
-<header class="fixed top-0 left-0 right-0 z-50">
-  <div class="mx-4 mt-3 rounded-full backdrop-blur-xl bg-white/70 border border-border/60 shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-    <div class="flex items-center justify-between px-5 py-3 md:px-7">
-      <a href="#top" class="flex items-center gap-2">
-        <span class="font-serif text-xl font-bold tracking-tight text-foreground">Salão Laiola</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground">
-        <a href="#sobre" class="hover:text-foreground transition">Sobre</a>
-        <a href="#diferenciais" class="hover:text-foreground transition">Diferenciais</a>
-        <a href="#avaliacoes" class="hover:text-foreground transition">Avaliações</a>
-        <a href="#contato" class="hover:text-foreground transition">Contato</a>
-        <a href="https://wa.me/554130182957" class="ml-2 inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-primary-foreground hover:opacity-90 transition">
-          <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
-        </a>
-      </nav>
-      <button id="menu-toggle" class="md:hidden p-2 rounded-full hover:bg-muted" aria-label="Menu">
-        <i data-lucide="menu" class="w-5 h-5"></i>
-      </button>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden border-t border-border/60 px-5 py-4 space-y-3 text-sm">
-      <a href="#sobre" class="block text-muted-foreground hover:text-foreground">Sobre</a>
-      <a href="#diferenciais" class="block text-muted-foreground hover:text-foreground">Diferenciais</a>
-      <a href="#avaliacoes" class="block text-muted-foreground hover:text-foreground">Avaliações</a>
-      <a href="#contato" class="block text-muted-foreground hover:text-foreground">Contato</a>
-      <a href="https://wa.me/554130182957" class="block text-center rounded-full bg-primary px-4 py-2 text-primary-foreground">WhatsApp</a>
-    </div>
+<header class="liquid-header fixed top-0 left-0 right-0 z-40">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2.5">
+      <span class="w-9 h-9 rounded-full bg-primary text-primary-foreground font-serif text-lg font-semibold flex items-center justify-center">L</span>
+      <span class="font-serif text-lg font-semibold text-foreground">Salão Laiola</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
+      <a href="#sobre" class="hover:text-primary transition">Sobre</a>
+      <a href="#especialidades" class="hover:text-primary transition">Especialidades</a>
+      <a href="#avaliacoes" class="hover:text-primary transition">Avaliações</a>
+      <a href="#contato" class="hover:text-primary transition">Contato</a>
+    </nav>
+    <a href="https://wa.me/554130182957" class="hidden md:inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition">Agendar</a>
+    <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-muted" aria-label="Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div id="mobileMenu" class="md:hidden hidden border-t border-border bg-background/95 backdrop-blur">
+    <nav class="flex flex-col px-4 py-3 gap-1 text-sm font-medium">
+      <a href="#sobre" class="py-2.5 text-foreground">Sobre</a>
+      <a href="#especialidades" class="py-2.5 text-foreground">Especialidades</a>
+      <a href="#avaliacoes" class="py-2.5 text-foreground">Avaliações</a>
+      <a href="#contato" class="py-2.5 text-foreground">Contato</a>
+      <a href="https://wa.me/554130182957" class="mt-2 bg-primary text-primary-foreground px-4 py-2.5 rounded-full text-center font-semibold">Agendar pelo WhatsApp</a>
+    </nav>
   </div>
 </header>
 
-<!-- Hero -->
-<section id="top" class="hero-bg pt-32 pb-20 md:pt-40 md:pb-28">
-  <div class="max-w-5xl mx-auto px-6 text-center">
-    <div class="inline-flex items-center gap-2 rounded-full border border-border bg-white/60 backdrop-blur px-4 py-1.5 text-sm text-muted-foreground mb-6">
-      <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
-      <span class="font-semibold text-foreground">4.6</span>
-      <span>· 180 avaliações no Google</span>
-    </div>
-    <h1 class="font-serif text-4xl md:text-6xl font-bold tracking-tight text-foreground leading-[1.05]">
-      Beleza feita com<br><span class="italic text-primary">cuidado e técnica</span>
-    </h1>
-    <p class="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-      No coração de Curitiba, o Salão Laiola cuida do seu cabelo, unhas e sobrancelhas com profissionais experientes e atendimento acolhedor.
-    </p>
-    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-      <a href="https://wa.me/554130182957" class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25d366] hover:bg-[#20bd5a] text-white px-7 py-4 text-base font-semibold shadow-sm transition w-full sm:w-auto">
-        <i data-lucide="message-circle" class="w-5 h-5"></i>
-        Chamar no WhatsApp
-      </a>
-      <a href="#contato" class="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-card hover:bg-muted px-7 py-4 text-base font-medium transition w-full sm:w-auto">
-        <i data-lucide="map-pin" class="w-5 h-5"></i>
-        Como chegar
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Sobre -->
-<section id="sobre" class="py-20 md:py-24">
-  <div class="max-w-3xl mx-auto px-6">
-    <span class="text-sm uppercase tracking-widest text-primary font-semibold">Sobre</span>
-    <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 text-foreground">Um salão de bairro com alma e tradição</h2>
-    <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
-      Localizado na Praça Rui Barbosa, o Salão Laiola atende há anos clientes que buscam um serviço completo de beleza em um só lugar: cabelo, coloração, escova, sobrancelha e unhas.
-    </p>
-    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
-      Aqui, cada cliente é tratada com sensibilidade — do corte à tintura, o compromisso é entregar um resultado que você vai amar se olhar no espelho.
-    </p>
-  </div>
-</section>
-
-<!-- Diferenciais -->
-<section id="diferenciais" class="py-20 md:py-24 bg-muted/40">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center max-w-2xl mx-auto">
-      <span class="text-sm uppercase tracking-widest text-primary font-semibold">Diferenciais</span>
-      <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 text-foreground">Por que nossas clientes voltam</h2>
-    </div>
-    <div class="mt-14 grid md:grid-cols-3 gap-6">
-      <div class="rounded-xl border border-border bg-card shadow-sm p-7">
-        <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-          <i data-lucide="sparkles" class="w-6 h-6 text-primary"></i>
-        </div>
-        <h3 class="font-serif text-xl font-semibold text-foreground">Profissionais experientes</h3>
-        <p class="mt-3 text-muted-foreground leading-relaxed">Equipe com anos de técnica em coloração, escova, corte e design de sobrancelha.</p>
+<section class="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
+  <div class="blob bg-accent -top-20 -left-20 w-80 h-80"></div>
+  <div class="blob bg-primary bottom-0 right-0 w-96 h-96"></div>
+  <div class="absolute inset-0 dot-pattern opacity-60"></div>
+  <div class="relative max-w-6xl mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <span class="inline-flex items-center gap-2 bg-accent/10 text-accent text-xs font-semibold px-3 py-1.5 rounded-full border border-accent/20">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+        Referência em beleza no Centro de Curitiba
+      </span>
+      <h1 class="mt-5 font-serif text-4xl md:text-6xl leading-[1.05] font-semibold text-foreground">
+        Sua beleza<br>
+        <em class="italic text-accent">em boas mãos</em>
+      </h1>
+      <p class="mt-5 text-base md:text-lg text-muted-foreground leading-relaxed max-w-lg">
+        Cabelo, sobrancelha, unhas e estética no coração de Curitiba. Profissionais experientes, técnica apurada e aquele cuidado que levanta a autoestima a cada visita.
+      </p>
+      <div class="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
+        <span class="star tracking-wider">★★★★★</span>
+        <span class="font-semibold text-foreground">4,6</span>
+        <span>no Google · 180 avaliações</span>
       </div>
-      <div class="rounded-xl border border-border bg-card shadow-sm p-7">
-        <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-          <i data-lucide="heart" class="w-6 h-6 text-primary"></i>
-        </div>
-        <h3 class="font-serif text-xl font-semibold text-foreground">Atendimento acolhedor</h3>
-        <p class="mt-3 text-muted-foreground leading-relaxed">Cuidado, escuta e sensibilidade em cada serviço — você sai daqui se sentindo bem.</p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href="https://wa.me/554130182957" class="inline-flex items-center justify-center gap-2 bg-[#25d366] text-white font-semibold px-6 py-3.5 rounded-full hover:opacity-90 transition shadow-lg shadow-green-500/20">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5H7.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.3 5 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+          WhatsApp
+        </a>
+        <a href="tel:+554130182957" class="inline-flex items-center justify-center gap-2 border border-border bg-card text-foreground font-semibold px-6 py-3.5 rounded-full hover:border-primary hover:text-primary transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (41) 3018-2957
+        </a>
       </div>
-      <div class="rounded-xl border border-border bg-card shadow-sm p-7">
-        <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-          <i data-lucide="map-pin" class="w-6 h-6 text-primary"></i>
+    </div>
+    <div class="relative">
+      <div class="hero-img-frame rounded-2xl overflow-hidden aspect-[4/5] bg-muted">
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=900&q=80" alt="Salão de beleza" class="w-full h-full object-cover">
+      </div>
+      <div class="hidden sm:block absolute -bottom-6 -left-6 bg-card rounded-2xl border border-border shadow-xl p-4 max-w-[220px]">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-accent/15 text-accent flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div>
+            <div class="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Destaque</div>
+            <div class="text-sm font-semibold text-foreground">Coloração & escova</div>
+          </div>
         </div>
-        <h3 class="font-serif text-xl font-semibold text-foreground">Localização central</h3>
-        <p class="mt-3 text-muted-foreground leading-relaxed">Na Praça Rui Barbosa, fácil de chegar de ônibus, a pé ou de carro no Centro.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Avaliações -->
-<section id="avaliacoes" class="py-20 md:py-24">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center max-w-2xl mx-auto">
-      <span class="text-sm uppercase tracking-widest text-primary font-semibold">Avaliações</span>
-      <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 text-foreground">O que nossas clientes dizem</h2>
-      <p class="mt-4 text-muted-foreground">Depoimentos reais do Google.</p>
+<section class="bg-primary text-primary-foreground">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-14 grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold">4,6★</div>
+      <div class="mt-2 text-xs uppercase tracking-widest text-primary-foreground/70">Google Reviews</div>
     </div>
-    <div class="mt-14 grid md:grid-cols-1 max-w-2xl mx-auto gap-6">
-      <div class="rounded-xl border border-border bg-card shadow-sm p-7">
-        <div class="flex gap-0.5 mb-4">
-          <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
-          <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
-          <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
-          <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
-          <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold">180+</div>
+      <div class="mt-2 text-xs uppercase tracking-widest text-primary-foreground/70">Avaliações</div>
+    </div>
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold">6 dias</div>
+      <div class="mt-2 text-xs uppercase tracking-widest text-primary-foreground/70">Por semana</div>
+    </div>
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold">Centro</div>
+      <div class="mt-2 text-xs uppercase tracking-widest text-primary-foreground/70">Curitiba, PR</div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre" class="py-16 md:py-28">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+    <div class="grid grid-cols-2 gap-4">
+      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80" alt="Ambiente acolhedor" class="w-full aspect-[3/4] object-cover rounded-2xl">
+      <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600&q=80" alt="Cuidado com cabelo" class="w-full aspect-[3/4] object-cover rounded-2xl mt-8">
+    </div>
+    <div>
+      <span class="eyebrow">Sobre o Laiola</span>
+      <h2 class="mt-4 font-serif text-3xl md:text-5xl font-semibold leading-tight text-foreground">
+        Técnica, sensibilidade<br>e <em class="italic text-accent">autoestima lá em cima</em>.
+      </h2>
+      <p class="mt-5 text-muted-foreground leading-relaxed">
+        Um dos salões mais tradicionais do Centro de Curitiba. Profissionais experientes que atendem com cuidado, técnica e aquele jeito de quem trabalha com sensibilidade e carinho em cada detalhe.
+      </p>
+      <p class="mt-3 text-muted-foreground leading-relaxed">
+        Corte, tintura, escova, sobrancelha, unhas, hidratação. Um ponto de encontro de quem vem no Centro e sai de lá realizado.
+      </p>
+      <div class="mt-8 grid grid-cols-2 gap-5">
+        <div class="flex gap-3">
+          <div class="w-8 h-8 rounded-full bg-accent/15 text-accent flex-shrink-0 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-foreground text-sm">Profissionais experientes</div>
+            <div class="text-xs text-muted-foreground mt-0.5">Técnica apurada e mão firme</div>
+          </div>
         </div>
-        <p class="font-serif text-lg italic text-foreground leading-relaxed">
-          "Atendimento excelente! A Vilma é uma profissional incrível. Fiz tintura, escova, corte e sobrancelha, e o resultado ficou ótimo. Trabalho feito com cuidado, técnica e sensibilidade."
+        <div class="flex gap-3">
+          <div class="w-8 h-8 rounded-full bg-accent/15 text-accent flex-shrink-0 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-foreground text-sm">Atendimento acolhedor</div>
+            <div class="text-xs text-muted-foreground mt-0.5">Conversa na medida certa</div>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="w-8 h-8 rounded-full bg-accent/15 text-accent flex-shrink-0 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-foreground text-sm">Resultado que encanta</div>
+            <div class="text-xs text-muted-foreground mt-0.5">Autoestima sempre lá em cima</div>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="w-8 h-8 rounded-full bg-accent/15 text-accent flex-shrink-0 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-foreground text-sm">Localização fácil</div>
+            <div class="text-xs text-muted-foreground mt-0.5">Praça Rui Barbosa, Centro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="especialidades" class="py-16 md:py-28 bg-muted/40">
+  <div class="max-w-6xl mx-auto px-4 md:px-6">
+    <div class="max-w-2xl">
+      <span class="eyebrow">Serviços</span>
+      <h2 class="mt-4 font-serif text-3xl md:text-5xl font-semibold leading-tight text-foreground">
+        Tudo o que seu <em class="italic text-accent">cuidado pessoal</em> pede
+      </h2>
+      <p class="mt-4 text-muted-foreground">Do corte à coloração, da sobrancelha às unhas. Cada serviço com técnica, tempo e atenção que você merece.</p>
+    </div>
+    <div class="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="service-card bg-card border border-border rounded-2xl p-6 relative">
+        <div class="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wider text-accent bg-accent/10 px-2 py-1 rounded-full">Destaque</div>
+        <div class="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" x2="8.12" y1="4" y2="15.88"/><line x1="14.47" x2="20" y1="14.48" y2="20"/><line x1="8.12" x2="12" y1="8.12" y2="12"/></svg>
+        </div>
+        <h3 class="mt-5 font-serif text-xl font-semibold text-foreground">Corte feminino e masculino</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Corte cuidadoso, do clássico ao repicado. Cabeleireiros que ouvem o que você quer antes de começar.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m8 22 4-10 4 10"/></svg>
+        </div>
+        <h3 class="mt-5 font-serif text-xl font-semibold text-foreground">Coloração e tintura</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Cobertura de brancos, mudanças de tom e retoque de raiz com técnica e produtos de qualidade.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.38 12a2.4 2.4 0 0 1-.4-4.77 2.4 2.4 0 0 1 3.2-2.77 2.4 2.4 0 0 1 3.47-.63 2.4 2.4 0 0 1 3.37 3.37 2.4 2.4 0 0 1-1.1 3.7 2.51 2.51 0 0 1 .03 1.1"/><path d="M7 21h10"/><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/></svg>
+        </div>
+        <h3 class="mt-5 font-serif text-xl font-semibold text-foreground">Escova e hidratação</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Escova impecável para o dia a dia ou ocasião especial, com hidratação que devolve brilho e maciez.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 0-8 8c0 5 4 10 8 12 4-2 8-7 8-12a8 8 0 0 0-8-8Z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3 class="mt-5 font-serif text-xl font-semibold text-foreground">Sobrancelha</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Design de sobrancelha com desenho que valoriza seu rosto, feito com técnica e proporção.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="mt-5 font-serif text-xl font-semibold text-foreground">Manicure e pedicure</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Acabamento caprichado nas unhas, das clássicas francesinhas ao esmalte da estação.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3 class="mt-5 font-serif text-xl font-semibold text-foreground">Pacote dia da noiva</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Combine cabelo, escova, sobrancelha e unhas num só atendimento. Peça seu orçamento pelo WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacoes" class="py-16 md:py-28">
+  <div class="max-w-6xl mx-auto px-4 md:px-6">
+    <div class="max-w-2xl">
+      <span class="eyebrow">O que as clientes dizem</span>
+      <h2 class="mt-4 font-serif text-3xl md:text-5xl font-semibold leading-tight text-foreground">
+        180 avaliações<br><em class="italic text-accent">no Google</em>
+      </h2>
+      <p class="mt-4 text-muted-foreground">Avaliações reais de quem passou pelo salão. Publicadas sem filtro, direto da página do Google.</p>
+    </div>
+    <div class="mt-10 md:mt-14 grid md:grid-cols-2 gap-5">
+      <div class="review-card bg-card border border-border rounded-2xl p-7">
+        <div class="star text-lg tracking-wider">★★★★★</div>
+        <p class="mt-3 text-foreground leading-relaxed relative z-10">
+          "Atendimento excelente! A Vilma é uma profissional incrível. Fiz tintura, escova, corte e sobrancelha, e o resultado ficou ótimo. Trabalho feito com cuidado, técnica e sensibilidade. Dá para perceber a experiência e o carinho em cada detalhe. Recomendo muito!"
         </p>
-        <p class="mt-5 text-sm font-semibold text-muted-foreground">— Priscilla Neto</p>
+        <div class="mt-5 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-semibold flex items-center justify-center">P</div>
+          <div>
+            <div class="font-semibold text-sm text-foreground">Priscilla Neto</div>
+            <div class="text-xs text-muted-foreground">Cliente</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card bg-card border border-border rounded-2xl p-7">
+        <div class="star text-lg tracking-wider">★★★★★</div>
+        <p class="mt-3 text-foreground leading-relaxed relative z-10">
+          "Um dos melhores salões de cabeleireiros de Curitiba. Profissionais excelentes e muito atenciosos. Sempre me deixando com a autoestima lá em cima."
+        </p>
+        <div class="mt-5 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-semibold flex items-center justify-center">I</div>
+          <div>
+            <div class="font-semibold text-sm text-foreground">Idiana Silva</div>
+            <div class="text-xs text-muted-foreground">Cliente</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card bg-card border border-border rounded-2xl p-7">
+        <div class="star text-lg tracking-wider">★★★★★</div>
+        <p class="mt-3 text-foreground leading-relaxed relative z-10">
+          "Ai, eu amei! Cortei meu cabelo com o Marcos e ele foi super cuidadoso tanto com o corte, com a hidratação, escova e com as palavras. Foi super simpático, disse só o essencial (como eu queria o corte, para qual lado queria a franja). Amei muito pois prefiro ficar calada. Saí de lá realizada, melhor cabeleireiro que já tive!"
+        </p>
+        <div class="mt-5 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-semibold flex items-center justify-center">J</div>
+          <div>
+            <div class="font-semibold text-sm text-foreground">Julia</div>
+            <div class="text-xs text-muted-foreground">Cliente</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card bg-card border border-border rounded-2xl p-7">
+        <div class="star text-lg tracking-wider">★★★★★</div>
+        <p class="mt-3 text-foreground leading-relaxed relative z-10">
+          "Ambiente acolhedor no coração de Curitiba. Profissionais que trabalham com técnica e sensibilidade. Vale pela experiência e pelo jeito de receber cada cliente."
+        </p>
+        <div class="mt-5 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-semibold flex items-center justify-center">L</div>
+          <div>
+            <div class="font-semibold text-sm text-foreground">Clientes Laiola</div>
+            <div class="text-xs text-muted-foreground">Resumo de avaliações</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 text-center">
+      <a href="https://maps.google.com/?cid=14274004312152028885&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-primary font-semibold hover:text-accent transition">
+        Ver todas as 180 avaliações no Google
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="py-16 md:py-28 bg-muted/40">
+  <div class="max-w-6xl mx-auto px-4 md:px-6">
+    <div class="max-w-2xl">
+      <span class="eyebrow">Contato</span>
+      <h2 class="mt-4 font-serif text-3xl md:text-5xl font-semibold leading-tight text-foreground">
+        Agende seu <em class="italic text-accent">horário</em>
+      </h2>
+      <p class="mt-4 text-muted-foreground">Fale pelo WhatsApp, ligue ou venha até o salão na Praça Rui Barbosa.</p>
+    </div>
+    <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+      <a href="tel:+554130182957" class="contact-card bg-card border border-border rounded-2xl p-6 block">
+        <div class="contact-icon w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div class="mt-5 text-[11px] uppercase tracking-widest text-muted-foreground font-semibold">Telefone</div>
+        <div class="mt-1 font-semibold text-foreground text-lg">(41) 3018-2957</div>
+        <div class="text-sm text-muted-foreground mt-0.5">Seg a sáb · 07:30 – 19:00</div>
+      </a>
+      <a href="https://wa.me/554130182957" class="contact-card bg-card border border-border rounded-2xl p-6 block">
+        <div class="contact-icon w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5H7.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3z"/></svg>
+        </div>
+        <div class="mt-5 text-[11px] uppercase tracking-widest text-muted-foreground font-semibold">WhatsApp</div>
+        <div class="mt-1 font-semibold text-foreground text-lg">Resposta rápida</div>
+        <div class="text-sm text-muted-foreground mt-0.5">Agende seu horário</div>
+      </a>
+      <a href="https://maps.google.com/?cid=14274004312152028885" target="_blank" rel="noopener" class="contact-card bg-card border border-border rounded-2xl p-6 block">
+        <div class="contact-icon w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 7-8 13-8 13s-8-6-8-13a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="mt-5 text-[11px] uppercase tracking-widest text-muted-foreground font-semibold">Endereço</div>
+        <div class="mt-1 font-semibold text-foreground text-base leading-snug">Praça Rui Barbosa, 559</div>
+        <div class="text-sm text-muted-foreground mt-0.5">Centro · Curitiba, PR</div>
+      </a>
+    </div>
+    <div class="mt-6 bg-card border border-border rounded-2xl p-6 md:p-8">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-xl bg-accent/15 text-accent flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-foreground">Horário de funcionamento</h3>
+      </div>
+      <ul class="divide-y divide-border">
+        <li class="flex justify-between py-3 text-sm"><span class="text-foreground font-medium">Segunda-feira</span><span class="text-muted-foreground">07:30 – 19:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-foreground font-medium">Terça-feira</span><span class="text-muted-foreground">07:30 – 19:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-foreground font-medium">Quarta-feira</span><span class="text-muted-foreground">07:30 – 19:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-foreground font-medium">Quinta-feira</span><span class="text-muted-foreground">07:30 – 19:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-foreground font-medium">Sexta-feira</span><span class="text-muted-foreground">07:30 – 19:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-foreground font-medium">Sábado</span><span class="text-muted-foreground">07:30 – 19:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-foreground font-medium">Domingo</span><span class="text-muted-foreground">Fechado</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24">
+  <div class="max-w-5xl mx-auto px-4 md:px-6">
+    <div class="relative overflow-hidden bg-primary text-primary-foreground rounded-2xl md:rounded-3xl p-10 md:p-16 text-center">
+      <div class="blob bg-accent -top-10 -right-10 w-72 h-72"></div>
+      <div class="relative">
+        <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight">
+          Sua beleza começa<br><em class="italic text-accent">aqui</em>.
+        </h2>
+        <p class="mt-5 text-primary-foreground/80 max-w-xl mx-auto">Agende pelo WhatsApp e garanta seu horário com quem entende do assunto.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="https://wa.me/554130182957" class="inline-flex items-center justify-center gap-2 bg-[#25d366] text-white font-semibold px-7 py-3.5 rounded-full hover:opacity-90 transition shadow-xl">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5H7.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.3 5 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+            Chamar no WhatsApp
+          </a>
+          <a href="tel:+554130182957" class="inline-flex items-center justify-center gap-2 border border-primary-foreground/30 text-primary-foreground font-semibold px-7 py-3.5 rounded-full hover:bg-primary-foreground/10 transition">
+            (41) 3018-2957
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Contato -->
-<section id="contato" class="py-20 md:py-24 bg-muted/40">
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="text-center max-w-2xl mx-auto">
-      <span class="text-sm uppercase tracking-widest text-primary font-semibold">Contato</span>
-      <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 text-foreground">Venha nos visitar</h2>
-    </div>
-    <div class="mt-14 grid md:grid-cols-3 gap-6">
-      <a href="https://maps.google.com/?cid=14274004312152028885" target="_blank" rel="noopener" class="rounded-xl border border-border bg-card shadow-sm p-7 hover:shadow-md transition">
-        <i data-lucide="map-pin" class="w-6 h-6 text-primary mb-4"></i>
-        <h3 class="font-serif text-lg font-semibold text-foreground">Endereço</h3>
-        <p class="mt-2 text-muted-foreground text-sm leading-relaxed">Praça Rui Barbosa, 559<br>Centro, Curitiba - PR<br>80010-030</p>
-        <span class="mt-3 inline-flex items-center gap-1 text-primary text-sm font-medium">Ver no mapa <i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
-      </a>
-      <a href="tel:+554130182957" class="rounded-xl border border-border bg-card shadow-sm p-7 hover:shadow-md transition">
-        <i data-lucide="phone" class="w-6 h-6 text-primary mb-4"></i>
-        <h3 class="font-serif text-lg font-semibold text-foreground">Telefone</h3>
-        <p class="mt-2 text-muted-foreground">(41) 3018-2957</p>
-        <span class="mt-3 inline-flex items-center gap-1 text-primary text-sm font-medium">Ligar agora <i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
-      </a>
-      <div class="rounded-xl border border-border bg-card shadow-sm p-7">
-        <i data-lucide="clock" class="w-6 h-6 text-primary mb-4"></i>
-        <h3 class="font-serif text-lg font-semibold text-foreground">Horários</h3>
-        <ul class="mt-2 text-sm text-muted-foreground space-y-1">
-          <li class="flex justify-between"><span>Seg – Sáb</span><span>07:30 – 19:00</span></li>
-          <li class="flex justify-between"><span>Domingo</span><span>Fechado</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA final -->
-<section class="py-20 md:py-28">
-  <div class="max-w-3xl mx-auto px-6 text-center">
-    <h2 class="font-serif text-3xl md:text-5xl font-bold text-foreground leading-tight">Pronta para dar um up no visual?</h2>
-    <p class="mt-5 text-lg text-muted-foreground">Agende seu horário agora mesmo pelo WhatsApp — é rápido e direto.</p>
-    <a href="https://wa.me/554130182957" class="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-[#25d366] hover:bg-[#20bd5a] text-white px-8 py-4 text-lg font-semibold shadow-sm transition">
-      <i data-lucide="message-circle" class="w-5 h-5"></i>
-      Chamar no WhatsApp
-    </a>
-  </div>
-</section>
-
-<!-- Footer -->
 <footer class="border-t border-border py-8">
-  <div class="max-w-5xl mx-auto px-6 text-center text-xs text-muted-foreground">
-    Página criada para divulgação — dados públicos do Google. Entre em contato para remover.
+  <div class="max-w-6xl mx-auto px-4 md:px-6 text-center text-xs text-muted-foreground">
+    Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
   </div>
 </footer>
 
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/554130182957" aria-label="WhatsApp" class="wa-float fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25d366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-lg transition">
-  <svg viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+<a href="https://wa.me/554130182957" class="whatsapp-pulse fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25d366] text-white flex items-center justify-center shadow-xl hover:scale-105 transition" aria-label="WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5H7.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.3 5 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
 </a>
 
 <script>
-  lucide.createIcons();
-  const btn = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  btn?.addEventListener('click', () => menu.classList.toggle('hidden'));
+  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
 </script>
-
 </body>
 </html>
