@@ -1,298 +1,406 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Studio Rose Maciel — Salão de Beleza em Curitiba</title>
-<meta name="description" content="Studio Rose Maciel: manicure, pedicure e beleza em Curitiba com atendimento acolhedor e profissionais experientes. Rua Rockefeller, 169 — Rebouças." />
-<meta property="og:title" content="Studio Rose Maciel — Salão de Beleza em Curitiba" />
-<meta property="og:description" content="Atendimento caprichoso e aconchegante. Manicure, pedicure e cuidados de beleza no Rebouças, Curitiba." />
-<meta property="og:type" content="website" />
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Rose Maciel · Manicure e Pedicure em Rebouças, Curitiba</title>
+<meta name="description" content="Studio Rose Maciel: manicure, pedicure e cuidado caprichoso em Rebouças, Curitiba. Atendimento atencioso, ambiente aconchegante e unhas perfeitas. 4,7★ no Google.">
+<meta property="og:title" content="Studio Rose Maciel · Manicure e Pedicure em Rebouças, Curitiba">
+<meta property="og:description" content="Unhas perfeitas, atendimento caprichoso e ambiente aconchegante em Rebouças. 4,7★ no Google.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1200&q=80">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
-        fontFamily: {
-          sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-          serif: ['Fraunces', 'ui-serif', 'Georgia'],
-        },
         colors: {
           background: 'hsl(var(--background))',
           foreground: 'hsl(var(--foreground))',
-          primary: {
-            DEFAULT: 'hsl(var(--primary))',
-            foreground: 'hsl(var(--primary-foreground))',
-          },
-          muted: {
-            DEFAULT: 'hsl(var(--muted))',
-            foreground: 'hsl(var(--muted-foreground))',
-          },
-          card: 'hsl(var(--card))',
+          primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+          accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+          muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+          card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' },
           border: 'hsl(var(--border))',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          serif: ['Fraunces', 'serif'],
         },
         borderRadius: {
           lg: 'var(--radius)',
-          xl: 'calc(var(--radius) + 4px)',
-        },
-      },
-    },
-  };
+          md: 'calc(var(--radius) - 2px)',
+          sm: 'calc(var(--radius) - 4px)',
+        }
+      }
+    }
+  }
 </script>
-
 <style>
   :root {
-    --background: 30 40% 98%;
-    --foreground: 340 15% 15%;
-    --primary: 340 55% 55%;
-    --primary-foreground: 0 0% 100%;
-    --muted: 30 20% 94%;
-    --muted-foreground: 340 10% 40%;
+    --background: 20 30% 97%;
+    --foreground: 340 30% 12%;
     --card: 0 0% 100%;
-    --border: 340 15% 90%;
-    --radius: 0.75rem;
+    --card-foreground: 340 30% 12%;
+    --primary: 340 45% 22%;
+    --primary-foreground: 30 40% 97%;
+    --accent: 25 65% 55%;
+    --accent-foreground: 0 0% 100%;
+    --muted: 20 20% 94%;
+    --muted-foreground: 340 10% 40%;
+    --border: 340 15% 88%;
+    --radius: 0.875rem;
   }
   html { scroll-behavior: smooth; }
-  section { scroll-margin-top: 90px; }
-  body {
-    font-family: 'Inter', sans-serif;
-    background: hsl(var(--background));
-    color: hsl(var(--foreground));
-  }
+  body { font-family: 'Inter', sans-serif; background: hsl(var(--background)); color: hsl(var(--foreground)); }
   .font-serif { font-family: 'Fraunces', serif; }
-
-  /* Floating pill header */
-  .pill-header {
-    backdrop-filter: blur(16px) saturate(160%);
-    -webkit-backdrop-filter: blur(16px) saturate(160%);
-    background: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(0,0,0,0.06);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-  }
-
-  @keyframes pulse-wa {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-    50% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
-  }
-  .wa-float { animation: pulse-wa 2s infinite; }
-
-  .bg-pattern {
-    background-image: radial-gradient(hsl(var(--border)) 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
+  section { scroll-margin-top: 90px; }
+  .dot-pattern { background-image: radial-gradient(hsl(var(--primary) / 0.08) 1px, transparent 1px); background-size: 24px 24px; }
+  .blob { position: absolute; border-radius: 9999px; filter: blur(70px); opacity: 0.5; pointer-events: none; z-index: 0; }
+  .eyebrow { position: relative; display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: hsl(var(--accent)); padding-bottom: 14px; }
+  .eyebrow::after { content: ''; position: absolute; left: 0; bottom: 0; width: 48px; height: 2px; background: hsl(var(--accent)); }
+  .review-card { position: relative; overflow: hidden; }
+  .review-card::before { content: '"'; position: absolute; top: -30px; right: 10px; font-family: 'Fraunces', serif; font-size: 160px; line-height: 1; color: hsl(var(--accent) / 0.12); pointer-events: none; }
+  .service-card { transition: all 0.3s ease; }
+  .service-card:hover { transform: translateY(-4px); border-color: hsl(var(--accent) / 0.5); box-shadow: 0 12px 32px -12px hsl(var(--primary) / 0.2); }
+  .wa-pulse::before { content: ''; position: absolute; inset: 0; border-radius: 9999px; background: #25d366; animation: wapulse 2s infinite; z-index: -1; }
+  @keyframes wapulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.6); opacity: 0; } }
+  .glass-header { backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); background: hsl(var(--background) / 0.6); border-bottom: 1px solid hsl(var(--border) / 0.5); box-shadow: inset 0 1px 0 rgba(255,255,255,0.3); position: relative; }
+  .glass-header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top, hsl(var(--accent) / 0.08), transparent 60%); pointer-events: none; }
+  .nav-link { position: relative; transition: color 0.2s; }
+  .nav-link::after { content: ''; position: absolute; left: 50%; bottom: -4px; width: 0; height: 2px; background: hsl(var(--accent)); transition: all 0.3s ease; transform: translateX(-50%); }
+  .nav-link:hover::after { width: 100%; }
+  .nav-link:hover { color: hsl(var(--accent)); }
 </style>
 </head>
 <body class="antialiased">
 
-<!-- Floating Pill Header -->
-<header class="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
-  <div class="pill-header max-w-5xl mx-auto rounded-full px-5 py-3 flex items-center justify-between">
-    <a href="#" class="font-serif text-lg font-semibold tracking-tight">Studio <span class="text-primary">Rose Maciel</span></a>
-    <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground">
-      <a href="#sobre" class="hover:text-foreground transition">Sobre</a>
-      <a href="#diferenciais" class="hover:text-foreground transition">Diferenciais</a>
-      <a href="#avaliacoes" class="hover:text-foreground transition">Avaliações</a>
-      <a href="#contato" class="hover:text-foreground transition">Contato</a>
-    </nav>
-    <a href="https://wa.me/5541984233046" class="hidden md:inline-flex items-center gap-2 bg-primary text-primary-foreground text-sm font-medium px-4 py-2 rounded-full hover:opacity-90 transition">
-      <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
+<header class="glass-header sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between relative z-10">
+    <a href="#" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-serif font-semibold text-lg">R</div>
+      <div class="leading-tight">
+        <div class="font-serif font-semibold text-lg">Studio Rose Maciel</div>
+        <div class="text-[11px] text-muted-foreground tracking-wide uppercase">Rebouças · Curitiba</div>
+      </div>
     </a>
-    <button id="menu-btn" class="md:hidden p-2 -mr-1" aria-label="Menu">
-      <i data-lucide="menu" class="w-5 h-5"></i>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="#sobre" class="nav-link">Sobre</a>
+      <a href="#especialidades" class="nav-link">Especialidades</a>
+      <a href="#avaliacoes" class="nav-link">Avaliações</a>
+      <a href="#contato" class="nav-link">Contato</a>
+      <a href="https://wa.me/5541984233046" class="bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:opacity-90 transition">Agendar</a>
+    </nav>
+    <button id="menuBtn" class="md:hidden p-2" aria-label="Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </div>
-  <div id="mobile-menu" class="hidden md:hidden max-w-5xl mx-auto mt-2 pill-header rounded-2xl p-4 space-y-2 text-sm">
-    <a href="#sobre" class="block px-3 py-2 rounded-lg hover:bg-muted">Sobre</a>
-    <a href="#diferenciais" class="block px-3 py-2 rounded-lg hover:bg-muted">Diferenciais</a>
-    <a href="#avaliacoes" class="block px-3 py-2 rounded-lg hover:bg-muted">Avaliações</a>
-    <a href="#contato" class="block px-3 py-2 rounded-lg hover:bg-muted">Contato</a>
-    <a href="https://wa.me/5541984233046" class="block text-center bg-primary text-primary-foreground font-medium px-3 py-2 rounded-lg">Chamar no WhatsApp</a>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-border bg-background/95">
+    <div class="px-5 py-4 flex flex-col gap-3 text-sm font-medium">
+      <a href="#sobre" class="py-2">Sobre</a>
+      <a href="#especialidades" class="py-2">Especialidades</a>
+      <a href="#avaliacoes" class="py-2">Avaliações</a>
+      <a href="#contato" class="py-2">Contato</a>
+      <a href="https://wa.me/5541984233046" class="bg-primary text-primary-foreground px-4 py-3 rounded-lg text-center">Agendar no WhatsApp</a>
+    </div>
   </div>
 </header>
 
-<!-- Hero -->
-<section class="relative pt-32 md:pt-40 pb-20 md:pb-28 overflow-hidden">
-  <div class="absolute inset-0 bg-pattern opacity-40 pointer-events-none"></div>
-  <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
-  <div class="relative max-w-4xl mx-auto px-6 text-center">
-    <div class="inline-flex items-center gap-2 bg-card border border-border rounded-full px-4 py-1.5 text-sm mb-6 shadow-sm">
-      <div class="flex items-center gap-0.5 text-amber-500">
-        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+<section class="relative overflow-hidden">
+  <div class="blob" style="background: hsl(var(--accent)); width: 400px; height: 400px; top: -100px; right: -100px;"></div>
+  <div class="blob" style="background: hsl(var(--primary)); width: 350px; height: 350px; bottom: -150px; left: -120px; opacity: 0.3;"></div>
+  <div class="absolute inset-0 dot-pattern opacity-60"></div>
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
+    <div>
+      <div class="inline-flex items-center gap-2 bg-accent/10 text-accent border border-accent/20 px-3 py-1.5 rounded-full text-xs font-medium mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+        Referência em beleza no Rebouças
       </div>
-      <span class="text-muted-foreground">4,7 · 82 avaliações no Google</span>
-    </div>
-    <h1 class="font-serif text-4xl md:text-6xl font-semibold leading-[1.05] tracking-tight mb-6">
-      Beleza com <span class="italic text-primary">carinho</span><br class="hidden md:block" /> no coração do Rebouças
-    </h1>
-    <p class="text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
-      Manicure, pedicure e cuidados de beleza com profissionais experientes e atendimento acolhedor. Um ambiente aconchegante em Curitiba pra você relaxar e sair renovada.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
-      <a href="https://wa.me/5541984233046" class="inline-flex items-center justify-center gap-2 bg-[#25d366] text-white font-semibold px-7 py-4 rounded-xl hover:bg-[#1fba59] transition shadow-sm w-full sm:w-auto">
-        <i data-lucide="message-circle" class="w-5 h-5"></i>
-        Chamar no WhatsApp
-      </a>
-      <a href="#contato" class="inline-flex items-center justify-center gap-2 bg-card border border-border text-foreground font-medium px-6 py-4 rounded-xl hover:bg-muted transition w-full sm:w-auto">
-        Ver endereço
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Sobre -->
-<section id="sobre" class="py-20 md:py-24 bg-muted/40">
-  <div class="max-w-3xl mx-auto px-6 text-center">
-    <span class="text-sm font-medium text-primary uppercase tracking-wider">Sobre o Studio</span>
-    <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3 mb-6">Um cantinho feito com cuidado pra você</h2>
-    <p class="text-lg text-muted-foreground leading-relaxed">
-      O Studio Rose Maciel é um espaço aconchegante no Rebouças, em Curitiba, onde cada cliente é recebida com atenção e simpatia. Nossa equipe é experiente, caprichosa e comprometida em deixar você com as unhas e o visual do jeitinho que você sempre quis.
-    </p>
-  </div>
-</section>
-
-<!-- Diferenciais -->
-<section id="diferenciais" class="py-20 md:py-24">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-14">
-      <span class="text-sm font-medium text-primary uppercase tracking-wider">Por que escolher</span>
-      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3">O que nossas clientes mais elogiam</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm hover:shadow-md transition">
-        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5">
-          <i data-lucide="heart" class="w-6 h-6"></i>
-        </div>
-        <h3 class="font-serif text-xl font-semibold mb-2">Atendimento acolhedor</h3>
-        <p class="text-muted-foreground">Profissionais gentis e atenciosas que fazem você se sentir em casa desde o primeiro minuto.</p>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-tight">
+        Suas unhas<br>
+        nas mãos de <em class="italic text-accent">quem capricha de verdade</em>
+      </h1>
+      <p class="mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-lg">
+        Manicure e pedicure feitos com atenção, cuidado e paciência. Ambiente aconchegante, profissionais gentis e unhas perfeitas, do jeito que você pediu.
+      </p>
+      <div class="mt-6 flex items-center gap-2 text-sm">
+        <span class="text-accent tracking-wider">★★★★★</span>
+        <span class="font-semibold">4,7 no Google</span>
+        <span class="text-muted-foreground">· 82 avaliações</span>
       </div>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm hover:shadow-md transition">
-        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5">
-          <i data-lucide="sparkles" class="w-6 h-6"></i>
-        </div>
-        <h3 class="font-serif text-xl font-semibold mb-2">Mãos experientes</h3>
-        <p class="text-muted-foreground">Técnica apurada para cutículas sensíveis e unhas perfeitas — do jeitinho que você pedir.</p>
-      </div>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm hover:shadow-md transition">
-        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5">
-          <i data-lucide="home" class="w-6 h-6"></i>
-        </div>
-        <h3 class="font-serif text-xl font-semibold mb-2">Ambiente aconchegante</h3>
-        <p class="text-muted-foreground">Um espaço calmo e bem cuidado pra você relaxar enquanto se cuida, sem pressa.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Avaliações -->
-<section id="avaliacoes" class="py-20 md:py-24 bg-muted/40">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-14">
-      <span class="text-sm font-medium text-primary uppercase tracking-wider">Depoimentos reais</span>
-      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3">O que dizem no Google</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="flex text-amber-500 mb-4">
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
-        </div>
-        <p class="text-foreground leading-relaxed mb-5">“Excelente lugar, ótimo atendimento recomendo muito, atendimento maravilhoso e lugar aconchegante, manicure é super gentil e uma ótima profissional.”</p>
-        <p class="text-sm font-medium text-muted-foreground">— Neto Lemos</p>
-      </div>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="flex text-amber-500 mb-4">
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
-        </div>
-        <p class="text-foreground leading-relaxed mb-5">“Gosto de atenção e cuidado por ter cutículas finas. Mas, a profissional se mostrou experiente. Fez minha unha do jeito que pedi.”</p>
-        <p class="text-sm font-medium text-muted-foreground">— Elzimar Carvalho</p>
-      </div>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="flex text-amber-500 mb-4">
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
-        </div>
-        <p class="text-foreground leading-relaxed mb-5">“Faço manicure e pedicure lá, são todas muito caprichosas e simpáticas — e as unhas perfeitas!”</p>
-        <p class="text-sm font-medium text-muted-foreground">— Manu</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Contato -->
-<section id="contato" class="py-20 md:py-24">
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="text-center mb-14">
-      <span class="text-sm font-medium text-primary uppercase tracking-wider">Contato</span>
-      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3">Venha nos visitar</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <a href="https://maps.google.com/?cid=7211304842633070133" target="_blank" rel="noopener" class="bg-card border border-border rounded-xl p-7 shadow-sm hover:shadow-md transition block">
-        <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
-          <i data-lucide="map-pin" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-semibold mb-2">Endereço</h3>
-        <p class="text-muted-foreground text-sm leading-relaxed">R. Rockefeller, 169<br>Rebouças, Curitiba - PR<br>80230-130</p>
-        <p class="text-primary text-sm font-medium mt-3 inline-flex items-center gap-1">Abrir no Google Maps <i data-lucide="arrow-up-right" class="w-4 h-4"></i></p>
-      </a>
-      <a href="tel:+5541984233046" class="bg-card border border-border rounded-xl p-7 shadow-sm hover:shadow-md transition block">
-        <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href="https://wa.me/5541984233046" class="inline-flex items-center justify-center gap-2 bg-[#25d366] text-white font-semibold px-6 py-3.5 rounded-lg hover:brightness-95 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Agendar no WhatsApp
+        </a>
+        <a href="tel:+5541984233046" class="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary font-semibold px-6 py-3.5 rounded-lg hover:bg-primary hover:text-primary-foreground transition">
           <i data-lucide="phone" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-semibold mb-2">Telefone</h3>
-        <p class="text-muted-foreground text-sm">(41) 98423-3046</p>
-        <p class="text-primary text-sm font-medium mt-3 inline-flex items-center gap-1">Ligar agora <i data-lucide="arrow-up-right" class="w-4 h-4"></i></p>
-      </a>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
-          <i data-lucide="clock" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-semibold mb-2">Horário</h3>
-        <ul class="text-sm text-muted-foreground space-y-1">
-          <li class="flex justify-between"><span>Seg–Sex</span><span>09:00 – 19:00</span></li>
-          <li class="flex justify-between"><span>Sábado</span><span>09:00 – 18:00</span></li>
-          <li class="flex justify-between"><span>Domingo</span><span>Fechado</span></li>
-        </ul>
+          (41) 98423-3046
+        </a>
       </div>
     </div>
+    <div class="relative">
+      <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border-4 border-accent/30 shadow-2xl">
+        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=900&q=80" alt="Manicure profissional" class="w-full h-full object-cover">
+      </div>
+      <div class="hidden sm:block absolute -bottom-6 -left-6 bg-card border border-border rounded-xl p-4 shadow-xl max-w-[220px]">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-accent/15 text-accent flex items-center justify-center">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="text-xs text-muted-foreground uppercase tracking-wider">Especialidade</div>
+            <div class="font-semibold text-sm">Manicure & Pedicure</div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden sm:block absolute -top-4 -right-4 bg-primary text-primary-foreground rounded-xl px-4 py-3 shadow-xl">
+        <div class="font-serif text-2xl font-semibold">4,7★</div>
+        <div class="text-[10px] uppercase tracking-wider opacity-80">82 avaliações</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- CTA Final -->
-    <div class="mt-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-10 md:p-14 text-center text-primary-foreground shadow-lg">
-      <h3 class="font-serif text-3xl md:text-4xl font-semibold mb-4">Agende seu horário agora</h3>
-      <p class="text-primary-foreground/90 mb-8 max-w-xl mx-auto">Mande uma mensagem no WhatsApp e garanta um horário com quem entende do assunto.</p>
-      <a href="https://wa.me/5541984233046" class="inline-flex items-center justify-center gap-2 bg-[#25d366] hover:bg-[#1fba59] text-white font-semibold px-8 py-4 rounded-xl transition shadow-md">
-        <i data-lucide="message-circle" class="w-5 h-5"></i>
-        Chamar no WhatsApp
+<section class="bg-primary text-primary-foreground">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold">4,7<span class="text-accent">★</span></div>
+      <div class="text-[11px] uppercase tracking-[0.18em] opacity-75 mt-2">Nota no Google</div>
+    </div>
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold">82+</div>
+      <div class="text-[11px] uppercase tracking-[0.18em] opacity-75 mt-2">Avaliações</div>
+    </div>
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold">6</div>
+      <div class="text-[11px] uppercase tracking-[0.18em] opacity-75 mt-2">Dias por semana</div>
+    </div>
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold">Rebouças</div>
+      <div class="text-[11px] uppercase tracking-[0.18em] opacity-75 mt-2">Coração de Curitiba</div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre" class="py-20 lg:py-28">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div class="grid grid-cols-2 gap-4">
+      <div class="aspect-[3/4] rounded-2xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=600&q=80" alt="Detalhe manicure" class="w-full h-full object-cover">
+      </div>
+      <div class="aspect-[3/4] rounded-2xl overflow-hidden mt-8">
+        <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=600&q=80" alt="Salão aconchegante" class="w-full h-full object-cover">
+      </div>
+    </div>
+    <div>
+      <span class="eyebrow">Sobre o Studio</span>
+      <h2 class="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">
+        Um lugar aconchegante,<br>com <em class="italic text-accent">gente que capricha</em>.
+      </h2>
+      <div class="mt-6 space-y-4 text-muted-foreground leading-relaxed">
+        <p>O Studio Rose Maciel é um salão de beleza no Rebouças que virou referência pelo atendimento caprichoso e pelo jeito atencioso das profissionais. Quem chega pela primeira vez costuma voltar, e voltar sempre.</p>
+        <p>As clientes elogiam a experiência das manicures, a delicadeza com cutículas finas, o capricho nas unhas e o ambiente gentil. Aqui, o cuidado é pensado pra cada cliente, do jeito que ela pede.</p>
+      </div>
+      <div class="mt-8 grid sm:grid-cols-2 gap-4">
+        <div class="flex gap-3">
+          <div class="w-9 h-9 rounded-lg bg-accent/15 text-accent flex items-center justify-center flex-shrink-0"><i data-lucide="check" class="w-5 h-5"></i></div>
+          <div><div class="font-semibold text-sm">Profissionais experientes</div><div class="text-xs text-muted-foreground">Manicures atenciosas e caprichosas</div></div>
+        </div>
+        <div class="flex gap-3">
+          <div class="w-9 h-9 rounded-lg bg-accent/15 text-accent flex items-center justify-center flex-shrink-0"><i data-lucide="check" class="w-5 h-5"></i></div>
+          <div><div class="font-semibold text-sm">Ambiente aconchegante</div><div class="text-xs text-muted-foreground">Você se sente bem desde a chegada</div></div>
+        </div>
+        <div class="flex gap-3">
+          <div class="w-9 h-9 rounded-lg bg-accent/15 text-accent flex items-center justify-center flex-shrink-0"><i data-lucide="check" class="w-5 h-5"></i></div>
+          <div><div class="font-semibold text-sm">Preço justo</div><div class="text-xs text-muted-foreground">Qualidade compatível com o valor</div></div>
+        </div>
+        <div class="flex gap-3">
+          <div class="w-9 h-9 rounded-lg bg-accent/15 text-accent flex items-center justify-center flex-shrink-0"><i data-lucide="check" class="w-5 h-5"></i></div>
+          <div><div class="font-semibold text-sm">Unhas do seu jeito</div><div class="text-xs text-muted-foreground">Feitas exatamente como você pediu</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="especialidades" class="py-20 lg:py-28 bg-muted/40 relative overflow-hidden">
+  <div class="blob" style="background: hsl(var(--accent)); width: 300px; height: 300px; top: 50px; right: -80px; opacity: 0.25;"></div>
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 relative z-10">
+    <div class="max-w-2xl">
+      <span class="eyebrow">Especialidades</span>
+      <h2 class="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">Cuidado para <em class="italic text-accent">suas mãos e pés</em></h2>
+      <p class="mt-4 text-muted-foreground">Serviços pensados pra quem quer qualidade, capricho e um atendimento gentil de verdade.</p>
+    </div>
+    <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="service-card bg-card border border-border rounded-2xl p-6 relative">
+        <div class="absolute top-4 right-4 bg-accent text-accent-foreground text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Especialidade principal</div>
+        <div class="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center mb-4"><i data-lucide="hand" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Manicure</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">Cuidado caprichoso com cutículas, esmaltação perfeita e acabamento impecável. Feito com paciência e atenção aos detalhes.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4"><i data-lucide="footprints" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Pedicure</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">Pés bem cuidados com capricho, desde a preparação até a esmaltação. Relaxa, conversa e sai com os pés impecáveis.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4"><i data-lucide="sparkles" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Cutículas delicadas</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">Atenção especial pra quem tem cutícula fina ou sensível. Técnica cuidadosa, sem machucar, com o respeito que sua unha merece.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4"><i data-lucide="palette" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Esmaltação do seu jeito</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">Cores, formatos e acabamentos feitos exatamente como você pediu. A profissional escuta, entende e entrega o que você quer.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4"><i data-lucide="heart" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Atendimento acolhedor</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">Você é recebida com simpatia e cuidado. O ambiente é aconchegante, a conversa flui e o tempo passa rápido.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4"><i data-lucide="gem" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Preço justo</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">A qualidade do serviço compensa cada centavo. Clientes recomendam pela relação entre capricho e valor cobrado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacoes" class="py-20 lg:py-28">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="grid lg:grid-cols-2 gap-8 items-end mb-12">
+      <div>
+        <span class="eyebrow">O que as clientes dizem</span>
+        <h2 class="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">82 avaliações reais<br>no <em class="italic text-accent">Google</em></h2>
+      </div>
+      <p class="text-muted-foreground lg:text-right">Depoimentos reais de quem é cliente do Studio Rose Maciel. Sem filtros, sem retoque.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="review-card bg-card border border-border rounded-2xl p-7">
+        <div class="text-accent tracking-widest mb-3">★★★★★</div>
+        <p class="text-foreground leading-relaxed relative z-10">"Excelente lugar, ótimo atendimento, recomendo muito. Atendimento maravilhoso e lugar aconchegante, manicure é super gentil e uma ótima profissional."</p>
+        <div class="mt-6 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">N</div>
+          <div><div class="font-semibold text-sm">Neto Lemos</div><div class="text-xs text-muted-foreground">Cliente</div></div>
+        </div>
+      </div>
+      <div class="review-card bg-card border border-border rounded-2xl p-7">
+        <div class="text-accent tracking-widest mb-3">★★★★★</div>
+        <p class="text-foreground leading-relaxed relative z-10">"Gosto de atenção e cuidado por ter cutículas finas. A profissional se mostrou experiente. Fez minha unha do jeito que pedi."</p>
+        <div class="mt-6 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">E</div>
+          <div><div class="font-semibold text-sm">Elzimar Carvalho</div><div class="text-xs text-muted-foreground">Cliente</div></div>
+        </div>
+      </div>
+      <div class="review-card bg-card border border-border rounded-2xl p-7">
+        <div class="text-accent tracking-widest mb-3">★★★★★</div>
+        <p class="text-foreground leading-relaxed relative z-10">"Faço manicure e pedicure lá. São todas muito caprichosas e simpáticas, e as unhas perfeitas!"</p>
+        <div class="mt-6 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">M</div>
+          <div><div class="font-semibold text-sm">Manu</div><div class="text-xs text-muted-foreground">Cliente</div></div>
+        </div>
+      </div>
+      <div class="review-card bg-card border border-border rounded-2xl p-7">
+        <div class="text-accent tracking-widest mb-3">★★★★★</div>
+        <p class="text-foreground leading-relaxed relative z-10">"Atendimento excelente. As meninas sempre são muito caprichosas e dedicadas. Além disso, o preço é super justo em comparação à qualidade. Super recomendo!"</p>
+        <div class="mt-6 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">N</div>
+          <div><div class="font-semibold text-sm">Nathaly Lenartowski</div><div class="text-xs text-muted-foreground">Cliente</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 text-center">
+      <a href="https://maps.google.com/?cid=7211304842633070133&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-primary font-semibold hover:text-accent transition">
+        Ver todas as 82 avaliações no Google
+        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
       </a>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="border-t border-border py-8 text-center text-xs text-muted-foreground px-6">
-  Página criada para divulgação — dados públicos do Google. Entre em contato para remover.
+<section id="contato" class="py-20 lg:py-28 bg-muted/40">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl mb-12">
+      <span class="eyebrow">Contato</span>
+      <h2 class="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">Agende o seu horário<br><em class="italic text-accent">hoje mesmo</em></h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5 mb-10">
+      <a href="tel:+5541984233046" class="service-card bg-card border border-border rounded-2xl p-6 block">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4"><i data-lucide="phone" class="w-6 h-6"></i></div>
+        <div class="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-1">Telefone</div>
+        <div class="font-semibold text-lg">(41) 98423-3046</div>
+        <div class="text-sm text-muted-foreground mt-1">Ligue para agendar</div>
+      </a>
+      <a href="https://wa.me/5541984233046" class="service-card bg-card border border-border rounded-2xl p-6 block">
+        <div class="w-12 h-12 rounded-xl bg-[#25d366]/15 text-[#25d366] flex items-center justify-center mb-4"><i data-lucide="message-circle" class="w-6 h-6"></i></div>
+        <div class="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-1">WhatsApp</div>
+        <div class="font-semibold text-lg">Mande mensagem</div>
+        <div class="text-sm text-muted-foreground mt-1">Resposta rápida</div>
+      </a>
+      <a href="https://maps.google.com/?cid=7211304842633070133" target="_blank" rel="noopener" class="service-card bg-card border border-border rounded-2xl p-6 block">
+        <div class="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center mb-4"><i data-lucide="map-pin" class="w-6 h-6"></i></div>
+        <div class="text-[11px] uppercase tracking-[0.18em] text-muted-foreground mb-1">Endereço</div>
+        <div class="font-semibold text-lg">R. Rockefeller, 169</div>
+        <div class="text-sm text-muted-foreground mt-1">Rebouças, Curitiba</div>
+      </a>
+    </div>
+    <div class="bg-card border border-border rounded-2xl p-7 md:p-9">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center"><i data-lucide="clock" class="w-5 h-5"></i></div>
+        <h3 class="font-serif text-xl font-semibold">Horário de funcionamento</h3>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-x-10">
+        <div class="flex justify-between py-3 border-b border-border text-sm"><span class="font-medium">Segunda-feira</span><span class="text-muted-foreground">09:00 – 19:00</span></div>
+        <div class="flex justify-between py-3 border-b border-border text-sm"><span class="font-medium">Terça-feira</span><span class="text-muted-foreground">09:00 – 19:00</span></div>
+        <div class="flex justify-between py-3 border-b border-border text-sm"><span class="font-medium">Quarta-feira</span><span class="text-muted-foreground">09:00 – 19:00</span></div>
+        <div class="flex justify-between py-3 border-b border-border text-sm"><span class="font-medium">Quinta-feira</span><span class="text-muted-foreground">09:00 – 19:00</span></div>
+        <div class="flex justify-between py-3 border-b border-border text-sm"><span class="font-medium">Sexta-feira</span><span class="text-muted-foreground">09:00 – 19:00</span></div>
+        <div class="flex justify-between py-3 border-b border-border text-sm"><span class="font-medium">Sábado</span><span class="text-muted-foreground">09:00 – 18:00</span></div>
+        <div class="flex justify-between py-3 text-sm sm:col-span-2"><span class="font-medium">Domingo</span><span class="text-muted-foreground">Fechado</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 lg:py-20">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="relative bg-primary text-primary-foreground rounded-3xl p-10 md:p-16 overflow-hidden text-center">
+      <div class="blob" style="background: hsl(var(--accent)); width: 300px; height: 300px; top: -100px; right: -80px; opacity: 0.4;"></div>
+      <div class="relative z-10">
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">Suas unhas pedem<br><em class="italic text-accent">um capricho</em>.</h2>
+        <p class="mt-5 opacity-85 max-w-xl mx-auto">Agende pelo WhatsApp e garanta seu horário no Studio Rose Maciel.</p>
+        <a href="https://wa.me/5541984233046" class="mt-8 inline-flex items-center gap-2 bg-[#25d366] text-white font-semibold px-7 py-4 rounded-lg hover:brightness-95 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-10 border-t border-border">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 text-center text-xs text-muted-foreground">
+    Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
+  </div>
 </footer>
 
-<!-- WhatsApp floating button -->
-<a href="https://wa.me/5541984233046" class="wa-float fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25d366] text-white flex items-center justify-center shadow-lg hover:bg-[#1fba59] transition" aria-label="WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
+<a href="https://wa.me/5541984233046" class="wa-pulse fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25d366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition" aria-label="WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
+<script src="https://unpkg.com/lucide@latest"></script>
 <script>
   lucide.createIcons();
-  const btn = document.getElementById('menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
+  document.querySelectorAll('#mobileMenu a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('mobileMenu').classList.add('hidden'));
+  });
 </script>
 </body>
 </html>
