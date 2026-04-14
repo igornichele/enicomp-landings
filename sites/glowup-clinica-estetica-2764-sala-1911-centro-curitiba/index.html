@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlowUp Clínica Estética — Curitiba | Estética avançada com Dra. Paula</title>
+<meta name="description" content="GlowUp Clínica Estética em Curitiba. Atendimento detalhista, ambiente aconchegante e resultados que elevam a autoestima. Agende pelo WhatsApp.">
+<meta property="og:title" content="GlowUp Clínica Estética — Curitiba">
+<meta property="og:description" content="Estética avançada com a Dra. Paula. Atendimento acolhedor, explicações claras e resultados que encantam.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          serif: ['Fraunces', 'Georgia', 'serif'],
+        },
+        colors: {
+          background: 'hsl(var(--background))',
+          foreground: 'hsl(var(--foreground))',
+          primary: {
+            DEFAULT: 'hsl(var(--primary))',
+            foreground: 'hsl(var(--primary-foreground))',
+          },
+          muted: {
+            DEFAULT: 'hsl(var(--muted))',
+            foreground: 'hsl(var(--muted-foreground))',
+          },
+          card: 'hsl(var(--card))',
+          border: 'hsl(var(--border))',
+        },
+        borderRadius: {
+          lg: 'var(--radius)',
+          xl: 'calc(var(--radius) + 4px)',
+          '2xl': 'calc(var(--radius) + 8px)',
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  :root {
+    --background: 30 40% 98%;
+    --foreground: 340 20% 12%;
+    --primary: 340 55% 45%;
+    --primary-foreground: 0 0% 100%;
+    --muted: 30 20% 94%;
+    --muted-foreground: 340 10% 40%;
+    --card: 0 0% 100%;
+    --border: 340 15% 90%;
+    --radius: 0.75rem;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+  .font-serif { font-family: 'Fraunces', serif; }
+
+  section[id] { scroll-margin-top: 6rem; }
+
+  /* Floating pill header */
+  .header-pill {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background: hsla(0, 0%, 100%, 0.7);
+    border: 1px solid hsla(340, 15%, 85%, 0.6);
+    box-shadow: 0 8px 32px -8px hsla(340, 30%, 30%, 0.12),
+                inset 0 1px 0 hsla(0, 0%, 100%, 0.5);
+  }
+
+  /* Whatsapp pulse */
+  @keyframes wa-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); }
+    70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+  }
+  .wa-pulse { animation: wa-pulse 2s infinite; }
+
+  /* Hero background decoration */
+  .hero-bg {
+    background:
+      radial-gradient(ellipse at top right, hsla(340, 60%, 88%, 0.5), transparent 60%),
+      radial-gradient(ellipse at bottom left, hsla(25, 60%, 90%, 0.6), transparent 60%);
+  }
+
+  .review-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .review-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -20px hsla(340, 30%, 30%, 0.15);
+  }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- Floating Pill Header -->
+<header class="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
+  <nav class="header-pill mx-auto max-w-5xl rounded-full px-5 py-3 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2">
+      <span class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-serif font-semibold text-sm">G</span>
+      <span class="font-serif font-semibold text-base tracking-tight">GlowUp</span>
+    </a>
+
+    <ul class="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground">
+      <li><a href="#sobre" class="hover:text-foreground transition">Sobre</a></li>
+      <li><a href="#diferenciais" class="hover:text-foreground transition">Diferenciais</a></li>
+      <li><a href="#avaliacoes" class="hover:text-foreground transition">Avaliações</a></li>
+      <li><a href="#contato" class="hover:text-foreground transition">Contato</a></li>
+    </ul>
+
+    <a href="https://wa.me/5541991828584" class="hidden md:inline-flex items-center gap-2 bg-primary text-primary-foreground text-sm font-medium px-4 py-2 rounded-full hover:opacity-90 transition">
+      Agendar
+    </a>
+
+    <button id="menuBtn" class="md:hidden p-1.5 text-foreground" aria-label="Abrir menu">
+      <i data-lucide="menu" class="w-5 h-5"></i>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden md:hidden mx-auto max-w-5xl mt-2 header-pill rounded-2xl p-4">
+    <ul class="flex flex-col gap-1 text-sm font-medium">
+      <li><a href="#sobre" class="block px-3 py-2 rounded-lg hover:bg-muted">Sobre</a></li>
+      <li><a href="#diferenciais" class="block px-3 py-2 rounded-lg hover:bg-muted">Diferenciais</a></li>
+      <li><a href="#avaliacoes" class="block px-3 py-2 rounded-lg hover:bg-muted">Avaliações</a></li>
+      <li><a href="#contato" class="block px-3 py-2 rounded-lg hover:bg-muted">Contato</a></li>
+      <li class="pt-2">
+        <a href="https://wa.me/5541991828584" class="flex items-center justify-center gap-2 bg-primary text-primary-foreground px-4 py-2.5 rounded-lg">
+          <i data-lucide="message-circle" class="w-4 h-4"></i> Agendar no WhatsApp
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="top" class="hero-bg pt-32 pb-20 md:pt-40 md:pb-28 px-5">
+  <div class="max-w-4xl mx-auto text-center">
+    <div class="inline-flex items-center gap-2 bg-card border border-border rounded-full px-4 py-1.5 text-sm mb-6 shadow-sm">
+      <div class="flex items-center gap-0.5 text-amber-500">
+        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+      </div>
+      <span class="text-muted-foreground">5,0 no Google • 21 avaliações</span>
+    </div>
+
+    <h1 class="font-serif text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] mb-6">
+      Realce sua beleza<br>
+      <em class="text-primary">com quem cuida de verdade.</em>
+    </h1>
+
+    <p class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-9">
+      Na <strong class="text-foreground">GlowUp Clínica Estética</strong>, você encontra atendimento detalhista, explicações claras e um ambiente aconchegante no coração de Curitiba.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+      <a href="https://wa.me/5541991828584" class="inline-flex items-center gap-2 bg-[#25d366] hover:bg-[#1fb855] text-white font-semibold px-7 py-4 rounded-xl shadow-lg shadow-green-500/20 transition">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        Chamar no WhatsApp
+      </a>
+      <a href="#avaliacoes" class="inline-flex items-center gap-2 bg-card border border-border hover:bg-muted font-medium px-6 py-4 rounded-xl transition">
+        Ver avaliações
+        <i data-lucide="arrow-down" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Sobre -->
+<section id="sobre" class="py-20 md:py-28 px-5">
+  <div class="max-w-3xl mx-auto text-center">
+    <span class="text-sm uppercase tracking-widest text-primary font-medium">Sobre nós</span>
+    <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3 mb-6">Um cuidado que começa na recepção.</h2>
+    <p class="text-lg text-muted-foreground leading-relaxed">
+      A GlowUp é uma clínica aconchegante, com uma vibe acolhedora e profissionais que ouvem com paciência. Com a <strong class="text-foreground">Dra. Paula</strong> à frente dos procedimentos, cada atendimento é pensado nos detalhes — da avaliação ao pós. Aqui, você sai mais bonita e muito mais confiante.
+    </p>
+  </div>
+</section>
+
+<!-- Diferenciais -->
+<section id="diferenciais" class="py-20 md:py-28 px-5 bg-muted/50">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="text-sm uppercase tracking-widest text-primary font-medium">Diferenciais</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3">Por que escolher a GlowUp</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-5">
+          <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Atendimento acolhedor</h3>
+        <p class="text-muted-foreground">Ambiente aconchegante, equipe atenciosa e uma vibe gostosa desde a recepção. Você se sente em casa.</p>
+      </div>
+
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-5">
+          <i data-lucide="search-check" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Avaliação detalhista</h3>
+        <p class="text-muted-foreground">A Dra. Paula explica cada procedimento, cuidado e resultado esperado com paciência e clareza.</p>
+      </div>
+
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-5">
+          <i data-lucide="sparkles" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Resultado que eleva a autoestima</h3>
+        <p class="text-muted-foreground">Procedimentos pensados nos detalhes, com foco em naturalidade e no bem-estar de quem sai daqui.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Avaliações -->
+<section id="avaliacoes" class="py-20 md:py-28 px-5">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="text-sm uppercase tracking-widest text-primary font-medium">Avaliações</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3">Quem passou pela GlowUp recomenda</h2>
+      <p class="text-muted-foreground mt-3">Depoimentos reais extraídos do Google</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <article class="review-card rounded-xl p-7 shadow-sm">
+        <div class="flex items-center gap-0.5 text-amber-500 mb-4">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <i data-lucide="quote" class="w-6 h-6 text-primary/40 mb-3"></i>
+        <p class="text-foreground leading-relaxed mb-5">"Ameiiii. A clínica é super aconchegante, linda, e tem uma vibe legal já na recepção. Passei por uma avaliação com a Dr. Paula e ela me tirou todas as dúvidas de forma clara e bem paciente."</p>
+        <p class="text-sm font-medium text-muted-foreground">— Jaqueline Moreira</p>
+      </article>
+
+      <article class="review-card rounded-xl p-7 shadow-sm">
+        <div class="flex items-center gap-0.5 text-amber-500 mb-4">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <i data-lucide="quote" class="w-6 h-6 text-primary/40 mb-3"></i>
+        <p class="text-foreground leading-relaxed mb-5">"A Dra Paula sem dúvidas é a melhor! Ela te explica todos os procedimentos detalhadamente, os cuidados e tem uma atenção muito especial. Agora só faço com ela meus procedimentos. Recomendo de olhos fechados."</p>
+        <p class="text-sm font-medium text-muted-foreground">— Talita Sp</p>
+      </article>
+
+      <article class="review-card rounded-xl p-7 shadow-sm">
+        <div class="flex items-center gap-0.5 text-amber-500 mb-4">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <i data-lucide="quote" class="w-6 h-6 text-primary/40 mb-3"></i>
+        <p class="text-foreground leading-relaxed mb-5">"Atendimento impecável, amei o resultado, melhorou muito a minha autoestima. Dra Paula muito atenciosa e detalhista, vou voltar com certeza."</p>
+        <p class="text-sm font-medium text-muted-foreground">— Lorena Ferreira</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Contato -->
+<section id="contato" class="py-20 md:py-28 px-5 bg-muted/50">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="text-sm uppercase tracking-widest text-primary font-medium">Contato</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3">Venha nos visitar</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <a href="https://maps.google.com/?cid=17251354086817165680" target="_blank" rel="noopener" class="bg-card border border-border rounded-xl p-7 shadow-sm hover:shadow-md transition block">
+        <div class="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4">
+          <i data-lucide="map-pin" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-semibold mb-2">Endereço</h3>
+        <p class="text-sm text-muted-foreground leading-relaxed">Av. Visc. de Guarapuava, 2764 — sala 1911<br>Centro, Curitiba — PR<br>80010-100</p>
+        <span class="inline-flex items-center gap-1 text-primary text-sm font-medium mt-3">
+          Ver no mapa <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </span>
+      </a>
+
+      <a href="tel:+5541991828584" class="bg-card border border-border rounded-xl p-7 shadow-sm hover:shadow-md transition block">
+        <div class="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4">
+          <i data-lucide="phone" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-semibold mb-2">Telefone</h3>
+        <p class="text-sm text-muted-foreground">Fale com a gente agora</p>
+        <p class="text-lg font-medium mt-2">(41) 99182-8584</p>
+      </a>
+
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4">
+          <i data-lucide="clock" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-semibold mb-2">Horário</h3>
+        <ul class="text-sm text-muted-foreground space-y-1">
+          <li class="flex justify-between"><span>Segunda</span><span>Fechado</span></li>
+          <li class="flex justify-between"><span>Terça</span><span>09h — 19h</span></li>
+          <li class="flex justify-between"><span>Quarta</span><span>10h — 19h</span></li>
+          <li class="flex justify-between"><span>Quinta</span><span>10h — 19h</span></li>
+          <li class="flex justify-between"><span>Sex — Dom</span><span>Fechado</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Final -->
+<section class="py-20 md:py-28 px-5">
+  <div class="max-w-3xl mx-auto text-center bg-gradient-to-br from-primary to-primary/80 text-primary-foreground rounded-2xl p-10 md:p-14 shadow-xl">
+    <h2 class="font-serif text-3xl md:text-4xl font-semibold mb-4">Pronta para o seu glow up?</h2>
+    <p class="text-primary-foreground/85 text-lg mb-8">Agende sua avaliação com a Dra. Paula e comece sua transformação hoje mesmo.</p>
+    <a href="https://wa.me/5541991828584" class="inline-flex items-center gap-2 bg-[#25d366] hover:bg-[#1fb855] text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition">
+      <i data-lucide="message-circle" class="w-5 h-5"></i>
+      Chamar no WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-border py-8 px-5">
+  <div class="max-w-5xl mx-auto text-center text-sm text-muted-foreground">
+    <p>Página criada para divulgação — dados públicos do Google. Entre em contato para remover.</p>
+  </div>
+</footer>
+
+<!-- WhatsApp floating button -->
+<a href="https://wa.me/5541991828584" aria-label="Chamar no WhatsApp" class="wa-pulse fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25d366] hover:bg-[#1fb855] text-white flex items-center justify-center shadow-lg transition">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-7 h-7 fill-current">
+    <path d="M16.002 3C9.374 3 4 8.374 4 15.002c0 2.353.676 4.548 1.844 6.407L4 29l7.79-1.81A11.94 11.94 0 0 0 16 27c6.628 0 12-5.372 12-12S22.63 3 16.002 3zm0 21.8c-1.966 0-3.798-.573-5.34-1.56l-.383-.242-4.62 1.074 1.098-4.497-.25-.39A9.77 9.77 0 0 1 6.2 15c0-5.406 4.395-9.8 9.802-9.8 5.406 0 9.8 4.394 9.8 9.8 0 5.407-4.394 9.8-9.8 9.8zm5.358-7.337c-.293-.147-1.735-.856-2.004-.954-.269-.098-.465-.147-.66.147-.196.293-.758.954-.93 1.15-.17.195-.342.22-.636.073-.293-.146-1.237-.455-2.356-1.452-.87-.777-1.458-1.738-1.629-2.032-.17-.293-.018-.451.129-.597.133-.132.294-.342.44-.513.147-.17.196-.293.294-.489.098-.196.049-.367-.025-.513-.073-.146-.66-1.592-.905-2.18-.238-.57-.48-.492-.66-.502l-.562-.01c-.196 0-.513.074-.782.367-.269.293-1.025 1.002-1.025 2.444s1.05 2.835 1.196 3.03c.147.196 2.066 3.157 5.01 4.428.7.302 1.246.482 1.672.617.703.224 1.342.192 1.847.117.563-.084 1.735-.71 1.979-1.394.244-.684.244-1.27.17-1.394-.073-.122-.269-.196-.562-.342z"/>
+  </svg>
+</a>
+
+<script>
+  lucide.createIcons();
+
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  btn?.addEventListener('click', () => menu.classList.toggle('hidden'));
+  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+</script>
+
+</body>
+</html>
