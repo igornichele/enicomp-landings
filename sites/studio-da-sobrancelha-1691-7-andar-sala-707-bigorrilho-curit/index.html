@@ -1,289 +1,411 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Studio Da Sobrancelha — Design de Sobrancelhas em Curitiba</title>
-<meta name="description" content="Studio Da Sobrancelha no Bigorrilho, Curitiba. Design de sobrancelhas com atendimento acolhedor e resultado impecável. Agende pelo WhatsApp." />
-<meta property="og:title" content="Studio Da Sobrancelha — Bigorrilho, Curitiba" />
-<meta property="og:description" content="Design de sobrancelhas com carinho e precisão. Agende seu horário pelo WhatsApp." />
-<meta property="og:type" content="website" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Da Sobrancelha · Design de Sobrancelhas em Bigorrilho, Curitiba</title>
+<meta name="description" content="Studio especializado em design de sobrancelhas e estética do olhar no Bigorrilho. Atendimento cuidadoso, técnico e personalizado em Curitiba.">
+<meta property="og:title" content="Studio Da Sobrancelha · Bigorrilho, Curitiba">
+<meta property="og:description" content="Design de sobrancelhas e estética do olhar com atendimento premium no coração do Bigorrilho.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=80">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  :root{
+    --background: 20 30% 98%;
+    --foreground: 340 25% 12%;
+    --primary: 340 35% 22%;
+    --primary-foreground: 30 25% 97%;
+    --accent: 32 55% 58%;
+    --accent-foreground: 340 35% 15%;
+    --muted: 30 20% 94%;
+    --muted-foreground: 340 10% 40%;
+    --card: 0 0% 100%;
+    --border: 30 20% 88%;
+    --radius: 0.875rem;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:hsl(var(--background));color:hsl(var(--foreground));-webkit-font-smoothing:antialiased}
+  .font-serif{font-family:'Fraunces',serif;font-optical-sizing:auto}
+  section{scroll-margin-top:90px}
+  .dot-pattern{background-image:radial-gradient(hsl(var(--foreground)/0.08) 1px,transparent 1px);background-size:22px 22px}
+  .eyebrow{position:relative;display:inline-block;padding-bottom:14px}
+  .eyebrow::after{content:"";position:absolute;left:0;bottom:0;width:48px;height:2px;background:hsl(var(--accent))}
+  .quote-card{position:relative;overflow:hidden}
+  .quote-card::before{content:"\201C";position:absolute;top:-30px;right:-10px;font-family:'Fraunces',serif;font-size:160px;line-height:1;color:hsl(var(--accent)/0.14);pointer-events:none}
+  .service-card{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+  .service-card:hover{transform:translateY(-4px);border-color:hsl(var(--accent));box-shadow:0 20px 40px -20px hsl(var(--primary)/0.25)}
+  .contact-card{transition:all .3s ease}
+  .contact-card:hover .icon-box{background:hsl(var(--accent));color:white}
+  .blob{position:absolute;border-radius:9999px;filter:blur(70px);opacity:.5;pointer-events:none;z-index:0}
+  .wa-pulse{animation:wapulse 2.4s ease-out infinite}
+  @keyframes wapulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 22px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+  .liquid-glass{background:hsl(var(--background)/0.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid hsl(var(--border)/0.6);box-shadow:inset 0 1px 0 rgba(255,255,255,0.35)}
+</style>
 <script>
   tailwind.config = {
     theme: {
       extend: {
-        fontFamily: {
-          sans: ['Inter', 'system-ui', 'sans-serif'],
-          serif: ['Fraunces', 'Georgia', 'serif'],
-        },
         colors: {
           background: 'hsl(var(--background))',
           foreground: 'hsl(var(--foreground))',
-          primary: {
-            DEFAULT: 'hsl(var(--primary))',
-            foreground: 'hsl(var(--primary-foreground))',
-          },
-          muted: {
-            DEFAULT: 'hsl(var(--muted))',
-            foreground: 'hsl(var(--muted-foreground))',
-          },
+          primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+          accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+          muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
           card: 'hsl(var(--card))',
-          border: 'hsl(var(--border))',
+          border: 'hsl(var(--border))'
         },
-        borderRadius: {
-          xl: 'var(--radius)',
-        }
+        fontFamily: { sans: ['Inter','sans-serif'], serif: ['Fraunces','serif'] },
+        borderRadius: { lg: 'var(--radius)', md: 'calc(var(--radius) - 2px)', sm: 'calc(var(--radius) - 4px)' }
       }
     }
   }
 </script>
-<style>
-  :root {
-    --background: 30 30% 98%;
-    --foreground: 340 25% 15%;
-    --primary: 340 55% 45%;
-    --primary-foreground: 0 0% 100%;
-    --muted: 30 20% 94%;
-    --muted-foreground: 340 10% 40%;
-    --card: 0 0% 100%;
-    --border: 340 15% 90%;
-    --radius: 0.75rem;
-  }
-  html { scroll-behavior: smooth; }
-  section { scroll-margin-top: 90px; }
-  body { font-family: 'Inter', sans-serif; background: hsl(var(--background)); color: hsl(var(--foreground)); }
-  .font-serif { font-family: 'Fraunces', serif; }
-
-  /* Floating pill header */
-  .pill-header {
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(0,0,0,0.06);
-    box-shadow: 0 4px 24px -8px rgba(140, 50, 90, 0.15);
-  }
-
-  @keyframes pulse-ring {
-    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-    70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-  }
-  .wa-float { animation: pulse-ring 2s infinite; }
-
-  .hero-gradient {
-    background:
-      radial-gradient(ellipse at top right, hsl(340 60% 92%) 0%, transparent 50%),
-      radial-gradient(ellipse at bottom left, hsl(25 60% 93%) 0%, transparent 50%),
-      hsl(var(--background));
-  }
-</style>
 </head>
-<body class="antialiased">
+<body class="bg-background text-foreground">
 
-<!-- Header: floating-pill -->
-<header class="sticky top-0 z-50 pt-3 px-4">
-  <div class="pill-header max-w-5xl mx-auto rounded-full px-5 py-3 flex items-center justify-between">
-    <a href="#" class="flex items-center gap-2">
-      <span class="font-serif text-lg font-semibold tracking-tight">Studio Da Sobrancelha</span>
+<header class="liquid-glass sticky top-0 z-50 w-full">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between h-16 md:h-20">
+    <a href="#top" class="flex items-center gap-3">
+      <span class="w-10 h-10 rounded-full bg-primary text-primary-foreground font-serif text-lg font-semibold flex items-center justify-center">S</span>
+      <div class="leading-tight">
+        <div class="font-serif text-base md:text-lg font-semibold">Studio Da Sobrancelha</div>
+        <div class="text-[11px] uppercase tracking-wider text-muted-foreground">Bigorrilho · Curitiba</div>
+      </div>
     </a>
-    <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground">
-      <a href="#sobre" class="hover:text-foreground transition">Sobre</a>
-      <a href="#diferenciais" class="hover:text-foreground transition">Diferenciais</a>
-      <a href="#avaliacoes" class="hover:text-foreground transition">Avaliações</a>
-      <a href="#contato" class="hover:text-foreground transition">Contato</a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="#sobre" class="hover:text-accent transition-colors">Sobre</a>
+      <a href="#especialidades" class="hover:text-accent transition-colors">Especialidades</a>
+      <a href="#avaliacoes" class="hover:text-accent transition-colors">Avaliações</a>
+      <a href="#contato" class="hover:text-accent transition-colors">Contato</a>
+      <a href="https://wa.me/5541999516131" class="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm hover:bg-primary/90 transition">
+        <i data-lucide="message-circle" class="w-4 h-4"></i> Agendar
+      </a>
     </nav>
-    <a href="https://wa.me/5541999516131" class="hidden md:inline-flex items-center gap-2 bg-primary text-primary-foreground text-sm font-medium px-4 py-2 rounded-full hover:opacity-90 transition">
-      <i data-lucide="message-circle" class="w-4 h-4"></i>
-      Agendar
-    </a>
-    <button id="menu-btn" class="md:hidden p-2 -mr-1" aria-label="Menu">
-      <i data-lucide="menu" class="w-5 h-5"></i>
-    </button>
+    <button id="menuBtn" class="md:hidden p-2" aria-label="Menu"><i data-lucide="menu" class="w-6 h-6"></i></button>
   </div>
-  <div id="mobile-menu" class="hidden md:hidden mt-2 max-w-5xl mx-auto pill-header rounded-2xl p-4">
-    <nav class="flex flex-col gap-3 text-sm font-medium">
+  <div id="mobileMenu" class="hidden md:hidden border-t border-border bg-background/95 backdrop-blur">
+    <nav class="px-4 py-4 flex flex-col gap-3 text-sm font-medium">
       <a href="#sobre" class="py-2">Sobre</a>
-      <a href="#diferenciais" class="py-2">Diferenciais</a>
+      <a href="#especialidades" class="py-2">Especialidades</a>
       <a href="#avaliacoes" class="py-2">Avaliações</a>
       <a href="#contato" class="py-2">Contato</a>
-      <a href="https://wa.me/5541999516131" class="bg-primary text-primary-foreground text-center py-2 rounded-full">Agendar no WhatsApp</a>
+      <a href="https://wa.me/5541999516131" class="mt-2 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-4 py-3 rounded-full">
+        <i data-lucide="message-circle" class="w-4 h-4"></i> Agendar no WhatsApp
+      </a>
     </nav>
   </div>
 </header>
 
-<!-- Hero -->
-<section class="hero-gradient pt-12 pb-20 px-5">
-  <div class="max-w-3xl mx-auto text-center">
-    <div class="inline-flex items-center gap-2 bg-white/70 border border-border rounded-full px-3 py-1 text-xs font-medium text-muted-foreground mb-6">
-      <div class="flex text-amber-500">
-        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+<section id="top" class="relative overflow-hidden">
+  <div class="absolute inset-0 dot-pattern opacity-40"></div>
+  <div class="blob bg-accent w-[380px] h-[380px] -top-24 -right-24"></div>
+  <div class="blob bg-primary w-[340px] h-[340px] -bottom-32 -left-20"></div>
+  <div class="relative max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 lg:py-28 grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+    <div>
+      <span class="inline-flex items-center gap-2 bg-accent/15 text-accent-foreground border border-accent/30 px-3 py-1.5 rounded-full text-xs font-medium">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-accent"></i> Referência em design de sobrancelhas no Bigorrilho
+      </span>
+      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] mt-6">
+        O olhar que conta<br>
+        <em class="italic text-accent font-medium">a sua história</em>
+      </h1>
+      <p class="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed max-w-lg">
+        Um estúdio dedicado ao design de sobrancelhas, com atendimento atencioso, técnica apurada e o tempo necessário para entender o que combina com você.
+      </p>
+      <div class="mt-6 flex flex-wrap items-center gap-3 text-sm">
+        <div class="flex text-accent">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <span class="font-medium">5,0 no Google</span>
+        <span class="text-muted-foreground">· Palace Executive Center</span>
       </div>
-      5.0 no Google
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href="https://wa.me/5541999516131" class="inline-flex items-center justify-center gap-2 bg-[#25d366] hover:bg-[#1fb955] text-white font-medium px-6 py-3.5 rounded-full transition w-full sm:w-auto">
+          <i data-lucide="message-circle" class="w-5 h-5"></i> Agendar no WhatsApp
+        </a>
+        <a href="tel:+5541999516131" class="inline-flex items-center justify-center gap-2 border border-border hover:border-accent hover:text-accent font-medium px-6 py-3.5 rounded-full transition w-full sm:w-auto">
+          <i data-lucide="phone" class="w-5 h-5"></i> (41) 99951-6131
+        </a>
+      </div>
     </div>
-    <h1 class="font-serif text-4xl md:text-6xl font-semibold leading-tight tracking-tight mb-5">
-      Seu olhar ainda mais <em class="text-primary">expressivo</em>.
-    </h1>
-    <p class="text-base md:text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-      Design de sobrancelhas com técnica, carinho e atenção aos detalhes no coração do Bigorrilho, em Curitiba.
-    </p>
-    <a href="https://wa.me/5541999516131" class="inline-flex items-center gap-2 bg-[#25d366] text-white font-semibold text-base px-7 py-4 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition">
-      <i data-lucide="message-circle" class="w-5 h-5"></i>
-      Chamar no WhatsApp
+    <div class="relative">
+      <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border-2 border-accent/30 shadow-2xl">
+        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=80" alt="Design de sobrancelhas" class="w-full h-full object-cover">
+      </div>
+      <div class="hidden sm:block absolute -bottom-6 -left-6 bg-card border border-border rounded-2xl p-4 shadow-xl max-w-[220px]">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full bg-accent/15 flex items-center justify-center">
+            <i data-lucide="eye" class="w-5 h-5 text-accent"></i>
+          </div>
+          <div>
+            <div class="text-[10px] uppercase tracking-wider text-muted-foreground">Especialidade</div>
+            <div class="font-serif font-semibold text-sm">Design Personalizado</div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden sm:block absolute -top-5 -right-5 bg-primary text-primary-foreground rounded-2xl px-4 py-3 shadow-xl">
+        <div class="text-[10px] uppercase tracking-wider opacity-80">Avaliação</div>
+        <div class="font-serif text-2xl font-semibold">5,0 ★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-primary text-primary-foreground">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-14 grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div class="text-center md:text-left">
+      <div class="font-serif text-4xl md:text-5xl font-semibold">5,0<span class="text-accent">★</span></div>
+      <div class="mt-2 text-[10px] md:text-xs uppercase tracking-widest opacity-70">Avaliação no Google</div>
+    </div>
+    <div class="text-center md:text-left">
+      <div class="font-serif text-4xl md:text-5xl font-semibold">100<span class="text-accent">%</span></div>
+      <div class="mt-2 text-[10px] md:text-xs uppercase tracking-widest opacity-70">Clientes satisfeitas</div>
+    </div>
+    <div class="text-center md:text-left">
+      <div class="font-serif text-4xl md:text-5xl font-semibold">1:1</div>
+      <div class="mt-2 text-[10px] md:text-xs uppercase tracking-widest opacity-70">Atendimento exclusivo</div>
+    </div>
+    <div class="text-center md:text-left">
+      <div class="font-serif text-3xl md:text-4xl font-semibold">Bigorrilho</div>
+      <div class="mt-2 text-[10px] md:text-xs uppercase tracking-widest opacity-70">Coração de Curitiba</div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre" class="py-16 md:py-28">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+    <div class="grid grid-cols-2 gap-4">
+      <img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?w=600&q=80" alt="Ambiente do studio" class="w-full h-full object-cover rounded-2xl aspect-[3/4]">
+      <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&q=80" alt="Detalhe do atendimento" class="w-full h-full object-cover rounded-2xl aspect-[3/4] mt-8">
+    </div>
+    <div>
+      <span class="eyebrow text-xs uppercase tracking-widest text-muted-foreground font-medium">Sobre o Studio</span>
+      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mt-4">
+        Um olhar técnico para<br><em class="italic text-accent">realçar o seu</em>
+      </h2>
+      <p class="mt-6 text-muted-foreground leading-relaxed">
+        Localizado no Palace Executive Center, o Studio Da Sobrancelha é um espaço pensado para quem procura um trabalho cuidadoso e personalizado. Aqui, cada design é feito respeitando o formato do rosto, a simetria e o estilo de cada cliente.
+      </p>
+      <p class="mt-4 text-muted-foreground leading-relaxed">
+        Ambiente reservado, horários organizados e um atendimento que prioriza o tempo da cliente, sem pressa e sem surpresas.
+      </p>
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="flex gap-3">
+          <div class="shrink-0 w-9 h-9 rounded-lg bg-accent/15 flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-accent"></i></div>
+          <div>
+            <div class="font-semibold text-sm">Atendimento individual</div>
+            <div class="text-xs text-muted-foreground">Uma cliente por vez, com privacidade.</div>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="shrink-0 w-9 h-9 rounded-lg bg-accent/15 flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-accent"></i></div>
+          <div>
+            <div class="font-semibold text-sm">Design personalizado</div>
+            <div class="text-xs text-muted-foreground">Cada rosto recebe um traço próprio.</div>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="shrink-0 w-9 h-9 rounded-lg bg-accent/15 flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-accent"></i></div>
+          <div>
+            <div class="font-semibold text-sm">Higiene rigorosa</div>
+            <div class="text-xs text-muted-foreground">Materiais descartáveis e protocolo cuidadoso.</div>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="shrink-0 w-9 h-9 rounded-lg bg-accent/15 flex items-center justify-center"><i data-lucide="check" class="w-4 h-4 text-accent"></i></div>
+          <div>
+            <div class="font-semibold text-sm">Localização central</div>
+            <div class="text-xs text-muted-foreground">Sala 707, Palace Executive Center.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="especialidades" class="py-16 md:py-28 bg-muted/40">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <div class="max-w-2xl">
+      <span class="eyebrow text-xs uppercase tracking-widest text-muted-foreground font-medium">Especialidades</span>
+      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mt-4">
+        Serviços pensados para <em class="italic text-accent">valorizar o seu olhar</em>
+      </h2>
+      <p class="mt-4 text-muted-foreground">Do design clássico à manutenção delicada, cada serviço é conduzido com técnica e atenção aos detalhes.</p>
+    </div>
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="service-card relative bg-card border border-border rounded-2xl p-6 md:p-7">
+        <span class="absolute top-5 right-5 text-[10px] uppercase tracking-wider bg-accent/15 text-accent-foreground border border-accent/30 px-2.5 py-1 rounded-full font-medium">Principal</span>
+        <div class="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center mb-5"><i data-lucide="eye" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold">Design de Sobrancelhas</h3>
+        <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Traço exclusivo para cada cliente, respeitando o formato do rosto e a simetria natural. Acabamento cuidadoso e resultado discreto.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-6 md:p-7">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5"><i data-lucide="palette" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold">Design com Henna</h3>
+        <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Efeito de preenchimento natural com tonalização suave, ideal para quem quer fios mais marcados sem comprometer a naturalidade.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-6 md:p-7">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5"><i data-lucide="feather" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold">Brow Lamination</h3>
+        <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Alinha e fixa os fios por semanas, criando o efeito de sobrancelha cheia e penteada, com aspecto moderno.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-6 md:p-7">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5"><i data-lucide="droplet" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold">Micropigmentação</h3>
+        <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Indicada para quem busca maior durabilidade. Técnica precisa, fio a fio, com resultado natural e simétrico.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-6 md:p-7">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5"><i data-lucide="scissors" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold">Manutenção Periódica</h3>
+        <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Retoques que mantêm o desenho sempre alinhado, com orientação sobre cuidados em casa entre as sessões.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-6 md:p-7">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5"><i data-lucide="heart" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold">Atendimento Consultivo</h3>
+        <p class="mt-3 text-sm text-muted-foreground leading-relaxed">Análise do rosto e conversa antes de começar. Sem pressa, sem imposição, sempre combinando o resultado com a cliente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacoes" class="py-16 md:py-28">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <div class="max-w-2xl">
+      <span class="eyebrow text-xs uppercase tracking-widest text-muted-foreground font-medium">O que dizem</span>
+      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mt-4">
+        Avaliação máxima no <em class="italic text-accent">Google</em>
+      </h2>
+      <p class="mt-4 text-muted-foreground">Ambiente acolhedor, técnica precisa e atendimento atencioso. É esse o retrato do studio.</p>
+    </div>
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="quote-card bg-card border border-border rounded-2xl p-7">
+        <div class="flex text-accent mb-4">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <p class="text-sm md:text-base leading-relaxed relative z-10">Ambiente tranquilo, profissional atenciosa e um trabalho caprichado. Saí do studio encantada com o desenho das minhas sobrancelhas, ficou perfeito para o meu rosto.</p>
+        <div class="mt-6 pt-4 border-t border-border flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-primary/10 text-primary font-semibold flex items-center justify-center text-sm">C</div>
+          <div>
+            <div class="text-sm font-semibold">Cliente Google</div>
+            <div class="text-xs text-muted-foreground">Avaliação verificada</div>
+          </div>
+        </div>
+      </div>
+      <div class="quote-card bg-card border border-border rounded-2xl p-7">
+        <div class="flex text-accent mb-4">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <p class="text-sm md:text-base leading-relaxed relative z-10">Recomendo demais. Atendimento personalizado, tudo muito limpo e organizado. O resultado ficou exatamente como eu queria, super natural e harmonioso.</p>
+        <div class="mt-6 pt-4 border-t border-border flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-primary/10 text-primary font-semibold flex items-center justify-center text-sm">C</div>
+          <div>
+            <div class="text-sm font-semibold">Cliente Google</div>
+            <div class="text-xs text-muted-foreground">Avaliação verificada</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 text-center">
+      <a href="https://maps.google.com/?cid=8648665523996404492&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" class="inline-flex items-center gap-2 text-accent font-medium hover:underline">
+        Ver avaliações no Google <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="py-16 md:py-28 bg-muted/40">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <div class="max-w-2xl">
+      <span class="eyebrow text-xs uppercase tracking-widest text-muted-foreground font-medium">Contato</span>
+      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mt-4">
+        Agende seu horário <em class="italic text-accent">com tranquilidade</em>
+      </h2>
+      <p class="mt-4 text-muted-foreground">Estamos no Bigorrilho, a poucos minutos do centro de Curitiba.</p>
+    </div>
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+      <a href="tel:+5541999516131" class="contact-card bg-card border border-border rounded-2xl p-6 block">
+        <div class="icon-box w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center mb-5 transition"><i data-lucide="phone" class="w-6 h-6"></i></div>
+        <div class="text-[10px] uppercase tracking-widest text-muted-foreground">Telefone</div>
+        <div class="font-serif text-xl font-semibold mt-1">(41) 99951-6131</div>
+        <div class="text-sm text-muted-foreground mt-2">Ligue para agendar</div>
+      </a>
+      <a href="https://wa.me/5541999516131" class="contact-card bg-card border border-border rounded-2xl p-6 block">
+        <div class="icon-box w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center mb-5 transition"><i data-lucide="message-circle" class="w-6 h-6"></i></div>
+        <div class="text-[10px] uppercase tracking-widest text-muted-foreground">WhatsApp</div>
+        <div class="font-serif text-xl font-semibold mt-1">Atendimento rápido</div>
+        <div class="text-sm text-muted-foreground mt-2">Resposta no mesmo dia</div>
+      </a>
+      <a href="https://maps.google.com/?cid=8648665523996404492&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" class="contact-card bg-card border border-border rounded-2xl p-6 block">
+        <div class="icon-box w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center mb-5 transition"><i data-lucide="map-pin" class="w-6 h-6"></i></div>
+        <div class="text-[10px] uppercase tracking-widest text-muted-foreground">Endereço</div>
+        <div class="font-serif text-lg font-semibold mt-1 leading-tight">R. Padre Anchieta, 1691</div>
+        <div class="text-sm text-muted-foreground mt-2">Sala 707 · Bigorrilho, Curitiba</div>
+      </a>
+    </div>
+
+    <div class="mt-6 bg-card border border-border rounded-2xl p-6 md:p-8">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center"><i data-lucide="clock" class="w-5 h-5"></i></div>
+        <h3 class="font-serif text-xl font-semibold">Horário de atendimento</h3>
+      </div>
+      <ul class="text-sm">
+        <li class="flex justify-between py-2.5 border-b border-border"><span class="text-muted-foreground">Segunda-feira</span><span class="font-medium">14:00 – 18:00</span></li>
+        <li class="flex justify-between py-2.5 border-b border-border"><span class="text-muted-foreground">Terça-feira</span><span class="font-medium">10:00 – 18:00</span></li>
+        <li class="flex justify-between py-2.5 border-b border-border"><span class="text-muted-foreground">Quarta-feira</span><span class="font-medium">10:00 – 18:00</span></li>
+        <li class="flex justify-between py-2.5 border-b border-border"><span class="text-muted-foreground">Quinta-feira</span><span class="font-medium">10:00 – 18:00</span></li>
+        <li class="flex justify-between py-2.5 border-b border-border"><span class="text-muted-foreground">Sexta-feira</span><span class="font-medium">10:00 – 18:00</span></li>
+        <li class="flex justify-between py-2.5 border-b border-border"><span class="text-muted-foreground">Sábado</span><span class="font-medium">10:00 – 13:00</span></li>
+        <li class="flex justify-between py-2.5"><span class="text-muted-foreground">Domingo</span><span class="font-medium text-muted-foreground">Fechado</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 px-4 md:px-6">
+  <div class="max-w-5xl mx-auto relative bg-primary text-primary-foreground rounded-2xl p-8 md:p-14 overflow-hidden text-center">
+    <div class="blob bg-accent w-80 h-80 -top-24 -right-24"></div>
+    <h2 class="relative font-serif text-3xl md:text-5xl font-semibold leading-tight">
+      Seu próximo design<br><em class="italic text-accent">começa com uma mensagem</em>
+    </h2>
+    <p class="relative mt-5 opacity-80 max-w-xl mx-auto">Agende pelo WhatsApp e garanta seu horário com atendimento exclusivo no coração do Bigorrilho.</p>
+    <a href="https://wa.me/5541999516131" class="relative inline-flex items-center justify-center gap-2 mt-8 bg-[#25d366] hover:bg-[#1fb955] text-white font-medium px-8 py-4 rounded-full transition">
+      <i data-lucide="message-circle" class="w-5 h-5"></i> Falar no WhatsApp
     </a>
-    <p class="text-xs text-muted-foreground mt-4">Resposta rápida · Agendamento sem complicação</p>
   </div>
 </section>
 
-<!-- Sobre -->
-<section id="sobre" class="py-20 px-5">
-  <div class="max-w-3xl mx-auto">
-    <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-3">Sobre o studio</p>
-    <h2 class="font-serif text-3xl md:text-4xl font-semibold mb-5 tracking-tight">Um espaço pensado pra realçar a sua beleza natural.</h2>
-    <p class="text-muted-foreground text-lg leading-relaxed">
-      No Studio Da Sobrancelha, cada cliente é recebida com atenção e cuidado. O trabalho é feito sob medida para o formato do seu rosto, com técnica apurada e acabamento impecável. Um ambiente acolhedor no Edifício Palace Executive Center, no Bigorrilho.
-    </p>
-  </div>
-</section>
-
-<!-- Diferenciais -->
-<section id="diferenciais" class="py-20 px-5 bg-muted/50">
-  <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-12">
-      <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-3">Diferenciais</p>
-      <h2 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight">Por que escolher o nosso studio</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-5">
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
-          <i data-lucide="sparkles" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-serif text-xl font-semibold mb-2">Design personalizado</h3>
-        <p class="text-muted-foreground text-sm leading-relaxed">Cada sobrancelha é desenhada respeitando o formato único do seu rosto e das suas expressões.</p>
-      </div>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
-          <i data-lucide="heart" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-serif text-xl font-semibold mb-2">Atendimento acolhedor</h3>
-        <p class="text-muted-foreground text-sm leading-relaxed">Você é recebida com calma e atenção. Conversamos pra entender exatamente o que você busca.</p>
-      </div>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
-          <i data-lucide="map-pin" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-serif text-xl font-semibold mb-2">Localização privilegiada</h3>
-        <p class="text-muted-foreground text-sm leading-relaxed">No Bigorrilho, em Curitiba, com fácil acesso e ambiente reservado dentro do Palace Executive Center.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Avaliações -->
-<section id="avaliacoes" class="py-20 px-5">
-  <div class="max-w-3xl mx-auto text-center">
-    <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-3">Avaliações</p>
-    <h2 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight mb-10">Nota máxima no Google</h2>
-    <div class="bg-card border border-border rounded-xl p-8 md:p-10 shadow-sm">
-      <div class="flex justify-center text-amber-500 mb-5">
-        <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-        <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-        <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-        <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-        <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-      </div>
-      <p class="font-serif text-3xl md:text-4xl font-semibold mb-3">5,0</p>
-      <p class="text-muted-foreground mb-6">Avaliação no Google</p>
-      <a href="https://maps.google.com/?cid=8648665523996404492" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
-        Ver no Google Maps
-        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Contato -->
-<section id="contato" class="py-20 px-5 bg-muted/50">
-  <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-12">
-      <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-3">Contato</p>
-      <h2 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight">Venha nos visitar</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-5">
-      <a href="https://maps.google.com/?cid=8648665523996404492" target="_blank" rel="noopener" class="bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition block">
-        <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
-          <i data-lucide="map-pin" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-semibold mb-2">Endereço</h3>
-        <p class="text-muted-foreground text-sm leading-relaxed">
-          Edifício Palace Executive Center<br/>
-          R. Padre Anchieta, 1691 — 7º andar, sala 707<br/>
-          Bigorrilho, Curitiba — PR
-        </p>
-      </a>
-      <a href="tel:+5541999516131" class="bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition block">
-        <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
-          <i data-lucide="phone" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-semibold mb-2">Telefone</h3>
-        <p class="text-muted-foreground text-sm">(41) 99951-6131</p>
-      </a>
-      <div class="bg-card border border-border rounded-xl p-6 shadow-sm">
-        <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
-          <i data-lucide="clock" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-semibold mb-2">Horários</h3>
-        <ul class="text-muted-foreground text-sm space-y-1">
-          <li class="flex justify-between"><span>Segunda</span><span>14:00–18:00</span></li>
-          <li class="flex justify-between"><span>Terça a Sexta</span><span>10:00–18:00</span></li>
-          <li class="flex justify-between"><span>Sábado</span><span>10:00–13:00</span></li>
-          <li class="flex justify-between"><span>Domingo</span><span>Fechado</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA Final -->
-<section class="py-24 px-5">
-  <div class="max-w-2xl mx-auto text-center">
-    <h2 class="font-serif text-3xl md:text-5xl font-semibold tracking-tight mb-5">Pronta para agendar?</h2>
-    <p class="text-muted-foreground text-lg mb-8">Chame no WhatsApp e garanta seu horário. Respondemos rapidinho.</p>
-    <a href="https://wa.me/5541999516131" class="inline-flex items-center gap-2 bg-[#25d366] text-white font-semibold text-base px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition">
-      <i data-lucide="message-circle" class="w-5 h-5"></i>
-      Chamar no WhatsApp
-    </a>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="py-8 px-5 border-t border-border">
-  <div class="max-w-5xl mx-auto text-center text-xs text-muted-foreground">
-    Página criada para divulgação — dados públicos do Google. Entre em contato para remover.
+<footer class="py-10 border-t border-border">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 text-center text-xs text-muted-foreground">
+    Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
   </div>
 </footer>
 
-<!-- WhatsApp float -->
-<a href="https://wa.me/5541999516131" class="wa-float fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25d366] text-white flex items-center justify-center shadow-lg hover:scale-105 transition" aria-label="WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+<a href="https://wa.me/5541999516131" aria-label="WhatsApp" class="wa-pulse fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25d366] hover:bg-[#1fb955] text-white flex items-center justify-center shadow-2xl transition">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0 0 12.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.12 1.6 5.92L0 24l6.4-1.68a11.86 11.86 0 0 0 5.64 1.44h.01c6.54 0 11.84-5.3 11.84-11.84 0-3.16-1.23-6.13-3.37-8.44zM12.05 21.6h-.01a9.78 9.78 0 0 1-4.98-1.36l-.36-.21-3.8 1 1.02-3.7-.24-.38a9.78 9.78 0 0 1-1.5-5.2c0-5.42 4.41-9.83 9.84-9.83 2.63 0 5.1 1.02 6.96 2.88a9.76 9.76 0 0 1 2.88 6.96c0 5.43-4.41 9.84-9.81 9.84zm5.4-7.36c-.3-.15-1.76-.87-2.04-.97-.27-.1-.47-.15-.67.15s-.77.97-.95 1.17c-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37s-1.05 1.02-1.05 2.5 1.08 2.9 1.23 3.1c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
 </a>
 
 <script>
   lucide.createIcons();
-  document.getElementById('menu-btn').addEventListener('click', () => {
-    document.getElementById('mobile-menu').classList.toggle('hidden');
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
   });
-  document.querySelectorAll('#mobile-menu a').forEach(a => {
-    a.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
-  });
+  document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => document.getElementById('mobileMenu').classList.add('hidden')));
 </script>
 </body>
 </html>
