@@ -3,297 +3,595 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Salão Beleza Negra — Tranças, Relaxamento e Cortes em Curitiba</title>
-<meta name="description" content="Salão Beleza Negra no Centro de Curitiba. Especialistas em tranças, relaxamento, permanente afro e cortes. Atendimento com hora marcada.">
-<meta property="og:title" content="Salão Beleza Negra — Centro de Curitiba">
-<meta property="og:description" content="Tranças, relaxamento, permanente afro e cortes. Atendimento acolhedor com hora marcada. ⭐ 4.7 no Google.">
+<title>Salão Beleza Negra · Tranças, Relaxamento e Cortes no Centro de Curitiba</title>
+<meta name="description" content="Salão especializado em cabelos crespos, cacheados e afro no Centro de Curitiba. Tranças, relaxamento, cortes e cuidado com quem entende do assunto.">
+<meta property="og:title" content="Salão Beleza Negra · Centro, Curitiba">
+<meta property="og:description" content="Tranças, relaxamento, cortes e cuidado com cabelos crespos e cacheados. Referência no Centro de Curitiba.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        border: 'hsl(var(--border))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
-        },
-      },
-      borderRadius: {
-        xl: 'var(--radius)',
-        lg: 'calc(var(--radius) - 2px)',
-      },
-      fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Fraunces', 'Georgia', 'serif'],
-      },
-    },
-  },
-};
-</script>
+<script src="https://unpkg.com/lucide@latest"></script>
 <style>
   :root {
     --background: 30 20% 98%;
     --foreground: 20 14% 10%;
+    --primary: 20 28% 14%;
+    --primary-foreground: 30 30% 96%;
+    --accent: 28 65% 52%;
+    --accent-foreground: 30 30% 98%;
+    --muted: 30 15% 94%;
+    --muted-foreground: 20 10% 38%;
     --card: 0 0% 100%;
-    --card-foreground: 20 14% 10%;
-    --primary: 340 55% 35%;
-    --primary-foreground: 0 0% 100%;
-    --muted: 30 10% 94%;
-    --muted-foreground: 20 8% 42%;
-    --border: 30 10% 88%;
-    --radius: 0.75rem;
+    --border: 30 15% 88%;
+    --radius: 0.875rem;
   }
   html { scroll-behavior: smooth; }
-  section { scroll-margin-top: 90px; }
-  body { font-family: 'Inter', sans-serif; background: hsl(var(--background)); color: hsl(var(--foreground)); }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+  }
   .font-serif { font-family: 'Fraunces', serif; }
-
-  /* floating-pill header */
-  .pill-header {
-    background: hsla(30, 20%, 98%, 0.75);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border: 1px solid hsla(20, 10%, 80%, 0.4);
-    box-shadow: 0 4px 24px -8px rgba(0,0,0,0.1), 0 2px 6px -2px rgba(0,0,0,0.05);
+  section { scroll-margin-top: 90px; }
+  .dot-pattern {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px);
+    background-size: 22px 22px;
   }
-
-  @keyframes pulse-wa {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-    50% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+  .blob {
+    position: absolute;
+    filter: blur(70px);
+    opacity: 0.45;
+    border-radius: 9999px;
+    pointer-events: none;
+    z-index: 0;
   }
-  .wa-float { animation: pulse-wa 2s infinite; }
-
-  .hero-pattern {
-    background-image: radial-gradient(hsl(var(--muted)) 1px, transparent 1px);
-    background-size: 24px 24px;
+  .eyebrow {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: hsl(var(--accent));
   }
+  .eyebrow::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 48px; height: 2px;
+    background: hsl(var(--accent));
+  }
+  .quote-card { position: relative; overflow: hidden; }
+  .quote-card::before {
+    content: '"';
+    position: absolute;
+    top: -30px; right: 12px;
+    font-family: 'Fraunces', serif;
+    font-size: 160px;
+    line-height: 1;
+    color: hsl(var(--accent) / 0.12);
+    pointer-events: none;
+  }
+  .service-card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+  .service-card:hover {
+    transform: translateY(-4px);
+    border-color: hsl(var(--accent) / 0.5);
+    box-shadow: 0 18px 40px -20px hsl(var(--primary) / 0.25);
+  }
+  .contact-card { transition: transform .2s ease, box-shadow .2s ease; }
+  .contact-card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -22px hsl(var(--primary) / 0.28); }
+  .contact-card:hover .icon-box { background: hsl(var(--accent) / 0.18); color: hsl(var(--accent)); }
+  .glass-header {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: hsla(30, 25%, 98%, 0.65);
+    border-bottom: 1px solid hsla(20, 30%, 90%, 0.6);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 8px 32px -12px hsl(var(--primary) / 0.12);
+  }
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 50%; bottom: -4px;
+    width: 0; height: 2px;
+    background: hsl(var(--accent));
+    transition: all .25s ease;
+    transform: translateX(-50%);
+  }
+  .nav-link:hover::after { width: 100%; }
+  .wa-float {
+    position: fixed;
+    bottom: 20px; right: 20px;
+    width: 56px; height: 56px;
+    border-radius: 9999px;
+    background: #25d366;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 30px -8px rgba(37, 211, 102, 0.5);
+    z-index: 50;
+    animation: pulse 2.4s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 10px 30px -8px rgba(37, 211, 102, 0.5), 0 0 0 0 rgba(37, 211, 102, 0.5); }
+    50% { box-shadow: 0 10px 30px -8px rgba(37, 211, 102, 0.5), 0 0 0 18px rgba(37, 211, 102, 0); }
+  }
+  .btn-wa { background: #25d366; color: white; }
+  .btn-wa:hover { background: #1fb558; }
 </style>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          background: 'hsl(var(--background))',
+          foreground: 'hsl(var(--foreground))',
+          primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+          accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+          muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+          card: 'hsl(var(--card))',
+          border: 'hsl(var(--border))',
+        },
+        fontFamily: { sans: ['Inter','sans-serif'], serif: ['Fraunces','serif'] },
+        borderRadius: { lg: 'var(--radius)', xl: 'calc(var(--radius) + 4px)', '2xl': 'calc(var(--radius) + 8px)' }
+      }
+    }
+  }
+</script>
 </head>
-<body class="antialiased">
+<body class="bg-background text-foreground">
 
-<!-- Header flutuante tipo pílula -->
-<header class="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
-  <nav class="pill-header mx-auto max-w-5xl rounded-full px-5 py-3 flex items-center justify-between">
-    <a href="#" class="flex items-center gap-2">
-      <span class="font-serif text-lg font-semibold text-foreground">Beleza Negra</span>
+<header class="sticky top-0 z-40 glass-header">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 h-16 md:h-[72px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3">
+      <span class="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-serif text-lg font-semibold">B</span>
+      <span class="font-serif text-lg md:text-xl font-semibold tracking-tight">Salão Beleza Negra</span>
     </a>
-    <div class="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground">
-      <a href="#sobre" class="hover:text-primary transition">Sobre</a>
-      <a href="#diferenciais" class="hover:text-primary transition">Diferenciais</a>
-      <a href="#avaliacoes" class="hover:text-primary transition">Avaliações</a>
-      <a href="#contato" class="hover:text-primary transition">Contato</a>
-    </div>
-    <a href="https://wa.me/554132256852" class="hidden md:inline-flex items-center gap-1.5 bg-primary text-primary-foreground text-sm font-medium px-4 py-2 rounded-full hover:opacity-90 transition">
-      <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
-    </a>
-    <button id="menuBtn" class="md:hidden p-2 -mr-2" aria-label="Menu">
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/80">
+      <a href="#sobre" class="nav-link">Sobre</a>
+      <a href="#especialidades" class="nav-link">Especialidades</a>
+      <a href="#avaliacoes" class="nav-link">Avaliações</a>
+      <a href="#contato" class="nav-link">Contato</a>
+      <a href="https://wa.me/554132256852" class="inline-flex items-center gap-2 px-4 py-2 rounded-full btn-wa text-sm font-semibold shadow-sm">
+        <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
+      </a>
+    </nav>
+    <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-muted" aria-label="Menu">
       <i data-lucide="menu" class="w-5 h-5"></i>
     </button>
-  </nav>
-  <div id="mobileMenu" class="hidden md:hidden mx-auto max-w-5xl mt-2 pill-header rounded-2xl p-4 flex flex-col gap-3 text-sm font-medium">
-    <a href="#sobre" class="py-1.5 text-foreground">Sobre</a>
-    <a href="#diferenciais" class="py-1.5 text-foreground">Diferenciais</a>
-    <a href="#avaliacoes" class="py-1.5 text-foreground">Avaliações</a>
-    <a href="#contato" class="py-1.5 text-foreground">Contato</a>
-    <a href="https://wa.me/554132256852" class="mt-1 bg-primary text-primary-foreground text-center py-2.5 rounded-full">Chamar no WhatsApp</a>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-border bg-background/95 backdrop-blur">
+    <nav class="flex flex-col px-4 py-3 gap-1 text-sm font-medium">
+      <a href="#sobre" class="py-2.5 px-2 rounded-md hover:bg-muted">Sobre</a>
+      <a href="#especialidades" class="py-2.5 px-2 rounded-md hover:bg-muted">Especialidades</a>
+      <a href="#avaliacoes" class="py-2.5 px-2 rounded-md hover:bg-muted">Avaliações</a>
+      <a href="#contato" class="py-2.5 px-2 rounded-md hover:bg-muted">Contato</a>
+      <a href="https://wa.me/554132256852" class="mt-2 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full btn-wa font-semibold">
+        <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
+      </a>
+    </nav>
   </div>
 </header>
 
-<!-- Hero -->
-<section class="relative pt-32 pb-20 md:pt-40 md:pb-28 hero-pattern">
-  <div class="max-w-5xl mx-auto px-5 text-center">
-    <div class="inline-flex items-center gap-2 bg-card border border-border rounded-full px-4 py-1.5 text-sm shadow-sm mb-6">
-      <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
-      <span class="font-semibold">4,7</span>
-      <span class="text-muted-foreground">· 61 avaliações no Google</span>
-    </div>
-    <h1 class="font-serif text-4xl md:text-6xl font-semibold leading-tight tracking-tight text-foreground">
-      Seu cabelo no lugar certo,<br><span class="text-primary italic">com quem entende.</span>
-    </h1>
-    <p class="mt-6 text-lg text-muted-foreground max-w-xl mx-auto">
-      Tranças, relaxamento, permanente afro e cortes que valorizam a sua beleza — no coração do Centro de Curitiba.
-    </p>
-    <div class="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
-      <a href="https://wa.me/554132256852" class="inline-flex items-center justify-center gap-2 bg-[#25d366] hover:bg-[#20bd5a] text-white font-semibold px-7 py-3.5 rounded-xl shadow-sm transition">
-        <i data-lucide="message-circle" class="w-5 h-5"></i>
-        Chamar no WhatsApp
-      </a>
-      <a href="#contato" class="inline-flex items-center justify-center gap-2 bg-card border border-border hover:border-primary/40 text-foreground font-medium px-7 py-3.5 rounded-xl shadow-sm transition">
-        <i data-lucide="map-pin" class="w-5 h-5"></i>
-        Ver endereço
-      </a>
-    </div>
-  </div>
-</section>
+<section id="top" class="relative overflow-hidden">
+  <div class="absolute inset-0 dot-pattern opacity-60"></div>
+  <div class="blob bg-accent/40 w-72 h-72 -top-20 -left-16"></div>
+  <div class="blob bg-primary/30 w-80 h-80 top-40 -right-20"></div>
 
-<!-- Sobre -->
-<section id="sobre" class="py-20 md:py-24 bg-card border-y border-border">
-  <div class="max-w-3xl mx-auto px-5 text-center">
-    <span class="text-sm font-medium text-primary uppercase tracking-widest">Sobre o salão</span>
-    <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3 mb-6">Um espaço feito pra você se sentir bem</h2>
-    <p class="text-lg text-muted-foreground leading-relaxed">
-      O Salão Beleza Negra é referência em Curitiba para quem busca cuidado especializado com cabelos crespos, cacheados e lisos. Com profissionais experientes em tranças raiz, permanente afro, relaxamento e cortes, recebemos cada cliente com atenção e carinho — sempre com hora marcada.
-    </p>
-  </div>
-</section>
+  <div class="relative max-w-7xl mx-auto px-4 md:px-6 pt-12 md:pt-20 pb-16 md:pb-28">
+    <div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+      <div>
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/30 text-accent text-xs font-semibold tracking-wide">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+          Referência em cabelos crespos e cacheados no Centro
+        </span>
+        <h1 class="mt-5 font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-tight">
+          Cuidado de verdade<br>
+          pra <em class="italic text-accent">quem ama o próprio cabelo</em>
+        </h1>
+        <p class="mt-5 text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
+          Tranças, relaxamento, permanente afro, cortes que caem bem. Um salão onde você se sente em casa, com profissionais que entendem do seu cabelo e respeitam seu tempo.
+        </p>
+        <div class="mt-6 flex items-center gap-2 text-sm">
+          <div class="flex text-accent">
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          </div>
+          <span class="font-semibold">4,7 no Google</span>
+          <span class="text-muted-foreground">· 61 avaliações</span>
+        </div>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="https://wa.me/554132256852" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full btn-wa font-semibold shadow-lg shadow-green-500/20">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            Agendar pelo WhatsApp
+          </a>
+          <a href="tel:+554132256852" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-primary/20 hover:border-primary/40 font-semibold">
+            <i data-lucide="phone" class="w-5 h-5"></i>
+            (41) 3225-6852
+          </a>
+        </div>
+        <p class="mt-4 text-xs text-muted-foreground flex items-center gap-2">
+          <i data-lucide="info" class="w-3.5 h-3.5"></i>
+          Atendimento somente com horário marcado.
+        </p>
+      </div>
 
-<!-- Diferenciais -->
-<section id="diferenciais" class="py-20 md:py-24">
-  <div class="max-w-5xl mx-auto px-5">
-    <div class="text-center mb-14">
-      <span class="text-sm font-medium text-primary uppercase tracking-widest">Por que nos escolher</span>
-      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3">O que faz a diferença</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
-          <i data-lucide="scissors" class="w-5 h-5"></i>
+      <div class="relative">
+        <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border-2 border-accent/30 shadow-2xl shadow-primary/20">
+          <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=900&q=80" alt="Salão de beleza especializado em cabelos crespos e cacheados" class="w-full h-full object-cover">
         </div>
-        <h3 class="font-serif text-xl font-semibold mb-2">Especialistas em cabelo afro</h3>
-        <p class="text-muted-foreground text-sm leading-relaxed">Tranças raiz, permanente afro, relaxamento e cortes sob medida para cabelos crespos e cacheados.</p>
-      </div>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
-          <i data-lucide="calendar-check" class="w-5 h-5"></i>
+        <div class="hidden sm:block absolute -bottom-6 -left-6 bg-card border border-border rounded-xl p-4 shadow-xl max-w-[220px]">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-accent/15 text-accent flex items-center justify-center">
+              <i data-lucide="sparkles" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <p class="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Especialidade</p>
+              <p class="font-serif font-semibold text-sm leading-tight">Tranças & cabelo afro</p>
+            </div>
+          </div>
         </div>
-        <h3 class="font-serif text-xl font-semibold mb-2">Atendimento com hora marcada</h3>
-        <p class="text-muted-foreground text-sm leading-relaxed">Sem correria e sem espera — cada cliente tem o seu horário reservado para um atendimento tranquilo.</p>
-      </div>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
-          <i data-lucide="heart" class="w-5 h-5"></i>
+        <div class="hidden sm:block absolute -top-4 -right-4 bg-primary text-primary-foreground rounded-xl px-4 py-3 shadow-lg">
+          <p class="text-[10px] uppercase tracking-wider opacity-70 font-semibold">Centro · Curitiba</p>
+          <p class="font-serif text-lg leading-tight">Al. Dr. Muricy, 390</p>
         </div>
-        <h3 class="font-serif text-xl font-semibold mb-2">Clientes que voltam</h3>
-        <p class="text-muted-foreground text-sm leading-relaxed">Gente que acompanha o salão há anos — sinal de um atendimento de confiança e resultado que agrada.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Avaliações -->
-<section id="avaliacoes" class="py-20 md:py-24 bg-card border-y border-border">
-  <div class="max-w-5xl mx-auto px-5">
-    <div class="text-center mb-14">
-      <span class="text-sm font-medium text-primary uppercase tracking-widest">Avaliações reais</span>
-      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3">O que dizem no Google</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-background border border-border rounded-xl p-7 shadow-sm">
-        <div class="flex gap-0.5 mb-4">
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
-        </div>
-        <p class="text-foreground leading-relaxed mb-5">"Fazia tempo que não fazia algo diferente no meu cabelo. No salão Beleza Negra, já fiz trança raiz, permanente afro, e agora fiz relaxamento e um corte que amei."</p>
-        <p class="text-sm font-semibold text-muted-foreground">— Rosicler Rosa</p>
-      </div>
-      <div class="bg-background border border-border rounded-xl p-7 shadow-sm">
-        <div class="flex gap-0.5 mb-4">
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
-        </div>
-        <p class="text-foreground leading-relaxed mb-5">"Atendimento bom, mais deveria ter uma placa ou coisa assim, pois é em prédio fica difícil a localização do salão."</p>
-        <p class="text-sm font-semibold text-muted-foreground">— Lhauanny Kelly</p>
-      </div>
-      <div class="bg-background border border-border rounded-xl p-7 shadow-sm">
-        <div class="flex gap-0.5 mb-4">
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
-        </div>
-        <p class="text-foreground leading-relaxed mb-5">"Atendimento super bom, já fiz trança com eles a muito tempo. Minha sogra, que tem o cabelo crespo, gostou de cortar o cabelo aqui. O lugar funciona somente com horário marcado."</p>
-        <p class="text-sm font-semibold text-muted-foreground">— Silvia Hikari W Souza</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Contato -->
-<section id="contato" class="py-20 md:py-24">
-  <div class="max-w-5xl mx-auto px-5">
-    <div class="text-center mb-14">
-      <span class="text-sm font-medium text-primary uppercase tracking-widest">Contato</span>
-      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3">Venha nos visitar</h2>
+<section class="bg-primary text-primary-foreground">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-14">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
+      <div class="text-center md:text-left">
+        <p class="font-serif text-4xl md:text-5xl font-semibold text-accent">4,7<span class="text-2xl">★</span></p>
+        <p class="mt-1 text-[11px] uppercase tracking-wider opacity-70 font-semibold">Nota no Google</p>
+      </div>
+      <div class="text-center md:text-left">
+        <p class="font-serif text-4xl md:text-5xl font-semibold text-accent">61+</p>
+        <p class="mt-1 text-[11px] uppercase tracking-wider opacity-70 font-semibold">Avaliações reais</p>
+      </div>
+      <div class="text-center md:text-left">
+        <p class="font-serif text-4xl md:text-5xl font-semibold text-accent">+20</p>
+        <p class="mt-1 text-[11px] uppercase tracking-wider opacity-70 font-semibold">Anos cuidando de clientes</p>
+      </div>
+      <div class="text-center md:text-left">
+        <p class="font-serif text-4xl md:text-5xl font-semibold text-accent">6</p>
+        <p class="mt-1 text-[11px] uppercase tracking-wider opacity-70 font-semibold">Dias com atendimento</p>
+      </div>
     </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <a href="https://maps.google.com/?cid=16227806581590605099" target="_blank" rel="noopener" class="bg-card border border-border rounded-xl p-7 shadow-sm hover:border-primary/40 transition">
-        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
-          <i data-lucide="map-pin" class="w-5 h-5"></i>
+  </div>
+</section>
+
+<section id="sobre" class="relative py-16 md:py-28">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="aspect-[3/4] rounded-2xl overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&q=80" alt="Cuidado com cabelo cacheado" class="w-full h-full object-cover">
         </div>
-        <h3 class="font-serif text-lg font-semibold mb-2">Endereço</h3>
-        <p class="text-muted-foreground text-sm leading-relaxed">Al. Dr. Muricy, 390 — Centro<br>Curitiba · PR · 80010-120</p>
-        <p class="text-primary text-sm font-medium mt-3 inline-flex items-center gap-1">Ver no Google Maps <i data-lucide="arrow-up-right" class="w-4 h-4"></i></p>
-      </a>
-      <a href="tel:+554132256852" class="bg-card border border-border rounded-xl p-7 shadow-sm hover:border-primary/40 transition">
-        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
-          <i data-lucide="phone" class="w-5 h-5"></i>
+        <div class="aspect-[3/4] rounded-2xl overflow-hidden mt-8">
+          <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&q=80" alt="Ambiente do salão" class="w-full h-full object-cover">
         </div>
-        <h3 class="font-serif text-lg font-semibold mb-2">Telefone</h3>
-        <p class="text-muted-foreground text-sm">(41) 3225-6852</p>
-        <p class="text-primary text-sm font-medium mt-3 inline-flex items-center gap-1">Ligar agora <i data-lucide="arrow-up-right" class="w-4 h-4"></i></p>
+      </div>
+
+      <div>
+        <span class="eyebrow">Sobre o Beleza Negra</span>
+        <h2 class="mt-4 font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight">
+          Um salão onde <em class="italic text-accent">você se sente em casa.</em>
+        </h2>
+        <div class="mt-6 space-y-4 text-muted-foreground leading-relaxed">
+          <p>
+            Há anos no Centro de Curitiba, o Salão Beleza Negra é referência pra quem procura cuidado especializado com cabelos crespos, cacheados e afro. Tranças raiz, permanente, relaxamento, cortes que valorizam o tipo do fio, tudo com profissionais que entendem o que fazem.
+          </p>
+          <p>
+            Iara, André e toda a equipe são lembrados nas avaliações como pessoas amigas, éticas e excelentes no que fazem. O atendimento é por horário marcado, o preço é justo, e a clientela volta há décadas. Aqui não tem exploração, tem confiança.
+          </p>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="flex items-start gap-3 p-4 rounded-xl bg-muted/50 border border-border">
+            <div class="w-8 h-8 rounded-lg bg-accent/15 text-accent flex items-center justify-center flex-shrink-0">
+              <i data-lucide="check" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Preço justo</p>
+              <p class="text-xs text-muted-foreground mt-0.5">"Não há exploração no preço"</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-xl bg-muted/50 border border-border">
+            <div class="w-8 h-8 rounded-lg bg-accent/15 text-accent flex items-center justify-center flex-shrink-0">
+              <i data-lucide="check" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Profissionais de confiança</p>
+              <p class="text-xs text-muted-foreground mt-0.5">Iara, André e equipe</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-xl bg-muted/50 border border-border">
+            <div class="w-8 h-8 rounded-lg bg-accent/15 text-accent flex items-center justify-center flex-shrink-0">
+              <i data-lucide="check" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Hora marcada</p>
+              <p class="text-xs text-muted-foreground mt-0.5">Sem espera, sem corre-corre</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-xl bg-muted/50 border border-border">
+            <div class="w-8 h-8 rounded-lg bg-accent/15 text-accent flex items-center justify-center flex-shrink-0">
+              <i data-lucide="check" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm">Clientela fiel</p>
+              <p class="text-xs text-muted-foreground mt-0.5">Famílias inteiras há gerações</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="especialidades" class="relative py-16 md:py-28 bg-muted/40">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <div class="max-w-2xl mb-12 md:mb-16">
+      <span class="eyebrow">Especialidades</span>
+      <h2 class="mt-4 font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight">
+        Cabelo <em class="italic text-accent">cuidado</em> do jeito certo.
+      </h2>
+      <p class="mt-4 text-muted-foreground leading-relaxed">
+        Serviços pensados pra valorizar o seu tipo de fio, com técnica e carinho. Tudo que aparece aqui foi citado nas avaliações dos clientes.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="service-card relative p-6 rounded-2xl bg-card border border-border">
+        <span class="absolute top-4 right-4 text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-full bg-accent text-accent-foreground">Especialidade principal</span>
+        <div class="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center mb-5">
+          <i data-lucide="wind" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold">Tranças e afro</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Trança raiz, permanente afro e penteados trançados com quem tem décadas de experiência no estilo.</p>
+      </div>
+
+      <div class="service-card p-6 rounded-2xl bg-card border border-border">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <i data-lucide="droplets" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold">Relaxamento</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Relaxamento feito com técnica, sem maltratar o fio, pra quem quer um cabelo mais solto mantendo a saúde.</p>
+      </div>
+
+      <div class="service-card p-6 rounded-2xl bg-card border border-border">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <i data-lucide="scissors" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold">Cortes</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Cortes pensados pro seu tipo de cabelo. "Fiz um corte que amei", como disse uma cliente nas avaliações.</p>
+      </div>
+
+      <div class="service-card p-6 rounded-2xl bg-card border border-border">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <i data-lucide="sparkles" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold">Cabelo crespo e cacheado</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Cuidado especializado pra cabelos de textura marcada. Gente que entende e respeita cada fio.</p>
+      </div>
+
+      <div class="service-card p-6 rounded-2xl bg-card border border-border">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold">Atendimento familiar</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Famílias inteiras, de várias gerações, escolhem o salão. Do jovem ao mais experiente, todo mundo é bem cuidado.</p>
+      </div>
+
+      <div class="service-card p-6 rounded-2xl bg-card border border-border">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <i data-lucide="calendar-check" class="w-6 h-6"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold">Hora marcada</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Atendimento organizado, só com agendamento. Você chega, é atendida no seu horário, sem enrolação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacoes" class="relative py-16 md:py-28">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <div class="max-w-2xl mb-12 md:mb-16">
+      <span class="eyebrow">O que as clientes dizem</span>
+      <h2 class="mt-4 font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight">
+        4,7 no Google. <em class="italic text-accent">Clientela fiel há décadas.</em>
+      </h2>
+      <p class="mt-4 text-muted-foreground leading-relaxed">
+        Todas as avaliações abaixo são reais e públicas, tiradas direto do Google Maps.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      <article class="quote-card p-6 md:p-7 rounded-2xl bg-card border border-border">
+        <div class="flex text-accent mb-4">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <p class="text-foreground/90 leading-relaxed relative z-10">
+          "Fazia tempo que não fazia algo diferente no meu cabelo. No salão Beleza Negra, já fiz trança raiz, permanente afro, e agora fiz relaxamento e um corte que amei."
+        </p>
+        <div class="mt-6 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">R</div>
+          <div>
+            <p class="font-semibold text-sm">Rosicler Rosa</p>
+            <p class="text-xs text-muted-foreground">Cliente</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="quote-card p-6 md:p-7 rounded-2xl bg-card border border-border">
+        <div class="flex text-accent mb-4">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <p class="text-foreground/90 leading-relaxed relative z-10">
+          "Amo este lugar e as pessoas que atendem a mim e minha família. Excelentes profissionais, Iara e André. Pessoas amigas e éticas naquilo que exercem."
+        </p>
+        <div class="mt-6 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">C</div>
+          <div>
+            <p class="font-semibold text-sm">Cleusa Oliveira</p>
+            <p class="text-xs text-muted-foreground">Cliente da família inteira</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="quote-card p-6 md:p-7 rounded-2xl bg-card border border-border">
+        <div class="flex text-accent mb-4">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <p class="text-foreground/90 leading-relaxed relative z-10">
+          "Eu só confio neste salão para cuidar das minhas madeixas. É confiável, o atendimento é ótimo e o melhor, não há exploração no preço. Lá me sinto em casa, sou muito bem tratada. Minha nota para a qualidade dos serviços é 1000."
+        </p>
+        <div class="mt-6 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">C</div>
+          <div>
+            <p class="font-semibold text-sm">Carmen Borcz</p>
+            <p class="text-xs text-muted-foreground">Cliente fiel</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="quote-card p-6 md:p-7 rounded-2xl bg-card border border-border">
+        <div class="flex text-accent mb-4">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <p class="text-foreground/90 leading-relaxed relative z-10">
+          "Atendimento super bom, já fiz trança com eles há muito tempo. Minha sogra, que tem o cabelo crespo, gostou de cortar o cabelo aqui. O lugar funciona somente com horário marcado e normalmente é sempre cheio."
+        </p>
+        <div class="mt-6 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">S</div>
+          <div>
+            <p class="font-semibold text-sm">Silvia Hikari W Souza</p>
+            <p class="text-xs text-muted-foreground">Cliente de longa data</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="mt-10 text-center">
+      <a href="https://maps.google.com/?cid=16227806581590605099&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent">
+        Ver todas as 61 avaliações no Google
+        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
       </a>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="relative py-16 md:py-28 bg-muted/40">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <div class="max-w-2xl mb-12 md:mb-16">
+      <span class="eyebrow">Contato</span>
+      <h2 class="mt-4 font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight">
+        Vem <em class="italic text-accent">cuidar</em> do seu cabelo.
+      </h2>
+      <p class="mt-4 text-muted-foreground leading-relaxed">
+        Atendimento somente com hora marcada. Chame no WhatsApp e a gente agenda seu horário.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <a href="tel:+554132256852" class="contact-card p-6 rounded-2xl bg-card border border-border block">
+        <div class="icon-box w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 transition">
+          <i data-lucide="phone" class="w-6 h-6"></i>
+        </div>
+        <p class="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">Telefone</p>
+        <p class="mt-1 font-semibold text-lg">(41) 3225-6852</p>
+        <p class="text-sm text-muted-foreground mt-1">Ligue para agendar</p>
+      </a>
+
+      <a href="https://wa.me/554132256852" class="contact-card p-6 rounded-2xl bg-card border border-border block">
+        <div class="icon-box w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 transition">
+          <i data-lucide="message-circle" class="w-6 h-6"></i>
+        </div>
+        <p class="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">WhatsApp</p>
+        <p class="mt-1 font-semibold text-lg">Chamar agora</p>
+        <p class="text-sm text-muted-foreground mt-1">Resposta rápida</p>
+      </a>
+
+      <a href="https://maps.google.com/?cid=16227806581590605099&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="contact-card p-6 rounded-2xl bg-card border border-border block">
+        <div class="icon-box w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 transition">
+          <i data-lucide="map-pin" class="w-6 h-6"></i>
+        </div>
+        <p class="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">Endereço</p>
+        <p class="mt-1 font-semibold text-sm leading-snug">Al. Dr. Muricy, 390</p>
+        <p class="text-sm text-muted-foreground mt-1">Centro, Curitiba · PR</p>
+      </a>
+    </div>
+
+    <div class="mt-6 p-6 md:p-8 rounded-2xl bg-card border border-border">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-xl bg-accent/15 text-accent flex items-center justify-center">
           <i data-lucide="clock" class="w-5 h-5"></i>
         </div>
-        <h3 class="font-serif text-lg font-semibold mb-3">Horário</h3>
-        <ul class="text-sm text-muted-foreground space-y-1">
-          <li class="flex justify-between"><span>Segunda</span><span>Fechado</span></li>
-          <li class="flex justify-between"><span>Terça</span><span>09:30 – 18:30</span></li>
-          <li class="flex justify-between"><span>Qua a Sáb</span><span>09:30 – 18:00</span></li>
-          <li class="flex justify-between"><span>Domingo</span><span>Fechado</span></li>
-        </ul>
+        <div>
+          <p class="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">Horário de funcionamento</p>
+          <p class="font-serif text-lg font-semibold">Quando a gente atende</p>
+        </div>
+      </div>
+      <ul class="divide-y divide-border">
+        <li class="flex justify-between items-center py-3 text-sm"><span class="text-muted-foreground">Segunda-feira</span><span class="font-semibold text-foreground/60">Fechado</span></li>
+        <li class="flex justify-between items-center py-3 text-sm"><span class="text-muted-foreground">Terça-feira</span><span class="font-semibold">09:30 às 18:30</span></li>
+        <li class="flex justify-between items-center py-3 text-sm"><span class="text-muted-foreground">Quarta-feira</span><span class="font-semibold">09:30 às 18:00</span></li>
+        <li class="flex justify-between items-center py-3 text-sm"><span class="text-muted-foreground">Quinta-feira</span><span class="font-semibold">09:30 às 18:00</span></li>
+        <li class="flex justify-between items-center py-3 text-sm"><span class="text-muted-foreground">Sexta-feira</span><span class="font-semibold">09:30 às 18:00</span></li>
+        <li class="flex justify-between items-center py-3 text-sm"><span class="text-muted-foreground">Sábado</span><span class="font-semibold">09:30 às 18:00</span></li>
+        <li class="flex justify-between items-center py-3 text-sm"><span class="text-muted-foreground">Domingo</span><span class="font-semibold text-foreground/60">Fechado</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="relative py-16 md:py-24">
+  <div class="max-w-5xl mx-auto px-4 md:px-6">
+    <div class="relative overflow-hidden rounded-2xl bg-primary text-primary-foreground p-8 md:p-16 text-center">
+      <div class="blob bg-accent/60 w-64 h-64 -top-10 -right-10"></div>
+      <div class="relative z-10">
+        <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight">
+          Marca seu horário<br>
+          e <em class="italic text-accent">vem se sentir em casa.</em>
+        </h2>
+        <p class="mt-5 text-primary-foreground/80 max-w-xl mx-auto">
+          Chame no WhatsApp, conta o que você quer fazer no cabelo, e a gente agenda o melhor horário pra você.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="https://wa.me/554132256852" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full btn-wa font-semibold shadow-xl">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            Agendar pelo WhatsApp
+          </a>
+          <a href="tel:+554132256852" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full border border-primary-foreground/25 hover:border-primary-foreground/50 font-semibold">
+            <i data-lucide="phone" class="w-5 h-5"></i>
+            (41) 3225-6852
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA Final -->
-<section class="py-20 md:py-24 bg-primary">
-  <div class="max-w-3xl mx-auto px-5 text-center">
-    <h2 class="font-serif text-3xl md:text-5xl font-semibold text-primary-foreground leading-tight">Pronta para uma transformação?</h2>
-    <p class="text-primary-foreground/80 mt-5 text-lg">Agende seu horário agora pelo WhatsApp e garanta o melhor atendimento.</p>
-    <a href="https://wa.me/554132256852" class="mt-9 inline-flex items-center justify-center gap-2 bg-[#25d366] hover:bg-[#20bd5a] text-white font-semibold px-8 py-4 rounded-xl shadow-lg transition">
-      <i data-lucide="message-circle" class="w-5 h-5"></i>
-      Chamar no WhatsApp
-    </a>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="py-10 bg-card border-t border-border">
-  <div class="max-w-5xl mx-auto px-5 text-center text-xs text-muted-foreground">
-    <p>Página criada para divulgação — dados públicos do Google. Entre em contato para remover.</p>
+<footer class="border-t border-border py-8">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 text-center text-xs text-muted-foreground">
+    Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
   </div>
 </footer>
 
-<!-- Botão flutuante WhatsApp -->
-<a href="https://wa.me/554132256852" aria-label="WhatsApp" class="wa-float fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-[#25d366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-lg">
-  <svg viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<a href="https://wa.me/554132256852" class="wa-float" aria-label="WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="28" height="28">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+  </svg>
 </a>
 
-<script src="https://unpkg.com/lucide@latest"></script>
 <script>
   lucide.createIcons();
   const btn = document.getElementById('menuBtn');
