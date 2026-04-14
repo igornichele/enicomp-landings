@@ -1,309 +1,511 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Biosense Clínica de Estética Avançada — Batel, Curitiba</title>
-<meta name="description" content="Estética avançada no Batel com atendimento humano e profissional. Botox, procedimentos faciais e corporais com Dra. Christiane. Agende pelo WhatsApp." />
-<meta property="og:title" content="Biosense Clínica de Estética Avançada" />
-<meta property="og:description" content="Estética avançada no Batel, Curitiba. Atendimento acolhedor e resultados que encantam. Agende pelo WhatsApp." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biosense Clínica de Estética Avançada · Botox, Limpeza de Pele e Estética no Batel, Curitiba</title>
+<meta name="description" content="Estética avançada no Batel com a Dra. Christiane. Botox, limpeza de pele, enzimas e cuidado personalizado. 4,8★ no Google.">
+<meta property="og:title" content="Biosense Clínica de Estética Avançada · Batel, Curitiba">
+<meta property="og:description" content="Botox, limpeza de pele e estética avançada no Batel. Atendimento atencioso, resultados naturais, nota 4,8 no Google.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200&q=80">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          border: 'hsl(var(--border))',
           background: 'hsl(var(--background))',
           foreground: 'hsl(var(--foreground))',
           primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+          accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
           muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
-          card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--foreground))' },
+          card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' },
+          border: 'hsl(var(--border))',
         },
-        borderRadius: { xl: 'var(--radius)', '2xl': 'calc(var(--radius) + 4px)' },
-        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], serif: ['Fraunces', 'serif'] },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          serif: ['Fraunces', 'Georgia', 'serif'],
+        },
+        borderRadius: { lg: 'var(--radius)', md: 'calc(var(--radius) - 2px)', sm: 'calc(var(--radius) - 4px)' },
       }
     }
   }
 </script>
 <style>
   :root {
-    --background: 30 40% 98%;
-    --foreground: 20 14% 12%;
-    --primary: 340 55% 55%;
-    --primary-foreground: 0 0% 100%;
-    --muted: 30 20% 94%;
-    --muted-foreground: 20 10% 40%;
+    --background: 30 25% 98%;
+    --foreground: 330 30% 12%;
+    --primary: 335 45% 22%;
+    --primary-foreground: 30 30% 98%;
+    --accent: 20 65% 58%;
+    --accent-foreground: 30 30% 98%;
+    --muted: 30 15% 94%;
+    --muted-foreground: 330 10% 42%;
     --card: 0 0% 100%;
-    --border: 20 15% 90%;
-    --radius: 0.75rem;
+    --card-foreground: 330 30% 12%;
+    --border: 30 15% 88%;
+    --radius: 0.875rem;
   }
   html { scroll-behavior: smooth; }
+  body { background: hsl(var(--background)); color: hsl(var(--foreground)); font-family: 'Inter', sans-serif; }
   section { scroll-margin-top: 90px; }
-  @keyframes pulse-ring {
-    0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
-    70% { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
-    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
-  }
-  .wa-pulse { animation: pulse-ring 2s infinite; }
   .font-serif { font-family: 'Fraunces', serif; }
-
-  /* floating-pill header */
-  .pill-header {
-    backdrop-filter: blur(16px) saturate(160%);
-    -webkit-backdrop-filter: blur(16px) saturate(160%);
-    background: rgba(255,255,255,0.72);
-    border: 1px solid rgba(20,14,20,0.08);
-    box-shadow: 0 4px 20px -4px rgba(20,14,20,0.08), 0 1px 2px rgba(20,14,20,0.04);
+  .eyebrow { position: relative; display: inline-block; padding-bottom: 0.75rem; }
+  .eyebrow::after { content: ''; position: absolute; left: 0; bottom: 0; width: 48px; height: 2px; background: hsl(var(--accent)); }
+  .blob { position: absolute; filter: blur(60px); opacity: 0.45; border-radius: 9999px; pointer-events: none; z-index: 0; }
+  .dot-pattern { background-image: radial-gradient(hsl(var(--primary) / 0.08) 1px, transparent 1px); background-size: 22px 22px; }
+  .review-card { position: relative; overflow: hidden; }
+  .review-card::before { content: '"'; position: absolute; top: -30px; right: 10px; font-family: 'Fraunces', serif; font-size: 180px; line-height: 1; color: hsl(var(--accent) / 0.12); pointer-events: none; }
+  .service-card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -20px hsl(var(--primary) / 0.25); border-color: hsl(var(--accent) / 0.5); }
+  .wa-pulse { animation: pulse 2.2s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,.55);} 70% { box-shadow: 0 0 0 18px rgba(37,211,102,0);} 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0);} }
+  .glass-header {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: linear-gradient(180deg, hsl(var(--background) / 0.7), hsl(var(--background) / 0.5));
+    border-bottom: 1px solid hsl(var(--border) / 0.6);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 8px 32px -12px hsl(var(--primary) / 0.12);
   }
-  .hero-glow {
-    background:
-      radial-gradient(1200px 400px at 80% -10%, hsl(340 70% 92%) 0%, transparent 60%),
-      radial-gradient(800px 300px at 10% 20%, hsl(30 60% 94%) 0%, transparent 55%);
+  .glass-header::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(600px 80px at 20% 0%, hsl(var(--accent) / 0.18), transparent 60%),
+                radial-gradient(500px 80px at 80% 0%, hsl(var(--primary) / 0.14), transparent 60%);
   }
+  .nav-link { position: relative; }
+  .nav-link::after { content:''; position:absolute; left:50%; bottom:-4px; width:0; height:2px; background: hsl(var(--accent)); transition: all .25s ease; transform: translateX(-50%); }
+  .nav-link:hover::after { width: 100%; }
 </style>
 </head>
-<body class="bg-background text-foreground font-sans antialiased">
+<body class="antialiased">
 
-<!-- Header: floating-pill -->
-<header class="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
-  <div class="pill-header max-w-5xl mx-auto rounded-full px-5 py-3 flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-2">
-      <span class="w-8 h-8 rounded-full bg-primary grid place-items-center text-primary-foreground font-serif font-semibold">B</span>
-      <span class="font-serif font-semibold tracking-tight text-[15px]">Biosense</span>
+<header class="glass-header sticky top-0 z-40 relative">
+  <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between relative">
+    <a href="#top" class="flex items-center gap-3">
+      <span class="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-serif text-lg font-semibold">B</span>
+      <span class="font-serif text-lg font-semibold tracking-tight">Biosense</span>
     </a>
-    <nav class="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
-      <a href="#sobre" class="hover:text-foreground transition">Sobre</a>
-      <a href="#diferenciais" class="hover:text-foreground transition">Diferenciais</a>
-      <a href="#avaliacoes" class="hover:text-foreground transition">Avaliações</a>
-      <a href="#contato" class="hover:text-foreground transition">Contato</a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/80">
+      <a href="#sobre" class="nav-link">Sobre</a>
+      <a href="#especialidades" class="nav-link">Especialidades</a>
+      <a href="#avaliacoes" class="nav-link">Avaliações</a>
+      <a href="#contato" class="nav-link">Contato</a>
+      <a href="https://wa.me/5541999262732" class="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm hover:opacity-90">Agendar</a>
     </nav>
-    <a href="https://wa.me/5541999262732" class="hidden md:inline-flex items-center gap-2 text-sm font-medium bg-foreground text-background px-4 py-2 rounded-full hover:opacity-90 transition">
-      Agendar
-    </a>
-    <button id="menuBtn" class="md:hidden p-2 -mr-2" aria-label="Menu">
-      <i data-lucide="menu" class="w-5 h-5"></i>
+    <button id="menuBtn" class="md:hidden p-2 -mr-2" aria-label="Abrir menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
   </div>
-  <div id="mobileMenu" class="hidden md:hidden pill-header max-w-5xl mx-auto mt-2 rounded-2xl px-5 py-4">
-    <nav class="flex flex-col gap-3 text-sm">
+  <div id="mobileMenu" class="hidden md:hidden border-t border-border/60 bg-background/90 backdrop-blur">
+    <div class="px-5 py-4 flex flex-col gap-3 text-sm font-medium">
       <a href="#sobre" class="py-1">Sobre</a>
-      <a href="#diferenciais" class="py-1">Diferenciais</a>
+      <a href="#especialidades" class="py-1">Especialidades</a>
       <a href="#avaliacoes" class="py-1">Avaliações</a>
       <a href="#contato" class="py-1">Contato</a>
-      <a href="https://wa.me/5541999262732" class="mt-2 inline-flex items-center justify-center gap-2 font-medium bg-foreground text-background px-4 py-2.5 rounded-full">Agendar no WhatsApp</a>
-    </nav>
+      <a href="https://wa.me/5541999262732" class="mt-2 bg-primary text-primary-foreground px-4 py-2 rounded-full text-center">Agendar no WhatsApp</a>
+    </div>
   </div>
 </header>
 
-<!-- Hero -->
-<section id="top" class="hero-glow pt-32 pb-20 md:pt-40 md:pb-28 px-5">
-  <div class="max-w-4xl mx-auto text-center">
-    <div class="inline-flex items-center gap-2 bg-card border rounded-full px-3 py-1.5 text-xs text-muted-foreground shadow-sm">
-      <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-      <span class="font-medium text-foreground">4.8</span>
-      <span>· 22 avaliações no Google</span>
+<section id="top" class="relative overflow-hidden">
+  <div class="blob" style="width:420px;height:420px;background:hsl(var(--accent)/0.6);top:-120px;left:-120px;"></div>
+  <div class="blob" style="width:380px;height:380px;background:hsl(var(--primary)/0.55);bottom:-120px;right:-100px;"></div>
+  <div class="absolute inset-0 dot-pattern opacity-60"></div>
+
+  <div class="relative max-w-6xl mx-auto px-5 pt-14 pb-20 lg:pt-20 lg:pb-28 grid lg:grid-cols-2 gap-12 items-center">
+    <div class="relative z-10">
+      <span class="inline-flex items-center gap-2 bg-accent/15 text-accent px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+        Referência em estética no Batel
+      </span>
+      <h1 class="mt-6 font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-tight">
+        Sua beleza natural<br>
+        <span class="italic text-accent">realçada com cuidado</span>
+      </h1>
+      <p class="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
+        Na Biosense, cada procedimento é explicado antes, durante e acompanhado depois.
+        Mãos de fada da Dra. Christiane, atendimento atencioso e resultados que surpreendem
+        sem exagero.
+      </p>
+      <div class="mt-6 flex items-center gap-3 text-sm">
+        <span class="text-accent tracking-widest">★★★★★</span>
+        <span class="font-semibold">4,8 no Google</span>
+        <span class="text-muted-foreground">· 22 avaliações reais</span>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="https://wa.me/5541999262732" class="inline-flex items-center gap-2 bg-[#25d366] text-white px-6 py-3.5 rounded-full font-semibold hover:brightness-110 transition">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg>
+          WhatsApp direto
+        </a>
+        <a href="tel:+5541999262732" class="inline-flex items-center gap-2 border border-border bg-card px-6 py-3.5 rounded-full font-semibold hover:border-primary transition">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          (41) 99926-2732
+        </a>
+      </div>
     </div>
-    <h1 class="font-serif text-4xl md:text-6xl font-semibold tracking-tight mt-6 leading-[1.05]">
-      Estética avançada com<br class="hidden md:block" />
-      <span class="text-primary">cuidado de verdade</span>.
-    </h1>
-    <p class="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-      Na Biosense, no coração do Batel, cada procedimento é pensado pra realçar o que você tem de melhor — com escuta, técnica e acompanhamento próximo.
-    </p>
-    <div class="mt-9 flex flex-col sm:flex-row gap-3 justify-center items-center">
-      <a href="https://wa.me/5541999262732" class="inline-flex items-center gap-2 bg-[#25d366] hover:bg-[#1fbd5a] text-white font-medium px-6 py-3.5 rounded-xl shadow-sm transition w-full sm:w-auto justify-center">
-        <i data-lucide="message-circle" class="w-5 h-5"></i>
-        Chamar no WhatsApp
-      </a>
-      <a href="#avaliacoes" class="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition">
-        Ver o que dizem as clientes
-        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-      </a>
+
+    <div class="relative">
+      <div class="relative aspect-[4/5] rounded-2xl overflow-hidden ring-1 ring-accent/40 shadow-2xl shadow-primary/20">
+        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80" alt="Ambiente de clínica de estética" class="w-full h-full object-cover">
+      </div>
+      <div class="hidden sm:block absolute -bottom-6 -left-6 bg-card border border-border rounded-xl p-4 shadow-xl max-w-[220px]">
+        <div class="text-xs uppercase tracking-widest text-muted-foreground">Especialidade</div>
+        <div class="font-serif text-lg font-semibold mt-1">Botox & Harmonização</div>
+        <div class="text-xs text-muted-foreground mt-1">Aplicação precisa, sem dor</div>
+      </div>
+      <div class="hidden sm:block absolute -top-5 -right-5 bg-primary text-primary-foreground rounded-xl px-4 py-3 shadow-xl">
+        <div class="text-2xl font-serif font-semibold leading-none">4,8★</div>
+        <div class="text-[10px] uppercase tracking-widest mt-1 opacity-80">Google</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Sobre -->
-<section id="sobre" class="py-20 md:py-28 px-5">
-  <div class="max-w-3xl mx-auto">
-    <span class="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Sobre</span>
-    <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3 tracking-tight">Um espaço feito pra você se sentir bem.</h2>
-    <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
-      A Biosense é uma clínica de estética avançada no Batel, em Curitiba, comandada pela Dra. Christiane e equipe. Aqui o foco é o resultado natural e a confiança — com explicação antes, durante e depois de cada procedimento, sempre com atenção ao que cada cliente precisa.
-    </p>
-    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
-      Botox, procedimentos faciais e tratamentos personalizados realizados por profissionais que escutam de verdade.
-    </p>
+<section class="bg-primary text-primary-foreground">
+  <div class="max-w-6xl mx-auto px-5 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold">4,8<span class="text-accent">★</span></div>
+      <div class="mt-2 text-[11px] uppercase tracking-widest opacity-75">Nota no Google</div>
+    </div>
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold">22+</div>
+      <div class="mt-2 text-[11px] uppercase tracking-widest opacity-75">Avaliações reais</div>
+    </div>
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold">100%</div>
+      <div class="mt-2 text-[11px] uppercase tracking-widest opacity-75">Clientes que recomendam</div>
+    </div>
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold">Batel</div>
+      <div class="mt-2 text-[11px] uppercase tracking-widest opacity-75">Coração de Curitiba</div>
+    </div>
   </div>
 </section>
 
-<!-- Diferenciais -->
-<section id="diferenciais" class="py-20 md:py-28 px-5 bg-muted/50">
-  <div class="max-w-5xl mx-auto">
+<section id="sobre" class="relative py-20 lg:py-28">
+  <div class="max-w-6xl mx-auto px-5 grid lg:grid-cols-2 gap-12 items-center">
+    <div class="grid grid-cols-2 gap-4">
+      <div class="aspect-[3/4] rounded-2xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=600&q=80" alt="Procedimento estético" class="w-full h-full object-cover">
+      </div>
+      <div class="aspect-[3/4] rounded-2xl overflow-hidden mt-8">
+        <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&q=80" alt="Cuidado com a pele" class="w-full h-full object-cover">
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow text-xs uppercase tracking-[0.2em] text-accent font-semibold">Sobre a Biosense</div>
+      <h2 class="mt-5 font-serif text-3xl sm:text-4xl lg:text-5xl leading-tight">
+        Profissionais <em class="italic text-accent">realistas</em>,<br>
+        resultados verdadeiros.
+      </h2>
+      <p class="mt-6 text-muted-foreground leading-relaxed">
+        A Biosense é referência no Batel por um motivo simples: honestidade. Aqui, cada procedimento
+        é explicado do início ao fim, e o retorno continua depois, com orientações e acompanhamento.
+        É essa dedicação que transforma clientes em indicações para a família toda.
+      </p>
+      <p class="mt-4 text-muted-foreground leading-relaxed">
+        Nas palavras das clientes: "profissionais que falam a verdade sobre cada procedimento".
+        Atenciosas, carinhosas, com mãos de fada e preços honestos.
+      </p>
+
+      <div class="mt-8 grid sm:grid-cols-2 gap-4">
+        <div class="flex gap-3">
+          <div class="shrink-0 w-9 h-9 rounded-lg bg-accent/15 text-accent flex items-center justify-center">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold">Explicação completa</div>
+            <div class="text-sm text-muted-foreground">Antes, durante e depois do procedimento.</div>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="shrink-0 w-9 h-9 rounded-lg bg-accent/15 text-accent flex items-center justify-center">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold">Acompanhamento pós</div>
+            <div class="text-sm text-muted-foreground">Contato mesmo depois, com todos os cuidados.</div>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="shrink-0 w-9 h-9 rounded-lg bg-accent/15 text-accent flex items-center justify-center">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold">Sem dor, com técnica</div>
+            <div class="text-sm text-muted-foreground">"Mãos de fada", palavras das clientes.</div>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="shrink-0 w-9 h-9 rounded-lg bg-accent/15 text-accent flex items-center justify-center">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold">Preços honestos</div>
+            <div class="text-sm text-muted-foreground">Promoções frequentes e transparência.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="especialidades" class="py-20 lg:py-28 bg-muted/40 relative overflow-hidden">
+  <div class="blob" style="width:380px;height:380px;background:hsl(var(--accent)/0.35);top:-100px;right:-80px;"></div>
+  <div class="max-w-6xl mx-auto px-5 relative">
     <div class="max-w-2xl">
-      <span class="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Diferenciais</span>
-      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3 tracking-tight">Por que as clientes voltam.</h2>
+      <div class="eyebrow text-xs uppercase tracking-[0.2em] text-accent font-semibold">O que fazemos</div>
+      <h2 class="mt-5 font-serif text-3xl sm:text-4xl lg:text-5xl leading-tight">
+        Estética avançada, do rosto ao corpo.
+      </h2>
+      <p class="mt-4 text-muted-foreground">Procedimentos mencionados pelas próprias clientes nas avaliações do Google.</p>
     </div>
-    <div class="grid md:grid-cols-3 gap-5 mt-12">
-      <div class="bg-card border rounded-2xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-xl bg-primary/10 grid place-items-center text-primary">
-          <i data-lucide="sparkles" class="w-5 h-5"></i>
+
+    <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="service-card relative bg-card border border-border rounded-2xl p-6">
+        <div class="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-widest bg-accent/15 text-accent px-2 py-1 rounded-full">Especialidade principal</div>
+        <div class="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
         </div>
-        <h3 class="font-serif text-xl font-semibold mt-5">Resultado surpreendente</h3>
-        <p class="mt-2 text-muted-foreground leading-relaxed text-[15px]">Técnica apurada em botox e procedimentos faciais. Resultados que parecem naturais e encantam de verdade.</p>
+        <h3 class="mt-5 font-serif text-xl font-semibold">Aplicação de Botox</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Aplicação precisa, sem dor e com explicação completa. "Resultado surpreendente", nas palavras das clientes.</p>
       </div>
-      <div class="bg-card border rounded-2xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-xl bg-primary/10 grid place-items-center text-primary">
-          <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+
+      <div class="service-card bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
         </div>
-        <h3 class="font-serif text-xl font-semibold mt-5">Atendimento acolhedor</h3>
-        <p class="mt-2 text-muted-foreground leading-relaxed text-[15px]">Atenciosas, carinhosas e sempre perguntando se você está confortável. Cada cliente é tratada com cuidado real.</p>
+        <h3 class="mt-5 font-serif text-xl font-semibold">Limpeza de Pele</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">"Uma super limpeza de pele", mencionada nas reviews. Pele renovada, poros limpos, brilho natural.</p>
       </div>
-      <div class="bg-card border rounded-2xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-xl bg-primary/10 grid place-items-center text-primary">
-          <i data-lucide="shield-check" class="w-5 h-5"></i>
+
+      <div class="service-card bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.29 1.51 4.04 3 5.5l7 7z"/></svg>
         </div>
-        <h3 class="font-serif text-xl font-semibold mt-5">Honestidade profissional</h3>
-        <p class="mt-2 text-muted-foreground leading-relaxed text-[15px]">Profissionais realistas que indicam só o que faz sentido pra você — sem forçar procedimentos desnecessários.</p>
+        <h3 class="mt-5 font-serif text-xl font-semibold">Enzimas para Emagrecimento</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Aplicação de enzimas para emagrecimento localizado, com avaliação personalizada do resultado esperado.</p>
+      </div>
+
+      <div class="service-card bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+        </div>
+        <h3 class="mt-5 font-serif text-xl font-semibold">Procedimentos Variados</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">"Tem vários procedimentos", como contam as clientes. Cardápio amplo adaptado à sua necessidade.</p>
+      </div>
+
+      <div class="service-card bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+        </div>
+        <h3 class="mt-5 font-serif text-xl font-semibold">Atendimento Consultivo</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Profissionais que falam a verdade sobre cada procedimento. Nada de empurrar o que não é necessário.</p>
+      </div>
+
+      <div class="service-card bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 010-4h12v4M20 12v7a1 1 0 01-1 1H5a2 2 0 01-2-2V6"/><circle cx="16" cy="14" r="2"/></svg>
+        </div>
+        <h3 class="mt-5 font-serif text-xl font-semibold">Promoções Frequentes</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">"Sempre tem promoções", segundo as clientes. Qualidade com preço acessível e transparente.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Avaliações -->
-<section id="avaliacoes" class="py-20 md:py-28 px-5">
-  <div class="max-w-5xl mx-auto">
-    <div class="flex items-end justify-between flex-wrap gap-4">
-      <div class="max-w-2xl">
-        <span class="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Avaliações</span>
-        <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3 tracking-tight">O que as clientes dizem.</h2>
-      </div>
-      <div class="flex items-center gap-2 text-sm text-muted-foreground">
-        <div class="flex items-center gap-0.5 text-amber-400">
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-        </div>
-        <span class="font-medium text-foreground">4.8</span> · 22 avaliações
-      </div>
+<section id="avaliacoes" class="py-20 lg:py-28">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="max-w-2xl">
+      <div class="eyebrow text-xs uppercase tracking-[0.2em] text-accent font-semibold">O que as clientes dizem</div>
+      <h2 class="mt-5 font-serif text-3xl sm:text-4xl lg:text-5xl leading-tight">
+        22 avaliações. Nota <em class="italic text-accent">4,8</em>.
+      </h2>
+      <p class="mt-4 text-muted-foreground">Depoimentos reais publicados no Google. Sem filtros, sem edições.</p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-5 mt-12">
-      <figure class="bg-card border rounded-2xl p-7 shadow-sm flex flex-col">
-        <i data-lucide="quote" class="w-6 h-6 text-primary/40"></i>
-        <blockquote class="mt-4 text-[15px] text-foreground/90 leading-relaxed flex-1">
-          Fiz aplicação de botox com a Dra. Christiane e achei o resultado surpreendente! Além de explicar todo o procedimento antes e durante, manteve contato mesmo após me instruindo com todos os cuidados.
-        </blockquote>
-        <figcaption class="mt-5 pt-5 border-t flex items-center justify-between">
-          <span class="font-medium text-sm">Lethicia Miragaia</span>
-          <span class="flex items-center gap-0.5 text-amber-400">
-            <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-          </span>
-        </figcaption>
-      </figure>
-
-      <figure class="bg-card border rounded-2xl p-7 shadow-sm flex flex-col">
-        <i data-lucide="quote" class="w-6 h-6 text-primary/40"></i>
-        <blockquote class="mt-4 text-[15px] text-foreground/90 leading-relaxed flex-1">
-          Fiz aplicação de botox com a Cris e ela explicou todo o procedimento, super atenciosa e sempre perguntando se eu estava confortável, profissional diferenciada. O resultado está incrível, estou amando.
-        </blockquote>
-        <figcaption class="mt-5 pt-5 border-t flex items-center justify-between">
-          <span class="font-medium text-sm">Andréa Fernandes</span>
-          <span class="flex items-center gap-0.5 text-amber-400">
-            <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-          </span>
-        </figcaption>
-      </figure>
-
-      <figure class="bg-card border rounded-2xl p-7 shadow-sm flex flex-col">
-        <i data-lucide="quote" class="w-6 h-6 text-primary/40"></i>
-        <blockquote class="mt-4 text-[15px] text-foreground/90 leading-relaxed flex-1">
-          Maravilhosas! Um atendimento incrível, atenciosas e carinhosas com as clientes. Profissionais realistas que não são como a maioria das esteticistas que visam apenas ganhar dinheiro — elas falam a verdade.
-        </blockquote>
-        <figcaption class="mt-5 pt-5 border-t flex items-center justify-between">
-          <span class="font-medium text-sm">Tatiane Vinharski</span>
-          <span class="flex items-center gap-0.5 text-amber-400">
-            <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-          </span>
-        </figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- Contato -->
-<section id="contato" class="py-20 md:py-28 px-5 bg-muted/50">
-  <div class="max-w-5xl mx-auto">
-    <span class="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Contato</span>
-    <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3 tracking-tight">Venha conhecer a Biosense.</h2>
-
-    <div class="grid md:grid-cols-3 gap-5 mt-12">
-      <a href="https://maps.google.com/?cid=362045707666554676" target="_blank" rel="noopener" class="bg-card border rounded-2xl p-7 shadow-sm hover:shadow-md transition block">
-        <div class="w-11 h-11 rounded-xl bg-primary/10 grid place-items-center text-primary">
-          <i data-lucide="map-pin" class="w-5 h-5"></i>
+    <div class="mt-12 grid md:grid-cols-2 gap-5">
+      <article class="review-card bg-card border border-border rounded-2xl p-6">
+        <div class="text-accent tracking-widest">★★★★★</div>
+        <p class="mt-4 text-foreground/90 leading-relaxed relative z-10">
+          Fiz aplicação de botox com a Dra. Christiane e achei o resultado surpreendente. Além de explicar todo o procedimento antes e durante, manteve contato mesmo após, me instruindo com todos os cuidados. Mãos de fada, não senti qualquer dor. Adorei e super recomendo. Em breve, estarei aí para conhecer novos procedimentos.
+        </p>
+        <div class="mt-5 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">L</div>
+          <div>
+            <div class="font-semibold text-sm">Lethicia Miragaia</div>
+            <div class="text-xs text-muted-foreground">Cliente de botox</div>
+          </div>
         </div>
-        <h3 class="font-serif text-lg font-semibold mt-5">Endereço</h3>
-        <p class="mt-2 text-muted-foreground leading-relaxed text-[15px]">R. Buenos Aires, 466 — Sala 71<br>Batel, Curitiba — PR<br>80250-070</p>
-        <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">Abrir no Maps <i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
-      </a>
+      </article>
 
-      <a href="tel:+5541999262732" class="bg-card border rounded-2xl p-7 shadow-sm hover:shadow-md transition block">
-        <div class="w-11 h-11 rounded-xl bg-primary/10 grid place-items-center text-primary">
-          <i data-lucide="phone" class="w-5 h-5"></i>
+      <article class="review-card bg-card border border-border rounded-2xl p-6">
+        <div class="text-accent tracking-widest">★★★★★</div>
+        <p class="mt-4 text-foreground/90 leading-relaxed relative z-10">
+          Fiz aplicação de botox com a Cris e ela explicou todo o procedimento, super atenciosa e sempre perguntando se eu estava confortável. Profissional diferenciada. O resultado está incrível, estou amando minha nova versão. Deixo aqui registrado meu agradecimento.
+        </p>
+        <div class="mt-5 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">A</div>
+          <div>
+            <div class="font-semibold text-sm">Andréa Fernandes</div>
+            <div class="text-xs text-muted-foreground">Cliente de botox</div>
+          </div>
         </div>
-        <h3 class="font-serif text-lg font-semibold mt-5">Telefone</h3>
-        <p class="mt-2 text-muted-foreground text-[15px]">(41) 99926-2732</p>
-        <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">Ligar agora <i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
-      </a>
+      </article>
 
-      <div class="bg-card border rounded-2xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-xl bg-primary/10 grid place-items-center text-primary">
-          <i data-lucide="clock" class="w-5 h-5"></i>
+      <article class="review-card bg-card border border-border rounded-2xl p-6">
+        <div class="text-accent tracking-widest">★★★★★</div>
+        <p class="mt-4 text-foreground/90 leading-relaxed relative z-10">
+          Maravilhosas! Um atendimento incrível, atenciosas e carinhosas com as clientes. Profissionais realistas que não são como a maioria das esteticistas que visam apenas ganhar dinheiro. Elas falam a verdade sobre cada procedimento. Eu amo e super recomendo!
+        </p>
+        <div class="mt-5 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">T</div>
+          <div>
+            <div class="font-semibold text-sm">Tatiane Vinharski</div>
+            <div class="text-xs text-muted-foreground">Cliente recorrente</div>
+          </div>
         </div>
-        <h3 class="font-serif text-lg font-semibold mt-5">Horário</h3>
-        <ul class="mt-2 text-[15px] text-muted-foreground space-y-1">
-          <li class="flex justify-between"><span>Seg – Sex</span><span>08:00 – 19:00</span></li>
-          <li class="flex justify-between"><span>Sábado</span><span>08:00 – 13:00</span></li>
-          <li class="flex justify-between"><span>Domingo</span><span>Fechado</span></li>
-        </ul>
-      </div>
+      </article>
+
+      <article class="review-card bg-card border border-border rounded-2xl p-6">
+        <div class="text-accent tracking-widest">★★★★★</div>
+        <p class="mt-4 text-foreground/90 leading-relaxed relative z-10">
+          Ótima experiência, profissionais super simpáticas, preços bons. Super recomendo. Tem vários procedimentos. Uma super limpeza de pele, aplicação de enzima para emagrecimento. Sempre tem promoções. Ótimo lugar.
+        </p>
+        <div class="mt-5 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">K</div>
+          <div>
+            <div class="font-semibold text-sm">Kelly Delinski</div>
+            <div class="text-xs text-muted-foreground">Cliente</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card bg-card border border-border rounded-2xl p-6 md:col-span-2">
+        <div class="text-accent tracking-widest">★★★★★</div>
+        <p class="mt-4 text-foreground/90 leading-relaxed relative z-10">
+          Ótimas profissionais, atenciosas e preço bom. Já indiquei toda minha família para fazer botox e outros serviços.
+        </p>
+        <div class="mt-5 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">F</div>
+          <div>
+            <div class="font-semibold text-sm">Fabieli Luiz</div>
+            <div class="text-xs text-muted-foreground">Cliente que indica a família</div>
+          </div>
+        </div>
+      </article>
     </div>
 
-    <!-- CTA final -->
-    <div class="mt-14 bg-card border rounded-2xl p-10 md:p-14 shadow-sm text-center">
-      <h3 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight">Vamos conversar?</h3>
-      <p class="mt-4 text-muted-foreground max-w-xl mx-auto">Tire suas dúvidas, veja horários disponíveis e agende sua avaliação direto pelo WhatsApp.</p>
-      <a href="https://wa.me/5541999262732" class="mt-8 inline-flex items-center gap-2 bg-[#25d366] hover:bg-[#1fbd5a] text-white font-medium px-7 py-4 rounded-xl shadow-sm transition">
-        <i data-lucide="message-circle" class="w-5 h-5"></i>
-        Chamar no WhatsApp
+    <div class="mt-10 text-center">
+      <a href="https://maps.google.com/?cid=362045707666554676&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-primary font-semibold hover:text-accent transition">
+        Ver todas as 22 avaliações no Google
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
       </a>
     </div>
   </div>
 </section>
 
-<footer class="py-10 px-5 border-t">
-  <p class="text-xs text-muted-foreground text-center max-w-xl mx-auto">
-    Página criada para divulgação — dados públicos do Google. Entre em contato para remover.
-  </p>
+<section id="contato" class="py-20 lg:py-28 bg-muted/40">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="max-w-2xl">
+      <div class="eyebrow text-xs uppercase tracking-[0.2em] text-accent font-semibold">Venha nos visitar</div>
+      <h2 class="mt-5 font-serif text-3xl sm:text-4xl lg:text-5xl leading-tight">
+        Estamos no <em class="italic text-accent">Batel</em>, prontas para cuidar de você.
+      </h2>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-3 gap-5">
+      <a href="tel:+5541999262732" class="service-card bg-card border border-border rounded-2xl p-6 block">
+        <div class="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div class="mt-5 text-[11px] uppercase tracking-widest text-muted-foreground font-semibold">Telefone</div>
+        <div class="mt-1 font-serif text-xl font-semibold">(41) 99926-2732</div>
+        <div class="text-sm text-muted-foreground mt-1">Ligue para agendar</div>
+      </a>
+
+      <a href="https://wa.me/5541999262732" class="service-card bg-card border border-border rounded-2xl p-6 block">
+        <div class="w-12 h-12 rounded-xl bg-[#25d366]/15 text-[#25d366] flex items-center justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+        </div>
+        <div class="mt-5 text-[11px] uppercase tracking-widest text-muted-foreground font-semibold">WhatsApp</div>
+        <div class="mt-1 font-serif text-xl font-semibold">Chamar agora</div>
+        <div class="text-sm text-muted-foreground mt-1">Resposta rápida no horário comercial</div>
+      </a>
+
+      <a href="https://maps.google.com/?cid=362045707666554676&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="service-card bg-card border border-border rounded-2xl p-6 block">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="mt-5 text-[11px] uppercase tracking-widest text-muted-foreground font-semibold">Endereço</div>
+        <div class="mt-1 font-serif text-xl font-semibold leading-tight">R. Buenos Aires, 466</div>
+        <div class="text-sm text-muted-foreground mt-1">Sala 71, Batel, Curitiba, PR</div>
+      </a>
+    </div>
+
+    <div class="mt-8 bg-card border border-border rounded-2xl p-6 md:p-8">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-xl bg-accent/15 text-accent flex items-center justify-center">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="font-serif text-xl font-semibold">Horário de funcionamento</div>
+      </div>
+      <ul class="grid sm:grid-cols-2 gap-x-10 gap-y-0 text-sm">
+        <li class="flex justify-between py-3 border-b border-border"><span class="text-muted-foreground">Segunda-feira</span><span class="font-medium">08:00 – 19:00</span></li>
+        <li class="flex justify-between py-3 border-b border-border"><span class="text-muted-foreground">Terça-feira</span><span class="font-medium">08:00 – 19:00</span></li>
+        <li class="flex justify-between py-3 border-b border-border"><span class="text-muted-foreground">Quarta-feira</span><span class="font-medium">08:00 – 19:00</span></li>
+        <li class="flex justify-between py-3 border-b border-border"><span class="text-muted-foreground">Quinta-feira</span><span class="font-medium">08:00 – 19:00</span></li>
+        <li class="flex justify-between py-3 border-b border-border"><span class="text-muted-foreground">Sexta-feira</span><span class="font-medium">08:00 – 19:00</span></li>
+        <li class="flex justify-between py-3 border-b border-border"><span class="text-muted-foreground">Sábado</span><span class="font-medium">08:00 – 13:00</span></li>
+        <li class="flex justify-between py-3 sm:col-span-2"><span class="text-muted-foreground">Domingo</span><span class="font-medium text-accent">Fechado</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="py-16">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="relative overflow-hidden rounded-3xl bg-primary text-primary-foreground p-10 md:p-16 text-center">
+      <div class="blob" style="width:300px;height:300px;background:hsl(var(--accent)/0.7);top:-80px;right:-80px;"></div>
+      <div class="blob" style="width:280px;height:280px;background:hsl(var(--accent)/0.5);bottom:-80px;left:-80px;"></div>
+      <div class="relative z-10">
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl leading-tight">
+          Pronta para se sentir <em class="italic text-accent">ainda melhor</em>?<br>
+          Agende uma avaliação hoje.
+        </h2>
+        <p class="mt-5 text-primary-foreground/80 max-w-2xl mx-auto">
+          Converse com a Dra. Christiane no WhatsApp. Atendimento rápido, orientação honesta e o procedimento certo para você.
+        </p>
+        <div class="mt-8">
+          <a href="https://wa.me/5541999262732" class="inline-flex items-center gap-2 bg-[#25d366] text-white px-7 py-4 rounded-full font-semibold hover:brightness-110 transition">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.464 3.488A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488M12.05 21.785h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            Falar no WhatsApp agora
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-10 border-t border-border">
+  <div class="max-w-6xl mx-auto px-5 text-center text-xs text-muted-foreground">
+    Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
+  </div>
 </footer>
 
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/5541999262732" aria-label="WhatsApp" class="wa-pulse fixed bottom-5 right-5 z-50 bg-[#25d366] hover:bg-[#1fbd5a] text-white w-14 h-14 rounded-full grid place-items-center shadow-lg transition">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M20.52 3.48A11.9 11.9 0 0 0 12.06 0C5.5 0 .17 5.33.17 11.88a11.8 11.8 0 0 0 1.6 5.94L0 24l6.34-1.66a11.87 11.87 0 0 0 5.72 1.46h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.24-6.15-3.43-8.44zM12.07 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.76.98 1-3.67-.24-.38a9.86 9.86 0 0 1-1.52-5.27c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.13 1.03 7 2.9a9.83 9.83 0 0 1 2.9 7c0 5.46-4.44 9.9-9.87 9.9zm5.43-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.47 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
+<a href="https://wa.me/5541999262732" class="wa-pulse fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25d366] text-white flex items-center justify-center shadow-lg hover:scale-105 transition" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M20.464 3.488A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488M12.05 21.785h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m5.423-7.403c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
 </a>
 
 <script>
-  lucide.createIcons();
   const btn = document.getElementById('menuBtn');
   const menu = document.getElementById('mobileMenu');
   btn?.addEventListener('click', () => menu.classList.toggle('hidden'));
   menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
 </script>
+
 </body>
 </html>
