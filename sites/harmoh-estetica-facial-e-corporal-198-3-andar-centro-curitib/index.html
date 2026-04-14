@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Harmoh Estética Facial e Corporal — Curitiba</title>
+<meta name="description" content="Harmoh Estética Facial e Corporal em Curitiba. Procedimentos estéticos de alta qualidade com atendimento acolhedor. Agende pelo WhatsApp." />
+<meta property="og:title" content="Harmoh Estética Facial e Corporal — Curitiba" />
+<meta property="og:description" content="Clínica de estética facial e corporal em Curitiba. Ambiente acolhedor, profissionais de confiança. Agende pelo WhatsApp." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          border: 'hsl(var(--border))',
+          background: 'hsl(var(--background))',
+          foreground: 'hsl(var(--foreground))',
+          primary: {
+            DEFAULT: 'hsl(var(--primary))',
+            foreground: 'hsl(var(--primary-foreground))',
+          },
+          muted: {
+            DEFAULT: 'hsl(var(--muted))',
+            foreground: 'hsl(var(--muted-foreground))',
+          },
+          card: {
+            DEFAULT: 'hsl(var(--card))',
+            foreground: 'hsl(var(--card-foreground))',
+          },
+        },
+        borderRadius: {
+          lg: 'var(--radius)',
+          md: 'calc(var(--radius) - 2px)',
+          sm: 'calc(var(--radius) - 4px)',
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          serif: ['Fraunces', 'serif'],
+        },
+      },
+    },
+  }
+</script>
+
+<style>
+  :root {
+    --background: 30 40% 98%;
+    --foreground: 340 20% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 340 20% 15%;
+    --primary: 340 55% 55%;
+    --primary-foreground: 0 0% 100%;
+    --muted: 30 20% 95%;
+    --muted-foreground: 340 10% 45%;
+    --border: 340 15% 90%;
+    --radius: 0.75rem;
+  }
+  html { scroll-behavior: smooth; }
+  section { scroll-margin-top: 90px; }
+  body { font-family: 'Inter', sans-serif; background: hsl(var(--background)); color: hsl(var(--foreground)); }
+  .font-serif { font-family: 'Fraunces', serif; }
+
+  /* Floating pill header */
+  .pill-header {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 8px 32px rgba(140, 60, 90, 0.08);
+  }
+
+  /* WhatsApp pulse */
+  .wa-float {
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+  }
+  .wa-float::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: #25d366;
+    z-index: -1;
+    animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+
+  .hero-bg {
+    background:
+      radial-gradient(ellipse at top right, hsla(340, 60%, 85%, 0.4), transparent 60%),
+      radial-gradient(ellipse at bottom left, hsla(20, 60%, 88%, 0.4), transparent 60%),
+      hsl(var(--background));
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- Header: floating-pill -->
+<header class="fixed top-0 left-0 right-0 z-50 px-3 pt-3">
+  <div class="pill-header max-w-6xl mx-auto rounded-full px-5 py-3 flex items-center justify-between">
+    <a href="#top" class="font-serif text-lg font-semibold tracking-tight text-foreground">
+      Harmoh<span class="text-primary">.</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground">
+      <a href="#sobre" class="hover:text-foreground transition-colors">Sobre</a>
+      <a href="#diferenciais" class="hover:text-foreground transition-colors">Diferenciais</a>
+      <a href="#avaliacoes" class="hover:text-foreground transition-colors">Avaliações</a>
+      <a href="#contato" class="hover:text-foreground transition-colors">Contato</a>
+    </nav>
+    <a href="https://wa.me/5541998384495" class="hidden md:inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium hover:opacity-90 transition">
+      Agendar
+    </a>
+    <button id="menuBtn" class="md:hidden p-2 -mr-2" aria-label="Menu">
+      <i data-lucide="menu" class="w-5 h-5"></i>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden max-w-6xl mx-auto mt-2 pill-header rounded-2xl p-4">
+    <nav class="flex flex-col gap-3 text-sm font-medium">
+      <a href="#sobre" class="py-2 text-foreground">Sobre</a>
+      <a href="#diferenciais" class="py-2 text-foreground">Diferenciais</a>
+      <a href="#avaliacoes" class="py-2 text-foreground">Avaliações</a>
+      <a href="#contato" class="py-2 text-foreground">Contato</a>
+      <a href="https://wa.me/5541998384495" class="mt-1 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-4 py-2.5 rounded-full">Agendar no WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="top" class="hero-bg pt-32 pb-20 md:pt-40 md:pb-28 px-5">
+  <div class="max-w-4xl mx-auto text-center">
+    <div class="inline-flex items-center gap-2 bg-card border border-border rounded-full px-3.5 py-1.5 text-xs font-medium text-muted-foreground shadow-sm mb-8">
+      <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+      <span><strong class="text-foreground">4.4</strong> · 59 avaliações no Google</span>
+    </div>
+    <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-foreground">
+      Sua beleza cuidada com <em class="text-primary not-italic">confiança</em> e acolhimento.
+    </h1>
+    <p class="mt-6 text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+      Clínica de estética facial e corporal no Centro de Curitiba. Procedimentos de alta qualidade em um ambiente que transmite segurança do início ao fim.
+    </p>
+    <div class="mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center">
+      <a href="https://wa.me/5541998384495" class="inline-flex items-center justify-center gap-2 bg-[#25d366] text-white px-7 py-4 rounded-xl font-semibold shadow-lg shadow-green-500/20 hover:brightness-105 transition w-full sm:w-auto">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        Chamar no WhatsApp
+      </a>
+      <a href="#avaliacoes" class="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition px-4 py-3">
+        Ver avaliações
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Sobre -->
+<section id="sobre" class="py-20 md:py-28 px-5">
+  <div class="max-w-3xl mx-auto text-center">
+    <span class="text-xs uppercase tracking-[0.2em] text-primary font-medium">Sobre a Harmoh</span>
+    <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3 text-foreground">Um espaço feito pra você se sentir bem</h2>
+    <p class="mt-6 text-muted-foreground leading-relaxed text-lg">
+      Na Harmoh, cada atendimento é pensado pra ser uma experiência acolhedora do começo ao fim. Nosso time oferece procedimentos estéticos faciais e corporais com profissionais experientes e ambiente que passa confiança de verdade.
+    </p>
+    <p class="mt-4 text-muted-foreground leading-relaxed">
+      Do botox à bichectomia, do tratamento de olheiras a protocolos corporais — buscamos resultados de qualidade que respeitam seu tempo, seu ritmo e seus objetivos.
+    </p>
+  </div>
+</section>
+
+<!-- Diferenciais -->
+<section id="diferenciais" class="py-20 md:py-28 px-5 bg-muted/40">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="text-xs uppercase tracking-[0.2em] text-primary font-medium">Por que nos escolher</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3 text-foreground">Cuidado que se sente em cada detalhe</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <i data-lucide="sparkles" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-foreground">Ambiente acolhedor</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Uma clínica que transmite confiança desde a recepção. Você se sente em boas mãos assim que entra.</p>
+      </div>
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <i data-lucide="badge-check" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-foreground">Profissionais de confiança</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Equipe experiente, atenciosa e atualizada nas melhores técnicas. Referência pra quem busca resultado com segurança.</p>
+      </div>
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <i data-lucide="heart" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-foreground">Resultados que encantam</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Procedimentos de alta qualidade, do facial ao corporal, com resultados que os clientes adoram mostrar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Avaliações -->
+<section id="avaliacoes" class="py-20 md:py-28 px-5">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="text-xs uppercase tracking-[0.2em] text-primary font-medium">Depoimentos</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3 text-foreground">O que dizem no Google</h2>
+      <div class="flex items-center justify-center gap-2 mt-4 text-sm text-muted-foreground">
+        <span class="flex items-center gap-0.5">
+          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+          <i data-lucide="star-half" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+        </span>
+        <span><strong class="text-foreground">4.4</strong> · 59 avaliações</span>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="flex gap-0.5 mb-4">
+          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+        </div>
+        <p class="font-serif text-lg text-foreground leading-relaxed">“Simplesmente perfeito! Minha experiência na clínica foi maravilhosa do início ao fim. O ambiente é acolhedor e transmite muita confiança. Mas o grande destaque é, sem dúvidas, a Dra. Sara.”</p>
+        <p class="mt-5 text-sm font-medium text-muted-foreground">— Weriton Artur Souza</p>
+      </div>
+
+      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
+        <div class="flex gap-0.5 mb-4">
+          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>
+        </div>
+        <p class="font-serif text-lg text-foreground leading-relaxed">“A melhor de Curitiba e região! Ótimos profissionais e procedimentos de alta qualidade. Fiz bichectomia e tratamento de olheiras por carboxiterapia e o resultado ficou excelente.”</p>
+        <p class="mt-5 text-sm font-medium text-muted-foreground">— Gustavo</p>
+      </div>
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="https://maps.google.com/?cid=15141569175450473640" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
+        Ver todas as avaliações no Google
+        <i data-lucide="external-link" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Contato -->
+<section id="contato" class="py-20 md:py-28 px-5 bg-muted/40">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="text-xs uppercase tracking-[0.2em] text-primary font-medium">Contato</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3 text-foreground">Venha nos visitar</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <a href="https://maps.google.com/?cid=15141569175450473640" target="_blank" rel="noopener" class="bg-card border border-border rounded-xl p-6 shadow-sm hover:border-primary/40 transition block">
+        <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
+          <i data-lucide="map-pin" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-semibold text-foreground">Endereço</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">R. Pedro Ivo, 198 — 3º andar<br>Centro, Curitiba — PR<br>80010-020</p>
+      </a>
+      <a href="tel:+5541998384495" class="bg-card border border-border rounded-xl p-6 shadow-sm hover:border-primary/40 transition block">
+        <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
+          <i data-lucide="phone" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-semibold text-foreground">Telefone</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">(41) 99838-4495<br><span class="text-primary font-medium">Toque pra ligar</span></p>
+      </a>
+      <div class="bg-card border border-border rounded-xl p-6 shadow-sm">
+        <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
+          <i data-lucide="clock" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-semibold text-foreground">Horário</h3>
+        <ul class="mt-2 text-sm text-muted-foreground leading-relaxed space-y-0.5">
+          <li>Seg–Sex · 09h às 18h</li>
+          <li>Sábado · 09h às 13h</li>
+          <li>Domingo · Fechado</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Final -->
+<section class="py-20 md:py-28 px-5">
+  <div class="max-w-3xl mx-auto text-center bg-card border border-border rounded-2xl p-10 md:p-14 shadow-sm">
+    <h2 class="font-serif text-3xl md:text-4xl font-semibold text-foreground">Pronta pra cuidar de você?</h2>
+    <p class="mt-4 text-muted-foreground text-lg">Fale direto com a gente no WhatsApp e agende uma avaliação.</p>
+    <a href="https://wa.me/5541998384495" class="mt-8 inline-flex items-center justify-center gap-2 bg-[#25d366] text-white px-8 py-4 rounded-xl font-semibold shadow-lg shadow-green-500/20 hover:brightness-105 transition">
+      <i data-lucide="message-circle" class="w-5 h-5"></i>
+      Chamar no WhatsApp
+    </a>
+  </div>
+</section>
+
+<footer class="border-t border-border py-8 px-5">
+  <p class="text-center text-xs text-muted-foreground max-w-xl mx-auto leading-relaxed">
+    Página criada para divulgação — dados públicos do Google. Entre em contato para remover.
+  </p>
+</footer>
+
+<!-- WhatsApp Floating -->
+<a href="https://wa.me/5541998384495" aria-label="WhatsApp" class="wa-float fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-[#25d366] text-white flex items-center justify-center hover:scale-105 transition">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.693.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  lucide.createIcons();
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+</script>
+</body>
+</html>
