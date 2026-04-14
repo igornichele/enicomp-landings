@@ -70,10 +70,10 @@
 </head>
 <body class="antialiased">
 
-<!-- Topbar -->
-<header class="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
-  <div class="max-w-5xl mx-auto px-5 h-16 flex items-center justify-between">
-    <a href="#top" class="font-serif text-lg font-semibold text-primary">Dra. Deyse Lisowski</a>
+<!-- Topbar (scroll-shrink) -->
+<header id="siteHeader" class="sticky top-0 z-40 w-full border-b border-border/60 bg-background/85 backdrop-blur-md transition-all duration-300">
+  <div id="headerInner" class="max-w-5xl mx-auto px-5 h-20 flex items-center justify-between transition-all duration-300">
+    <a href="#top" id="headerBrand" class="font-serif font-semibold text-primary transition-all duration-300 text-xl">Dra. Deyse Lisowski</a>
     <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground">
       <a href="#sobre" class="hover:text-foreground transition">Sobre</a>
       <a href="#diferenciais" class="hover:text-foreground transition">Diferenciais</a>
@@ -278,6 +278,23 @@
   const menu = document.getElementById('mobileMenu');
   btn.addEventListener('click', () => menu.classList.toggle('hidden'));
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+
+  // Scroll-shrink header
+  const header = document.getElementById('siteHeader');
+  const inner = document.getElementById('headerInner');
+  const brand = document.getElementById('headerBrand');
+  const onScroll = () => {
+    const scrolled = window.scrollY > 24;
+    inner.classList.toggle('h-20', !scrolled);
+    inner.classList.toggle('h-14', scrolled);
+    brand.classList.toggle('text-xl', !scrolled);
+    brand.classList.toggle('text-base', scrolled);
+    header.classList.toggle('shadow-sm', scrolled);
+    header.classList.toggle('bg-background/95', scrolled);
+    header.classList.toggle('bg-background/85', !scrolled);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 </script>
 
 </body>
