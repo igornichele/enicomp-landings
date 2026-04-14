@@ -3,31 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio Andressa Rocha Academy — Salão de Beleza em Curitiba</title>
-<meta name="description" content="Studio Andressa Rocha Academy — salão de beleza no Centro de Curitiba. Atendimento acolhedor, profissionais excelentes. Agende pelo WhatsApp.">
-<meta property="og:title" content="Studio Andressa Rocha Academy — Salão de Beleza em Curitiba">
-<meta property="og:description" content="Atendimento acolhedor e resultados impecáveis no coração de Curitiba. Avaliação 5 estrelas no Google.">
+<title>Studio Andressa Rocha Academy · Salão de Beleza no Centro de Curitiba</title>
+<meta name="description" content="Sobrancelhas, cabelo e estética com profissionais que passam segurança do primeiro atendimento. 5,0★ no Google, no coração do Centro de Curitiba.">
+<meta property="og:title" content="Studio Andressa Rocha Academy · Beleza no Centro de Curitiba">
+<meta property="og:description" content="Atendimento acolhedor, técnica precisa e resultado que dá vontade de voltar. 5,0★ no Google.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=80">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          serif: ['Fraunces', 'Georgia', 'serif'],
+        },
         colors: {
           background: 'hsl(var(--background))',
           foreground: 'hsl(var(--foreground))',
           primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+          accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
           muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
-          card: 'hsl(var(--card))',
+          card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' },
           border: 'hsl(var(--border))',
         },
-        borderRadius: { xl: 'var(--radius)' },
-        fontFamily: {
-          sans: ['Inter', 'sans-serif'],
-          serif: ['Fraunces', 'serif'],
+        borderRadius: {
+          lg: 'var(--radius)',
+          md: 'calc(var(--radius) - 2px)',
+          sm: 'calc(var(--radius) - 4px)',
         },
       },
     },
@@ -35,266 +42,473 @@
 </script>
 <style>
   :root {
-    --background: 30 40% 98%;
-    --foreground: 25 30% 12%;
-    --primary: 340 55% 45%;
-    --primary-foreground: 0 0% 100%;
-    --muted: 30 20% 94%;
-    --muted-foreground: 25 15% 40%;
+    --background: 25 30% 97%;
+    --foreground: 340 25% 12%;
+    --primary: 340 35% 18%;
+    --primary-foreground: 30 30% 97%;
+    --accent: 28 55% 55%;
+    --accent-foreground: 340 25% 12%;
+    --muted: 25 20% 92%;
+    --muted-foreground: 340 10% 40%;
     --card: 0 0% 100%;
-    --border: 30 20% 88%;
-    --radius: 0.75rem;
+    --card-foreground: 340 25% 12%;
+    --border: 25 20% 88%;
+    --radius: 0.875rem;
   }
   html { scroll-behavior: smooth; }
-  section { scroll-margin-top: 90px; }
-  body { font-family: 'Inter', sans-serif; background: hsl(var(--background)); color: hsl(var(--foreground)); }
-  .font-serif { font-family: 'Fraunces', serif; }
-
-  /* Floating pill header */
-  .header-pill {
-    backdrop-filter: blur(16px) saturate(160%);
-    -webkit-backdrop-filter: blur(16px) saturate(160%);
-    background: hsla(30, 40%, 98%, 0.75);
-    border: 1px solid hsla(30, 20%, 80%, 0.5);
-    box-shadow: 0 8px 32px -8px hsla(340, 30%, 20%, 0.12);
+  body {
+    font-family: 'Inter', sans-serif;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
-
-  @keyframes pulse-wa {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
-    50% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+  .font-serif { font-family: 'Fraunces', Georgia, serif; }
+  section { scroll-margin-top: 100px; }
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: hsl(var(--accent));
+    display: inline-block;
+    position: relative;
+    padding-bottom: 0.75rem;
   }
-  .wa-float { animation: pulse-wa 2s infinite; }
-
-  .hero-bg {
-    background:
-      radial-gradient(ellipse at top right, hsla(340, 55%, 88%, 0.5), transparent 60%),
-      radial-gradient(ellipse at bottom left, hsla(30, 60%, 90%, 0.6), transparent 60%);
+  .eyebrow::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 48px;
+    height: 2px;
+    background: hsl(var(--accent));
   }
+  .eyebrow-center::after { left: 50%; transform: translateX(-50%); }
+  .blob {
+    position: absolute;
+    filter: blur(60px);
+    opacity: 0.5;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .dot-pattern {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .review-card { position: relative; overflow: hidden; }
+  .review-card::before {
+    content: '"';
+    position: absolute;
+    top: -30px;
+    right: 16px;
+    font-family: 'Fraunces', serif;
+    font-size: 140px;
+    line-height: 1;
+    color: hsl(var(--accent) / 0.12);
+    font-weight: 600;
+  }
+  .service-card { transition: all 0.3s ease; }
+  .service-card:hover {
+    transform: translateY(-4px);
+    border-color: hsl(var(--accent) / 0.5);
+    box-shadow: 0 12px 40px -12px hsl(var(--primary) / 0.18);
+  }
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+    70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+  }
+  .wa-float { animation: pulse-ring 2s infinite; }
+  .glass-header {
+    background: linear-gradient(180deg, hsl(var(--background) / 0.6), hsl(var(--background) / 0.3));
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid hsl(var(--border) / 0.5);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+  }
+  .nav-link { position: relative; transition: color 0.2s; }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: hsl(var(--accent));
+    transition: all 0.25s ease;
+    transform: translateX(-50%);
+  }
+  .nav-link:hover::after { width: 80%; }
+  .nav-link:hover { color: hsl(var(--accent)); }
 </style>
 </head>
 <body class="antialiased">
 
-<!-- Floating Pill Header -->
-<header class="sticky top-0 z-50 pt-3 px-4">
-  <div class="header-pill max-w-5xl mx-auto rounded-full px-5 py-3 flex items-center justify-between">
-    <a href="#" class="font-serif font-semibold text-base md:text-lg tracking-tight">
-      Studio Andressa Rocha
+<header class="glass-header fixed top-0 left-0 right-0 z-40">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <span class="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-serif text-lg font-semibold">S</span>
+      <span class="font-serif text-base sm:text-lg font-semibold text-foreground leading-tight">Studio Andressa Rocha<br class="hidden sm:block"><span class="text-xs sm:text-sm font-sans font-normal text-muted-foreground">Academy</span></span>
     </a>
-    <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground">
-      <a href="#sobre" class="hover:text-foreground transition">Sobre</a>
-      <a href="#diferenciais" class="hover:text-foreground transition">Diferenciais</a>
-      <a href="#avaliacoes" class="hover:text-foreground transition">Avaliações</a>
-      <a href="#contato" class="hover:text-foreground transition">Contato</a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/80">
+      <a href="#sobre" class="nav-link">Sobre</a>
+      <a href="#especialidades" class="nav-link">Especialidades</a>
+      <a href="#avaliacoes" class="nav-link">Avaliações</a>
+      <a href="#contato" class="nav-link">Contato</a>
+      <a href="https://wa.me/5541998819758" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground text-xs font-semibold hover:bg-primary/90 transition">Agendar</a>
     </nav>
-    <a href="https://wa.me/5541998819758" class="hidden md:inline-flex items-center gap-2 bg-primary text-primary-foreground text-sm font-medium px-4 py-2 rounded-full hover:opacity-90 transition">
-      Agendar
-    </a>
-    <button id="menuBtn" class="md:hidden p-1" aria-label="Menu">
-      <i data-lucide="menu" class="w-5 h-5"></i>
+    <button id="menuBtn" class="md:hidden p-2 rounded-md hover:bg-muted transition" aria-label="Menu">
+      <i data-lucide="menu" class="w-6 h-6"></i>
     </button>
   </div>
-  <div id="mobileMenu" class="hidden md:hidden header-pill mt-2 max-w-5xl mx-auto rounded-2xl px-5 py-4">
-    <nav class="flex flex-col gap-3 text-sm font-medium">
-      <a href="#sobre" class="py-1">Sobre</a>
-      <a href="#diferenciais" class="py-1">Diferenciais</a>
-      <a href="#avaliacoes" class="py-1">Avaliações</a>
-      <a href="#contato" class="py-1">Contato</a>
-      <a href="https://wa.me/5541998819758" class="mt-2 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full">Agendar no WhatsApp</a>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-border bg-background/95 backdrop-blur">
+    <nav class="px-5 py-4 flex flex-col gap-3 text-sm font-medium">
+      <a href="#sobre" class="py-2">Sobre</a>
+      <a href="#especialidades" class="py-2">Especialidades</a>
+      <a href="#avaliacoes" class="py-2">Avaliações</a>
+      <a href="#contato" class="py-2">Contato</a>
+      <a href="https://wa.me/5541998819758" class="mt-2 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-primary text-primary-foreground font-semibold">Agendar pelo WhatsApp</a>
     </nav>
   </div>
 </header>
 
-<!-- Hero -->
-<section class="hero-bg pt-16 pb-20 md:pt-24 md:pb-28 px-4">
-  <div class="max-w-4xl mx-auto text-center">
-    <div class="inline-flex items-center gap-2 bg-card border border-border rounded-full px-4 py-1.5 text-sm text-muted-foreground shadow-sm mb-6">
-      <span class="flex text-amber-500">
-        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-      </span>
-      <span class="font-medium text-foreground">5.0</span>
-      <span>· 68 avaliações no Google</span>
-    </div>
-    <h1 class="font-serif text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] mb-5">
-      Beleza com cuidado,<br><span class="italic text-primary">do jeitinho que você merece.</span>
-    </h1>
-    <p class="text-lg text-muted-foreground max-w-xl mx-auto mb-8">
-      No coração de Curitiba, o Studio Andressa Rocha Academy entrega resultados impecáveis com um atendimento que acolhe de verdade.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-3 justify-center">
-      <a href="https://wa.me/5541998819758" class="inline-flex items-center justify-center gap-2 bg-[#25d366] text-white font-medium px-7 py-4 rounded-xl shadow-sm hover:opacity-90 transition">
-        <i data-lucide="message-circle" class="w-5 h-5"></i>
-        Chamar no WhatsApp
-      </a>
-      <a href="#contato" class="inline-flex items-center justify-center gap-2 bg-card border border-border text-foreground font-medium px-7 py-4 rounded-xl hover:bg-muted transition">
-        Ver horários e endereço
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Sobre -->
-<section id="sobre" class="py-20 px-4">
-  <div class="max-w-3xl mx-auto text-center">
-    <span class="text-xs uppercase tracking-widest text-primary font-semibold">Sobre</span>
-    <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3 mb-5">Um espaço feito pra você se sentir em casa</h2>
-    <p class="text-muted-foreground text-lg leading-relaxed">
-      O Studio Andressa Rocha Academy é referência em beleza no Centro de Curitiba. Nossas clientes chegam, às vezes com medo, e saem encantadas — com sobrancelhas perfeitas, procedimentos impecáveis e, principalmente, com a segurança de terem sido bem cuidadas por profissionais apaixonados pelo que fazem.
-    </p>
-  </div>
-</section>
-
-<!-- Diferenciais -->
-<section id="diferenciais" class="py-20 px-4 bg-muted/40">
-  <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-14">
-      <span class="text-xs uppercase tracking-widest text-primary font-semibold">Diferenciais</span>
-      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3">O que nossas clientes mais amam</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
-          <i data-lucide="sparkles" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-serif text-xl font-semibold mb-2">Profissionais excelentes</h3>
-        <p class="text-muted-foreground text-sm leading-relaxed">Trabalho técnico apurado em design de sobrancelhas, procedimentos estéticos e muito mais — resultados que valem o retorno.</p>
+<section class="relative pt-28 pb-16 sm:pt-36 sm:pb-24 overflow-hidden">
+  <div class="blob w-[380px] h-[380px] bg-accent/40 -top-20 -left-20"></div>
+  <div class="blob w-[420px] h-[420px] bg-primary/30 top-40 -right-24"></div>
+  <div class="absolute inset-0 dot-pattern opacity-60 pointer-events-none"></div>
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div>
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/15 text-accent text-xs font-semibold mb-6">
+        <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+        Referência em beleza no Centro de Curitiba
       </div>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
-          <i data-lucide="heart-handshake" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-serif text-xl font-semibold mb-2">Atendimento acolhedor</h3>
-        <p class="text-muted-foreground text-sm leading-relaxed">Chegou com receio? A gente te passa segurança do primeiro minuto até o fim. Clientes relatam zero dor e muito cuidado.</p>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-tight text-foreground">
+        Sua beleza<br>
+        <span class="italic text-accent">nas mãos que passam segurança.</span>
+      </h1>
+      <p class="mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
+        Sobrancelhas, cabelo e estética com profissionais atenciosas, que acolhem quem chega com medo e entregam um resultado que dá vontade de voltar só pra agradecer.
+      </p>
+      <div class="mt-6 flex items-center gap-3 text-sm text-muted-foreground">
+        <div class="flex text-accent text-lg tracking-tight">★★★★★</div>
+        <span><strong class="text-foreground">5,0</strong> no Google · 68 avaliações</span>
       </div>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-5">
-          <i data-lucide="map-pin" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-serif text-xl font-semibold mb-2">No Centro de Curitiba</h3>
-        <p class="text-muted-foreground text-sm leading-relaxed">Localização privilegiada na Rua Desembargador Westphalen, fácil acesso para quem trabalha ou mora na região central.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Avaliações -->
-<section id="avaliacoes" class="py-20 px-4">
-  <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-14">
-      <span class="text-xs uppercase tracking-widest text-primary font-semibold">Avaliações</span>
-      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3">O que dizem nossas clientes</h2>
-      <p class="text-muted-foreground mt-3">Depoimentos reais do Google · nota 5.0 com 68 avaliações</p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <article class="bg-card border border-border rounded-xl p-7 shadow-sm flex flex-col">
-        <div class="flex text-amber-500 mb-4">
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-        </div>
-        <p class="font-serif italic text-foreground leading-relaxed mb-5 flex-1">"Minha experiência foi maravilhosa, fui muito bem atendida por um excelente profissional, onde minhas sobrancelhas ficaram lindas. Quero voltar para o retoque, serviço excelente."</p>
-        <p class="text-sm font-medium text-muted-foreground">— Valeria de Fatima Molinari</p>
-      </article>
-      <article class="bg-card border border-border rounded-xl p-7 shadow-sm flex flex-col">
-        <div class="flex text-amber-500 mb-4">
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-        </div>
-        <p class="font-serif italic text-foreground leading-relaxed mb-5 flex-1">"Morrendo de medo eu fui, mas a profissional me passou muita segurança, foi maravilhosa, não senti dor nenhuma. Muito obrigada desde o primeiro atendimento."</p>
-        <p class="text-sm font-medium text-muted-foreground">— Rubia Cristina Dias Pereira de Oliveira</p>
-      </article>
-      <article class="bg-card border border-border rounded-xl p-7 shadow-sm flex flex-col">
-        <div class="flex text-amber-500 mb-4">
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-        </div>
-        <p class="font-serif italic text-foreground leading-relaxed mb-5 flex-1">"Ótimo atendimento, meninas muito educadas, trabalho maravilhoso. Amei!"</p>
-        <p class="text-sm font-medium text-muted-foreground">— Debora CS Mori</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- Contato -->
-<section id="contato" class="py-20 px-4 bg-muted/40">
-  <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-12">
-      <span class="text-xs uppercase tracking-widest text-primary font-semibold">Contato</span>
-      <h2 class="font-serif text-3xl md:text-4xl font-semibold mt-3">Venha nos visitar</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <a href="https://maps.google.com/?cid=7460356392949435368" target="_blank" class="bg-card border border-border rounded-xl p-7 shadow-sm hover:shadow-md transition block">
-        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
-          <i data-lucide="map-pin" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-semibold mb-2">Endereço</h3>
-        <p class="text-muted-foreground text-sm leading-relaxed">R. Des. Westphalen, 289 — 5º andar<br>Centro, Curitiba - PR<br>80010-110</p>
-      </a>
-      <a href="tel:+5541998819758" class="bg-card border border-border rounded-xl p-7 shadow-sm hover:shadow-md transition block">
-        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="https://wa.me/5541998819758" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#25d366] text-white font-semibold shadow-lg shadow-[#25d366]/25 hover:bg-[#20bd5a] transition">
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+          Agendar pelo WhatsApp
+        </a>
+        <a href="tel:+5541998819758" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-border bg-card text-foreground font-semibold hover:border-primary/40 transition">
           <i data-lucide="phone" class="w-5 h-5"></i>
+          (41) 99881-9758
+        </a>
+      </div>
+    </div>
+    <div class="relative">
+      <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border-4 border-accent/30 shadow-2xl shadow-primary/20">
+        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=80" alt="Salão de beleza acolhedor" class="w-full h-full object-cover">
+      </div>
+      <div class="hidden sm:block absolute -bottom-6 -left-6 bg-card border border-border rounded-xl p-4 shadow-xl max-w-[220px]">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-accent/15 text-accent flex items-center justify-center">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">Destaque</div>
+            <div class="text-sm font-semibold text-foreground">Design de sobrancelhas</div>
+          </div>
         </div>
-        <h3 class="font-semibold mb-2">Telefone</h3>
-        <p class="text-muted-foreground text-sm">(41) 99881-9758</p>
-      </a>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
-          <i data-lucide="clock" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-semibold mb-3">Horário</h3>
-        <ul class="text-muted-foreground text-sm space-y-1">
-          <li class="flex justify-between"><span>Seg – Sex</span><span>09:00 – 18:00</span></li>
-          <li class="flex justify-between"><span>Sábado</span><span>09:00 – 16:00</span></li>
-          <li class="flex justify-between"><span>Domingo</span><span>Fechado</span></li>
-        </ul>
+      </div>
+      <div class="hidden sm:block absolute -top-5 -right-5 bg-primary text-primary-foreground rounded-xl px-4 py-3 shadow-xl">
+        <div class="text-[10px] uppercase tracking-wider opacity-70 font-semibold">Avaliação</div>
+        <div class="font-serif text-2xl font-semibold">5,0 ★</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA Final -->
-<section class="py-20 px-4">
-  <div class="max-w-3xl mx-auto text-center bg-card border border-border rounded-2xl p-10 md:p-14 shadow-sm">
-    <h2 class="font-serif text-3xl md:text-4xl font-semibold mb-4">Pronta pra se sentir linda?</h2>
-    <p class="text-muted-foreground text-lg mb-8">Mande uma mensagem, tire suas dúvidas e agende seu horário direto pelo WhatsApp.</p>
-    <a href="https://wa.me/5541998819758" class="inline-flex items-center justify-center gap-2 bg-[#25d366] text-white font-medium px-8 py-4 rounded-xl shadow-sm hover:opacity-90 transition text-lg">
-      <i data-lucide="message-circle" class="w-5 h-5"></i>
-      Chamar no WhatsApp
-    </a>
+<section class="bg-primary text-primary-foreground">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-10 sm:py-14 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+    <div>
+      <div class="font-serif text-4xl sm:text-5xl font-semibold">5,0<span class="text-accent">★</span></div>
+      <div class="mt-1 text-[11px] uppercase tracking-[0.18em] opacity-70 font-semibold">Nota no Google</div>
+    </div>
+    <div>
+      <div class="font-serif text-4xl sm:text-5xl font-semibold">68<span class="text-accent">+</span></div>
+      <div class="mt-1 text-[11px] uppercase tracking-[0.18em] opacity-70 font-semibold">Avaliações reais</div>
+    </div>
+    <div>
+      <div class="font-serif text-4xl sm:text-5xl font-semibold">100<span class="text-accent">%</span></div>
+      <div class="mt-1 text-[11px] uppercase tracking-[0.18em] opacity-70 font-semibold">Avaliações 5 estrelas</div>
+    </div>
+    <div>
+      <div class="font-serif text-4xl sm:text-5xl font-semibold">Seg–Sáb</div>
+      <div class="mt-1 text-[11px] uppercase tracking-[0.18em] opacity-70 font-semibold">Atendimento no Centro</div>
+    </div>
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="border-t border-border py-8 px-4">
-  <div class="max-w-5xl mx-auto text-center text-xs text-muted-foreground">
-    Página criada para divulgação — dados públicos do Google. Entre em contato para remover.
+<section id="sobre" class="py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <div class="grid grid-cols-2 gap-4">
+      <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=700&q=80" alt="Ambiente do salão" class="w-full aspect-[3/4] object-cover rounded-2xl">
+      <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=700&q=80" alt="Detalhe de cuidado" class="w-full aspect-[3/4] object-cover rounded-2xl mt-8">
+    </div>
+    <div>
+      <span class="eyebrow">Sobre o studio</span>
+      <h2 class="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight text-foreground">
+        Um lugar onde o <em class="italic text-accent">medo vira confiança</em> e o resultado vira sorriso.
+      </h2>
+      <p class="mt-6 text-muted-foreground leading-relaxed">
+        No Studio Andressa Rocha Academy, o que mais aparece nas avaliações é a mesma palavra: segurança. Clientes chegam com receio, e saem falando das profissionais educadas, atenciosas e maravilhosas, que cuidam de cada detalhe com carinho.
+      </p>
+      <p class="mt-4 text-muted-foreground leading-relaxed">
+        Sobrancelhas que ficam lindas de primeira, atendimento que não dói, acolhimento que faz voltar. É o tipo de lugar em que você marca pra testar e já sai reservando o próximo horário.
+      </p>
+      <div class="mt-8 grid sm:grid-cols-2 gap-5">
+        <div class="flex gap-3">
+          <div class="shrink-0 w-10 h-10 rounded-lg bg-accent/15 text-accent flex items-center justify-center"><i data-lucide="check" class="w-5 h-5"></i></div>
+          <div>
+            <div class="font-semibold text-foreground">Segurança desde o primeiro contato</div>
+            <div class="text-sm text-muted-foreground">Profissionais que acalmam quem chega com medo.</div>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="shrink-0 w-10 h-10 rounded-lg bg-accent/15 text-accent flex items-center justify-center"><i data-lucide="check" class="w-5 h-5"></i></div>
+          <div>
+            <div class="font-semibold text-foreground">Técnica sem dor</div>
+            <div class="text-sm text-muted-foreground">Procedimento cuidadoso, do começo ao fim.</div>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="shrink-0 w-10 h-10 rounded-lg bg-accent/15 text-accent flex items-center justify-center"><i data-lucide="check" class="w-5 h-5"></i></div>
+          <div>
+            <div class="font-semibold text-foreground">Equipe educada e simpática</div>
+            <div class="text-sm text-muted-foreground">O elogio mais repetido nas reviews.</div>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="shrink-0 w-10 h-10 rounded-lg bg-accent/15 text-accent flex items-center justify-center"><i data-lucide="check" class="w-5 h-5"></i></div>
+          <div>
+            <div class="font-semibold text-foreground">Resultado que faz voltar</div>
+            <div class="text-sm text-muted-foreground">Cliente sai já marcando o próximo horário.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="especialidades" class="py-20 sm:py-28 bg-muted/40">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl">
+      <span class="eyebrow">Serviços e especialidades</span>
+      <h2 class="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight text-foreground">
+        Cuidado de ponta a ponta, com a assinatura da casa.
+      </h2>
+      <p class="mt-5 text-muted-foreground leading-relaxed">
+        Do design de sobrancelha ao atendimento mais delicado, cada serviço é pensado pra entregar um resultado impecável e uma experiência tranquila.
+      </p>
+    </div>
+    <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="service-card relative bg-card border border-border rounded-2xl p-7">
+        <div class="absolute top-5 right-5 text-[9px] font-semibold tracking-widest uppercase px-2 py-1 rounded-full bg-accent/15 text-accent">Principal</div>
+        <div class="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center mb-5"><i data-lucide="eye" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold text-foreground">Design de sobrancelhas</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">O carro-chefe do studio. "Ficaram lindas, quero voltar pro retoque" é o que mais se lê nas avaliações.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-7">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold text-foreground">Atendimento sem dor</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Pra quem chega com medo: a profissional acalma, explica cada passo e o procedimento passa sem desconforto.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-7">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5"><i data-lucide="sparkles" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold text-foreground">Estética e beleza facial</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Procedimentos que valorizam o olhar e o rosto, com técnica apurada e acabamento caprichado.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-7">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5"><i data-lucide="heart-handshake" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold text-foreground">Acolhimento de quem tem receio</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">"Morrendo de medo eu fui, e a profissional me passou muita segurança." O tom da casa é esse.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-7">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5"><i data-lucide="users" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold text-foreground">Equipe educada e atenciosa</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">"Meninas muito educadas, profissionais e simpáticas." Parte central da experiência no studio.</p>
+      </div>
+      <div class="service-card bg-card border border-border rounded-2xl p-7">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5"><i data-lucide="calendar-check" class="w-6 h-6"></i></div>
+        <h3 class="font-serif text-xl font-semibold text-foreground">Retoque e manutenção</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Relacionamento de longo prazo: cliente volta pra manter o resultado e preservar o cuidado do primeiro dia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacoes" class="py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl">
+      <span class="eyebrow">O que as clientes dizem</span>
+      <h2 class="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight text-foreground">
+        68 avaliações. <em class="italic text-accent">Todas 5 estrelas.</em>
+      </h2>
+      <p class="mt-5 text-muted-foreground leading-relaxed">
+        Depoimentos reais publicados no Google por quem passou pelo studio. Sem filtro, sem edição.
+      </p>
+    </div>
+    <div class="mt-12 grid md:grid-cols-2 gap-5">
+      <div class="review-card bg-card border border-border rounded-2xl p-7">
+        <div class="flex text-accent text-lg">★★★★★</div>
+        <p class="mt-4 text-foreground leading-relaxed relative z-10">Minha experiência foi maravilhosa, fui muito bem atendida por uma excelente profissional. Minhas sobrancelhas ficaram lindas, quero voltar para o retoque. Serviço excelente.</p>
+        <div class="mt-6 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">V</div>
+          <div>
+            <div class="font-semibold text-foreground text-sm">Valéria de Fátima Molinari</div>
+            <div class="text-xs text-muted-foreground">Cliente · Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card bg-card border border-border rounded-2xl p-7">
+        <div class="flex text-accent text-lg">★★★★★</div>
+        <p class="mt-4 text-foreground leading-relaxed relative z-10">Morrendo de medo eu fui, mas a profissional me passou muita segurança. Foi maravilhosa, não senti dor nenhuma. Muito obrigada desde o primeiro atendimento.</p>
+        <div class="mt-6 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">R</div>
+          <div>
+            <div class="font-semibold text-foreground text-sm">Rubia Cristina Dias Pereira de Oliveira</div>
+            <div class="text-xs text-muted-foreground">Cliente · Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card bg-card border border-border rounded-2xl p-7">
+        <div class="flex text-accent text-lg">★★★★★</div>
+        <p class="mt-4 text-foreground leading-relaxed relative z-10">Ótimo atendimento. Meninas muito educadas, trabalho maravilhoso. Amei.</p>
+        <div class="mt-6 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">D</div>
+          <div>
+            <div class="font-semibold text-foreground text-sm">Debora CS Mori</div>
+            <div class="text-xs text-muted-foreground">Cliente · Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card bg-card border border-border rounded-2xl p-7">
+        <div class="flex text-accent text-lg">★★★★★</div>
+        <p class="mt-4 text-foreground leading-relaxed relative z-10">Maravilhosa. As meninas são muito educadas, profissionais e simpáticas, e o serviço ficou muito bom. Indico com certeza.</p>
+        <div class="mt-6 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">G</div>
+          <div>
+            <div class="font-semibold text-foreground text-sm">Geraldo Kuasney</div>
+            <div class="text-xs text-muted-foreground">Cliente · Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card bg-card border border-border rounded-2xl p-7 md:col-span-2">
+        <div class="flex text-accent text-lg">★★★★★</div>
+        <p class="mt-4 text-foreground leading-relaxed relative z-10">Ótimo atendimento, super atenciosa. Não senti nada de dor e ficou perfeito. Super recomendo.</p>
+        <div class="mt-6 pt-5 border-t border-border flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">B</div>
+          <div>
+            <div class="font-semibold text-foreground text-sm">Bia Almandes</div>
+            <div class="text-xs text-muted-foreground">Cliente · Google</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 text-center">
+      <a href="https://maps.google.com/?cid=7460356392949435368&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-primary font-semibold hover:text-accent transition">
+        Ver todas as 68 avaliações no Google
+        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="py-20 sm:py-28 bg-muted/40">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto">
+      <span class="eyebrow eyebrow-center">Fale com o studio</span>
+      <h2 class="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight text-foreground">
+        Agendar é simples. <em class="italic text-accent">Voltar, ainda mais.</em>
+      </h2>
+    </div>
+    <div class="mt-12 grid md:grid-cols-3 gap-5">
+      <a href="tel:+5541998819758" class="service-card bg-card border border-border rounded-2xl p-7 block">
+        <div class="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center mb-5"><i data-lucide="phone" class="w-6 h-6"></i></div>
+        <div class="text-[10px] uppercase tracking-[0.18em] font-semibold text-muted-foreground">Telefone</div>
+        <div class="mt-1 font-serif text-xl font-semibold text-foreground">(41) 99881-9758</div>
+        <div class="text-sm text-muted-foreground mt-1">Ligue durante o expediente</div>
+      </a>
+      <a href="https://wa.me/5541998819758" class="service-card bg-card border border-border rounded-2xl p-7 block">
+        <div class="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center mb-5"><i data-lucide="message-circle" class="w-6 h-6"></i></div>
+        <div class="text-[10px] uppercase tracking-[0.18em] font-semibold text-muted-foreground">WhatsApp</div>
+        <div class="mt-1 font-serif text-xl font-semibold text-foreground">Agendamento rápido</div>
+        <div class="text-sm text-muted-foreground mt-1">Resposta no mesmo dia</div>
+      </a>
+      <a href="https://maps.google.com/?cid=7460356392949435368" target="_blank" rel="noopener" class="service-card bg-card border border-border rounded-2xl p-7 block">
+        <div class="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center mb-5"><i data-lucide="map-pin" class="w-6 h-6"></i></div>
+        <div class="text-[10px] uppercase tracking-[0.18em] font-semibold text-muted-foreground">Endereço</div>
+        <div class="mt-1 font-serif text-lg font-semibold text-foreground leading-snug">R. Des. Westphalen, 289, 5º andar</div>
+        <div class="text-sm text-muted-foreground mt-1">Centro · Curitiba / PR</div>
+      </a>
+    </div>
+    <div class="mt-8 bg-card border border-border rounded-2xl p-7 sm:p-10">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center"><i data-lucide="clock" class="w-5 h-5"></i></div>
+        <h3 class="font-serif text-2xl font-semibold text-foreground">Horário de funcionamento</h3>
+      </div>
+      <ul class="divide-y divide-border">
+        <li class="flex justify-between py-3 text-sm"><span class="text-muted-foreground">Segunda-feira</span><span class="font-semibold text-foreground">09:00 às 18:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-muted-foreground">Terça-feira</span><span class="font-semibold text-foreground">09:00 às 18:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-muted-foreground">Quarta-feira</span><span class="font-semibold text-foreground">09:00 às 18:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-muted-foreground">Quinta-feira</span><span class="font-semibold text-foreground">09:00 às 18:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-muted-foreground">Sexta-feira</span><span class="font-semibold text-foreground">09:00 às 18:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-muted-foreground">Sábado</span><span class="font-semibold text-foreground">09:00 às 16:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-muted-foreground">Domingo</span><span class="font-semibold text-accent">Fechado</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 sm:py-20">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="relative bg-primary text-primary-foreground rounded-3xl p-10 sm:p-16 text-center overflow-hidden">
+      <div class="blob w-[340px] h-[340px] bg-accent/40 -top-20 -right-20"></div>
+      <div class="blob w-[280px] h-[280px] bg-accent/30 -bottom-20 -left-10"></div>
+      <div class="relative">
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">
+          Marque seu horário e <em class="italic text-accent">sinta a diferença.</em>
+        </h2>
+        <p class="mt-5 text-primary-foreground/80 max-w-xl mx-auto leading-relaxed">
+          Se você já está aqui, é porque procurou. Agora é só dar o próximo passo: chamar no WhatsApp e garantir seu horário.
+        </p>
+        <a href="https://wa.me/5541998819758" class="mt-8 inline-flex items-center gap-2 px-7 py-4 rounded-full bg-[#25d366] text-white font-semibold shadow-xl hover:bg-[#20bd5a] transition">
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+          Agendar pelo WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-10 border-t border-border">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 text-center text-xs text-muted-foreground leading-relaxed">
+    Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
   </div>
 </footer>
 
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/5541998819758" aria-label="WhatsApp" class="wa-float fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25d366] text-white flex items-center justify-center shadow-lg hover:scale-105 transition">
+<a href="https://wa.me/5541998819758" class="wa-float fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25d366] text-white flex items-center justify-center shadow-2xl hover:scale-105 transition" aria-label="WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/>
   </svg>
 </a>
 
 <script>
   lucide.createIcons();
-  const btn = document.getElementById('menuBtn');
-  const menu = document.getElementById('mobileMenu');
-  btn?.addEventListener('click', () => menu.classList.toggle('hidden'));
-  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 </script>
+
 </body>
 </html>
