@@ -3,16 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BH Barbearia — Praça Rui Barbosa, Centro Curitiba</title>
-<meta name="description" content="Corte e barba de qualidade no Centro de Curitiba. Preço justo, atendimento rápido, por ordem de chegada. Chame no WhatsApp." />
-<meta property="og:title" content="BH Barbearia — Centro de Curitiba" />
-<meta property="og:description" content="Corte e barba diferenciados, preço justo e atendimento rápido. Praça Rui Barbosa, Curitiba." />
-<meta property="og:type" content="website" />
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@500;600;700;800&display=swap" rel="stylesheet" />
-
+<title>BH Barbearia · Corte e Barba no Centro de Curitiba</title>
+<meta name="description" content="Corte rápido, preço justo e qualidade. BH Barbearia no Centro de Curitiba, por ordem de chegada. 5,0 no Google." />
+<meta property="og:title" content="BH Barbearia · Centro de Curitiba" />
+<meta property="og:description" content="Corte e barba de qualidade por preço justo. Por ordem de chegada, sem agendamento." />
+<meta property="og:image" content="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1200&q=80" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -21,303 +19,483 @@
         colors: {
           background: 'hsl(var(--background))',
           foreground: 'hsl(var(--foreground))',
-          primary: {
-            DEFAULT: 'hsl(var(--primary))',
-            foreground: 'hsl(var(--primary-foreground))'
-          },
-          muted: {
-            DEFAULT: 'hsl(var(--muted))',
-            foreground: 'hsl(var(--muted-foreground))'
-          },
-          card: 'hsl(var(--card))',
+          primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+          accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+          muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+          card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' },
           border: 'hsl(var(--border))'
         },
-        borderRadius: {
-          xl: 'var(--radius)'
-        },
         fontFamily: {
-          sans: ['Inter', 'sans-serif'],
-          serif: ['Fraunces', 'serif']
-        }
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          serif: ['Fraunces', 'Georgia', 'serif']
+        },
+        borderRadius: { xl: 'var(--radius)', '2xl': 'calc(var(--radius) + 0.5rem)' }
       }
     }
   }
 </script>
-
 <style>
   :root {
-    --background: 0 0% 100%;
-    --foreground: 24 10% 10%;
-    --primary: 36 45% 48%;
-    --primary-foreground: 0 0% 100%;
-    --muted: 30 8% 96%;
-    --muted-foreground: 25 5% 45%;
+    --background: 30 20% 97%;
+    --foreground: 20 14% 12%;
+    --primary: 20 14% 12%;
+    --primary-foreground: 30 20% 97%;
+    --accent: 28 65% 48%;
+    --accent-foreground: 30 20% 97%;
+    --muted: 30 15% 92%;
+    --muted-foreground: 20 10% 40%;
     --card: 0 0% 100%;
-    --border: 30 10% 90%;
-    --radius: 0.75rem;
+    --card-foreground: 20 14% 12%;
+    --border: 30 15% 86%;
+    --radius: 0.875rem;
   }
   html { scroll-behavior: smooth; }
-  section { scroll-margin-top: 90px; }
-  body { font-family: 'Inter', sans-serif; background: hsl(var(--background)); color: hsl(var(--foreground)); }
+  body { font-family: 'Inter', sans-serif; background: hsl(var(--background)); color: hsl(var(--foreground)); -webkit-font-smoothing: antialiased; }
   .font-serif { font-family: 'Fraunces', serif; }
-
-  /* Glow accent header */
-  .glow-header {
-    background: linear-gradient(180deg, #0f0c0a 0%, #17120e 100%);
-    box-shadow:
-      0 0 40px rgba(201, 154, 85, 0.18),
-      0 0 80px rgba(201, 154, 85, 0.08),
-      0 1px 0 rgba(255,255,255,0.05) inset;
-    border-bottom: 1px solid rgba(201, 154, 85, 0.15);
+  section { scroll-margin-top: 80px; }
+  .dot-pattern {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px);
+    background-size: 22px 22px;
   }
-  .glow-header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 120%, rgba(201,154,85,0.25), transparent 60%);
-    pointer-events: none;
+  .eyebrow::after {
+    content: ''; display: block; width: 48px; height: 2px;
+    background: hsl(var(--accent)); margin-top: 10px;
   }
-  .glow-header a.nav-link {
-    position: relative;
-    color: rgba(255,255,255,0.78);
-    transition: color .2s;
+  .quote-mark::before {
+    content: '"'; position: absolute; top: -20px; right: 16px;
+    font-family: 'Fraunces', serif; font-size: 120px; line-height: 1;
+    color: hsl(var(--accent) / 0.14); font-weight: 700; pointer-events: none;
   }
-  .glow-header a.nav-link:hover { color: #e7c690; }
-
-  /* Whatsapp pulse */
-  .wa-float {
-    box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+  .blob { filter: blur(70px); opacity: 0.5; border-radius: 9999px; position: absolute; pointer-events: none; }
+  .card-hover { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+  .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -20px hsl(var(--foreground) / 0.15); border-color: hsl(var(--accent) / 0.5); }
+  .floating-header {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background: hsl(var(--card) / 0.75);
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 8px 30px -12px hsl(var(--foreground) / 0.18);
   }
-  .wa-float::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 9999px;
-    background: #25d366;
-    animation: pulse 2s ease-out infinite;
-    z-index: -1;
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.55); }
+    70% { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
   }
-  @keyframes pulse {
-    0% { transform: scale(1); opacity: .6; }
-    100% { transform: scale(1.6); opacity: 0; }
-  }
-
-  .hero-bg {
-    background:
-      radial-gradient(ellipse at top right, rgba(201,154,85,0.12), transparent 60%),
-      radial-gradient(ellipse at bottom left, rgba(201,154,85,0.08), transparent 50%),
-      hsl(var(--background));
-  }
+  .wa-pulse { animation: pulse-ring 2s infinite; }
 </style>
 </head>
-<body class="antialiased">
+<body class="overflow-x-hidden">
 
-<!-- Header: glow-accent style -->
-<header class="glow-header sticky top-0 z-40 relative">
-  <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between relative z-10">
-    <a href="#" class="flex items-center gap-2">
-      <span class="font-serif text-xl md:text-2xl font-bold text-white tracking-tight">BH <span style="color:#e7c690">Barbearia</span></span>
+<header class="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
+  <div class="floating-header max-w-6xl mx-auto rounded-full px-5 py-3 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5">
+      <div class="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-serif font-bold text-lg">B</div>
+      <div class="leading-tight">
+        <div class="font-serif font-semibold text-sm md:text-base">BH Barbearia</div>
+        <div class="text-[10px] md:text-xs text-muted-foreground -mt-0.5">Centro · Curitiba</div>
+      </div>
     </a>
-    <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-      <a href="#sobre" class="nav-link">Sobre</a>
-      <a href="#diferenciais" class="nav-link">Diferenciais</a>
-      <a href="#avaliacoes" class="nav-link">Avaliações</a>
-      <a href="#contato" class="nav-link">Contato</a>
-      <a href="https://wa.me/5541999589276" class="px-4 py-2 rounded-full text-sm font-semibold text-black" style="background:#e7c690">Agendar</a>
+    <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-foreground/80">
+      <a href="#sobre" class="hover:text-accent transition-colors">Sobre</a>
+      <a href="#especialidades" class="hover:text-accent transition-colors">Serviços</a>
+      <a href="#avaliacoes" class="hover:text-accent transition-colors">Avaliações</a>
+      <a href="#contato" class="hover:text-accent transition-colors">Contato</a>
     </nav>
-    <button id="menuBtn" class="md:hidden text-white" aria-label="Menu">
-      <i data-lucide="menu"></i>
+    <a href="https://wa.me/5541999589276" class="hidden md:inline-flex items-center gap-2 bg-primary text-primary-foreground rounded-full px-4 py-2 text-sm font-medium hover:opacity-90 transition">Fale agora</a>
+    <button id="menuBtn" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full hover:bg-muted transition" aria-label="Menu">
+      <svg id="iconOpen" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      <svg id="iconClose" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
     </button>
   </div>
-  <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 relative z-10">
-    <div class="px-5 py-4 flex flex-col gap-3 text-sm font-medium">
-      <a href="#sobre" class="nav-link py-1">Sobre</a>
-      <a href="#diferenciais" class="nav-link py-1">Diferenciais</a>
-      <a href="#avaliacoes" class="nav-link py-1">Avaliações</a>
-      <a href="#contato" class="nav-link py-1">Contato</a>
-      <a href="https://wa.me/5541999589276" class="mt-2 px-4 py-2 rounded-full text-sm font-semibold text-black text-center" style="background:#e7c690">Agendar no WhatsApp</a>
-    </div>
+  <div id="mobileMenu" class="hidden md:hidden max-w-6xl mx-auto mt-2 floating-header rounded-2xl p-4 space-y-2">
+    <a href="#sobre" class="block py-2 px-3 rounded-lg hover:bg-muted font-medium">Sobre</a>
+    <a href="#especialidades" class="block py-2 px-3 rounded-lg hover:bg-muted font-medium">Serviços</a>
+    <a href="#avaliacoes" class="block py-2 px-3 rounded-lg hover:bg-muted font-medium">Avaliações</a>
+    <a href="#contato" class="block py-2 px-3 rounded-lg hover:bg-muted font-medium">Contato</a>
+    <a href="https://wa.me/5541999589276" class="block mt-2 bg-primary text-primary-foreground text-center py-3 rounded-full font-medium">WhatsApp</a>
   </div>
 </header>
 
-<!-- Hero -->
-<section class="hero-bg">
-  <div class="max-w-6xl mx-auto px-5 py-16 md:py-24">
-    <div class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground mb-6 shadow-sm">
-      <i data-lucide="star" class="w-3.5 h-3.5 text-yellow-500 fill-yellow-500"></i>
-      <span>5,0 no Google · 8 avaliações</span>
+<section id="top" class="relative pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
+  <div class="blob bg-accent/30 w-80 h-80 -top-20 -left-20"></div>
+  <div class="blob bg-primary/10 w-96 h-96 top-40 -right-32"></div>
+  <div class="absolute inset-0 dot-pattern opacity-40 pointer-events-none"></div>
+
+  <div class="relative max-w-6xl mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+    <div>
+      <div class="inline-flex items-center gap-2 bg-card border border-border rounded-full px-3.5 py-1.5 text-xs font-medium text-muted-foreground mb-6">
+        <span class="w-2 h-2 rounded-full bg-accent"></span>
+        Referência em corte no Centro de Curitiba
+      </div>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-tight text-foreground">
+        Corte rápido, preço justo<br>
+        e do jeito <em class="italic text-accent font-semibold">que você gosta</em>.
+      </h1>
+      <p class="mt-5 text-base md:text-lg text-muted-foreground leading-relaxed max-w-lg">
+        BH Barbearia é a parada certa pra quem quer sair com visual novo sem perder a tarde. Atendimento por ordem de chegada, corte e barba diferenciados, bem no coração de Curitiba.
+      </p>
+      <div class="mt-5 flex items-center gap-2 text-sm text-muted-foreground">
+        <span class="text-accent text-base tracking-tight">★★★★★</span>
+        <span><strong class="text-foreground">5,0</strong> no Google · 8 avaliações</span>
+      </div>
+      <div class="mt-7 flex flex-col sm:flex-row gap-3">
+        <a href="https://wa.me/5541999589276" class="inline-flex items-center justify-center gap-2 bg-[#25d366] text-white rounded-full px-6 py-3.5 font-medium hover:opacity-90 transition shadow-lg shadow-[#25d366]/30">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar no WhatsApp
+        </a>
+        <a href="tel:+5541999589276" class="inline-flex items-center justify-center gap-2 bg-transparent border border-border rounded-full px-6 py-3.5 font-medium text-foreground hover:bg-muted transition">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (41) 99958-9276
+        </a>
+      </div>
     </div>
-    <h1 class="font-serif text-4xl md:text-6xl font-bold leading-tight tracking-tight text-foreground max-w-3xl">
-      Corte e barba com <span style="color:hsl(var(--primary))">capricho</span>, no coração de Curitiba.
-    </h1>
-    <p class="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-      Atendimento rápido, preço justo e aquele corte diferenciado. Sem agenda — chegou, foi atendido por ordem de chegada. Na Praça Rui Barbosa.
-    </p>
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a href="https://wa.me/5541999589276" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white shadow-lg hover:opacity-90 transition" style="background:#25d366">
-        <i data-lucide="message-circle" class="w-5 h-5"></i>
-        Chamar no WhatsApp
+
+    <div class="relative">
+      <div class="absolute -inset-3 bg-gradient-to-br from-accent/30 to-primary/10 rounded-3xl blur-xl opacity-60"></div>
+      <div class="relative rounded-2xl overflow-hidden aspect-[4/5] border-2 border-accent/30 shadow-2xl">
+        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=900&q=80" alt="Barbearia clássica" class="w-full h-full object-cover"/>
+      </div>
+      <div class="hidden sm:block absolute -bottom-6 -left-6 bg-card border border-border rounded-2xl p-4 shadow-xl max-w-[220px]">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-accent/15 text-accent flex items-center justify-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="text-xs text-muted-foreground uppercase tracking-wide">Atendimento</div>
+            <div class="font-semibold text-sm">Por ordem de chegada</div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden sm:block absolute -top-4 -right-4 bg-primary text-primary-foreground rounded-2xl p-3 shadow-xl">
+        <div class="text-[10px] uppercase tracking-widest opacity-70">Google</div>
+        <div class="font-serif font-bold text-2xl leading-none mt-0.5">5,0<span class="text-accent">★</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-primary text-primary-foreground py-10 md:py-14">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6 text-center">
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold text-accent">5,0<span class="opacity-80">★</span></div>
+      <div class="text-[11px] md:text-xs uppercase tracking-widest opacity-70 mt-2">Nota no Google</div>
+    </div>
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold text-accent">100%</div>
+      <div class="text-[11px] md:text-xs uppercase tracking-widest opacity-70 mt-2">Avaliações 5 estrelas</div>
+    </div>
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold text-accent">08:20</div>
+      <div class="text-[11px] md:text-xs uppercase tracking-widest opacity-70 mt-2">Abre cedo · Seg a Sex</div>
+    </div>
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold text-accent">21:20</div>
+      <div class="text-[11px] md:text-xs uppercase tracking-widest opacity-70 mt-2">Até tarde todo dia útil</div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre" class="py-16 md:py-28">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+    <div class="grid grid-cols-2 gap-4">
+      <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" alt="Corte de cabelo" class="w-full h-64 md:h-80 object-cover rounded-2xl"/>
+      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" alt="Barbearia" class="w-full h-64 md:h-80 object-cover rounded-2xl mt-8"/>
+    </div>
+    <div>
+      <div class="eyebrow text-xs uppercase tracking-[0.2em] text-accent font-semibold">Sobre a BH</div>
+      <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight mt-5">
+        Um corte bom,<br>
+        <em class="italic text-accent">sem enrolação.</em>
+      </h2>
+      <p class="mt-5 text-muted-foreground leading-relaxed">
+        No coração do Centro de Curitiba, a BH Barbearia virou ponto certo de quem procura corte de qualidade com preço que cabe no bolso. Atendimento prático, rápido, por ordem de chegada, do jeito que barbearia boa tem que ser.
+      </p>
+      <p class="mt-3 text-muted-foreground leading-relaxed">
+        Corte e barba feitos com atenção no detalhe, e aquele papo bom que faz a diferença. Não à toa vira cliente fixo quem entra pela primeira vez.
+      </p>
+
+      <div class="mt-8 grid grid-cols-2 gap-4">
+        <div class="flex gap-3">
+          <div class="w-8 h-8 rounded-lg bg-accent/15 text-accent flex items-center justify-center shrink-0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-sm">Preço justo</div>
+            <div class="text-xs text-muted-foreground">Citado em praticamente toda avaliação</div>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="w-8 h-8 rounded-lg bg-accent/15 text-accent flex items-center justify-center shrink-0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-sm">Corte rápido</div>
+            <div class="text-xs text-muted-foreground">Entrou, cortou, saiu novo em folha</div>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="w-8 h-8 rounded-lg bg-accent/15 text-accent flex items-center justify-center shrink-0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-sm">Sem agendamento</div>
+            <div class="text-xs text-muted-foreground">Por ordem de chegada, do seu jeito</div>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="w-8 h-8 rounded-lg bg-accent/15 text-accent flex items-center justify-center shrink-0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-sm">Ponto central</div>
+            <div class="text-xs text-muted-foreground">Centro de Curitiba, fácil de chegar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="especialidades" class="py-16 md:py-28 bg-muted/40">
+  <div class="max-w-6xl mx-auto px-4 md:px-6">
+    <div class="max-w-2xl">
+      <div class="eyebrow text-xs uppercase tracking-[0.2em] text-accent font-semibold">Serviços</div>
+      <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight mt-5">
+        O essencial de <em class="italic text-accent">barbearia boa.</em>
+      </h2>
+      <p class="mt-4 text-muted-foreground">Tudo o que você precisa pra sair com o visual no ponto, do clássico ao moderno.</p>
+    </div>
+
+    <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="card-hover relative bg-card border border-border rounded-2xl p-6">
+        <div class="absolute top-5 right-5 text-[10px] font-semibold uppercase tracking-widest text-accent">Principal</div>
+        <div class="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center mb-4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold">Corte masculino</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Do clássico ao degradê. Corte rápido, bem feito, no estilo que você pediu.</p>
+      </div>
+
+      <div class="card-hover bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold">Barba</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Desenho, aparo e finalização caprichada. Barba diferenciada, como os clientes comentam.</p>
+      </div>
+
+      <div class="card-hover bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.91 11.12a4 4 0 1 0-5.66-5.66"/><path d="M3.51 3.51a4 4 0 0 0 5.66 5.66"/><circle cx="12" cy="12" r="4"/></svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold">Combo corte + barba</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">O visual completo em uma passada só. Sai de casa já pronto pro compromisso.</p>
+      </div>
+
+      <div class="card-hover bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold">Por ordem de chegada</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Sem agenda, sem complicação. Chegou, esperou sua vez e saiu novo.</p>
+      </div>
+
+      <div class="card-hover bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold">Preço honesto</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">"Mais do que justo", nas palavras dos próprios clientes. Sem surpresa na hora de pagar.</p>
+      </div>
+
+      <div class="card-hover bg-card border border-border rounded-2xl p-6">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold">Ponto central</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">R. Des. Westphalen, 253. Pertinho da Praça Rui Barbosa, no Centro de Curitiba.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacoes" class="py-16 md:py-28">
+  <div class="max-w-6xl mx-auto px-4 md:px-6">
+    <div class="max-w-2xl">
+      <div class="eyebrow text-xs uppercase tracking-[0.2em] text-accent font-semibold">O que os clientes dizem</div>
+      <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight mt-5">
+        8 avaliações.<br>
+        <em class="italic text-accent">Todas 5 estrelas.</em>
+      </h2>
+      <p class="mt-4 text-muted-foreground">Depoimentos reais de clientes no Google.</p>
+    </div>
+
+    <div class="mt-10 grid md:grid-cols-2 gap-5">
+      <div class="quote-mark relative bg-card border border-border rounded-2xl p-6 md:p-7">
+        <div class="text-accent tracking-tight text-lg">★★★★★</div>
+        <p class="mt-3 text-foreground/90 leading-relaxed">Preço mais do que justo e serviço de ótima qualidade. Muito prático e rápido, ganhou mais um cliente.</p>
+        <div class="mt-5 pt-4 border-t border-border flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">H</div>
+          <div>
+            <div class="font-semibold text-sm">Hermano Tanure</div>
+            <div class="text-xs text-muted-foreground">Cliente</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-mark relative bg-card border border-border rounded-2xl p-6 md:p-7">
+        <div class="text-accent tracking-tight text-lg">★★★★★</div>
+        <p class="mt-3 text-foreground/90 leading-relaxed">Atendimento de qualidade por um preço justo. Corte e barba diferenciados. Recomendo!</p>
+        <div class="mt-5 pt-4 border-t border-border flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">G</div>
+          <div>
+            <div class="font-semibold text-sm">Gian Carlo Semmer Orsatto</div>
+            <div class="text-xs text-muted-foreground">Cliente</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-mark relative bg-card border border-border rounded-2xl p-6 md:p-7">
+        <div class="text-accent tracking-tight text-lg">★★★★★</div>
+        <p class="mt-3 text-foreground/90 leading-relaxed">Preço justo, corte rápido, não agenda, por ordem de chegada.</p>
+        <div class="mt-5 pt-4 border-t border-border flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">M</div>
+          <div>
+            <div class="font-semibold text-sm">Marcos Costa</div>
+            <div class="text-xs text-muted-foreground">Cliente</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-mark relative bg-card border border-border rounded-2xl p-6 md:p-7">
+        <div class="text-accent tracking-tight text-lg">★★★★★</div>
+        <p class="mt-3 text-foreground/90 leading-relaxed">Venham conhecer a melhor e mais barata de Curitiba.</p>
+        <div class="mt-5 pt-4 border-t border-border flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">M</div>
+          <div>
+            <div class="font-semibold text-sm">Muricy Ribas Neto</div>
+            <div class="text-xs text-muted-foreground">Cliente</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="https://maps.google.com/?cid=12177865177530506285&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-accent font-medium hover:underline">
+        Ver todas as avaliações no Google
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
       </a>
-      <a href="#contato" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold border border-border bg-card hover:bg-muted transition">
-        <i data-lucide="map-pin" class="w-5 h-5"></i>
-        Como chegar
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="py-16 md:py-28 bg-muted/40">
+  <div class="max-w-6xl mx-auto px-4 md:px-6">
+    <div class="max-w-2xl">
+      <div class="eyebrow text-xs uppercase tracking-[0.2em] text-accent font-semibold">Contato</div>
+      <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight mt-5">
+        Passa lá <em class="italic text-accent">quando quiser.</em>
+      </h2>
+    </div>
+
+    <div class="mt-10 grid md:grid-cols-3 gap-5">
+      <a href="tel:+5541999589276" class="card-hover bg-card border border-border rounded-2xl p-6 group">
+        <div class="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-accent-foreground transition">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div class="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">Telefone</div>
+        <div class="font-semibold text-lg mt-1">(41) 99958-9276</div>
+        <div class="text-xs text-muted-foreground mt-1">Ligue direto</div>
+      </a>
+      <a href="https://wa.me/5541999589276" class="card-hover bg-card border border-border rounded-2xl p-6 group">
+        <div class="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center mb-4 group-hover:bg-[#25d366] group-hover:text-white transition">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487 2.981 1.288 2.981.859 3.518.806.536-.053 1.758-.718 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+        </div>
+        <div class="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">WhatsApp</div>
+        <div class="font-semibold text-lg mt-1">Chamar no Zap</div>
+        <div class="text-xs text-muted-foreground mt-1">Resposta rápida</div>
+      </a>
+      <a href="https://maps.google.com/?cid=12177865177530506285&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="card-hover bg-card border border-border rounded-2xl p-6 group">
+        <div class="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-accent-foreground transition">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">Endereço</div>
+        <div class="font-semibold text-base mt-1 leading-tight">R. Des. Westphalen, 253</div>
+        <div class="text-xs text-muted-foreground mt-1">Centro, Curitiba - PR</div>
       </a>
     </div>
-  </div>
-</section>
 
-<!-- Sobre -->
-<section id="sobre" class="py-20 border-t border-border">
-  <div class="max-w-4xl mx-auto px-5">
-    <span class="text-sm font-semibold uppercase tracking-wider" style="color:hsl(var(--primary))">Sobre</span>
-    <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 mb-6">Uma barbearia feita pra quem valoriza tempo e bom gosto.</h2>
-    <p class="text-lg text-muted-foreground leading-relaxed">
-      A BH Barbearia fica na Praça Rui Barbosa, no Centro de Curitiba, e virou referência pra quem procura corte e barba bem feitos sem complicação. Preço mais do que justo, serviço prático e aquele acabamento que só quem entende do ofício consegue entregar.
-    </p>
-  </div>
-</section>
-
-<!-- Diferenciais -->
-<section id="diferenciais" class="py-20 bg-muted/50 border-t border-border">
-  <div class="max-w-6xl mx-auto px-5">
-    <span class="text-sm font-semibold uppercase tracking-wider" style="color:hsl(var(--primary))">Diferenciais</span>
-    <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 mb-12">Por que escolher a BH.</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background:hsl(var(--primary)); color:hsl(var(--primary-foreground))">
-          <i data-lucide="scissors" class="w-5 h-5"></i>
+    <div class="mt-6 bg-card border border-border rounded-2xl p-6 md:p-8">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
-        <h3 class="font-serif text-xl font-bold mb-2">Corte diferenciado</h3>
-        <p class="text-muted-foreground leading-relaxed">Acabamento preciso em corte e barba, com atenção aos detalhes que fazem diferença.</p>
+        <div>
+          <div class="font-serif font-semibold text-lg">Horário de funcionamento</div>
+          <div class="text-xs text-muted-foreground">Atendimento por ordem de chegada</div>
+        </div>
       </div>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background:hsl(var(--primary)); color:hsl(var(--primary-foreground))">
-          <i data-lucide="badge-dollar-sign" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-serif text-xl font-bold mb-2">Preço justo</h3>
-        <p class="text-muted-foreground leading-relaxed">Qualidade alta sem cobrar caro. Relação custo-benefício que os clientes destacam nas avaliações.</p>
-      </div>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background:hsl(var(--primary)); color:hsl(var(--primary-foreground))">
-          <i data-lucide="zap" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-serif text-xl font-bold mb-2">Rápido e prático</h3>
-        <p class="text-muted-foreground leading-relaxed">Sem agenda — atendimento por ordem de chegada. Você entra, senta e sai renovado.</p>
+      <div class="divide-y divide-border">
+        <div class="flex justify-between py-2.5 text-sm"><span class="text-muted-foreground">Segunda-feira</span><span class="font-medium">08:20 às 21:20</span></div>
+        <div class="flex justify-between py-2.5 text-sm"><span class="text-muted-foreground">Terça-feira</span><span class="font-medium">08:20 às 21:20</span></div>
+        <div class="flex justify-between py-2.5 text-sm"><span class="text-muted-foreground">Quarta-feira</span><span class="font-medium">08:20 às 21:20</span></div>
+        <div class="flex justify-between py-2.5 text-sm"><span class="text-muted-foreground">Quinta-feira</span><span class="font-medium">08:20 às 21:20</span></div>
+        <div class="flex justify-between py-2.5 text-sm"><span class="text-muted-foreground">Sexta-feira</span><span class="font-medium">08:20 às 21:20</span></div>
+        <div class="flex justify-between py-2.5 text-sm"><span class="text-muted-foreground">Sábado</span><span class="font-medium text-muted-foreground">Fechado</span></div>
+        <div class="flex justify-between py-2.5 text-sm"><span class="text-muted-foreground">Domingo</span><span class="font-medium text-muted-foreground">Fechado</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Avaliações -->
-<section id="avaliacoes" class="py-20 border-t border-border">
-  <div class="max-w-6xl mx-auto px-5">
-    <span class="text-sm font-semibold uppercase tracking-wider" style="color:hsl(var(--primary))">Avaliações</span>
-    <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 mb-12">O que nossos clientes dizem.</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="flex gap-0.5 mb-4">
-          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
+<section class="py-16 md:py-24">
+  <div class="max-w-5xl mx-auto px-4 md:px-6">
+    <div class="relative bg-primary text-primary-foreground rounded-3xl overflow-hidden p-10 md:p-16 text-center">
+      <div class="blob bg-accent/40 w-72 h-72 -top-10 -right-10"></div>
+      <div class="blob bg-accent/20 w-64 h-64 -bottom-16 -left-10"></div>
+      <div class="relative">
+        <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight">
+          Bora cortar?<br>
+          <em class="italic text-accent">A gente te espera.</em>
+        </h2>
+        <p class="mt-5 text-primary-foreground/70 max-w-lg mx-auto">Chama no WhatsApp ou passa na loja. Sem agenda, sem complicação, só um corte bem feito.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="https://wa.me/5541999589276" class="inline-flex items-center justify-center gap-2 bg-[#25d366] text-white rounded-full px-6 py-3.5 font-medium hover:opacity-90 transition shadow-lg shadow-[#25d366]/40">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Chamar no WhatsApp
+          </a>
+          <a href="tel:+5541999589276" class="inline-flex items-center justify-center gap-2 bg-transparent border border-primary-foreground/30 rounded-full px-6 py-3.5 font-medium text-primary-foreground hover:bg-primary-foreground/10 transition">(41) 99958-9276</a>
         </div>
-        <p class="font-serif text-lg leading-relaxed mb-5">"Preço mais do que justo e serviço de ótima qualidade. Muito prático e rápido, ganhou mais um cliente."</p>
-        <p class="text-sm font-semibold text-muted-foreground">— Hermano Tanure</p>
-      </div>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="flex gap-0.5 mb-4">
-          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
-        </div>
-        <p class="font-serif text-lg leading-relaxed mb-5">"Atendimento de qualidade por um preço justo. Corte e barba diferenciados. Recomendo!"</p>
-        <p class="text-sm font-semibold text-muted-foreground">— Gian Carlo Semmer Orsatto</p>
-      </div>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="flex gap-0.5 mb-4">
-          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
-          <i data-lucide="star" class="w-4 h-4 text-yellow-500 fill-yellow-500"></i>
-        </div>
-        <p class="font-serif text-lg leading-relaxed mb-5">"Preço justo, corte rápido, não agenda, por ordem de chegada."</p>
-        <p class="text-sm font-semibold text-muted-foreground">— Marcos Costa Curitiba</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Contato -->
-<section id="contato" class="py-20 bg-muted/50 border-t border-border">
-  <div class="max-w-6xl mx-auto px-5">
-    <span class="text-sm font-semibold uppercase tracking-wider" style="color:hsl(var(--primary))">Contato</span>
-    <h2 class="font-serif text-3xl md:text-4xl font-bold mt-3 mb-12">Venha nos visitar.</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <a href="https://maps.google.com/?cid=12177865177530506285" target="_blank" rel="noopener" class="bg-card border border-border rounded-xl p-7 shadow-sm hover:shadow-md transition block">
-        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background:hsl(var(--primary)); color:hsl(var(--primary-foreground))">
-          <i data-lucide="map-pin" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-serif text-xl font-bold mb-2">Endereço</h3>
-        <p class="text-muted-foreground leading-relaxed">R. Des. Westphalen, 253<br>Centro, Curitiba — PR<br>80010-110</p>
-      </a>
-      <a href="tel:+5541999589276" class="bg-card border border-border rounded-xl p-7 shadow-sm hover:shadow-md transition block">
-        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background:hsl(var(--primary)); color:hsl(var(--primary-foreground))">
-          <i data-lucide="phone" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-serif text-xl font-bold mb-2">Telefone</h3>
-        <p class="text-muted-foreground leading-relaxed">(41) 99958-9276</p>
-      </a>
-      <div class="bg-card border border-border rounded-xl p-7 shadow-sm">
-        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background:hsl(var(--primary)); color:hsl(var(--primary-foreground))">
-          <i data-lucide="clock" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-serif text-xl font-bold mb-2">Horário</h3>
-        <p class="text-muted-foreground leading-relaxed text-sm">
-          Seg – Sex: 08:20 – 21:20<br>
-          Sáb e Dom: Fechado
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA final -->
-<section class="py-20 border-t border-border">
-  <div class="max-w-3xl mx-auto px-5 text-center">
-    <h2 class="font-serif text-3xl md:text-5xl font-bold mb-5">Bora tirar o visual do papel?</h2>
-    <p class="text-lg text-muted-foreground mb-8">Chama no WhatsApp e venha conhecer a barbearia que virou referência no Centro.</p>
-    <a href="https://wa.me/5541999589276" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-white text-lg shadow-lg hover:opacity-90 transition" style="background:#25d366">
-      <i data-lucide="message-circle" class="w-5 h-5"></i>
-      Chamar no WhatsApp
-    </a>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="border-t border-border py-8">
-  <div class="max-w-6xl mx-auto px-5 text-center text-xs text-muted-foreground">
-    Página criada para divulgação — dados públicos do Google. Entre em contato para remover.
+<footer class="py-10 border-t border-border">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 text-center text-xs text-muted-foreground">
+    Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
   </div>
 </footer>
 
-<!-- Whatsapp flutuante -->
-<a href="https://wa.me/5541999589276" class="wa-float fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center text-white" style="background:#25d366" aria-label="WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-  </svg>
+<a href="https://wa.me/5541999589276" class="wa-pulse fixed bottom-5 right-5 z-50 w-14 h-14 bg-[#25d366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<script src="https://unpkg.com/lucide@latest"></script>
 <script>
-  lucide.createIcons();
-  const btn = document.getElementById('menuBtn');
-  const menu = document.getElementById('mobileMenu');
-  btn?.addEventListener('click', () => menu.classList.toggle('hidden'));
-  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const iconOpen = document.getElementById('iconOpen');
+  const iconClose = document.getElementById('iconClose');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+  }));
 </script>
 </body>
 </html>
