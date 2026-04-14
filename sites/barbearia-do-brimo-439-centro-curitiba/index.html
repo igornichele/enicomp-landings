@@ -1,307 +1,514 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Barbearia do Brimo — Centro, Curitiba</title>
-<meta name="description" content="Barbearia do Brimo no Centro de Curitiba. Equipe profissional, atenciosa e carismática. Agende pelo WhatsApp." />
-<meta property="og:title" content="Barbearia do Brimo — Centro, Curitiba" />
-<meta property="og:description" content="Corte com equipe de altíssimo nível no Centro de Curitiba. 4.8 ★ no Google. Agende pelo WhatsApp." />
-<meta property="og:type" content="website" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbearia do Brimo — Barbearia no Centro de Curitiba</title>
+<meta name="description" content="Barbearia do Brimo no Centro de Curitiba. Equipe completa, cortes com capricho e ambiente acolhedor. 4,8 estrelas no Google.">
+<meta property="og:title" content="Barbearia do Brimo — Centro, Curitiba">
+<meta property="og:description" content="Corte, barba e atendimento com estilo. Referência no Centro de Curitiba há anos.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1200&q=80">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          border: 'hsl(var(--border))',
           background: 'hsl(var(--background))',
           foreground: 'hsl(var(--foreground))',
-          primary: {
-            DEFAULT: 'hsl(var(--primary))',
-            foreground: 'hsl(var(--primary-foreground))'
-          },
-          muted: {
-            DEFAULT: 'hsl(var(--muted))',
-            foreground: 'hsl(var(--muted-foreground))'
-          },
-          card: {
-            DEFAULT: 'hsl(var(--card))',
-            foreground: 'hsl(var(--card-foreground))'
-          }
-        },
-        borderRadius: {
-          xl: 'var(--radius)',
-          lg: 'calc(var(--radius) - 2px)',
-          md: 'calc(var(--radius) - 4px)'
+          primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+          accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+          muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+          card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' },
+          border: 'hsl(var(--border))'
         },
         fontFamily: {
-          sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-          serif: ['Fraunces', 'ui-serif', 'Georgia']
-        }
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          serif: ['Fraunces', 'Georgia', 'serif']
+        },
+        borderRadius: { xl: 'var(--radius)', '2xl': 'calc(var(--radius) + 0.5rem)' }
       }
     }
   }
 </script>
 <style>
-  :root{
-    --background: 30 20% 98%;
-    --foreground: 20 14% 10%;
+  :root {
+    --background: 30 20% 97%;
+    --foreground: 20 14% 12%;
+    --primary: 20 18% 14%;
+    --primary-foreground: 36 30% 96%;
+    --accent: 28 65% 48%;
+    --accent-foreground: 36 30% 98%;
+    --muted: 30 15% 92%;
+    --muted-foreground: 20 10% 40%;
     --card: 0 0% 100%;
-    --card-foreground: 20 14% 10%;
-    --primary: 32 65% 42%;
-    --primary-foreground: 40 30% 98%;
-    --muted: 30 15% 94%;
-    --muted-foreground: 25 8% 40%;
+    --card-foreground: 20 14% 12%;
     --border: 30 15% 88%;
-    --radius: 0.75rem;
+    --radius: 0.875rem;
   }
   html { scroll-behavior: smooth; }
   section { scroll-margin-top: 90px; }
-  .whats-pulse::before{
-    content:""; position:absolute; inset:0; border-radius:9999px;
-    background:#25d366; opacity:.55; animation:pulse 1.8s ease-out infinite;
+  body { font-family: 'Inter', sans-serif; background: hsl(var(--background)); color: hsl(var(--foreground)); }
+  .font-serif { font-family: 'Fraunces', serif; }
+  .dot-pattern {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
-  @keyframes pulse{
-    0%{transform:scale(1); opacity:.55}
-    100%{transform:scale(1.8); opacity:0}
+  .blob {
+    position: absolute;
+    filter: blur(70px);
+    opacity: 0.45;
+    border-radius: 9999px;
+    pointer-events: none;
+    z-index: 0;
   }
-  /* Neo-brutalist header */
-  .brutal-header{
-    background: hsl(var(--primary));
-    color: hsl(var(--primary-foreground));
-    border-bottom: 2px solid #111;
-    box-shadow: 0 4px 0 0 #111;
+  .eyebrow { position: relative; padding-bottom: 14px; }
+  .eyebrow::after {
+    content: ''; position: absolute; left: 0; bottom: 0;
+    width: 48px; height: 2px; background: hsl(var(--accent));
   }
-  .brutal-btn{
-    border:2px solid #111;
-    box-shadow: 4px 4px 0 0 #111;
-    transition: transform .12s ease, box-shadow .12s ease;
+  .eyebrow.center::after { left: 50%; transform: translateX(-50%); }
+  .review-card { position: relative; }
+  .review-card::before {
+    content: '"';
+    position: absolute; top: -20px; right: 20px;
+    font-family: 'Fraunces', serif; font-size: 140px; font-weight: 700;
+    color: hsl(var(--accent) / 0.12); line-height: 1; pointer-events: none;
   }
-  .brutal-btn:hover{ transform: translate(-2px,-2px); box-shadow: 6px 6px 0 0 #111;}
-  .brutal-btn:active{ transform: translate(2px,2px); box-shadow: 1px 1px 0 0 #111;}
-  .grain{
-    background-image: radial-gradient(hsl(var(--foreground)/0.06) 1px, transparent 1px);
-    background-size: 18px 18px;
+  .service-card { transition: all .3s ease; }
+  .service-card:hover { transform: translateY(-4px); border-color: hsl(var(--accent) / 0.5); box-shadow: 0 20px 40px -20px hsl(var(--primary) / 0.25); }
+  .contact-card { transition: all .3s ease; }
+  .contact-card:hover .icon-box { background: hsl(var(--accent)); color: hsl(var(--accent-foreground)); }
+
+  .glass-header {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: hsl(var(--background) / 0.65);
+    border-bottom: 1px solid hsl(var(--border) / 0.6);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 4px 20px -10px hsl(var(--primary) / 0.15);
+    position: relative;
+    overflow: hidden;
+  }
+  .glass-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(600px circle at 20% 0%, hsl(var(--accent) / 0.08), transparent 50%);
+    pointer-events: none;
+  }
+
+  .wa-float {
+    position: fixed; bottom: 22px; right: 22px; z-index: 50;
+    width: 60px; height: 60px; border-radius: 9999px;
+    background: #25d366; color: white;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.45);
+    animation: pulse 2.2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); }
+    70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+  }
+
+  .divider-line > * + * { border-top: 1px solid hsl(var(--border)); }
+
+  @media (max-width: 768px) {
+    #mobile-menu.open { display: flex; }
   }
 </style>
 </head>
-<body class="bg-background text-foreground font-sans antialiased">
+<body class="antialiased">
 
-<!-- HEADER: neo-brutalist -->
-<header class="brutal-header sticky top-0 z-40">
-  <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-2 font-serif text-xl font-bold tracking-tight">
-      <span class="inline-flex items-center justify-center w-9 h-9 bg-black text-white border-2 border-black rounded-md"><i data-lucide="scissors" class="w-5 h-5"></i></span>
-      Barbearia do Brimo
+<header class="glass-header sticky top-0 z-40">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between relative z-10">
+    <a href="#topo" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-serif text-lg font-bold">B</div>
+      <div class="leading-tight">
+        <div class="font-serif font-semibold text-foreground text-lg">Barbearia do Brimo</div>
+        <div class="text-xs text-muted-foreground">Centro · Curitiba</div>
+      </div>
     </a>
-    <nav class="hidden md:flex items-center gap-7 text-sm font-semibold">
-      <a href="#sobre" class="hover:underline underline-offset-4">Sobre</a>
-      <a href="#diferenciais" class="hover:underline underline-offset-4">Diferenciais</a>
-      <a href="#avaliacoes" class="hover:underline underline-offset-4">Avaliações</a>
-      <a href="#contato" class="hover:underline underline-offset-4">Contato</a>
-      <a href="https://wa.me/5541998505059" class="brutal-btn bg-[#25d366] text-black px-4 py-2 rounded-md inline-flex items-center gap-2">
-        <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
-      </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/80">
+      <a href="#sobre" class="hover:text-accent transition">Sobre</a>
+      <a href="#especialidades" class="hover:text-accent transition">Especialidades</a>
+      <a href="#avaliacoes" class="hover:text-accent transition">Avaliações</a>
+      <a href="#contato" class="hover:text-accent transition">Contato</a>
+      <a href="https://wa.me/5541998505059" class="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold hover:bg-accent transition">Agendar</a>
     </nav>
-    <button id="menuBtn" class="md:hidden brutal-btn bg-white text-black p-2 rounded-md" aria-label="Menu">
-      <i data-lucide="menu" class="w-5 h-5"></i>
+    <button id="menu-btn" class="md:hidden p-2 text-foreground" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </div>
-  <div id="mobileMenu" class="md:hidden hidden border-t-2 border-black bg-[hsl(var(--primary))]">
-    <div class="px-5 py-4 flex flex-col gap-3 font-semibold">
-      <a href="#sobre" class="py-2">Sobre</a>
-      <a href="#diferenciais" class="py-2">Diferenciais</a>
-      <a href="#avaliacoes" class="py-2">Avaliações</a>
-      <a href="#contato" class="py-2">Contato</a>
-      <a href="https://wa.me/5541998505059" class="brutal-btn bg-[#25d366] text-black px-4 py-2 rounded-md inline-flex items-center gap-2 w-fit">
-        <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
-      </a>
-    </div>
+  <div id="mobile-menu" class="hidden md:hidden flex-col px-6 pb-5 gap-3 text-sm font-medium text-foreground/80 border-t border-border/60">
+    <a href="#sobre" class="py-2">Sobre</a>
+    <a href="#especialidades" class="py-2">Especialidades</a>
+    <a href="#avaliacoes" class="py-2">Avaliações</a>
+    <a href="#contato" class="py-2">Contato</a>
+    <a href="https://wa.me/5541998505059" class="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-4 py-2.5 rounded-full font-semibold mt-2">Agendar pelo WhatsApp</a>
   </div>
 </header>
 
-<!-- HERO -->
-<section id="top" class="relative grain">
-  <div class="max-w-6xl mx-auto px-5 py-16 md:py-24">
-    <div class="inline-flex items-center gap-2 bg-card border-2 border-black rounded-full px-3 py-1 text-sm font-semibold shadow-[3px_3px_0_0_#111]">
-      <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-500"></i>
-      4.8 no Google · 426 avaliações
+<section id="topo" class="relative overflow-hidden pt-12 pb-20 sm:pt-20 sm:pb-28">
+  <div class="blob" style="background:hsl(28 65% 48% / 0.55); width:380px; height:380px; top:-80px; left:-100px;"></div>
+  <div class="blob" style="background:hsl(20 18% 14% / 0.35); width:420px; height:420px; bottom:-120px; right:-120px;"></div>
+  <div class="absolute inset-0 dot-pattern opacity-50 pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div class="relative z-10">
+      <span class="inline-flex items-center gap-2 bg-card border border-border rounded-full px-4 py-1.5 text-xs font-semibold text-foreground/80 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-accent"></span>
+        Referência de barbearia no Centro de Curitiba
+      </span>
+      <h1 class="font-serif font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.05] mt-6 text-foreground">
+        Corte afiado,<br>
+        barba no ponto e <em class="italic text-accent">cadeira de confiança</em>.
+      </h1>
+      <p class="text-base sm:text-lg text-muted-foreground mt-6 max-w-xl leading-relaxed">
+        Equipe formada por Brimo, Muchacho, Ronald, Guilherme, Luciano e Taís. Cada barbeiro com seu estilo, todos entregando serviço impecável, com capricho, simpatia e atenção aos detalhes.
+      </p>
+
+      <div class="flex items-center gap-3 mt-7">
+        <div class="flex text-accent text-lg tracking-tight">★★★★★</div>
+        <span class="text-sm text-foreground/80"><strong class="font-semibold">4,8</strong> no Google · 426 avaliações</span>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 mt-8">
+        <a href="https://wa.me/5541998505059" class="inline-flex items-center justify-center gap-2 bg-[#25d366] hover:bg-[#20ba5a] text-white px-6 py-3.5 rounded-full font-semibold shadow-lg shadow-green-500/25 transition">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Agendar pelo WhatsApp
+        </a>
+        <a href="tel:+5541998505059" class="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-primary/20 hover:border-primary/60 text-primary px-6 py-3.5 rounded-full font-semibold transition">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          (41) 99850-5059
+        </a>
+      </div>
     </div>
-    <h1 class="mt-6 font-serif text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight max-w-3xl">
-      O corte certo no <span class="italic">coração</span> de Curitiba.
-    </h1>
-    <p class="mt-5 text-lg text-muted-foreground max-w-xl">
-      Barbearia do Brimo: equipe profissional, ambiente acolhedor e aquele atendimento carismático que faz todo mundo voltar. Reserve seu horário agora no WhatsApp.
-    </p>
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a href="https://wa.me/5541998505059" class="brutal-btn bg-[#25d366] text-black font-bold px-6 py-3 rounded-md inline-flex items-center gap-2">
-        <i data-lucide="message-circle" class="w-5 h-5"></i> Chamar no WhatsApp
-      </a>
-      <a href="#contato" class="brutal-btn bg-white text-black font-bold px-6 py-3 rounded-md inline-flex items-center gap-2">
-        <i data-lucide="map-pin" class="w-5 h-5"></i> Como chegar
-      </a>
-    </div>
-    <div class="mt-10 flex flex-wrap gap-6 text-sm text-muted-foreground">
-      <div class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4"></i> Seg a Sex · 9h às 20h</div>
-      <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> R. Alferes Poli, 439 — Centro</div>
+
+    <div class="relative">
+      <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border-4 border-accent/20 shadow-2xl shadow-primary/20">
+        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=900&q=80" alt="Barbearia clássica com ambiente acolhedor" class="w-full h-full object-cover">
+      </div>
+      <div class="hidden sm:block absolute -bottom-6 -left-6 bg-card border border-border rounded-2xl p-5 shadow-xl max-w-[220px]">
+        <div class="text-xs uppercase tracking-wider text-muted-foreground font-semibold">Equipe</div>
+        <div class="font-serif text-lg font-semibold text-foreground mt-1 leading-tight">6 barbeiros de altíssimo nível</div>
+      </div>
+      <div class="hidden sm:block absolute -top-5 -right-5 bg-accent text-accent-foreground rounded-full px-5 py-3 shadow-xl font-semibold text-sm">
+        ★ 4,8 · 426 reviews
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SOBRE -->
-<section id="sobre" class="bg-muted border-y-2 border-black">
-  <div class="max-w-6xl mx-auto px-5 py-16 md:py-20 grid md:grid-cols-2 gap-10 items-center">
+<section class="bg-primary text-primary-foreground py-14">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
     <div>
-      <span class="text-xs font-bold uppercase tracking-widest">Sobre</span>
-      <h2 class="mt-3 font-serif text-3xl md:text-4xl font-bold">Tradição, técnica e um atendimento que vira conversa boa.</h2>
+      <div class="font-serif text-4xl sm:text-5xl font-bold">426+</div>
+      <div class="text-xs uppercase tracking-widest mt-2 text-primary-foreground/70">Avaliações no Google</div>
     </div>
-    <div class="space-y-4 text-muted-foreground text-lg">
-      <p>Na Barbearia do Brimo, cada corte é feito por profissionais experientes que tratam o cliente como amigo de longa data. Brimo, Muchacho, Ronald, Guilherme, Luciano e Taís formam uma equipe que entrega resultado e deixa a experiência leve.</p>
-      <p>Seja o seu primeiro corte em Curitiba ou a manutenção de sempre, aqui você encontra barbeiros habilidosos e uma casa que acolhe.</p>
+    <div>
+      <div class="font-serif text-4xl sm:text-5xl font-bold">4,8★</div>
+      <div class="text-xs uppercase tracking-widest mt-2 text-primary-foreground/70">Nota média</div>
     </div>
-  </div>
-</section>
-
-<!-- DIFERENCIAIS -->
-<section id="diferenciais" class="bg-background">
-  <div class="max-w-6xl mx-auto px-5 py-16 md:py-20">
-    <div class="max-w-xl">
-      <span class="text-xs font-bold uppercase tracking-widest">Diferenciais</span>
-      <h2 class="mt-3 font-serif text-3xl md:text-4xl font-bold">Por que o pessoal volta sempre.</h2>
+    <div>
+      <div class="font-serif text-4xl sm:text-5xl font-bold">6</div>
+      <div class="text-xs uppercase tracking-widest mt-2 text-primary-foreground/70">Barbeiros na equipe</div>
     </div>
-    <div class="mt-10 grid md:grid-cols-3 gap-5">
-      <div class="bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#111]">
-        <div class="w-11 h-11 rounded-md bg-[hsl(var(--primary))] text-white border-2 border-black flex items-center justify-center"><i data-lucide="award" class="w-5 h-5"></i></div>
-        <h3 class="mt-4 font-serif text-xl font-bold">Equipe de altíssimo nível</h3>
-        <p class="mt-2 text-muted-foreground">Profissionais atenciosos e habilidosos — reconhecidos pelos clientes pela técnica e capricho em cada corte.</p>
-      </div>
-      <div class="bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#111]">
-        <div class="w-11 h-11 rounded-md bg-[hsl(var(--primary))] text-white border-2 border-black flex items-center justify-center"><i data-lucide="smile" class="w-5 h-5"></i></div>
-        <h3 class="mt-4 font-serif text-xl font-bold">Atendimento carismático</h3>
-        <p class="mt-2 text-muted-foreground">Ambiente leve, conversa boa e gente que recebe cada cliente com atenção genuína do começo ao fim.</p>
-      </div>
-      <div class="bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#111]">
-        <div class="w-11 h-11 rounded-md bg-[hsl(var(--primary))] text-white border-2 border-black flex items-center justify-center"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
-        <h3 class="mt-4 font-serif text-xl font-bold">No Centro de Curitiba</h3>
-        <p class="mt-2 text-muted-foreground">Localização fácil de acessar, perto de tudo. Ideal pra encaixar no intervalo do trabalho ou passar depois do expediente.</p>
-      </div>
+    <div>
+      <div class="font-serif text-4xl sm:text-5xl font-bold">6 dias</div>
+      <div class="text-xs uppercase tracking-widest mt-2 text-primary-foreground/70">Abertos por semana</div>
     </div>
   </div>
 </section>
 
-<!-- AVALIAÇÕES -->
-<section id="avaliacoes" class="bg-muted border-y-2 border-black">
-  <div class="max-w-6xl mx-auto px-5 py-16 md:py-20">
-    <div class="max-w-xl">
-      <span class="text-xs font-bold uppercase tracking-widest">Avaliações</span>
-      <h2 class="mt-3 font-serif text-3xl md:text-4xl font-bold">O que dizem no Google.</h2>
-      <p class="mt-3 text-muted-foreground">4.8 estrelas em 426 avaliações reais.</p>
+<section id="sobre" class="py-20 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <div class="grid grid-cols-2 gap-5">
+      <div class="aspect-[3/4] rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" alt="Barbeiro fazendo corte" class="w-full h-full object-cover">
+      </div>
+      <div class="aspect-[3/4] rounded-2xl overflow-hidden shadow-lg mt-10">
+        <img src="https://images.unsplash.com/photo-1622286346003-c5c7e63b5b1e?w=600&q=80" alt="Detalhe de ferramentas de barbearia" class="w-full h-full object-cover">
+      </div>
     </div>
-    <div class="mt-10 grid md:grid-cols-2 gap-5">
-      <figure class="bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#111]">
-        <div class="flex gap-0.5 text-yellow-500">
-          <i data-lucide="star" class="w-4 h-4 fill-yellow-400"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-400"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-400"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-400"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-400"></i>
+    <div>
+      <div class="eyebrow text-xs uppercase tracking-widest font-semibold text-muted-foreground">Sobre a Barbearia</div>
+      <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mt-5 text-foreground">
+        Uma cadeira que <em class="italic text-accent">vira referência</em> em Curitiba.
+      </h2>
+      <p class="text-muted-foreground mt-5 leading-relaxed">
+        No Centro de Curitiba, a Barbearia do Brimo virou ponto de encontro de quem busca corte com capricho e conversa boa. Clientes relatam que, depois de anos procurando alguém de confiança na cidade, encontraram ali a barbearia que indicam de olhos fechados.
+      </p>
+      <p class="text-muted-foreground mt-4 leading-relaxed">
+        O ambiente é acolhedor, organizado, e faz a gente se sentir em casa. Cada barbeiro, Brimo, Muchacho, Ronald, Guilherme, Luciano e Taís, tem um estilo próprio, mas todos compartilham a mesma atenção aos detalhes.
+      </p>
+
+      <div class="grid grid-cols-2 gap-5 mt-8">
+        <div class="flex gap-3">
+          <div class="w-9 h-9 rounded-lg bg-accent/15 text-accent flex items-center justify-center flex-shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-foreground text-sm">Equipe completa</div>
+            <div class="text-xs text-muted-foreground mt-1">6 barbeiros, cada um com seu estilo</div>
+          </div>
         </div>
-        <blockquote class="mt-4 font-serif text-lg leading-snug">
-          “A Barbearia do Brimo é simplesmente excepcional! A equipe formada por Brimo, Muchacho, Ronald, Guilherme, Luciano e Taís é de altíssimo nível — todos extremamente profissionais, atenciosos e habilidosos.”
-        </blockquote>
-        <figcaption class="mt-4 text-sm font-semibold">Daniel Batista da Silva</figcaption>
-      </figure>
-      <figure class="bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#111]">
-        <div class="flex gap-0.5 text-yellow-500">
-          <i data-lucide="star" class="w-4 h-4 fill-yellow-400"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-400"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-400"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-400"></i><i data-lucide="star" class="w-4 h-4 fill-yellow-400"></i>
+        <div class="flex gap-3">
+          <div class="w-9 h-9 rounded-lg bg-accent/15 text-accent flex items-center justify-center flex-shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-foreground text-sm">Ambiente acolhedor</div>
+            <div class="text-xs text-muted-foreground mt-1">Organizado, faz se sentir em casa</div>
+          </div>
         </div>
-        <blockquote class="mt-4 font-serif text-lg leading-snug">
-          “Fiquei bastante satisfeito com o resultado. Foi o primeiro lugar em que cortei o cabelo em Curitiba. Pessoal bastante carismático e atencioso. Com certeza, voltarei mais vezes!”
-        </blockquote>
-        <figcaption class="mt-4 text-sm font-semibold">Vinícius Keidi Tanaka</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- CONTATO -->
-<section id="contato" class="bg-background">
-  <div class="max-w-6xl mx-auto px-5 py-16 md:py-20 grid md:grid-cols-2 gap-10">
-    <div>
-      <span class="text-xs font-bold uppercase tracking-widest">Contato</span>
-      <h2 class="mt-3 font-serif text-3xl md:text-4xl font-bold">Passa lá ou chama no WhatsApp.</h2>
-      <div class="mt-8 space-y-5">
-        <a href="https://maps.google.com/?cid=15587868643451877967" target="_blank" rel="noopener" class="flex items-start gap-3 group">
-          <span class="w-10 h-10 shrink-0 rounded-md bg-[hsl(var(--primary))] text-white border-2 border-black flex items-center justify-center"><i data-lucide="map-pin" class="w-5 h-5"></i></span>
-          <span>
-            <span class="block font-semibold group-hover:underline">R. Alferes Poli, 439 — Centro</span>
-            <span class="block text-sm text-muted-foreground">Curitiba — PR · 80230-090</span>
-          </span>
-        </a>
-        <a href="tel:+5541998505059" class="flex items-start gap-3 group">
-          <span class="w-10 h-10 shrink-0 rounded-md bg-[hsl(var(--primary))] text-white border-2 border-black flex items-center justify-center"><i data-lucide="phone" class="w-5 h-5"></i></span>
-          <span>
-            <span class="block font-semibold group-hover:underline">(41) 99850-5059</span>
-            <span class="block text-sm text-muted-foreground">Toque pra ligar</span>
-          </span>
-        </a>
-        <a href="https://wa.me/5541998505059" class="flex items-start gap-3 group">
-          <span class="w-10 h-10 shrink-0 rounded-md bg-[#25d366] text-black border-2 border-black flex items-center justify-center"><i data-lucide="message-circle" class="w-5 h-5"></i></span>
-          <span>
-            <span class="block font-semibold group-hover:underline">WhatsApp direto</span>
-            <span class="block text-sm text-muted-foreground">Resposta rápida</span>
-          </span>
-        </a>
-      </div>
-    </div>
-    <div>
-      <div class="bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#111]">
-        <h3 class="font-serif text-xl font-bold flex items-center gap-2"><i data-lucide="clock" class="w-5 h-5"></i> Horário de funcionamento</h3>
-        <ul class="mt-4 divide-y divide-[hsl(var(--border))] text-sm">
-          <li class="flex justify-between py-2"><span>Segunda-feira</span><span class="font-semibold">09:00 – 20:00</span></li>
-          <li class="flex justify-between py-2"><span>Terça-feira</span><span class="font-semibold">09:00 – 20:00</span></li>
-          <li class="flex justify-between py-2"><span>Quarta-feira</span><span class="font-semibold">09:00 – 20:00</span></li>
-          <li class="flex justify-between py-2"><span>Quinta-feira</span><span class="font-semibold">09:00 – 20:00</span></li>
-          <li class="flex justify-between py-2"><span>Sexta-feira</span><span class="font-semibold">09:00 – 20:00</span></li>
-          <li class="flex justify-between py-2"><span>Sábado</span><span class="font-semibold">09:00 – 17:30</span></li>
-          <li class="flex justify-between py-2"><span>Domingo</span><span class="font-semibold text-muted-foreground">Fechado</span></li>
-        </ul>
+        <div class="flex gap-3">
+          <div class="w-9 h-9 rounded-lg bg-accent/15 text-accent flex items-center justify-center flex-shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-foreground text-sm">Atenção aos detalhes</div>
+            <div class="text-xs text-muted-foreground mt-1">Capricho em todo corte</div>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <div class="w-9 h-9 rounded-lg bg-accent/15 text-accent flex items-center justify-center flex-shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold text-foreground text-sm">Indicado por clientes</div>
+            <div class="text-xs text-muted-foreground mt-1">Recomendação de olhos fechados</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA FINAL -->
-<section class="bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] border-y-2 border-black">
-  <div class="max-w-6xl mx-auto px-5 py-16 md:py-20 text-center">
-    <h2 class="font-serif text-3xl md:text-5xl font-bold max-w-3xl mx-auto">Pronto pra aquele corte caprichado?</h2>
-    <p class="mt-4 text-lg opacity-90">Chama no WhatsApp e garante seu horário.</p>
-    <a href="https://wa.me/5541998505059" class="brutal-btn mt-8 inline-flex items-center gap-2 bg-[#25d366] text-black font-bold px-8 py-4 rounded-md text-lg">
-      <i data-lucide="message-circle" class="w-5 h-5"></i> Chamar no WhatsApp
-    </a>
+<section id="especialidades" class="py-20 sm:py-28 bg-muted/40 relative overflow-hidden">
+  <div class="blob" style="background:hsl(28 65% 48% / 0.25); width:400px; height:400px; top:-100px; right:-100px;"></div>
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <div class="eyebrow center text-xs uppercase tracking-widest font-semibold text-muted-foreground inline-block">O que a barbearia oferece</div>
+      <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mt-5 text-foreground">
+        Serviços com <em class="italic text-accent">capricho</em> e assinatura.
+      </h2>
+      <p class="text-muted-foreground mt-4">Do corte clássico ao acabamento fino, cada serviço é entregue com atenção aos detalhes.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="service-card bg-card border-2 border-accent/30 rounded-2xl p-7 relative">
+        <div class="absolute top-5 right-5 text-[10px] uppercase tracking-wider font-bold text-accent bg-accent/10 px-2.5 py-1 rounded-full">Especialidade</div>
+        <div class="w-12 h-12 rounded-xl bg-accent/15 text-accent flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-foreground">Corte masculino</h3>
+        <p class="text-muted-foreground text-sm mt-3 leading-relaxed">Corte feito com capricho e atenção aos detalhes. Cada barbeiro tem seu estilo, mas todos entregam acabamento impecável.</p>
+      </div>
+
+      <div class="service-card bg-card border border-border rounded-2xl p-7">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-foreground">Barba e acabamento</h3>
+        <p class="text-muted-foreground text-sm mt-3 leading-relaxed">Barba desenhada no detalhe, com toalha quente e produtos de qualidade. O ponto final de um visual bem feito.</p>
+      </div>
+
+      <div class="service-card bg-card border border-border rounded-2xl p-7">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-foreground">Novo na cidade</h3>
+        <p class="text-muted-foreground text-sm mt-3 leading-relaxed">Recém-chegou em Curitiba e não sabe onde cortar? Pessoal carismático e atencioso recebe bem quem nunca pisou na barbearia.</p>
+      </div>
+
+      <div class="service-card bg-card border border-border rounded-2xl p-7">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-foreground">Equipe para escolher</h3>
+        <p class="text-muted-foreground text-sm mt-3 leading-relaxed">Brimo, Muchacho, Ronald, Guilherme, Luciano e Taís. Cada um com sua pegada, pra você encontrar o barbeiro da sua confiança.</p>
+      </div>
+
+      <div class="service-card bg-card border border-border rounded-2xl p-7">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-foreground">Ambiente acolhedor</h3>
+        <p class="text-muted-foreground text-sm mt-3 leading-relaxed">Organizado, bem cuidado, com aquela pegada de barbearia que faz o cliente se sentir em casa desde a primeira visita.</p>
+      </div>
+
+      <div class="service-card bg-card border border-border rounded-2xl p-7">
+        <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-foreground">Cliente que volta</h3>
+        <p class="text-muted-foreground text-sm mt-3 leading-relaxed">Autoestima lá em cima depois de um bom corte. Quem conhece, volta. Quem volta, indica.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="bg-background">
-  <div class="max-w-6xl mx-auto px-5 py-8 text-xs text-muted-foreground text-center">
-    Página criada para divulgação — dados públicos do Google. Entre em contato para remover.
+<section id="avaliacoes" class="py-20 sm:py-28">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="max-w-2xl mb-14">
+      <div class="eyebrow text-xs uppercase tracking-widest font-semibold text-muted-foreground">O que os clientes dizem</div>
+      <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mt-5 text-foreground">
+        426 avaliações. <em class="italic text-accent">4,8 estrelas</em> no Google.
+      </h2>
+      <p class="text-muted-foreground mt-4">Depoimentos reais de clientes da Barbearia do Brimo, publicados no Google Maps.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="review-card bg-card border border-border rounded-2xl p-7">
+        <div class="flex text-accent text-base tracking-tight">★★★★★</div>
+        <p class="text-foreground/85 mt-4 leading-relaxed text-sm">
+          A Barbearia do Brimo é simplesmente excepcional. A equipe formada por Brimo, Muchacho, Ronald, Guilherme, Luciano e Taís é de altíssimo nível, todos extremamente profissionais, atenciosos e habilidosos. Cada barbeiro tem seu estilo, mas todos entregam um serviço impecável, sempre com capricho, simpatia e atenção aos detalhes.
+        </p>
+        <div class="flex items-center gap-3 mt-6 pt-5 border-t border-border">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">D</div>
+          <div>
+            <div class="font-semibold text-foreground text-sm">Daniel Batista da Silva</div>
+            <div class="text-xs text-muted-foreground">Cliente</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card bg-card border border-border rounded-2xl p-7">
+        <div class="flex text-accent text-base tracking-tight">★★★★★</div>
+        <p class="text-foreground/85 mt-4 leading-relaxed text-sm">
+          Fiquei bastante satisfeito com o resultado. Foi o primeiro lugar em que cortei o cabelo em Curitiba. Pessoal bastante carismático e atencioso. Com certeza, voltarei mais vezes.
+        </p>
+        <div class="flex items-center gap-3 mt-6 pt-5 border-t border-border">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">V</div>
+          <div>
+            <div class="font-semibold text-foreground text-sm">Vinícius Keidi Tanaka</div>
+            <div class="text-xs text-muted-foreground">Novo em Curitiba</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card bg-card border border-border rounded-2xl p-7">
+        <div class="flex text-accent text-base tracking-tight">★★★★★</div>
+        <p class="text-foreground/85 mt-4 leading-relaxed text-sm">
+          Há anos eu procurava bons barbeiros em Curitiba e não encontrava. Morei muito tempo fora e nunca achava alguém bacana, até conhecer a Barbearia do Brimo. Quero agradecer muito ao meu primo e a toda a equipe, especialmente ao Gui e ao Brimo, que sempre cortam meu cabelo com capricho. Todos que trabalham lá são sensacionais. Indico de olhos fechados.
+        </p>
+        <div class="flex items-center gap-3 mt-6 pt-5 border-t border-border">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">F</div>
+          <div>
+            <div class="font-semibold text-foreground text-sm">Filipe José do Espírito Santo</div>
+            <div class="text-xs text-muted-foreground">Cliente fiel</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card bg-primary text-primary-foreground rounded-2xl p-7 flex flex-col justify-center">
+        <div class="text-5xl font-serif font-bold text-accent">4,8</div>
+        <div class="flex text-accent text-lg mt-2">★★★★★</div>
+        <p class="text-primary-foreground/80 mt-4 text-sm leading-relaxed">
+          Nota média de 426 clientes no Google Maps. Uma barbearia que construiu reputação cliente por cliente, corte por corte.
+        </p>
+        <a href="https://maps.google.com/?cid=15587868643451877967&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" class="inline-flex items-center gap-2 mt-6 text-accent hover:text-primary-foreground font-semibold text-sm">
+          Ver todas as 426 avaliações
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="py-20 sm:py-28 bg-muted/40">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <div class="eyebrow center text-xs uppercase tracking-widest font-semibold text-muted-foreground inline-block">Venha marcar seu horário</div>
+      <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mt-5 text-foreground">
+        Fácil de chegar. <em class="italic text-accent">Fácil de falar.</em>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-10">
+      <a href="tel:+5541998505059" class="contact-card bg-card border border-border rounded-2xl p-7 block">
+        <div class="icon-box w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 transition">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div class="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Telefone</div>
+        <div class="font-serif text-xl font-semibold text-foreground mt-1">(41) 99850-5059</div>
+        <div class="text-sm text-muted-foreground mt-1">Ligue para agendar</div>
+      </a>
+      <a href="https://wa.me/5541998505059" class="contact-card bg-card border border-border rounded-2xl p-7 block">
+        <div class="icon-box w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 transition">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+        </div>
+        <div class="text-xs uppercase tracking-widest text-muted-foreground font-semibold">WhatsApp</div>
+        <div class="font-serif text-xl font-semibold text-foreground mt-1">Mensagem direta</div>
+        <div class="text-sm text-muted-foreground mt-1">Resposta rápida no chat</div>
+      </a>
+      <a href="https://maps.google.com/?cid=15587868643451877967" target="_blank" class="contact-card bg-card border border-border rounded-2xl p-7 block">
+        <div class="icon-box w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 transition">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Endereço</div>
+        <div class="font-serif text-xl font-semibold text-foreground mt-1 leading-tight">R. Alferes Poli, 439</div>
+        <div class="text-sm text-muted-foreground mt-1">Centro, Curitiba - PR</div>
+      </a>
+    </div>
+
+    <div class="bg-card border border-border rounded-2xl p-7 sm:p-9 max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-xl bg-accent/15 text-accent flex items-center justify-center">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold text-foreground">Horário de funcionamento</h3>
+      </div>
+      <div class="divider-line">
+        <div class="flex justify-between py-3 text-sm"><span class="text-foreground/80">Segunda-feira</span><span class="font-semibold text-foreground">09:00 – 20:00</span></div>
+        <div class="flex justify-between py-3 text-sm"><span class="text-foreground/80">Terça-feira</span><span class="font-semibold text-foreground">09:00 – 20:00</span></div>
+        <div class="flex justify-between py-3 text-sm"><span class="text-foreground/80">Quarta-feira</span><span class="font-semibold text-foreground">09:00 – 20:00</span></div>
+        <div class="flex justify-between py-3 text-sm"><span class="text-foreground/80">Quinta-feira</span><span class="font-semibold text-foreground">09:00 – 20:00</span></div>
+        <div class="flex justify-between py-3 text-sm"><span class="text-foreground/80">Sexta-feira</span><span class="font-semibold text-foreground">09:00 – 20:00</span></div>
+        <div class="flex justify-between py-3 text-sm"><span class="text-foreground/80">Sábado</span><span class="font-semibold text-foreground">09:00 – 17:30</span></div>
+        <div class="flex justify-between py-3 text-sm"><span class="text-foreground/80">Domingo</span><span class="text-muted-foreground">Fechado</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 sm:py-24">
+  <div class="max-w-5xl mx-auto px-5 sm:px-8">
+    <div class="relative bg-primary text-primary-foreground rounded-2xl p-10 sm:p-14 text-center overflow-hidden">
+      <div class="blob" style="background:hsl(28 65% 48% / 0.5); width:320px; height:320px; top:-100px; right:-80px;"></div>
+      <div class="relative z-10">
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+          Sua próxima cadeira<br>
+          <em class="italic text-accent">fica aqui.</em>
+        </h2>
+        <p class="text-primary-foreground/80 mt-5 max-w-xl mx-auto">Agende seu horário pelo WhatsApp e escolha o barbeiro da sua confiança.</p>
+        <a href="https://wa.me/5541998505059" class="inline-flex items-center justify-center gap-2 bg-[#25d366] hover:bg-[#20ba5a] text-white px-7 py-4 rounded-full font-semibold shadow-xl mt-8 transition">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Agendar pelo WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-10 border-t border-border">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 text-center text-xs text-muted-foreground">
+    Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
   </div>
 </footer>
 
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/5541998505059" aria-label="WhatsApp" class="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25d366] text-white flex items-center justify-center shadow-lg border-2 border-black">
-  <span class="whats-pulse absolute inset-0 rounded-full"></span>
-  <i data-lucide="message-circle" class="w-7 h-7 relative"></i>
+<a href="https://wa.me/5541998505059" class="wa-float" aria-label="WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<script src="https://unpkg.com/lucide@latest"></script>
 <script>
-  lucide.createIcons();
-  const btn = document.getElementById('menuBtn');
-  const menu = document.getElementById('mobileMenu');
-  btn?.addEventListener('click', () => menu.classList.toggle('hidden'));
-  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
 </script>
 </body>
 </html>
