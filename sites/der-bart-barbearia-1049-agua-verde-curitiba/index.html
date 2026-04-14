@@ -1,291 +1,472 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Der Bart Barbearia — Água Verde, Curitiba</title>
-<meta name="description" content="Der Bart Barbearia em Água Verde, Curitiba. Ambiente descontraído, barbeiros experientes e atendimento acolhedor. Agende pelo WhatsApp.">
-<meta property="og:title" content="Der Bart Barbearia — Água Verde, Curitiba">
-<meta property="og:description" content="Corte, barba e experiência inesquecível. 4.8★ no Google. Agende pelo WhatsApp.">
-<meta property="og:type" content="website">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Der Bart Barbearia · Cortes e barba em Água Verde, Curitiba</title>
+<meta name="description" content="Barbearia referência em Água Verde. Espaço descontraído, equipamentos top e barbeiros que cuidam do seu estilo há anos. Agende pelo WhatsApp." />
+<meta property="og:title" content="Der Bart Barbearia · Água Verde, Curitiba" />
+<meta property="og:description" content="Cortes, degradês e barba com barbeiros experientes. 4,8★ no Google." />
+<meta property="og:image" content="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&q=80" />
+<meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          background: 'hsl(var(--background))',
+          foreground: 'hsl(var(--foreground))',
+          primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+          accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+          muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+          card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' },
+          border: 'hsl(var(--border))',
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          serif: ['Fraunces', 'Georgia', 'serif'],
+        },
+        borderRadius: { lg: 'var(--radius)', md: 'calc(var(--radius) - 4px)', sm: 'calc(var(--radius) - 8px)' },
+      }
+    }
+  }
+</script>
 <style>
   :root {
-    --background: 30 20% 97%;
-    --foreground: 20 14% 10%;
-    --primary: 25 50% 28%;
-    --primary-foreground: 30 20% 98%;
-    --muted: 30 10% 93%;
-    --muted-foreground: 25 8% 40%;
-    --card: 0 0% 100%;
-    --border: 30 10% 88%;
-    --radius: 0.75rem;
-    --accent: 30 60% 50%;
+    --background: 28 25% 97%;
+    --foreground: 220 15% 12%;
+    --primary: 220 22% 14%;
+    --primary-foreground: 30 30% 97%;
+    --accent: 30 78% 48%;
+    --accent-foreground: 30 30% 97%;
+    --muted: 28 20% 92%;
+    --muted-foreground: 220 10% 40%;
+    --card: 30 30% 99%;
+    --card-foreground: 220 15% 12%;
+    --border: 28 18% 88%;
+    --radius: 0.875rem;
   }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background: hsl(var(--background));
-    color: hsl(var(--foreground));
+  section { scroll-margin-top: 90px; }
+  body { font-family: 'Inter', sans-serif; background: hsl(var(--background)); color: hsl(var(--foreground)); }
+  .font-serif { font-family: 'Fraunces', serif; }
+  .eyebrow { position: relative; display: inline-block; padding-bottom: 10px; }
+  .eyebrow::after { content: ''; position: absolute; left: 0; bottom: 0; width: 48px; height: 2px; background: hsl(var(--accent)); }
+  .quote-card::before {
+    content: '\201C';
+    position: absolute; top: -10px; right: 18px;
+    font-family: 'Fraunces', serif; font-size: 120px; line-height: 1;
+    color: hsl(var(--accent) / 0.12); pointer-events: none;
   }
-  .font-serif { font-family: 'Fraunces', Georgia, serif; }
-  section { scroll-margin-top: 100px; }
-
-  /* Floating pill header */
-  .pill-header {
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background: hsla(30, 20%, 99%, 0.75);
-    border: 1px solid hsla(30, 10%, 80%, 0.4);
-    box-shadow: 0 4px 24px -6px rgba(40, 20, 10, 0.12), 0 1px 2px rgba(40, 20, 10, 0.04);
+  .dot-pattern {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px);
+    background-size: 22px 22px;
   }
-
-  /* WhatsApp pulse */
-  @keyframes wa-pulse {
-    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6), 0 8px 24px rgba(37, 211, 102, 0.35); }
-    70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0), 0 8px 24px rgba(37, 211, 102, 0.35); }
-    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 8px 24px rgba(37, 211, 102, 0.35); }
-  }
-  .wa-float { animation: wa-pulse 2.2s infinite; }
-
-  .bg-hero {
-    background-image:
-      radial-gradient(ellipse at 20% 0%, hsla(25, 50%, 28%, 0.08), transparent 60%),
-      radial-gradient(ellipse at 80% 100%, hsla(30, 60%, 50%, 0.07), transparent 60%);
-  }
-
-  .card {
-    background: hsl(var(--card));
-    border: 1px solid hsl(var(--border));
-    border-radius: var(--radius);
-  }
-
-  .btn-primary {
+  .blob { position: absolute; border-radius: 9999px; filter: blur(60px); opacity: 0.5; pointer-events: none; }
+  .pulse-ring { animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+  @keyframes pulse-ring { 0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); } 50% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); } }
+  .card-hover { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+  .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -20px hsl(var(--primary) / 0.18); border-color: hsl(var(--accent) / 0.5); }
+  .brutal-header {
     background: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
+    border-bottom: 2px solid #000;
+    box-shadow: 0 4px 0 0 hsl(var(--accent));
   }
-  .btn-primary:hover { background: hsl(25 50% 22%); }
-
-  .link-nav {
-    position: relative;
-    transition: color .2s;
+  .brutal-link { position: relative; font-weight: 600; }
+  .brutal-link::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: hsl(var(--accent)); transition: width .25s ease; }
+  .brutal-link:hover::after { width: 100%; }
+  .brutal-btn {
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0 0 #000;
+    transition: transform .15s ease, box-shadow .15s ease;
   }
-  .link-nav::after {
-    content: '';
-    position: absolute;
-    left: 50%; bottom: -4px;
-    width: 0; height: 2px;
-    background: hsl(var(--primary));
-    transition: all .25s ease;
-    transform: translateX(-50%);
-  }
-  .link-nav:hover::after { width: 80%; }
+  .brutal-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 0 #000; }
+  .brutal-btn:active { transform: translate(2px, 2px); box-shadow: 0 0 0 0 #000; }
 </style>
 </head>
 <body class="antialiased">
 
-<!-- Header: floating-pill -->
-<header class="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 pt-3">
-  <div class="pill-header max-w-5xl mx-auto rounded-full px-5 sm:px-7 py-3 flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-2">
-      <span class="inline-flex w-8 h-8 items-center justify-center rounded-full" style="background:hsl(var(--primary));color:hsl(var(--primary-foreground))">
-        <i data-lucide="scissors" class="w-4 h-4"></i>
-      </span>
-      <span class="font-serif font-semibold text-lg tracking-tight">Der Bart</span>
+<header class="brutal-header sticky top-0 z-40">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <span class="w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-serif text-lg font-bold border-2 border-black shadow-[2px_2px_0_0_#000]">D</span>
+      <span class="font-serif text-lg md:text-xl font-semibold tracking-tight">Der Bart <span class="text-accent">Barbearia</span></span>
     </a>
-    <nav class="hidden md:flex items-center gap-7 text-sm font-medium" style="color:hsl(var(--muted-foreground))">
-      <a href="#sobre" class="link-nav hover:text-stone-900">Sobre</a>
-      <a href="#diferenciais" class="link-nav hover:text-stone-900">Diferenciais</a>
-      <a href="#avaliacoes" class="link-nav hover:text-stone-900">Avaliações</a>
-      <a href="#contato" class="link-nav hover:text-stone-900">Contato</a>
+    <nav class="hidden md:flex items-center gap-8 text-sm">
+      <a href="#sobre" class="brutal-link">Sobre</a>
+      <a href="#especialidades" class="brutal-link">Especialidades</a>
+      <a href="#avaliacoes" class="brutal-link">Avaliações</a>
+      <a href="#contato" class="brutal-link">Contato</a>
+      <a href="https://wa.me/5541992171940" class="brutal-btn bg-accent text-black px-4 py-2 text-sm font-semibold rounded-md">Agendar</a>
     </nav>
-    <a href="https://wa.me/5541992171940" class="hidden md:inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full text-white" style="background:#25d366">
-      <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
-    </a>
-    <button id="menu-btn" class="md:hidden p-2 rounded-full" aria-label="Abrir menu">
+    <button id="menu-btn" class="md:hidden w-10 h-10 border-2 border-black bg-accent text-black rounded-md flex items-center justify-center shadow-[3px_3px_0_0_#000]" aria-label="Abrir menu">
       <i data-lucide="menu" class="w-5 h-5"></i>
     </button>
   </div>
-  <div id="mobile-menu" class="hidden md:hidden max-w-5xl mx-auto mt-2 pill-header rounded-2xl px-5 py-4">
-    <nav class="flex flex-col gap-3 text-sm font-medium">
-      <a href="#sobre" class="py-1">Sobre</a>
-      <a href="#diferenciais" class="py-1">Diferenciais</a>
-      <a href="#avaliacoes" class="py-1">Avaliações</a>
-      <a href="#contato" class="py-1">Contato</a>
-      <a href="https://wa.me/5541992171940" class="mt-2 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full text-white font-semibold" style="background:#25d366">
-        <i data-lucide="message-circle" class="w-4 h-4"></i> Chamar no WhatsApp
-      </a>
-    </nav>
+  <div id="mobile-menu" class="hidden md:hidden border-t-2 border-black bg-primary">
+    <div class="px-4 py-4 flex flex-col gap-3 text-sm">
+      <a href="#sobre" class="py-2">Sobre</a>
+      <a href="#especialidades" class="py-2">Especialidades</a>
+      <a href="#avaliacoes" class="py-2">Avaliações</a>
+      <a href="#contato" class="py-2">Contato</a>
+      <a href="https://wa.me/5541992171940" class="brutal-btn bg-accent text-black px-4 py-2 text-center font-semibold rounded-md">Agendar no WhatsApp</a>
+    </div>
   </div>
 </header>
 
-<!-- HERO -->
-<section id="top" class="bg-hero pt-32 pb-20 sm:pt-40 sm:pb-28 px-5">
-  <div class="max-w-4xl mx-auto text-center">
-    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border bg-white text-sm mb-6" style="border-color:hsl(var(--border))">
-      <i data-lucide="star" class="w-4 h-4 fill-amber-400 stroke-amber-500"></i>
-      <span class="font-semibold">4.8</span>
-      <span style="color:hsl(var(--muted-foreground))">· 133 avaliações no Google</span>
-    </div>
-    <h1 class="font-serif text-4xl sm:text-6xl font-semibold tracking-tight leading-tight mb-6">
-      Der Bart Barbearia
-    </h1>
-    <p class="text-lg sm:text-xl max-w-2xl mx-auto mb-10" style="color:hsl(var(--muted-foreground))">
-      Corte preciso, barba caprichada e um ambiente descontraído no coração do Água Verde. Venha viver uma experiência inesquecível.
-    </p>
-    <a href="https://wa.me/5541992171940" class="inline-flex items-center gap-3 px-7 py-4 rounded-xl text-white font-semibold text-lg shadow-lg hover:shadow-xl transition" style="background:#25d366">
-      <i data-lucide="message-circle" class="w-5 h-5"></i>
-      Chamar no WhatsApp
-    </a>
-    <div class="mt-6 flex items-center justify-center gap-2 text-sm" style="color:hsl(var(--muted-foreground))">
-      <i data-lucide="map-pin" class="w-4 h-4"></i>
-      <span>Água Verde, Curitiba — PR</span>
-    </div>
-  </div>
-</section>
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 dot-pattern opacity-60"></div>
+  <div class="blob bg-accent/40 w-80 h-80 -top-20 -left-20"></div>
+  <div class="blob bg-primary/30 w-96 h-96 -bottom-32 -right-20"></div>
 
-<!-- SOBRE -->
-<section id="sobre" class="py-20 px-5">
-  <div class="max-w-3xl mx-auto text-center">
-    <span class="text-xs uppercase tracking-widest font-semibold" style="color:hsl(var(--accent))">Sobre a Der Bart</span>
-    <h2 class="font-serif text-3xl sm:text-4xl font-semibold mt-3 mb-6">Mais do que uma barbearia, uma experiência.</h2>
-    <p class="text-lg leading-relaxed" style="color:hsl(var(--muted-foreground))">
-      Espaço descontraído, equipamentos de última e barbeiros que conhecem o ofício de verdade. Na Der Bart você senta na cadeira, relaxa e sai renovado — é por isso que tantos clientes cortam aqui há anos.
-    </p>
-  </div>
-</section>
+  <div class="relative max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-28 grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest bg-primary/5 text-primary border border-border rounded-full px-3 py-1.5">
+        <i data-lucide="scissors" class="w-3.5 h-3.5 text-accent"></i>
+        Referência em Água Verde há mais de 2 anos
+      </span>
+      <h1 class="mt-6 font-serif text-4xl md:text-6xl leading-[1.05] tracking-tight text-primary">
+        Seu corte<br>
+        <span class="italic text-accent font-semibold">nas mãos de quem entende</span>
+      </h1>
+      <p class="mt-6 text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed">
+        Espaço descontraído, equipamentos de última geração e barbeiros que cortam há anos no mesmo lugar. Na Der Bart, corte e barba viram um momento que você repete toda semana.
+      </p>
+      <div class="mt-6 flex items-center gap-3 text-sm flex-wrap">
+        <div class="flex text-accent">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <span class="font-semibold text-primary">4,8 no Google</span>
+        <span class="text-muted-foreground">· 133 avaliações</span>
+      </div>
 
-<!-- DIFERENCIAIS -->
-<section id="diferenciais" class="py-20 px-5" style="background:hsl(var(--muted))">
-  <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-14">
-      <span class="text-xs uppercase tracking-widest font-semibold" style="color:hsl(var(--accent))">Por que escolher</span>
-      <h2 class="font-serif text-3xl sm:text-4xl font-semibold mt-3">O que faz a diferença</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="card p-7 shadow-sm">
-        <div class="inline-flex w-11 h-11 items-center justify-center rounded-xl mb-4" style="background:hsl(var(--primary));color:hsl(var(--primary-foreground))">
-          <i data-lucide="sparkles" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-serif text-xl font-semibold mb-2">Ambiente top</h3>
-        <p class="text-sm leading-relaxed" style="color:hsl(var(--muted-foreground))">Espaço descontraído, agradável e com equipamentos de última geração — o tipo de lugar que você quer voltar.</p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href="https://wa.me/5541992171940" class="brutal-btn inline-flex items-center justify-center gap-2 bg-[#25d366] text-white font-semibold px-6 py-3.5 rounded-md">
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Chamar no WhatsApp
+        </a>
+        <a href="tel:+5541992171940" class="brutal-btn inline-flex items-center justify-center gap-2 bg-background text-primary font-semibold px-6 py-3.5 rounded-md">
+          <i data-lucide="phone" class="w-5 h-5"></i>
+          (41) 99217-1940
+        </a>
       </div>
-      <div class="card p-7 shadow-sm">
-        <div class="inline-flex w-11 h-11 items-center justify-center rounded-xl mb-4" style="background:hsl(var(--primary));color:hsl(var(--primary-foreground))">
-          <i data-lucide="scissors" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-serif text-xl font-semibold mb-2">Barbeiros experientes</h3>
-        <p class="text-sm leading-relaxed" style="color:hsl(var(--muted-foreground))">Profissionais gente fina, técnicos e atentos. Clientes cortam aqui há mais de 2 anos e recomendam sempre.</p>
-      </div>
-      <div class="card p-7 shadow-sm">
-        <div class="inline-flex w-11 h-11 items-center justify-center rounded-xl mb-4" style="background:hsl(var(--primary));color:hsl(var(--primary-foreground))">
-          <i data-lucide="heart" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-serif text-xl font-semibold mb-2">Experiência marcante</h3>
-        <p class="text-sm leading-relaxed" style="color:hsl(var(--muted-foreground))">Atendimento acolhedor que te deixa à vontade. Quando o cliente fica sem vir, dá falta — isso é o que buscamos.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- AVALIAÇÕES -->
-<section id="avaliacoes" class="py-20 px-5">
-  <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-14">
-      <span class="text-xs uppercase tracking-widest font-semibold" style="color:hsl(var(--accent))">Quem corta, recomenda</span>
-      <h2 class="font-serif text-3xl sm:text-4xl font-semibold mt-3">Avaliações reais do Google</h2>
-    </div>
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="card p-7 shadow-sm">
-        <div class="flex gap-1 mb-4">
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 stroke-amber-500"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 stroke-amber-500"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 stroke-amber-500"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 stroke-amber-500"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 stroke-amber-500"></i>
-        </div>
-        <p class="leading-relaxed mb-5">"Barbearia incrível, espaço descontraído. Corto com o André e super indico a experiência inesquecível. Quando fico sem vir me uma bad."</p>
-        <p class="text-sm font-semibold">— Diego Cunha</p>
+      <div class="mt-8 flex items-center gap-6 text-sm text-muted-foreground flex-wrap">
+        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-accent"></i> Água Verde, Curitiba</div>
+        <div class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-accent"></i> Aberto até 21h</div>
       </div>
-      <div class="card p-7 shadow-sm">
-        <div class="flex gap-1 mb-4">
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 stroke-amber-500"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 stroke-amber-500"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 stroke-amber-500"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 stroke-amber-500"></i>
-          <i data-lucide="star" class="w-4 h-4 fill-amber-400 stroke-amber-500"></i>
+    </div>
+
+    <div class="relative">
+      <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border-4 border-accent/80 shadow-[12px_12px_0_0_hsl(var(--primary))]">
+        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=900&q=80" alt="Barbearia Der Bart - corte masculino" class="w-full h-full object-cover" />
+      </div>
+      <div class="hidden sm:block absolute -left-6 bottom-10 bg-card border-2 border-black rounded-xl shadow-[6px_6px_0_0_#000] p-4 max-w-[220px]">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-lg bg-accent/20 text-accent flex items-center justify-center">
+            <i data-lucide="award" class="w-5 h-5"></i>
+          </span>
+          <div>
+            <div class="text-[10px] uppercase tracking-widest text-muted-foreground">Especialidade</div>
+            <div class="font-serif text-primary font-semibold leading-tight">Degradês e barba</div>
+          </div>
         </div>
-        <p class="leading-relaxed mb-5">"Corto com o Matheus na barbearia há mais de 2 anos. O espaço é top, os equipamentos são de última, ambiente agradável e o Matheus é gente fina demais! Sempre deixa a gente à vontade. Recomendo demais."</p>
-        <p class="text-sm font-semibold">— Douglas Henrique</p>
+      </div>
+      <div class="hidden sm:block absolute -right-4 -top-4 bg-primary text-primary-foreground rounded-xl border-2 border-black shadow-[6px_6px_0_0_hsl(var(--accent))] p-4">
+        <div class="text-3xl font-serif font-semibold">4,8★</div>
+        <div class="text-[10px] uppercase tracking-widest text-accent">Google</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTATO -->
-<section id="contato" class="py-20 px-5" style="background:hsl(var(--muted))">
-  <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-12">
-      <span class="text-xs uppercase tracking-widest font-semibold" style="color:hsl(var(--accent))">Contato</span>
-      <h2 class="font-serif text-3xl sm:text-4xl font-semibold mt-3">Venha nos visitar</h2>
+<section class="bg-primary text-primary-foreground border-y-2 border-black">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold text-accent">2+</div>
+      <div class="mt-1 text-[11px] uppercase tracking-widest text-primary-foreground/70">Anos cortando no mesmo lugar</div>
     </div>
-    <div class="grid md:grid-cols-3 gap-5">
-      <a href="https://maps.google.com/?cid=11306231582021468830" target="_blank" rel="noopener" class="card p-6 shadow-sm hover:shadow-md transition">
-        <div class="inline-flex w-10 h-10 items-center justify-center rounded-lg mb-3" style="background:hsl(var(--primary));color:hsl(var(--primary-foreground))">
-          <i data-lucide="map-pin" class="w-4 h-4"></i>
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold text-accent">4,8★</div>
+      <div class="mt-1 text-[11px] uppercase tracking-widest text-primary-foreground/70">Avaliação no Google</div>
+    </div>
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold text-accent">133+</div>
+      <div class="mt-1 text-[11px] uppercase tracking-widest text-primary-foreground/70">Avaliações de clientes</div>
+    </div>
+    <div>
+      <div class="font-serif text-4xl md:text-5xl font-semibold text-accent">6</div>
+      <div class="mt-1 text-[11px] uppercase tracking-widest text-primary-foreground/70">Dias por semana, 9h às 21h</div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre" class="py-16 md:py-28">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-12 items-center">
+    <div class="grid grid-cols-2 gap-4">
+      <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=700&q=80" alt="Ambiente da barbearia" class="w-full h-full object-cover rounded-xl border-2 border-black shadow-[6px_6px_0_0_hsl(var(--accent))]" />
+      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=700&q=80" alt="Barbeiro trabalhando" class="w-full h-full object-cover rounded-xl border-2 border-black shadow-[6px_6px_0_0_hsl(var(--primary))] mt-8" />
+    </div>
+    <div>
+      <span class="eyebrow text-xs uppercase tracking-widest font-semibold text-primary">Sobre a Der Bart</span>
+      <h2 class="mt-4 font-serif text-3xl md:text-5xl leading-tight text-primary">
+        Espaço top,<br>barbeiros <span class="italic text-accent">de confiança</span>.
+      </h2>
+      <p class="mt-5 text-muted-foreground leading-relaxed">
+        Na Der Bart, o espaço é descontraído e os equipamentos são de última geração. Mas o que faz os clientes voltarem toda semana são os barbeiros: Matheus, André e o time inteiro tratam cada atendimento com caprincho, cuidado e papo bom.
+      </p>
+      <p class="mt-3 text-muted-foreground leading-relaxed">
+        Tem cliente que corta aqui há mais de 2 anos e não troca mais. Quando fica sem vir, sente falta. É esse tipo de relação que a gente constrói, um corte por vez.
+      </p>
+
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="flex gap-3 items-start">
+          <span class="w-9 h-9 rounded-lg bg-accent/15 text-accent flex items-center justify-center shrink-0"><i data-lucide="check" class="w-4 h-4"></i></span>
+          <div>
+            <div class="font-semibold text-primary">Equipamentos top</div>
+            <div class="text-sm text-muted-foreground">Máquinas e navalhas de última geração.</div>
+          </div>
         </div>
-        <h3 class="font-semibold mb-1">Endereço</h3>
-        <p class="text-sm" style="color:hsl(var(--muted-foreground))">R. Alferes Ângelo Sampaio, 1049 — Água Verde, Curitiba - PR</p>
+        <div class="flex gap-3 items-start">
+          <span class="w-9 h-9 rounded-lg bg-accent/15 text-accent flex items-center justify-center shrink-0"><i data-lucide="check" class="w-4 h-4"></i></span>
+          <div>
+            <div class="font-semibold text-primary">Ambiente descontraído</div>
+            <div class="text-sm text-muted-foreground">Você chega, relaxa e sai com o visual em dia.</div>
+          </div>
+        </div>
+        <div class="flex gap-3 items-start">
+          <span class="w-9 h-9 rounded-lg bg-accent/15 text-accent flex items-center justify-center shrink-0"><i data-lucide="check" class="w-4 h-4"></i></span>
+          <div>
+            <div class="font-semibold text-primary">Caprichoso no corte</div>
+            <div class="text-sm text-muted-foreground">Cada detalhe pensado, cada cliente à vontade.</div>
+          </div>
+        </div>
+        <div class="flex gap-3 items-start">
+          <span class="w-9 h-9 rounded-lg bg-accent/15 text-accent flex items-center justify-center shrink-0"><i data-lucide="check" class="w-4 h-4"></i></span>
+          <div>
+            <div class="font-semibold text-primary">Fidelidade que conta</div>
+            <div class="text-sm text-muted-foreground">Clientes há mais de 2 anos cortando sempre aqui.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="especialidades" class="py-16 md:py-28 bg-muted/40 border-y border-border">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <div class="max-w-2xl">
+      <span class="eyebrow text-xs uppercase tracking-widest font-semibold text-primary">Nossas especialidades</span>
+      <h2 class="mt-4 font-serif text-3xl md:text-5xl leading-tight text-primary">Serviços que <span class="italic text-accent">cuidam do seu estilo</span>.</h2>
+      <p class="mt-4 text-muted-foreground">Do corte clássico ao degradê milimétrico, do barbear tradicional ao acabamento de barba. Cada serviço feito com equipamento top e mão de profissional.</p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="card-hover relative bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#000]">
+        <span class="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-widest bg-accent text-black px-2 py-1 rounded-md border border-black">Principal</span>
+        <span class="w-11 h-11 rounded-xl bg-accent/15 text-accent flex items-center justify-center"><i data-lucide="scissors" class="w-5 h-5"></i></span>
+        <h3 class="mt-4 font-serif text-xl text-primary">Corte masculino</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Degradê, social, militar, texturizado. O que você pede, o barbeiro entrega, com caprincho e acabamento perfeito.</p>
+      </div>
+      <div class="card-hover bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#000]">
+        <span class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center"><i data-lucide="wind" class="w-5 h-5"></i></span>
+        <h3 class="mt-4 font-serif text-xl text-primary">Barba completa</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Modelagem, navalha, toalha quente e finalização. Barba que fica alinhada e com aquele cuidado que faz diferença.</p>
+      </div>
+      <div class="card-hover bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#000]">
+        <span class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center"><i data-lucide="sparkles" class="w-5 h-5"></i></span>
+        <h3 class="mt-4 font-serif text-xl text-primary">Combo corte + barba</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">O combo clássico pra sair zerado. Corte e barba feitos na sequência, sem pressa, como tem que ser.</p>
+      </div>
+      <div class="card-hover bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#000]">
+        <span class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center"><i data-lucide="user-check" class="w-5 h-5"></i></span>
+        <h3 class="mt-4 font-serif text-xl text-primary">Barbeiro de confiança</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Matheus, André e o time. Escolha seu barbeiro e mantenha o padrão em todos os cortes, sem surpresa.</p>
+      </div>
+      <div class="card-hover bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#000]">
+        <span class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center"><i data-lucide="armchair" class="w-5 h-5"></i></span>
+        <h3 class="mt-4 font-serif text-xl text-primary">Ambiente que relaxa</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Espaço descontraído, música boa, papo leve. Você senta na cadeira e esquece o resto por um tempo.</p>
+      </div>
+      <div class="card-hover bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#000]">
+        <span class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center"><i data-lucide="calendar-check" class="w-5 h-5"></i></span>
+        <h3 class="mt-4 font-serif text-xl text-primary">Agendamento fácil</h3>
+        <p class="mt-2 text-sm text-muted-foreground leading-relaxed">Chama no WhatsApp, marca seu horário e pronto. De segunda a sábado, das 9h às 21h (sábado até 18h).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacoes" class="py-16 md:py-28">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <div class="max-w-2xl">
+      <span class="eyebrow text-xs uppercase tracking-widest font-semibold text-primary">O que os clientes dizem</span>
+      <h2 class="mt-4 font-serif text-3xl md:text-5xl leading-tight text-primary">
+        4,8 estrelas, <span class="italic text-accent">133 vozes</span>.
+      </h2>
+      <p class="mt-4 text-muted-foreground">Avaliações reais do Google Maps. Clientes de verdade que cortam há anos com a gente.</p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="quote-card relative bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#000]">
+        <div class="flex text-accent mb-3">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <p class="text-primary leading-relaxed relative z-10">"Barbearia incrível, espaço descontraído. Corto com o André e super indico a experiência inesquecível. Quando fico sem vir, me dá uma bad."</p>
+        <div class="mt-5 pt-4 border-t border-border flex items-center gap-3">
+          <span class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">D</span>
+          <div>
+            <div class="font-semibold text-primary text-sm">Diego Cunha</div>
+            <div class="text-xs text-muted-foreground">Cliente do André</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-card relative bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#000]">
+        <div class="flex text-accent mb-3">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <p class="text-primary leading-relaxed relative z-10">"Corto com o Matheus na barbearia há mais de 2 anos. O espaço é top, os equipamentos são de última, ambiente agradável e o Matheus é gente fina demais. Sempre deixa a gente à vontade. Recomendo demais, o cara é 10/10."</p>
+        <div class="mt-5 pt-4 border-t border-border flex items-center gap-3">
+          <span class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">D</span>
+          <div>
+            <div class="font-semibold text-primary text-sm">Douglas Henrique</div>
+            <div class="text-xs text-muted-foreground">Cliente há mais de 2 anos</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-card relative bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#000]">
+        <div class="flex text-accent mb-3">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <p class="text-primary leading-relaxed relative z-10">"Sou cliente há quase 2 anos e não troco mais de barbearia. O Matheus é muito foda, caprichoso, cuidadoso. Recomendo demais."</p>
+        <div class="mt-5 pt-4 border-t border-border flex items-center gap-3">
+          <span class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">K</span>
+          <div>
+            <div class="font-semibold text-primary text-sm">Kelly Itonaga</div>
+            <div class="text-xs text-muted-foreground">Cliente há quase 2 anos</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-card relative bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#000]">
+        <div class="flex text-accent mb-3">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <p class="text-primary leading-relaxed relative z-10">"Espaço top, ambiente agradável e equipamentos de última. O Matheus é caprichoso e cuidadoso, deixa a gente sempre à vontade. Cliente fiel aqui."</p>
+        <div class="mt-5 pt-4 border-t border-border flex items-center gap-3">
+          <span class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold">C</span>
+          <div>
+            <div class="font-semibold text-primary text-sm">Clientes frequentes</div>
+            <div class="text-xs text-muted-foreground">Resumo de avaliações 5★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10">
+      <a href="https://maps.google.com/?cid=11306231582021468830&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" class="inline-flex items-center gap-2 font-semibold text-primary hover:text-accent transition">
+        Ver todas as 133 avaliações no Google
+        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
       </a>
-      <a href="tel:+5541992171940" class="card p-6 shadow-sm hover:shadow-md transition">
-        <div class="inline-flex w-10 h-10 items-center justify-center rounded-lg mb-3" style="background:hsl(var(--primary));color:hsl(var(--primary-foreground))">
-          <i data-lucide="phone" class="w-4 h-4"></i>
-        </div>
-        <h3 class="font-semibold mb-1">Telefone</h3>
-        <p class="text-sm" style="color:hsl(var(--muted-foreground))">(41) 99217-1940</p>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="py-16 md:py-28 bg-muted/40 border-t border-border">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <div class="max-w-2xl">
+      <span class="eyebrow text-xs uppercase tracking-widest font-semibold text-primary">Fala com a gente</span>
+      <h2 class="mt-4 font-serif text-3xl md:text-5xl leading-tight text-primary">Agenda seu horário <span class="italic text-accent">agora</span>.</h2>
+      <p class="mt-4 text-muted-foreground">Chama no WhatsApp, liga ou passa na loja. Estamos em Água Verde, pertinho.</p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+      <a href="tel:+5541992171940" class="card-hover group bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#000]">
+        <span class="w-11 h-11 rounded-xl bg-primary/10 text-primary group-hover:bg-accent/20 group-hover:text-accent transition flex items-center justify-center"><i data-lucide="phone" class="w-5 h-5"></i></span>
+        <div class="mt-4 text-[10px] uppercase tracking-widest text-muted-foreground">Telefone</div>
+        <div class="mt-1 font-semibold text-primary text-lg">(41) 99217-1940</div>
+        <div class="mt-1 text-sm text-muted-foreground">Ligue em horário comercial</div>
       </a>
-      <div class="card p-6 shadow-sm">
-        <div class="inline-flex w-10 h-10 items-center justify-center rounded-lg mb-3" style="background:hsl(var(--primary));color:hsl(var(--primary-foreground))">
-          <i data-lucide="clock" class="w-4 h-4"></i>
+      <a href="https://wa.me/5541992171940" class="card-hover group bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#000]">
+        <span class="w-11 h-11 rounded-xl bg-accent/15 text-accent flex items-center justify-center">
+          <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+        </span>
+        <div class="mt-4 text-[10px] uppercase tracking-widest text-muted-foreground">WhatsApp</div>
+        <div class="mt-1 font-semibold text-primary text-lg">Agendar pelo Zap</div>
+        <div class="mt-1 text-sm text-muted-foreground">Resposta rapidinha</div>
+      </a>
+      <a href="https://maps.google.com/?cid=11306231582021468830&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" class="card-hover group bg-card border-2 border-black rounded-xl p-6 shadow-[4px_4px_0_0_#000]">
+        <span class="w-11 h-11 rounded-xl bg-primary/10 text-primary group-hover:bg-accent/20 group-hover:text-accent transition flex items-center justify-center"><i data-lucide="map-pin" class="w-5 h-5"></i></span>
+        <div class="mt-4 text-[10px] uppercase tracking-widest text-muted-foreground">Endereço</div>
+        <div class="mt-1 font-semibold text-primary">R. Alferes Ângelo Sampaio, 1049</div>
+        <div class="mt-1 text-sm text-muted-foreground">Água Verde, Curitiba - PR</div>
+      </a>
+    </div>
+
+    <div class="mt-6 bg-card border-2 border-black rounded-xl p-6 md:p-8 shadow-[4px_4px_0_0_#000]">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-10 h-10 rounded-xl bg-accent/15 text-accent flex items-center justify-center"><i data-lucide="clock" class="w-5 h-5"></i></span>
+        <h3 class="font-serif text-xl text-primary">Horário de funcionamento</h3>
+      </div>
+      <ul class="divide-y divide-border">
+        <li class="flex justify-between py-3 text-sm"><span class="text-muted-foreground">Segunda-feira</span><span class="font-semibold text-primary">09:00 às 21:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-muted-foreground">Terça-feira</span><span class="font-semibold text-primary">09:00 às 21:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-muted-foreground">Quarta-feira</span><span class="font-semibold text-primary">09:00 às 21:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-muted-foreground">Quinta-feira</span><span class="font-semibold text-primary">09:00 às 21:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-muted-foreground">Sexta-feira</span><span class="font-semibold text-primary">09:00 às 21:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-muted-foreground">Sábado</span><span class="font-semibold text-primary">09:00 às 18:00</span></li>
+        <li class="flex justify-between py-3 text-sm"><span class="text-muted-foreground">Domingo</span><span class="font-semibold text-muted-foreground">Fechado</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24">
+  <div class="max-w-5xl mx-auto px-4 md:px-6">
+    <div class="relative overflow-hidden bg-primary text-primary-foreground rounded-2xl border-2 border-black shadow-[8px_8px_0_0_hsl(var(--accent))] p-8 md:p-14 text-center">
+      <div class="blob bg-accent/50 w-64 h-64 -top-20 -right-20"></div>
+      <div class="relative">
+        <h2 class="font-serif text-3xl md:text-5xl leading-tight">
+          Seu próximo corte<br>
+          <span class="italic text-accent">começa com um zap</span>.
+        </h2>
+        <p class="mt-5 text-primary-foreground/80 max-w-xl mx-auto">Chama pelo WhatsApp, escolhe seu barbeiro e seu horário. A gente cuida do resto.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="https://wa.me/5541992171940" class="brutal-btn inline-flex items-center justify-center gap-2 bg-[#25d366] text-white font-semibold px-6 py-3.5 rounded-md">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+            Agendar pelo WhatsApp
+          </a>
+          <a href="tel:+5541992171940" class="brutal-btn inline-flex items-center justify-center gap-2 bg-background text-primary font-semibold px-6 py-3.5 rounded-md">
+            <i data-lucide="phone" class="w-5 h-5"></i> (41) 99217-1940
+          </a>
         </div>
-        <h3 class="font-semibold mb-1">Horário</h3>
-        <p class="text-sm leading-relaxed" style="color:hsl(var(--muted-foreground))">
-          Seg a Sex: 09h — 21h<br>
-          Sábado: 09h — 18h<br>
-          Domingo: Fechado
-        </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA FINAL -->
-<section class="py-24 px-5">
-  <div class="max-w-3xl mx-auto text-center">
-    <h2 class="font-serif text-3xl sm:text-4xl font-semibold mb-5">Pronto pra sentar na cadeira?</h2>
-    <p class="text-lg mb-10" style="color:hsl(var(--muted-foreground))">Chama no WhatsApp e agenda o seu horário. A gente te espera.</p>
-    <a href="https://wa.me/5541992171940" class="inline-flex items-center gap-3 px-8 py-4 rounded-xl text-white font-semibold text-lg shadow-lg hover:shadow-xl transition" style="background:#25d366">
-      <i data-lucide="message-circle" class="w-5 h-5"></i>
-      Chamar no WhatsApp
-    </a>
+<footer class="border-t border-border py-8">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 text-center text-xs text-muted-foreground">
+    Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
   </div>
-</section>
-
-<footer class="py-8 px-5 border-t" style="border-color:hsl(var(--border))">
-  <p class="text-center text-xs" style="color:hsl(var(--muted-foreground))">
-    Página criada para divulgação — dados públicos do Google. Entre em contato para remover.
-  </p>
 </footer>
 
-<!-- WhatsApp flutuante -->
-<a href="https://wa.me/5541992171940" class="wa-float fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full flex items-center justify-center text-white" style="background:#25d366" aria-label="WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+<a href="https://wa.me/5541992171940" class="fixed bottom-5 right-5 w-14 h-14 rounded-full bg-[#25d366] text-white flex items-center justify-center shadow-xl pulse-ring z-50" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" class="w-7 h-7" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
 </a>
 
+<script src="https://unpkg.com/lucide@latest"></script>
 <script>
   lucide.createIcons();
   const btn = document.getElementById('menu-btn');
