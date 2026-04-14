@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Barbearia Grego Barber — Centro, Curitiba | Corte & Barba</title>
+<meta name="description" content="Barbearia Grego Barber no Centro de Curitiba. Atendimento atencioso, serviço impecável e preço justo. Agende pelo WhatsApp." />
+<meta property="og:title" content="Barbearia Grego Barber — Centro, Curitiba" />
+<meta property="og:description" content="Corte, barba e cuidado no detalhe. 5★ no Google. Agende pelo WhatsApp." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          serif: ['Fraunces', 'Georgia', 'serif'],
+        },
+        colors: {
+          background: 'hsl(var(--background))',
+          foreground: 'hsl(var(--foreground))',
+          primary: {
+            DEFAULT: 'hsl(var(--primary))',
+            foreground: 'hsl(var(--primary-foreground))',
+          },
+          muted: {
+            DEFAULT: 'hsl(var(--muted))',
+            foreground: 'hsl(var(--muted-foreground))',
+          },
+          card: 'hsl(var(--card))',
+          border: 'hsl(var(--border))',
+        },
+        borderRadius: {
+          xl: 'var(--radius)',
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  :root {
+    --background: 30 20% 98%;
+    --foreground: 20 14% 10%;
+    --primary: 30 45% 38%;
+    --primary-foreground: 40 30% 98%;
+    --muted: 30 10% 94%;
+    --muted-foreground: 20 10% 40%;
+    --card: 0 0% 100%;
+    --border: 30 15% 88%;
+    --radius: 0.75rem;
+  }
+  html { scroll-behavior: smooth; }
+  section { scroll-margin-top: 96px; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+  .font-serif { font-family: 'Fraunces', serif; }
+
+  /* Liquid glass header */
+  .liquid-glass {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(255, 255, 255, 0.55);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 4px 20px -8px rgba(0,0,0,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  .liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 0%, hsla(30, 45%, 60%, 0.15), transparent 60%),
+                radial-gradient(ellipse at 80% 100%, hsla(30, 45%, 50%, 0.1), transparent 60%);
+    animation: shimmer 8s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes shimmer {
+    0%, 100% { opacity: 0.7; transform: translateX(0); }
+    50% { opacity: 1; transform: translateX(10px); }
+  }
+
+  .wa-pulse {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    animation: wa-pulse 2s infinite;
+  }
+  @keyframes wa-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+  }
+
+  .hero-bg {
+    background:
+      radial-gradient(ellipse at top left, hsla(30, 45%, 38%, 0.08), transparent 50%),
+      radial-gradient(ellipse at bottom right, hsla(30, 35%, 45%, 0.06), transparent 50%),
+      hsl(var(--background));
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- Header -->
+<header class="liquid-glass sticky top-0 z-40">
+  <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between relative">
+    <a href="#top" class="flex items-center gap-2">
+      <span class="w-9 h-9 rounded-full bg-primary text-primary-foreground grid place-items-center font-serif font-bold">G</span>
+      <span class="font-serif text-lg font-semibold tracking-tight">Grego Barber</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/80">
+      <a href="#sobre" class="hover:text-primary transition">Sobre</a>
+      <a href="#diferenciais" class="hover:text-primary transition">Diferenciais</a>
+      <a href="#avaliacoes" class="hover:text-primary transition">Avaliações</a>
+      <a href="#contato" class="hover:text-primary transition">Contato</a>
+      <a href="https://wa.me/5541996191690" class="ml-2 px-4 py-2 rounded-xl bg-foreground text-background hover:bg-foreground/90 transition">Agendar</a>
+    </nav>
+
+    <button id="menu-btn" class="md:hidden p-2 -mr-2" aria-label="Abrir menu">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden border-t border-white/40 bg-white/70 backdrop-blur-xl">
+    <nav class="px-5 py-4 flex flex-col gap-3 text-sm font-medium">
+      <a href="#sobre" class="py-2">Sobre</a>
+      <a href="#diferenciais" class="py-2">Diferenciais</a>
+      <a href="#avaliacoes" class="py-2">Avaliações</a>
+      <a href="#contato" class="py-2">Contato</a>
+      <a href="https://wa.me/5541996191690" class="mt-1 py-2.5 px-4 rounded-xl bg-foreground text-background text-center">Agendar no WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="top" class="hero-bg">
+  <div class="max-w-6xl mx-auto px-5 py-16 md:py-28">
+    <div class="flex items-center gap-2 mb-6">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-card border border-border text-xs font-medium">
+        <i data-lucide="star" class="w-3.5 h-3.5 fill-yellow-500 text-yellow-500"></i>
+        5,0 · 40 avaliações no Google
+      </span>
+    </div>
+
+    <h1 class="font-serif text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] max-w-3xl">
+      Corte, barba e um papo bom no <span class="text-primary">Centro de Curitiba</span>.
+    </h1>
+    <p class="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+      Atendimento atencioso, serviço impecável e preço justo. Do clássico ao contemporâneo, cada cliente sai satisfeito.
+    </p>
+
+    <div class="mt-8 flex flex-col sm:flex-row gap-3">
+      <a href="https://wa.me/5541996191690"
+         class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-[#25d366] hover:bg-[#20bd5a] text-white font-semibold shadow-sm transition">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        Chamar no WhatsApp
+      </a>
+      <a href="#contato"
+         class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl border border-border bg-card hover:bg-muted font-medium transition">
+        <i data-lucide="map-pin" class="w-5 h-5"></i>
+        Ver endereço e horário
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Sobre -->
+<section id="sobre" class="py-16 md:py-24 bg-card border-y border-border">
+  <div class="max-w-4xl mx-auto px-5">
+    <p class="text-sm font-medium text-primary mb-3">Sobre</p>
+    <h2 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight">
+      Um barbeiro dedicado, sempre buscando evoluir.
+    </h2>
+    <p class="mt-6 text-lg text-muted-foreground leading-relaxed">
+      A Grego Barber é referência no Centro de Curitiba pela combinação rara de serviço caprichado, preço justo e atendimento humano. O Grego acompanha cada cliente há anos, sempre buscando evoluir na técnica e oferecer a melhor experiência possível — da cadeira à conversa.
+    </p>
+  </div>
+</section>
+
+<!-- Diferenciais -->
+<section id="diferenciais" class="py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-5">
+    <p class="text-sm font-medium text-primary mb-3">Diferenciais</p>
+    <h2 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight max-w-2xl">
+      Por que voltar sempre na Grego Barber.
+    </h2>
+
+    <div class="mt-12 grid md:grid-cols-3 gap-5">
+      <div class="p-6 rounded-xl border border-border bg-card shadow-sm">
+        <div class="w-11 h-11 rounded-xl bg-primary/10 text-primary grid place-items-center mb-4">
+          <i data-lucide="scissors" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Serviço excelente</h3>
+        <p class="text-muted-foreground leading-relaxed">Técnica apurada em cada corte e barba. Acabamento bem feito, sem pressa, com o capricho que faz a diferença.</p>
+      </div>
+
+      <div class="p-6 rounded-xl border border-border bg-card shadow-sm">
+        <div class="w-11 h-11 rounded-xl bg-primary/10 text-primary grid place-items-center mb-4">
+          <i data-lucide="hand-coins" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Preço justo</h3>
+        <p class="text-muted-foreground leading-relaxed">Valor honesto pelo que é entregue. Cliente que chega, volta — e costuma indicar pra família e amigos.</p>
+      </div>
+
+      <div class="p-6 rounded-xl border border-border bg-card shadow-sm">
+        <div class="w-11 h-11 rounded-xl bg-primary/10 text-primary grid place-items-center mb-4">
+          <i data-lucide="users" class="w-5 h-5"></i>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Atendimento caloroso</h3>
+        <p class="text-muted-foreground leading-relaxed">Ótima conversa, ambiente acolhedor e um barbeiro que lembra do seu corte. Você sai relaxado e bem atendido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Avaliações -->
+<section id="avaliacoes" class="py-16 md:py-24 bg-muted/40 border-y border-border">
+  <div class="max-w-6xl mx-auto px-5">
+    <p class="text-sm font-medium text-primary mb-3">Avaliações reais</p>
+    <h2 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight max-w-2xl">
+      O que os clientes dizem no Google.
+    </h2>
+
+    <div class="mt-12 grid md:grid-cols-3 gap-5">
+      <figure class="p-6 rounded-xl border border-border bg-card shadow-sm flex flex-col">
+        <div class="flex gap-0.5 mb-4 text-yellow-500">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <blockquote class="text-foreground leading-relaxed flex-1">
+          “Excelentes atendimento e serviço a um preço justo. Recomendo a todos.”
+        </blockquote>
+        <figcaption class="mt-5 text-sm font-medium text-muted-foreground">— Régis Wagner de Carvalho</figcaption>
+      </figure>
+
+      <figure class="p-6 rounded-xl border border-border bg-card shadow-sm flex flex-col">
+        <div class="flex gap-0.5 mb-4 text-yellow-500">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <blockquote class="text-foreground leading-relaxed flex-1">
+          “Conheço o Grego há muitos anos e vejo o quanto tem buscado evoluir e crescer profissionalmente. Dedicado, buscando sempre atender melhor seus clientes.”
+        </blockquote>
+        <figcaption class="mt-5 text-sm font-medium text-muted-foreground">— Warley Silva</figcaption>
+      </figure>
+
+      <figure class="p-6 rounded-xl border border-border bg-card shadow-sm flex flex-col">
+        <div class="flex gap-0.5 mb-4 text-yellow-500">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+        <blockquote class="text-foreground leading-relaxed flex-1">
+          “Atendimento e serviços excelentes, preço justo e ótima conversa. Recomendo totalmente.”
+        </blockquote>
+        <figcaption class="mt-5 text-sm font-medium text-muted-foreground">— Vinicius Batista</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Contato -->
+<section id="contato" class="py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-10">
+    <div>
+      <p class="text-sm font-medium text-primary mb-3">Contato</p>
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight">
+        Passa lá ou manda uma mensagem.
+      </h2>
+      <p class="mt-4 text-muted-foreground leading-relaxed">Estamos no Centro de Curitiba, fácil de chegar. Agende pelo WhatsApp ou venha conhecer.</p>
+    </div>
+
+    <div class="space-y-4">
+      <a href="https://maps.google.com/?cid=14480403381677093599" target="_blank"
+         class="block p-5 rounded-xl border border-border bg-card hover:bg-muted/50 transition">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary grid place-items-center shrink-0">
+            <i data-lucide="map-pin" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <p class="font-medium">Endereço</p>
+            <p class="text-sm text-muted-foreground mt-1">R. Mariano Torres, 525<br>Centro, Curitiba — PR, 80060-120</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="tel:+5541996191690"
+         class="block p-5 rounded-xl border border-border bg-card hover:bg-muted/50 transition">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary grid place-items-center shrink-0">
+            <i data-lucide="phone" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <p class="font-medium">Telefone</p>
+            <p class="text-sm text-muted-foreground mt-1">(41) 99619-1690</p>
+          </div>
+        </div>
+      </a>
+
+      <div class="p-5 rounded-xl border border-border bg-card">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary grid place-items-center shrink-0">
+            <i data-lucide="clock" class="w-5 h-5"></i>
+          </div>
+          <div class="flex-1">
+            <p class="font-medium mb-2">Horário</p>
+            <dl class="text-sm text-muted-foreground space-y-1">
+              <div class="flex justify-between"><dt>Segunda</dt><dd>09:00 – 18:00</dd></div>
+              <div class="flex justify-between"><dt>Terça</dt><dd>09:00 – 18:00</dd></div>
+              <div class="flex justify-between"><dt>Quarta</dt><dd>09:00 – 18:00</dd></div>
+              <div class="flex justify-between"><dt>Quinta</dt><dd>09:00 – 18:00</dd></div>
+              <div class="flex justify-between"><dt>Sexta</dt><dd>09:00 – 19:30</dd></div>
+              <div class="flex justify-between"><dt>Sábado</dt><dd>08:00 – 18:00</dd></div>
+              <div class="flex justify-between text-foreground/50"><dt>Domingo</dt><dd>Fechado</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Final -->
+<section class="py-16 md:py-24 bg-foreground text-background">
+  <div class="max-w-4xl mx-auto px-5 text-center">
+    <h2 class="font-serif text-3xl md:text-5xl font-semibold tracking-tight">
+      Bora marcar seu horário?
+    </h2>
+    <p class="mt-5 text-lg text-background/70 max-w-xl mx-auto">
+      Uma mensagem no WhatsApp e a gente já te encaixa.
+    </p>
+    <a href="https://wa.me/5541996191690"
+       class="mt-8 inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#25d366] hover:bg-[#20bd5a] text-white font-semibold shadow-lg transition">
+      <i data-lucide="message-circle" class="w-5 h-5"></i>
+      Chamar no WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-8 px-5 text-center text-xs text-muted-foreground">
+  Página criada para divulgação — dados públicos do Google. Entre em contato para remover.
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/5541996191690"
+   aria-label="Chamar no WhatsApp"
+   class="wa-pulse fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25d366] hover:bg-[#20bd5a] text-white grid place-items-center shadow-xl transition">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  lucide.createIcons();
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+</script>
+</body>
+</html>
