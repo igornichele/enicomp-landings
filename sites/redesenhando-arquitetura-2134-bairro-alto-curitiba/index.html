@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="pt-BR" style="scroll-behavior: smooth;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rêdesenhando Arquitetura | Projetos e Regularização em Curitiba</title>
+  <meta name="description" content="Arquitetura com agilidade e precisão em Curitiba. Regina Celia cuida do seu projeto do início à aprovação, com atenção aos detalhes e zero enrolação." />
+  <meta property="og:title" content="Rêdesenhando Arquitetura | Projetos e Regularização em Curitiba" />
+  <meta property="og:description" content="Projetos aprovados com agilidade e atenção. Regina Celia é arquiteta 100% atenta aos detalhes e sempre vai direto ao ponto." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&h=630&fit=crop&q=80&auto=format" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+              DEFAULT: 'hsl(var(--primary))',
+              foreground: 'hsl(var(--primary-foreground))',
+            },
+            accent: {
+              DEFAULT: 'hsl(var(--accent))',
+              foreground: 'hsl(var(--accent-foreground))',
+            },
+            muted: {
+              DEFAULT: 'hsl(var(--muted))',
+              foreground: 'hsl(var(--muted-foreground))',
+            },
+            card: {
+              DEFAULT: 'hsl(var(--card))',
+            },
+            border: 'hsl(var(--border))',
+          },
+          borderRadius: {
+            DEFAULT: 'var(--radius)',
+            lg: 'var(--radius)',
+            md: 'calc(var(--radius) - 2px)',
+            sm: 'calc(var(--radius) - 4px)',
+          },
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif'],
+            serif: ['Lora', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --background: 40 25% 97%;
+      --foreground: 220 15% 12%;
+      --primary: 0 0% 12%;
+      --primary-foreground: 0 0% 98%;
+      --accent: 20 65% 55%;
+      --accent-foreground: 220 15% 12%;
+      --muted: 40 25% 94%;
+      --muted-foreground: 220 10% 40%;
+      --card: 0 0% 100%;
+      --border: 220 15% 90%;
+      --radius: 0.875rem;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+    }
+
+    h1, h2, h3, .serif { font-family: 'Lora', serif; }
+
+    /* Header magnetic underline */
+    .nav-link {
+      position: relative;
+      text-decoration: none;
+      padding-bottom: 3px;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      right: 50%;
+      height: 2px;
+      background-color: hsl(var(--accent));
+      transition: left 0.25s ease, right 0.25s ease;
+    }
+    .nav-link:hover::after {
+      left: 0;
+      right: 0;
+    }
+
+    /* Section eyebrow accent line */
+    .eyebrow {
+      display: inline-block;
+      position: relative;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: hsl(var(--accent));
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .eyebrow::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 48px;
+      height: 2px;
+      background-color: hsl(var(--accent));
+    }
+
+    /* Dot pattern */
+    .dot-pattern {
+      background-image: radial-gradient(hsl(var(--foreground) / 0.07) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Blob */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    /* Quote decoration */
+    .review-card-featured {
+      position: relative;
+    }
+    .review-card-featured::before {
+      content: '\201C';
+      font-family: 'Lora', serif;
+      font-size: 120px;
+      line-height: 1;
+      color: hsl(var(--accent) / 0.12);
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      pointer-events: none;
+    }
+
+    /* Service card hover */
+    .service-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px hsl(var(--foreground) / 0.10);
+      border-color: hsl(var(--accent) / 0.5);
+    }
+
+    /* Contact card hover */
+    .contact-card:hover .contact-icon {
+      color: hsl(var(--accent));
+    }
+
+    /* WhatsApp pulse */
+    @keyframes wa-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+    }
+    .wa-float {
+      animation: wa-pulse 2s infinite;
+    }
+
+    /* Stats numbers */
+    .stat-number {
+      font-family: 'Lora', serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    /* Scroll margin for sticky header */
+    section[id] { scroll-margin-top: 72px; }
+
+    /* Hero aspect ratio helper */
+    .aspect-hero { aspect-ratio: 4/5; }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- ===== HEADER ===== -->
+  <header id="header" style="position: sticky; top: 0; z-index: 50; background: hsl(var(--background) / 0.88); backdrop-filter: blur(12px); border-bottom: 1px solid hsl(var(--border));">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 1rem; height: 64px; display: flex; align-items: center; justify-content: space-between;">
+      <!-- Logo / Nome -->
+      <a href="#" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+        <div style="width: 36px; height: 36px; border-radius: 50%; background: hsl(var(--primary)); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <span style="font-family: 'Lora', serif; font-size: 1rem; font-weight: 700; color: hsl(var(--primary-foreground));">R</span>
+        </div>
+        <span style="font-family: 'Lora', serif; font-weight: 600; font-size: 1rem; color: hsl(var(--foreground)); white-space: nowrap;">Rêdesenhando</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav style="display: none; gap: 2rem;" id="desktop-nav" class="md-flex">
+        <a href="#sobre" class="nav-link" style="font-size: 0.875rem; font-weight: 600; color: hsl(var(--foreground));">Sobre</a>
+        <a href="#especialidades" class="nav-link" style="font-size: 0.875rem; font-weight: 600; color: hsl(var(--foreground));">Especialidades</a>
+        <a href="#avaliacoes" class="nav-link" style="font-size: 0.875rem; font-weight: 600; color: hsl(var(--foreground));">Avaliações</a>
+        <a href="#contato" class="nav-link" style="font-size: 0.875rem; font-weight: 600; color: hsl(var(--foreground));">Contato</a>
+      </nav>
+
+      <!-- CTA Desktop -->
+      <a href="https://wa.me/5541991728364" target="_blank" rel="noopener" id="header-cta"
+        style="display: none; align-items: center; gap: 6px; background: #25d366; color: #fff; font-size: 0.8rem; font-weight: 700; padding: 8px 16px; border-radius: var(--radius); text-decoration: none; transition: opacity 0.2s;">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.553 4.112 1.52 5.84L.057 23.215a.75.75 0 0 0 .916.941l5.453-1.43A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.73 9.73 0 0 1-4.953-1.352l-.355-.212-3.678.964.982-3.586-.232-.369A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+        WhatsApp
+      </a>
+
+      <!-- Hamburguer -->
+      <button id="menu-btn" style="display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px;" aria-label="Menu">
+        <span id="hb1" style="display: block; width: 24px; height: 2px; background: hsl(var(--foreground)); transition: transform 0.25s, opacity 0.25s;"></span>
+        <span id="hb2" style="display: block; width: 24px; height: 2px; background: hsl(var(--foreground)); transition: opacity 0.25s;"></span>
+        <span id="hb3" style="display: block; width: 24px; height: 2px; background: hsl(var(--foreground)); transition: transform 0.25s, opacity 0.25s;"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" style="display: none; border-top: 1px solid hsl(var(--border)); background: hsl(var(--background)); padding: 1.25rem 1rem 1.5rem;">
+      <nav style="display: flex; flex-direction: column; gap: 1rem;">
+        <a href="#sobre" class="nav-link" onclick="closeMobileMenu()" style="font-size: 1rem; font-weight: 600; color: hsl(var(--foreground));">Sobre</a>
+        <a href="#especialidades" class="nav-link" onclick="closeMobileMenu()" style="font-size: 1rem; font-weight: 600; color: hsl(var(--foreground));">Especialidades</a>
+        <a href="#avaliacoes" class="nav-link" onclick="closeMobileMenu()" style="font-size: 1rem; font-weight: 600; color: hsl(var(--foreground));">Avaliações</a>
+        <a href="#contato" class="nav-link" onclick="closeMobileMenu()" style="font-size: 1rem; font-weight: 600; color: hsl(var(--foreground));">Contato</a>
+        <a href="https://wa.me/5541991728364" target="_blank" rel="noopener"
+          style="display: flex; align-items: center; justify-content: center; gap: 8px; background: #25d366; color: #fff; font-weight: 700; padding: 12px; border-radius: var(--radius); text-decoration: none; margin-top: 4px;">
+          WhatsApp agora
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO (image-left) ===== -->
+  <section id="hero" style="position: relative; overflow: hidden; padding: 4rem 1rem 4rem; background: hsl(var(--background));">
+    <!-- Dot pattern -->
+    <div class="dot-pattern" style="position: absolute; inset: 0; pointer-events: none;"></div>
+    <!-- Blobs -->
+    <div class="blob" style="width: 380px; height: 380px; background: hsl(var(--accent)); top: -80px; right: -80px;"></div>
+    <div class="blob" style="width: 280px; height: 280px; background: hsl(var(--primary)); bottom: -60px; left: -60px;"></div>
+
+    <div style="max-width: 1280px; margin: 0 auto; position: relative;">
+      <div style="display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center;" class="hero-grid">
+
+        <!-- Image (order-2 on mobile, order-1 on desktop) -->
+        <div style="order: 2; position: relative;" class="hero-img-col">
+          <div style="position: relative; border-radius: var(--radius); overflow: hidden; border: 3px solid hsl(var(--accent));" class="aspect-hero">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=1500&fit=crop&q=80&auto=format"
+              alt="craftsman hands detail"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+          </div>
+          <!-- Floating badge desktop only -->
+          <div style="display: none; position: absolute; bottom: -16px; left: -16px; background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: var(--radius); padding: 12px 16px; box-shadow: 0 8px 24px hsl(var(--foreground) / 0.10);" id="hero-badge-float">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div style="width: 10px; height: 10px; border-radius: 50%; background: #25d366;"></div>
+              <span style="font-size: 0.78rem; font-weight: 700; color: hsl(var(--foreground));">5★ em 45 avaliações Google</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content (order-1 on mobile) -->
+        <div style="order: 1;">
+          <!-- Badge -->
+          <div style="display: inline-flex; align-items: center; gap: 6px; background: hsl(var(--accent) / 0.12); color: hsl(var(--accent)); border-radius: 999px; padding: 6px 14px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 1.25rem;">
+            <span>Referência em arquitetura em Curitiba</span>
+          </div>
+
+          <!-- Headline -->
+          <h1 style="font-family: 'Lora', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; line-height: 1.2; color: hsl(var(--foreground)); margin-bottom: 1.25rem;">
+            Seu projeto aprovado<br />
+            <em style="font-style: italic; color: hsl(var(--accent));">com precisão e sem enrolação</em>
+          </h1>
+
+          <!-- Subtitle -->
+          <p style="font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.7; color: hsl(var(--muted-foreground)); margin-bottom: 1.5rem; max-width: 520px;">
+            A Regina é 100% atenta aos detalhes e vai direto ao ponto. De regularizações históricas a novos projetos, ela resolve com agilidade e cuida de cada etapa com atenção.
+          </p>
+
+          <!-- Rating -->
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2rem; flex-wrap: wrap;">
+            <div style="display: flex; gap: 2px;">
+              <span style="color: hsl(var(--accent)); font-size: 1.1rem;">★★★★★</span>
+            </div>
+            <span style="font-weight: 700; color: hsl(var(--foreground));">5 no Google</span>
+            <span style="color: hsl(var(--muted-foreground)); font-size: 0.875rem;">· 45 avaliações</span>
+          </div>
+
+          <!-- CTAs -->
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <a href="https://wa.me/5541991728364" target="_blank" rel="noopener"
+              style="display: flex; align-items: center; justify-content: center; gap: 8px; background: #25d366; color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 24px; border-radius: var(--radius); text-decoration: none; transition: opacity 0.2s; width: 100%;">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.553 4.112 1.52 5.84L.057 23.215a.75.75 0 0 0 .916.941l5.453-1.43A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.73 9.73 0 0 1-4.953-1.352l-.355-.212-3.678.964.982-3.586-.232-.369A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+              Falar no WhatsApp
+            </a>
+            <a href="tel:+5541991728364"
+              style="display: flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: hsl(var(--foreground)); font-weight: 700; font-size: 1rem; padding: 13px 24px; border-radius: var(--radius); text-decoration: none; border: 2px solid hsl(var(--border)); transition: border-color 0.2s; width: 100%;">
+              (41) 99172-8364
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS BAR (after-hero) ===== -->
+  <section style="background: hsl(var(--primary)); padding: 2.5rem 1rem;">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;" id="stats-grid">
+
+        <div style="text-align: center;">
+          <div class="stat-number" style="color: hsl(var(--primary-foreground));">15+</div>
+          <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: hsl(var(--primary-foreground) / 0.6); margin-top: 6px;">Anos de experiência</div>
+        </div>
+
+        <div style="text-align: center;">
+          <div class="stat-number" style="color: hsl(var(--accent));">5★</div>
+          <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: hsl(var(--primary-foreground) / 0.6); margin-top: 6px;">Rating Google</div>
+        </div>
+
+        <div style="text-align: center;">
+          <div class="stat-number" style="color: hsl(var(--primary-foreground));">45+</div>
+          <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: hsl(var(--primary-foreground) / 0.6); margin-top: 6px;">Avaliações reais</div>
+        </div>
+
+        <div style="text-align: center;">
+          <div class="stat-number" style="color: hsl(var(--accent));">100%</div>
+          <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: hsl(var(--primary-foreground) / 0.6); margin-top: 6px;">Clientes satisfeitos</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AVALIAÇÕES (single-featured-plus-list) ===== -->
+  <section id="avaliacoes" style="padding: 4rem 1rem; background: hsl(var(--background));">
+    <div style="max-width: 1280px; margin: 0 auto;">
+
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <span class="eyebrow" style="display: block; text-align: center;">
+          O que os clientes dizem
+          <span style="display: block; width: 48px; height: 2px; background: hsl(var(--accent)); margin: 8px auto 0;"></span>
+        </span>
+        <h2 style="font-family: 'Lora', serif; font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; color: hsl(var(--foreground)); margin-top: 0.5rem;">Quem conhece, não para de indicar</h2>
+        <p style="color: hsl(var(--muted-foreground)); margin-top: 0.75rem; font-size: 1rem;">Avaliações reais de clientes no Google.</p>
+      </div>
+
+      <!-- Featured review -->
+      <div class="review-card-featured" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: var(--radius); padding: 2.5rem 2rem 2rem; max-width: 720px; margin: 0 auto 2.5rem; box-shadow: 0 4px 24px hsl(var(--foreground) / 0.06); position: relative;">
+        <div style="display: flex; gap: 3px; margin-bottom: 1rem;">
+          <span style="color: hsl(var(--accent)); font-size: 1.2rem;">★★★★★</span>
+        </div>
+        <p style="font-size: clamp(1rem, 2vw, 1.2rem); line-height: 1.75; color: hsl(var(--foreground)); margin-bottom: 1.75rem; font-style: italic;">
+          "A Arq. Regina Celia é uma profissional 100% atenta aos detalhes e na melhor solução para os clientes. Fiquei super satisfeito com todo auxílio e direcionamento de minha aprovação de projeto. Nenhum ponto a reclamar, mas muito a elogiar!"
+        </p>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: hsl(var(--accent)); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <span style="font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 700; color: hsl(var(--primary-foreground));">M</span>
+          </div>
+          <div>
+            <div style="font-weight: 700; color: hsl(var(--foreground));">Mauricio Marchand Kruger</div>
+            <div style="font-size: 0.8rem; color: hsl(var(--muted-foreground));">Cliente Google Maps</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 reviews grid 2x2 -->
+      <div style="display: grid; grid-template-columns: 1fr; gap: 1.25rem;" id="reviews-grid">
+
+        <div style="background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: var(--radius); padding: 1.5rem;">
+          <div style="display: flex; gap: 2px; margin-bottom: 0.75rem;">
+            <span style="color: hsl(var(--accent)); font-size: 0.9rem;">★★★★★</span>
+          </div>
+          <p style="font-size: 0.9rem; line-height: 1.65; color: hsl(var(--foreground)); margin-bottom: 1rem; font-style: italic;">
+            "A Regiane é excelente profissional, consegue resolver os assuntos com muita celeridade, bem atenciosa com nossos clientes, custo benefício excelente, recomendo totalmente."
+          </p>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: hsl(var(--primary)); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <span style="font-family: 'Lora', serif; font-size: 0.9rem; font-weight: 700; color: hsl(var(--primary-foreground));">D</span>
+            </div>
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 700; color: hsl(var(--foreground));">Dardo Santamaria</div>
+              <div style="font-size: 0.75rem; color: hsl(var(--muted-foreground));">Cliente Google Maps</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: var(--radius); padding: 1.5rem;">
+          <div style="display: flex; gap: 2px; margin-bottom: 0.75rem;">
+            <span style="color: hsl(var(--accent)); font-size: 0.9rem;">★★★★★</span>
+          </div>
+          <p style="font-size: 0.9rem; line-height: 1.65; color: hsl(var(--foreground)); margin-bottom: 1rem; font-style: italic;">
+            "Regina é maravilhosa, sempre rápida ao responder, e o auxílio nota 10. Sempre indico aos meus clientes."
+          </p>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: hsl(var(--primary)); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <span style="font-family: 'Lora', serif; font-size: 0.9rem; font-weight: 700; color: hsl(var(--primary-foreground));">M</span>
+            </div>
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 700; color: hsl(var(--foreground));">Mislene Rodrigues</div>
+              <div style="font-size: 0.75rem; color: hsl(var(--muted-foreground));">Cliente Google Maps</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: var(--radius); padding: 1.5rem;">
+          <div style="display: flex; gap: 2px; margin-bottom: 0.75rem;">
+            <span style="color: hsl(var(--accent)); font-size: 0.9rem;">★★★★★</span>
+          </div>
+          <p style="font-size: 0.9rem; line-height: 1.65; color: hsl(var(--foreground)); margin-bottom: 1rem; font-style: italic;">
+            "Muito atenciosa e proativa, trouxe uma solução clara e eficaz."
+          </p>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: hsl(var(--accent)); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <span style="font-family: 'Lora', serif; font-size: 0.9rem; font-weight: 700; color: hsl(var(--accent-foreground));">R</span>
+            </div>
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 700; color: hsl(var(--foreground));">Rafaela Alves dos Santos</div>
+              <div style="font-size: 0.75rem; color: hsl(var(--muted-foreground));">Cliente Google Maps</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: var(--radius); padding: 1.5rem;">
+          <div style="display: flex; gap: 2px; margin-bottom: 0.75rem;">
+            <span style="color: hsl(var(--accent)); font-size: 0.9rem;">★★★★★</span>
+          </div>
+          <p style="font-size: 0.9rem; line-height: 1.65; color: hsl(var(--foreground)); margin-bottom: 1rem; font-style: italic;">
+            "A Regina é uma excelente arquiteta, rápida e prática, muito solícita! Nos ajudou a regularizar um imóvel de família datado de 1939 no entorno do setor histórico da cidade, e fez isso com muita agilidade e precisão. Ela não perde tempo e vai direto ao ponto, recomendo fortemente!"
+          </p>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: hsl(var(--primary)); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <span style="font-family: 'Lora', serif; font-size: 0.9rem; font-weight: 700; color: hsl(var(--primary-foreground));">D</span>
+            </div>
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 700; color: hsl(var(--foreground));">Deborah Bee</div>
+              <div style="font-size: 0.75rem; color: hsl(var(--muted-foreground));">Cliente Google Maps</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Ver todas -->
+      <div style="text-align: center; margin-top: 2.5rem;">
+        <a href="https://maps.google.com/?cid=12972731199806018824&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+          target="_blank" rel="noopener"
+          style="display: inline-flex; align-items: center; gap: 6px; color: hsl(var(--accent)); font-weight: 700; font-size: 0.9rem; text-decoration: none; border-bottom: 2px solid hsl(var(--accent) / 0.3); padding-bottom: 2px; transition: border-color 0.2s;">
+          Ver todas as 45 avaliações no Google
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== SOBRE ===== -->
+  <section id="sobre" style="padding: 4rem 1rem; background: hsl(var(--muted));">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center;" id="sobre-grid">
+
+        <!-- Images -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: start;">
+          <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="workshop tools organized"
+            style="width: 100%; border-radius: var(--radius); object-fit: cover; aspect-ratio: 4/5;" />
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="office meeting warm light"
+            style="width: 100%; border-radius: var(--radius); object-fit: cover; aspect-ratio: 4/5; margin-top: 2rem;" />
+        </div>
+
+        <!-- Text -->
+        <div>
+          <span class="eyebrow">Sobre a Rêdesenhando</span>
+          <h2 style="font-family: 'Lora', serif; font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; color: hsl(var(--foreground)); line-height: 1.25; margin-bottom: 1.25rem;">
+            Arquitetura com atenção,<br />
+            <em style="font-style: italic; color: hsl(var(--accent));">do projeto à aprovação</em>
+          </h2>
+          <p style="color: hsl(var(--muted-foreground)); line-height: 1.75; font-size: 1rem; margin-bottom: 1rem;">
+            A Regina Celia é arquiteta reconhecida por clientes como alguém que não enrola. Ela pega o seu caso, entende o que precisa ser feito e vai direto ao ponto, seja pra regularizar um imóvel antigo, seja pra aprovar um projeto novo.
+          </p>
+          <p style="color: hsl(var(--muted-foreground)); line-height: 1.75; font-size: 1rem; margin-bottom: 2rem;">
+            De imóveis datados de 1939 no entorno histórico até projetos residenciais modernos, a Rêdesenhando resolve com agilidade, precisão e custo-benefício que os clientes sempre elogiam.
+          </p>
+
+          <!-- Micro-benefits 2x2 -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div style="display: flex; gap: 10px; align-items: flex-start;">
+              <div style="width: 28px; height: 28px; border-radius: 50%; background: hsl(var(--accent) / 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(20, 65%, 55%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <div>
+                <div style="font-weight: 700; font-size: 0.875rem; color: hsl(var(--foreground));">Rápida no retorno</div>
+                <div style="font-size: 0.78rem; color: hsl(var(--muted-foreground));">Sempre rápida ao responder</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;">
+              <div style="width: 28px; height: 28px; border-radius: 50%; background: hsl(var(--accent) / 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(20, 65%, 55%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <div>
+                <div style="font-weight: 700; font-size: 0.875rem; color: hsl(var(--foreground));">Atenção aos detalhes</div>
+                <div style="font-size: 0.78rem; color: hsl(var(--muted-foreground));">100% focada no seu caso</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;">
+              <div style="width: 28px; height: 28px; border-radius: 50%; background: hsl(var(--accent) / 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(20, 65%, 55%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <div>
+                <div style="font-weight: 700; font-size: 0.875rem; color: hsl(var(--foreground));">Custo-benefício real</div>
+                <div style="font-size: 0.78rem; color: hsl(var(--muted-foreground));">Excelente relação preço/entrega</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;">
+              <div style="width: 28px; height: 28px; border-radius: 50%; background: hsl(var(--accent) / 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(20, 65%, 55%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <div>
+                <div style="font-weight: 700; font-size: 0.875rem; color: hsl(var(--foreground));">Regularização de imóveis</div>
+                <div style="font-size: 0.78rem; color: hsl(var(--muted-foreground));">Inclusive imóveis históricos</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ESPECIALIDADES (2x3-cards) ===== -->
+  <section id="especialidades" style="padding: 4rem 1rem; background: hsl(var(--background));">
+    <div style="max-width: 1280px; margin: 0 auto;">
+
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <span class="eyebrow" style="display: block; text-align: center;">
+          O que a Rêdesenhando faz
+          <span style="display: block; width: 48px; height: 2px; background: hsl(var(--accent)); margin: 8px auto 0;"></span>
+        </span>
+        <h2 style="font-family: 'Lora', serif; font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; color: hsl(var(--foreground)); margin-top: 0.5rem;">Especialidades que os clientes indicam</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;" id="services-grid">
+
+        <!-- Card 1 - Principal -->
+        <div class="service-card" style="background: hsl(var(--card)); border: 2px solid hsl(var(--accent) / 0.4); border-radius: var(--radius); padding: 2rem; position: relative; overflow: hidden;">
+          <div style="position: absolute; top: 1rem; right: 1rem; background: hsl(var(--accent)); color: hsl(var(--primary-foreground)); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px;">
+            Especialidade principal
+          </div>
+          <div style="width: 56px; height: 56px; border-radius: var(--radius); background: hsl(var(--accent) / 0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="hsl(20, 65%, 55%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3 style="font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 700; color: hsl(var(--foreground)); margin-bottom: 0.5rem;">Aprovação de projetos</h3>
+          <p style="font-size: 0.9rem; color: hsl(var(--muted-foreground)); line-height: 1.65;">
+            Do desenho técnico até a aprovação na prefeitura. A Regina acompanha cada etapa com atenção e auxílio completo, sem deixar nenhum detalhe passar.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="service-card" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: var(--radius); padding: 2rem;">
+          <div style="width: 56px; height: 56px; border-radius: var(--radius); background: hsl(var(--primary) / 0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="hsl(220, 15%, 12%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3 style="font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 700; color: hsl(var(--foreground)); margin-bottom: 0.5rem;">Regularização de imóveis</h3>
+          <p style="font-size: 0.9rem; color: hsl(var(--muted-foreground)); line-height: 1.65;">
+            Seja um imóvel dos anos 1930 ou uma construção recente irregular, a Regina tem experiência pra regularizar qualquer situação, inclusive no entorno de áreas históricas.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="service-card" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: var(--radius); padding: 2rem;">
+          <div style="width: 56px; height: 56px; border-radius: var(--radius); background: hsl(var(--accent) / 0.12); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="hsl(20, 65%, 55%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <h3 style="font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 700; color: hsl(var(--foreground)); margin-bottom: 0.5rem;">Consultoria rápida e direta</h3>
+          <p style="font-size: 0.9rem; color: hsl(var(--muted-foreground)); line-height: 1.65;">
+            Não sabe por onde começar? A Regina explica a situação com clareza e apresenta a melhor solução sem enrolação. Ideal pra quem precisa de um direcionamento antes de qualquer decisão.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="service-card" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: var(--radius); padding: 2rem;">
+          <div style="width: 56px; height: 56px; border-radius: var(--radius); background: hsl(var(--primary) / 0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="hsl(220, 15%, 12%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 style="font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 700; color: hsl(var(--foreground)); margin-bottom: 0.5rem;">Atendimento personalizado</h3>
+          <p style="font-size: 0.9rem; color: hsl(var(--muted-foreground)); line-height: 1.65;">
+            Cada cliente tem um caso único, e a Regina trata assim. Atenciosa com quem ela atende e com os clientes de quem a indica. Responde rápido e mantém todo mundo informado.
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="service-card" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: var(--radius); padding: 2rem;">
+          <div style="width: 56px; height: 56px; border-radius: var(--radius); background: hsl(var(--accent) / 0.12); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="hsl(20, 65%, 55%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.29 6.29l1.14-1.14a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <h3 style="font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 700; color: hsl(var(--foreground)); margin-bottom: 0.5rem;">Muito indicada na rede</h3>
+          <p style="font-size: 0.9rem; color: hsl(var(--muted-foreground)); line-height: 1.65;">
+            Corretores, síndicos e clientes satisfeitos indicam a Regina pra sua rede com frequência. A qualidade do trabalho fala por si, e a reputação chegou antes da busca.
+          </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="service-card" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: var(--radius); padding: 2rem;">
+          <div style="width: 56px; height: 56px; border-radius: var(--radius); background: hsl(var(--primary) / 0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="hsl(220, 15%, 12%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 style="font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 700; color: hsl(var(--foreground)); margin-bottom: 0.5rem;">Experiência comprovada</h3>
+          <p style="font-size: 0.9rem; color: hsl(var(--muted-foreground)); line-height: 1.65;">
+            Anos resolvendo casos complexos com agilidade e precisão. A Rêdesenhando tem histórico de entregas que os clientes recomendam sem hesitar, inclusive pra imóveis com pendências antigas.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTATO ===== -->
+  <section id="contato" style="padding: 4rem 1rem; background: hsl(var(--muted));">
+    <div style="max-width: 1280px; margin: 0 auto;">
+
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <span class="eyebrow" style="display: block; text-align: center;">
+          Como chegar até a Regina
+          <span style="display: block; width: 48px; height: 2px; background: hsl(var(--accent)); margin: 8px auto 0;"></span>
+        </span>
+        <h2 style="font-family: 'Lora', serif; font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; color: hsl(var(--foreground)); margin-top: 0.5rem;">Fácil de achar, rápida pra responder</h2>
+      </div>
+
+      <!-- 3 contact cards -->
+      <div style="display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 2rem;" id="contact-cards">
+
+        <a href="tel:+5541991728364" class="contact-card" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: var(--radius); padding: 1.75rem; display: flex; align-items: center; gap: 1.25rem; text-decoration: none; transition: box-shadow 0.2s;">
+          <div style="width: 52px; height: 52px; border-radius: var(--radius); background: hsl(var(--accent) / 0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg class="contact-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="hsl(20, 65%, 55%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 0.2s;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.29 6.29l1.14-1.14a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin-bottom: 4px;">Telefone</div>
+            <div style="font-size: 1.1rem; font-weight: 700; color: hsl(var(--foreground));">(41) 99172-8364</div>
+            <div style="font-size: 0.8rem; color: hsl(var(--muted-foreground));">Ligue ou mande mensagem</div>
+          </div>
+        </a>
+
+        <a href="https://wa.me/5541991728364" target="_blank" rel="noopener" class="contact-card" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: var(--radius); padding: 1.75rem; display: flex; align-items: center; gap: 1.25rem; text-decoration: none; transition: box-shadow 0.2s;">
+          <div style="width: 52px; height: 52px; border-radius: var(--radius); background: rgba(37, 211, 102, 0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="24" height="24" fill="#25d366" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.553 4.112 1.52 5.84L.057 23.215a.75.75 0 0 0 .916.941l5.453-1.43A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.73 9.73 0 0 1-4.953-1.352l-.355-.212-3.678.964.982-3.586-.232-.369A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+          </div>
+          <div>
+            <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin-bottom: 4px;">WhatsApp</div>
+            <div style="font-size: 1.1rem; font-weight: 700; color: hsl(var(--foreground));">Abrir conversa</div>
+            <div style="font-size: 0.8rem; color: hsl(var(--muted-foreground));">Resposta rápida</div>
+          </div>
+        </a>
+
+        <a href="https://maps.google.com/?cid=12972731199806018824&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+          target="_blank" rel="noopener" class="contact-card"
+          style="background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: var(--radius); padding: 1.75rem; display: flex; align-items: center; gap: 1.25rem; text-decoration: none; transition: box-shadow 0.2s;">
+          <div style="width: 52px; height: 52px; border-radius: var(--radius); background: hsl(var(--accent) / 0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg class="contact-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="hsl(20, 65%, 55%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 0.2s;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin-bottom: 4px;">Endereço</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: hsl(var(--foreground)); line-height: 1.4;">Av. da Integração, 2134<br/>Bairro Alto, Curitiba - PR</div>
+            <div style="font-size: 0.8rem; color: hsl(var(--muted-foreground)); margin-top: 2px;">CEP 82840-290</div>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Horário -->
+      <div style="background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: var(--radius); padding: 2rem; max-width: 560px; margin: 0 auto;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(20, 65%, 55%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span style="font-weight: 700; font-size: 1rem; color: hsl(var(--foreground));">Horário de funcionamento</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px solid hsl(var(--border));">
+            <span style="font-size: 0.875rem; color: hsl(var(--muted-foreground));">Segunda-feira</span>
+            <span style="font-size: 0.875rem; font-weight: 600; color: hsl(var(--foreground));">09:00 – 19:00</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px solid hsl(var(--border));">
+            <span style="font-size: 0.875rem; color: hsl(var(--muted-foreground));">Terça-feira</span>
+            <span style="font-size: 0.875rem; font-weight: 600; color: hsl(var(--foreground));">09:00 – 19:00</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px solid hsl(var(--border));">
+            <span style="font-size: 0.875rem; color: hsl(var(--muted-foreground));">Quarta-feira</span>
+            <span style="font-size: 0.875rem; font-weight: 600; color: hsl(var(--foreground));">09:00 – 19:00</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px solid hsl(var(--border));">
+            <span style="font-size: 0.875rem; color: hsl(var(--muted-foreground));">Quinta-feira</span>
+            <span style="font-size: 0.875rem; font-weight: 600; color: hsl(var(--foreground));">09:00 – 19:00</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px solid hsl(var(--border));">
+            <span style="font-size: 0.875rem; color: hsl(var(--muted-foreground));">Sexta-feira</span>
+            <span style="font-size: 0.875rem; font-weight: 600; color: hsl(var(--foreground));">09:00 – 19:00</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px solid hsl(var(--border));">
+            <span style="font-size: 0.875rem; color: hsl(var(--muted-foreground));">Sábado</span>
+            <span style="font-size: 0.875rem; font-weight: 600; color: hsl(var(--foreground));">09:00 – 13:30</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.875rem; color: hsl(var(--muted-foreground));">Domingo</span>
+            <span style="font-size: 0.875rem; font-weight: 600; color: hsl(var(--muted-foreground));">Fechado</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section id="cta-final" style="padding: 4rem 1rem; background: hsl(var(--background));">
+    <div style="max-width: 720px; margin: 0 auto; position: relative; overflow: hidden; background: hsl(var(--primary)); border-radius: var(--radius); padding: 3rem 2rem; text-align: center;">
+      <!-- Blob decorativo -->
+      <div style="position: absolute; width: 260px; height: 260px; background: hsl(var(--accent)); border-radius: 50%; filter: blur(70px); opacity: 0.3; top: -60px; right: -60px; pointer-events: none;"></div>
+
+      <div style="position: relative; z-index: 1;">
+        <h2 style="font-family: 'Lora', serif; font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 700; color: hsl(var(--primary-foreground)); line-height: 1.3; margin-bottom: 1rem;">
+          Pronto pra resolver<br />
+          <em style="font-style: italic; color: hsl(var(--accent));">de vez o seu projeto?</em>
+        </h2>
+        <p style="color: hsl(var(--primary-foreground) / 0.7); font-size: 1rem; line-height: 1.65; margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto;">
+          Manda uma mensagem pra Regina agora. Ela responde rápido e já te diz o que precisa ser feito, sem rodeios.
+        </p>
+        <a href="https://wa.me/5541991728364" target="_blank" rel="noopener"
+          style="display: inline-flex; align-items: center; gap: 10px; background: #25d366; color: #fff; font-weight: 700; font-size: 1.05rem; padding: 15px 28px; border-radius: var(--radius); text-decoration: none; transition: opacity 0.2s;">
+          <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.553 4.112 1.52 5.84L.057 23.215a.75.75 0 0 0 .916.941l5.453-1.43A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.73 9.73 0 0 1-4.953-1.352l-.355-.212-3.678.964.982-3.586-.232-.369A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+          Falar com a Regina agora
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="background: hsl(var(--primary)); padding: 1.5rem 1rem; text-align: center;">
+    <p style="font-size: 0.75rem; color: hsl(var(--primary-foreground) / 0.45); line-height: 1.6;">
+      Página criada pra divulgação. Dados públicos do Google. Entre em contato pra remover.
+    </p>
+  </footer>
+
+  <!-- ===== FLOATING WHATSAPP ===== -->
+  <a href="https://wa.me/5541991728364" target="_blank" rel="noopener" class="wa-float"
+    style="position: fixed; bottom: 20px; right: 20px; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 100; box-shadow: 0 4px 16px rgba(37,211,102,0.4); text-decoration: none;">
+    <svg width="28" height="28" fill="#fff" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.553 4.112 1.52 5.84L.057 23.215a.75.75 0 0 0 .916.941l5.453-1.43A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.73 9.73 0 0 1-4.953-1.352l-.355-.212-3.678.964.982-3.586-.232-.369A9.718 9.718 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+  </a>
+
+  <!-- ===== JS ===== -->
+  <script>
+    // Responsive styles JS
+    function applyResponsive() {
+      const w = window.innerWidth;
+
+      // Desktop nav + CTA
+      const desktopNav = document.getElementById('desktop-nav');
+      const headerCta = document.getElementById('header-cta');
+      const menuBtn = document.getElementById('menu-btn');
+      const heroBadgeFloat = document.getElementById('hero-badge-float');
+
+      if (w >= 768) {
+        desktopNav.style.display = 'flex';
+        headerCta.style.display = 'flex';
+        menuBtn.style.display = 'none';
+        if (heroBadgeFloat) heroBadgeFloat.style.display = 'block';
+      } else {
+        desktopNav.style.display = 'none';
+        headerCta.style.display = 'none';
+        menuBtn.style.display = 'flex';
+        if (heroBadgeFloat) heroBadgeFloat.style.display = 'none';
+      }
+
+      // Hero grid
+      const heroGrid = document.querySelector('.hero-grid');
+      if (heroGrid) {
+        if (w >= 768) {
+          heroGrid.style.gridTemplateColumns = '1fr 1fr';
+          heroGrid.querySelectorAll('div')[0].style.order = '2'; // img
+          heroGrid.querySelectorAll('div')[1].style.order = '1'; // text
+        } else {
+          heroGrid.style.gridTemplateColumns = '1fr';
+          heroGrid.querySelectorAll('div')[0].style.order = '2';
+          heroGrid.querySelectorAll('div')[1].style.order = '1';
+        }
+      }
+
+      // Sobre grid
+      const sobreGrid = document.getElementById('sobre-grid');
+      if (sobreGrid) {
+        sobreGrid.style.gridTemplateColumns = w >= 768 ? '1fr 1fr' : '1fr';
+      }
+
+      // Stats grid
+      const statsGrid = document.getElementById('stats-grid');
+      if (statsGrid) {
+        statsGrid.style.gridTemplateColumns = w >= 768 ? '1fr 1fr 1fr 1fr' : '1fr 1fr';
+      }
+
+      // Services grid
+      const servicesGrid = document.getElementById('services-grid');
+      if (servicesGrid) {
+        servicesGrid.style.gridTemplateColumns = w >= 768 ? '1fr 1fr' : '1fr';
+      }
+
+      // Reviews grid
+      const reviewsGrid = document.getElementById('reviews-grid');
+      if (reviewsGrid) {
+        reviewsGrid.style.gridTemplateColumns = w >= 640 ? '1fr 1fr' : '1fr';
+      }
+
+      // Contact cards
+      const contactCards = document.getElementById('contact-cards');
+      if (contactCards) {
+        contactCards.style.gridTemplateColumns = w >= 768 ? '1fr 1fr 1fr' : '1fr';
+      }
+
+      // CTA buttons
+      const ctaBtns = document.querySelectorAll('.hero-cta-wrap');
+      ctaBtns.forEach(el => {
+        el.style.flexDirection = w >= 480 ? 'row' : 'column';
+      });
+    }
+
+    applyResponsive();
+    window.addEventListener('resize', applyResponsive);
+
+    // Hamburguer menu
+    let menuOpen = false;
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hb1 = document.getElementById('hb1');
+    const hb2 = document.getElementById('hb2');
+    const hb3 = document.getElementById('hb3');
+
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.style.display = menuOpen ? 'block' : 'none';
+      if (menuOpen) {
+        hb1.style.transform = 'translateY(7px) rotate(45deg)';
+        hb2.style.opacity = '0';
+        hb3.style.transform = 'translateY(-7px) rotate(-45deg)';
+      } else {
+        hb1.style.transform = '';
+        hb2.style.opacity = '1';
+        hb3.style.transform = '';
+      }
+    });
+
+    function closeMobileMenu() {
+      menuOpen = false;
+      mobileMenu.style.display = 'none';
+      hb1.style.transform = '';
+      hb2.style.opacity = '1';
+      hb3.style.transform = '';
+    }
+  </script>
+
+</body>
+</html>
