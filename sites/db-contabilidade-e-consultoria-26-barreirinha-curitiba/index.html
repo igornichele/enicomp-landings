@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DB Contabilidade e Consultoria | Escritório de Contabilidade em Curitiba</title>
+  <meta name="description" content="Contabilidade e consultoria empresarial em Curitiba com atendimento ágil, transparente e 5 estrelas no Google. Abertura de empresa, imposto de renda e muito mais." />
+  <meta property="og:title" content="DB Contabilidade e Consultoria | Curitiba" />
+  <meta property="og:description" content="Quem conhece, recomenda. Abertura de empresa, imposto de renda e consultoria empresarial com clareza e agilidade." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=630&fit=crop&q=80&auto=format" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+              DEFAULT: 'hsl(var(--primary))',
+              foreground: 'hsl(var(--primary-foreground))',
+            },
+            accent: {
+              DEFAULT: 'hsl(var(--accent))',
+              foreground: 'hsl(var(--accent-foreground))',
+            },
+            muted: {
+              DEFAULT: 'hsl(var(--muted))',
+              foreground: 'hsl(var(--muted-foreground))',
+            },
+            card: {
+              DEFAULT: 'hsl(var(--card))',
+            },
+            border: 'hsl(var(--border))',
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['"Crimson Pro"', 'Georgia', 'serif'],
+          },
+          borderRadius: {
+            DEFAULT: 'var(--radius)',
+            sm: 'calc(var(--radius) - 2px)',
+            lg: 'calc(var(--radius) + 4px)',
+            xl: 'calc(var(--radius) + 8px)',
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    :root {
+      --background: 30 20% 98%;
+      --foreground: 220 15% 12%;
+      --primary: 20 35% 22%;
+      --primary-foreground: 0 0% 98%;
+      --accent: 180 40% 55%;
+      --accent-foreground: 220 15% 12%;
+      --muted: 30 20% 94%;
+      --muted-foreground: 220 10% 40%;
+      --card: 0 0% 100%;
+      --border: 220 15% 90%;
+      --radius: 0.5rem;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+    }
+
+    .font-serif { font-family: 'Crimson Pro', Georgia, serif; }
+
+    /* Header scroll-shrink */
+    #main-header {
+      transition: padding 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+    #main-header.shrunk {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      box-shadow: 0 1px 12px 0 rgba(0,0,0,0.08);
+      background-color: hsl(30 20% 98% / 0.97);
+      backdrop-filter: blur(8px);
+    }
+    #main-header .header-logo {
+      transition: font-size 0.3s ease;
+    }
+    #main-header.shrunk .header-logo {
+      font-size: 1rem;
+    }
+
+    /* Section eyebrow accent line */
+    .eyebrow-line {
+      position: relative;
+      display: inline-block;
+    }
+    .eyebrow-line::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 48px;
+      height: 2px;
+      background-color: hsl(var(--accent));
+      border-radius: 2px;
+    }
+
+    /* Pattern dots */
+    .dots-pattern {
+      background-image: radial-gradient(circle, hsl(var(--foreground) / 0.07) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    /* Marquee animation */
+    @keyframes marquee-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      animation: marquee-scroll 32s linear infinite;
+      display: flex;
+      gap: 1.5rem;
+    }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+    .marquee-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+    .marquee-fade-left {
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 80px;
+      background: linear-gradient(to right, hsl(var(--background)), transparent);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .marquee-fade-right {
+      position: absolute; right: 0; top: 0; bottom: 0;
+      width: 80px;
+      background: linear-gradient(to left, hsl(var(--background)), transparent);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Quote decoration */
+    .review-card {
+      position: relative;
+    }
+    .review-card::before {
+      content: '"';
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 120px;
+      line-height: 1;
+      color: hsl(var(--accent) / 0.12);
+      position: absolute;
+      top: -16px;
+      left: 12px;
+      pointer-events: none;
+    }
+
+    /* Accordion */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.2s ease;
+    }
+    .accordion-content.open {
+      max-height: 300px;
+    }
+    .accordion-icon {
+      transition: transform 0.3s ease;
+    }
+    .accordion-item.open .accordion-icon {
+      transform: rotate(45deg);
+    }
+
+    /* Pulse WhatsApp */
+    @keyframes wa-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+      50% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+    }
+    .wa-pulse { animation: wa-pulse 2s ease-in-out infinite; }
+
+    /* Card hover */
+    .card-hover {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px 0 rgba(0,0,0,0.10);
+    }
+
+    /* Contact card icon hover */
+    .contact-card:hover .contact-icon {
+      color: hsl(var(--accent));
+    }
+
+    /* Mobile menu */
+    #mobile-menu {
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+    #mobile-menu.open {
+      max-height: 320px;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- ===================== HEADER ===================== -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border py-4">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-[var(--radius)] bg-primary flex items-center justify-center flex-shrink-0">
+          <span class="text-primary-foreground font-serif font-bold text-lg leading-none">D</span>
+        </div>
+        <span class="header-logo font-serif font-semibold text-[1.125rem] text-foreground leading-tight">
+          DB Contabilidade
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="#sobre" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Sobre</a>
+        <a href="#especialidades" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Especialidades</a>
+        <a href="#avaliacoes" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Avaliações</a>
+        <a href="#contato" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Contato</a>
+        <a href="https://wa.me/5541999565085" target="_blank" rel="noopener"
+          class="inline-flex items-center gap-1.5 bg-primary text-primary-foreground text-sm font-medium px-4 py-2 rounded-[var(--radius)] hover:opacity-90 transition-opacity">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          WhatsApp
+        </a>
+      </nav>
+
+      <!-- Hamburger -->
+      <button id="hamburger-btn" class="md:hidden p-2 rounded-[var(--radius)] hover:bg-muted transition-colors" aria-label="Menu">
+        <i data-lucide="menu" class="w-5 h-5" id="hamburger-icon"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden border-t border-border bg-background/98">
+      <nav class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-3">
+        <a href="#sobre" class="mobile-nav-link text-sm font-medium text-muted-foreground hover:text-foreground py-2 border-b border-border/50 transition-colors">Sobre</a>
+        <a href="#especialidades" class="mobile-nav-link text-sm font-medium text-muted-foreground hover:text-foreground py-2 border-b border-border/50 transition-colors">Especialidades</a>
+        <a href="#avaliacoes" class="mobile-nav-link text-sm font-medium text-muted-foreground hover:text-foreground py-2 border-b border-border/50 transition-colors">Avaliações</a>
+        <a href="#contato" class="mobile-nav-link text-sm font-medium text-muted-foreground hover:text-foreground py-2 transition-colors">Contato</a>
+        <a href="https://wa.me/5541999565085" target="_blank" rel="noopener"
+          class="mt-1 inline-flex items-center justify-center gap-2 bg-[#25d366] text-white text-sm font-semibold px-4 py-2.5 rounded-[var(--radius)]">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero" class="relative pt-24 pb-12 md:pt-28 md:pb-20 overflow-hidden dots-pattern scroll-mt-20">
+    <!-- Blobs -->
+    <div class="absolute top-0 right-0 w-96 h-96 rounded-full pointer-events-none" style="background: hsl(var(--accent) / 0.18); filter: blur(80px); transform: translate(30%, -30%);"></div>
+    <div class="absolute bottom-0 left-0 w-72 h-72 rounded-full pointer-events-none" style="background: hsl(var(--primary) / 0.12); filter: blur(70px); transform: translate(-30%, 30%);"></div>
+
+    <div class="max-w-6xl mx-auto px-4 md:px-6 relative z-10">
+      <div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+
+        <!-- Left: content -->
+        <div class="order-1">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 bg-muted border border-border text-muted-foreground text-xs font-medium px-3 py-1.5 rounded-full mb-6">
+            <i data-lucide="star" class="w-3.5 h-3.5 text-accent"></i>
+            Referência em contabilidade em Curitiba
+          </div>
+
+          <!-- Headline -->
+          <h1 class="font-serif text-4xl md:text-5xl lg:text-[3.25rem] font-semibold leading-tight text-foreground mb-4">
+            Sua contabilidade<br />
+            <em class="not-italic" style="color: hsl(var(--primary));">resolvida de verdade,</em><br />
+            sem complicação
+          </h1>
+
+          <!-- Subtitle -->
+          <p class="text-muted-foreground text-base md:text-lg leading-relaxed mb-5 max-w-lg">
+            A gente cuida de tudo, do imposto de renda até a abertura da sua empresa, com clareza em cada etapa e sem deixar você esperando.
+          </p>
+
+          <!-- Rating -->
+          <div class="flex items-center gap-2 mb-6">
+            <span class="text-accent text-lg leading-none">★★★★★</span>
+            <span class="text-sm font-semibold text-foreground">5,0 no Google</span>
+            <span class="text-muted-foreground text-sm">· Avaliação máxima</span>
+          </div>
+
+          <!-- Stats inside hero (inside-hero-overlay) -->
+          <div class="grid grid-cols-2 gap-3 mb-7">
+            <div class="bg-card/80 border border-border rounded-[var(--radius)] px-4 py-3 flex flex-col gap-0.5" style="backdrop-filter: blur(6px);">
+              <span class="font-serif font-bold text-2xl text-primary leading-none">5★</span>
+              <span class="text-xs uppercase tracking-wide text-muted-foreground font-medium">Rating Google</span>
+            </div>
+            <div class="bg-card/80 border border-border rounded-[var(--radius)] px-4 py-3 flex flex-col gap-0.5" style="backdrop-filter: blur(6px);">
+              <span class="font-serif font-bold text-2xl text-primary leading-none">30min</span>
+              <span class="text-xs uppercase tracking-wide text-muted-foreground font-medium">Respostas rápidas</span>
+            </div>
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://wa.me/5541999565085" target="_blank" rel="noopener"
+              class="inline-flex items-center justify-center gap-2 font-semibold text-sm px-5 py-3 rounded-[var(--radius)] text-white transition-opacity hover:opacity-90 w-full sm:w-auto"
+              style="background-color: #25d366;">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Falar no WhatsApp
+            </a>
+            <a href="tel:+5541999565085"
+              class="inline-flex items-center justify-center gap-2 font-semibold text-sm px-5 py-3 rounded-[var(--radius)] border border-border text-foreground hover:bg-muted transition-colors w-full sm:w-auto">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+              (41) 99956-5085
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: image -->
+        <div class="order-2 relative flex justify-center md:justify-end">
+          <!-- Floating badge desktop only -->
+          <div class="hidden sm:flex absolute top-6 -left-4 z-10 items-center gap-2 bg-card border border-border shadow-md px-3 py-2 rounded-[var(--radius)]">
+            <i data-lucide="shield-check" class="w-4 h-4 text-accent"></i>
+            <span class="text-xs font-semibold text-foreground">Transparência em cada etapa</span>
+          </div>
+
+          <div class="relative w-full max-w-sm md:max-w-none">
+            <div class="absolute inset-0 rounded-lg md:rounded-xl translate-x-3 translate-y-3" style="background: hsl(var(--accent) / 0.25);"></div>
+            <img
+              src="https://images.unsplash.com/photo-1586281380117-5a60ae2050cc?w=1200&h=1500&fit=crop&q=80&auto=format"
+              alt="clipboard open projects laptop desk"
+              class="relative w-full object-cover rounded-lg md:rounded-xl border-2"
+              style="aspect-ratio: 4/5; border-color: hsl(var(--accent) / 0.4); max-height: 480px;"
+            />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== AVALIAÇÕES ===================== -->
+  <section id="avaliacoes" class="py-12 md:py-20 overflow-hidden scroll-mt-20" style="background: hsl(var(--muted));">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 mb-8">
+      <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest text-accent mb-5">O que os clientes dizem</p>
+      <h2 class="font-serif text-3xl md:text-4xl font-semibold text-foreground leading-tight mb-2">
+        Quem passou por aqui, voltou feliz
+      </h2>
+      <p class="text-muted-foreground text-sm md:text-base">Avaliação média de 5 estrelas no Google.</p>
+    </div>
+
+    <!-- Marquee -->
+    <div class="marquee-wrapper">
+      <div class="marquee-fade-left"></div>
+      <div class="marquee-fade-right"></div>
+      <div class="marquee-track py-2" style="width: max-content;">
+
+        <!-- Card 1 -->
+        <div class="review-card w-80 flex-shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 card-hover" style="min-width: 320px;">
+          <div class="flex gap-0.5 mb-3">
+            <span class="text-accent">★★★★★</span>
+          </div>
+          <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+            "Desde os primeiros contatos para a abertura da minha empresa, fui atendida com atenção, clareza e um profissionalismo exemplar. Toda a burocracia foi conduzida de forma ágil, segura e transparente, com orientação passo a passo."
+          </p>
+          <div class="flex items-center gap-3 mt-auto">
+            <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <span class="font-serif font-bold text-primary text-sm">A</span>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-foreground">Angela Ramos</p>
+              <p class="text-xs text-muted-foreground">Cliente</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="review-card w-80 flex-shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 card-hover" style="min-width: 320px;">
+          <div class="flex gap-0.5 mb-3">
+            <span class="text-accent">★★★★★</span>
+          </div>
+          <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+            "Danieli me atendeu super bem, extremamente ágil e competente. Estava há mais de um mês tentando resolver uma questão que em 30 minutos ela resolveu prontamente."
+          </p>
+          <div class="flex items-center gap-3 mt-auto">
+            <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <span class="font-serif font-bold text-primary text-sm">A</span>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-foreground">Andressa</p>
+              <p class="text-xs text-muted-foreground">Cliente</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="review-card w-80 flex-shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 card-hover" style="min-width: 320px;">
+          <div class="flex gap-0.5 mb-3">
+            <span class="text-accent">★★★★★</span>
+          </div>
+          <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+            "Melhor parceiro para nossas necessidades contábeis. Nossos registros contábeis até que enfim são consistentes e nos ajudam em nossas decisões."
+          </p>
+          <div class="flex items-center gap-3 mt-auto">
+            <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <span class="font-serif font-bold text-primary text-sm">F</span>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-foreground">Fernanda F</p>
+              <p class="text-xs text-muted-foreground">Cliente</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="review-card w-80 flex-shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 card-hover" style="min-width: 320px;">
+          <div class="flex gap-0.5 mb-3">
+            <span class="text-accent">★★★★★</span>
+          </div>
+          <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+            "Clareza nas dúvidas e agilidade, não tive mais problemas com malha fina no meu imposto de renda."
+          </p>
+          <div class="flex items-center gap-3 mt-auto">
+            <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <span class="font-serif font-bold text-primary text-sm">G</span>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-foreground">Gabriel Lacerda</p>
+              <p class="text-xs text-muted-foreground">Cliente</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="review-card w-80 flex-shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 card-hover" style="min-width: 320px;">
+          <div class="flex gap-0.5 mb-3">
+            <span class="text-accent">★★★★★</span>
+          </div>
+          <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+            "Prestativa e muito competente! Melhor contadora!"
+          </p>
+          <div class="flex items-center gap-3 mt-auto">
+            <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <span class="font-serif font-bold text-primary text-sm">O</span>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-foreground">Omara Therezio</p>
+              <p class="text-xs text-muted-foreground">Cliente</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Duplicate set for seamless loop -->
+        <div class="review-card w-80 flex-shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 card-hover" style="min-width: 320px;">
+          <div class="flex gap-0.5 mb-3"><span class="text-accent">★★★★★</span></div>
+          <p class="text-sm text-muted-foreground leading-relaxed mb-4">"Desde os primeiros contatos para a abertura da minha empresa, fui atendida com atenção, clareza e um profissionalismo exemplar. Toda a burocracia foi conduzida de forma ágil, segura e transparente, com orientação passo a passo."</p>
+          <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0"><span class="font-serif font-bold text-primary text-sm">A</span></div><div><p class="text-sm font-semibold text-foreground">Angela Ramos</p><p class="text-xs text-muted-foreground">Cliente</p></div></div>
+        </div>
+        <div class="review-card w-80 flex-shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 card-hover" style="min-width: 320px;">
+          <div class="flex gap-0.5 mb-3"><span class="text-accent">★★★★★</span></div>
+          <p class="text-sm text-muted-foreground leading-relaxed mb-4">"Danieli me atendeu super bem, extremamente ágil e competente. Estava há mais de um mês tentando resolver uma questão que em 30 minutos ela resolveu prontamente."</p>
+          <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0"><span class="font-serif font-bold text-primary text-sm">A</span></div><div><p class="text-sm font-semibold text-foreground">Andressa</p><p class="text-xs text-muted-foreground">Cliente</p></div></div>
+        </div>
+        <div class="review-card w-80 flex-shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 card-hover" style="min-width: 320px;">
+          <div class="flex gap-0.5 mb-3"><span class="text-accent">★★★★★</span></div>
+          <p class="text-sm text-muted-foreground leading-relaxed mb-4">"Melhor parceiro para nossas necessidades contábeis. Nossos registros contábeis até que enfim são consistentes e nos ajudam em nossas decisões."</p>
+          <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0"><span class="font-serif font-bold text-primary text-sm">F</span></div><div><p class="text-sm font-semibold text-foreground">Fernanda F</p><p class="text-xs text-muted-foreground">Cliente</p></div></div>
+        </div>
+        <div class="review-card w-80 flex-shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 card-hover" style="min-width: 320px;">
+          <div class="flex gap-0.5 mb-3"><span class="text-accent">★★★★★</span></div>
+          <p class="text-sm text-muted-foreground leading-relaxed mb-4">"Clareza nas dúvidas e agilidade, não tive mais problemas com malha fina no meu imposto de renda."</p>
+          <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0"><span class="font-serif font-bold text-primary text-sm">G</span></div><div><p class="text-sm font-semibold text-foreground">Gabriel Lacerda</p><p class="text-xs text-muted-foreground">Cliente</p></div></div>
+        </div>
+        <div class="review-card w-80 flex-shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 card-hover" style="min-width: 320px;">
+          <div class="flex gap-0.5 mb-3"><span class="text-accent">★★★★★</span></div>
+          <p class="text-sm text-muted-foreground leading-relaxed mb-4">"Prestativa e muito competente! Melhor contadora!"</p>
+          <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0"><span class="font-serif font-bold text-primary text-sm">O</span></div><div><p class="text-sm font-semibold text-foreground">Omara Therezio</p><p class="text-xs text-muted-foreground">Cliente</p></div></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Link Google -->
+    <div class="max-w-6xl mx-auto px-4 md:px-6 mt-8 flex justify-center">
+      <a href="https://maps.google.com/?cid=2720797789065129656&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener"
+        class="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline">
+        Ver avaliações no Google
+        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===================== SOBRE ===================== -->
+  <section id="sobre" class="py-12 md:py-20 scroll-mt-20">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+      <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+
+        <!-- Images side -->
+        <div class="order-2 md:order-1 grid grid-cols-2 gap-4">
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="financial dashboard charts laptop"
+            class="w-full object-cover rounded-[var(--radius)] border border-border shadow-sm"
+            style="aspect-ratio: 4/5;"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="tax documents calculator desk"
+            class="w-full object-cover rounded-[var(--radius)] border border-border shadow-sm mt-8"
+            style="aspect-ratio: 4/5;"
+          />
+        </div>
+
+        <!-- Text side -->
+        <div class="order-1 md:order-2">
+          <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest text-accent mb-5">Sobre a DB</p>
+          <h2 class="font-serif text-3xl md:text-4xl font-semibold text-foreground leading-tight mb-5">
+            Contabilidade que<br /><em class="not-italic" style="color: hsl(var(--primary));">simplifica sua vida</em>
+          </h2>
+          <p class="text-muted-foreground text-sm md:text-base leading-relaxed mb-4">
+            A gente sabe que burocracia assusta. Por isso, cuidamos de cada detalhe com atenção e clareza, desde a abertura do seu CNPJ até a gestão contábil do dia a dia, sem deixar você no escuro em nenhum momento.
+          </p>
+          <p class="text-muted-foreground text-sm md:text-base leading-relaxed mb-8">
+            Com a DB, você tem registros consistentes que ajudam nas suas decisões, imposto de renda sem malha fina e alguém de confiança pra resolver em minutos o que outros levam semanas.
+          </p>
+
+          <!-- Micro-benefits grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-[var(--radius)] bg-accent/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 text-accent"></i>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-foreground">Abertura ágil de empresa</p>
+                <p class="text-xs text-muted-foreground">Burocracia conduzida passo a passo</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-[var(--radius)] bg-accent/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 text-accent"></i>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-foreground">IR sem malha fina</p>
+                <p class="text-xs text-muted-foreground">Clareza nas dúvidas, sem sustos</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-[var(--radius)] bg-accent/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 text-accent"></i>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-foreground">Atendimento em 30 minutos</p>
+                <p class="text-xs text-muted-foreground">Respostas rápidas quando você precisa</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-[var(--radius)] bg-accent/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 text-accent"></i>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-foreground">Registros que ajudam a decidir</p>
+                <p class="text-xs text-muted-foreground">Dados consistentes pro seu negócio</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ESPECIALIDADES ===================== -->
+  <section id="especialidades" class="py-12 md:py-20 scroll-mt-20" style="background: hsl(var(--muted));">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-10">
+        <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest text-accent mb-5">O que a gente faz</p>
+        <h2 class="font-serif text-3xl md:text-4xl font-semibold text-foreground leading-tight">
+          Especialidades
+        </h2>
+      </div>
+
+      <!-- Featured service -->
+      <div class="bg-card border-2 rounded-lg md:rounded-xl overflow-hidden mb-6 card-hover" style="border-color: hsl(var(--accent) / 0.35);">
+        <div class="grid md:grid-cols-2">
+          <div class="p-7 md:p-10 flex flex-col justify-center">
+            <div class="inline-flex items-center gap-2 mb-4">
+              <div class="w-10 h-10 rounded-[var(--radius)] flex items-center justify-center" style="background: hsl(var(--accent) / 0.15);">
+                <i data-lucide="building-2" class="w-5 h-5 text-accent"></i>
+              </div>
+              <span class="text-xs font-bold uppercase tracking-widest text-accent bg-accent/10 px-2.5 py-1 rounded-full">Especialidade Principal</span>
+            </div>
+            <h3 class="font-serif text-2xl md:text-3xl font-semibold text-foreground mb-3 leading-tight">
+              Abertura e Gestão de Empresas
+            </h3>
+            <p class="text-muted-foreground text-sm leading-relaxed">
+              Da escolha do regime tributário até o CNPJ ativo, a gente conduz tudo com transparência e agilidade. Passo a passo, sem surpresas, do início ao fim.
+            </p>
+          </div>
+          <div class="hidden md:block">
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=900&fit=crop&q=80&auto=format"
+              alt="financial dashboard charts laptop"
+              class="w-full h-full object-cover"
+              style="max-height: 280px;"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion services -->
+      <div class="space-y-3">
+
+        <!-- Item 1 -->
+        <div class="accordion-item bg-card border border-border rounded-[var(--radius)] overflow-hidden" data-accordion>
+          <button class="accordion-trigger w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-muted/50 transition-colors" onclick="toggleAccordion(this)">
+            <div class="flex items-center gap-4">
+              <div class="w-9 h-9 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.10);">
+                <i data-lucide="file-text" class="w-4 h-4 text-primary"></i>
+              </div>
+              <span class="font-semibold text-sm text-foreground">Imposto de Renda Pessoa Física</span>
+            </div>
+            <i data-lucide="plus" class="w-4 h-4 text-muted-foreground flex-shrink-0 accordion-icon"></i>
+          </button>
+          <div class="accordion-content">
+            <div class="px-5 pb-5 pt-0">
+              <p class="text-sm text-muted-foreground leading-relaxed pl-13">
+                Declaração do IR sem malha fina, com clareza em cada detalhe. A gente revisa, orienta e garante que tudo esteja correto antes de enviar.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="accordion-item bg-card border border-border rounded-[var(--radius)] overflow-hidden" data-accordion>
+          <button class="accordion-trigger w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-muted/50 transition-colors" onclick="toggleAccordion(this)">
+            <div class="flex items-center gap-4">
+              <div class="w-9 h-9 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.10);">
+                <i data-lucide="trending-up" class="w-4 h-4 text-primary"></i>
+              </div>
+              <span class="font-semibold text-sm text-foreground">Consultoria Empresarial</span>
+            </div>
+            <i data-lucide="plus" class="w-4 h-4 text-muted-foreground flex-shrink-0 accordion-icon"></i>
+          </button>
+          <div class="accordion-content">
+            <div class="px-5 pb-5 pt-0">
+              <p class="text-sm text-muted-foreground leading-relaxed">
+                Registros contábeis consistentes que ajudam na tomada de decisão. A gente transforma números em informações úteis pro seu dia a dia.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="accordion-item bg-card border border-border rounded-[var(--radius)] overflow-hidden" data-accordion>
+          <button class="accordion-trigger w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-muted/50 transition-colors" onclick="toggleAccordion(this)">
+            <div class="flex items-center gap-4">
+              <div class="w-9 h-9 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.10);">
+                <i data-lucide="zap" class="w-4 h-4 text-primary"></i>
+              </div>
+              <span class="font-semibold text-sm text-foreground">Atendimento Rápido e Sem Enrolação</span>
+            </div>
+            <i data-lucide="plus" class="w-4 h-4 text-muted-foreground flex-shrink-0 accordion-icon"></i>
+          </button>
+          <div class="accordion-content">
+            <div class="px-5 pb-5 pt-0">
+              <p class="text-sm text-muted-foreground leading-relaxed">
+                O que outros levam semanas pra resolver, a gente resolve em 30 minutos. Competência com agilidade, sem deixar você na fila de espera.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="accordion-item bg-card border border-border rounded-[var(--radius)] overflow-hidden" data-accordion>
+          <button class="accordion-trigger w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-muted/50 transition-colors" onclick="toggleAccordion(this)">
+            <div class="flex items-center gap-4">
+              <div class="w-9 h-9 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.10);">
+                <i data-lucide="heart-handshake" class="w-4 h-4 text-primary"></i>
+              </div>
+              <span class="font-semibold text-sm text-foreground">Relacionamento de Confiança</span>
+            </div>
+            <i data-lucide="plus" class="w-4 h-4 text-muted-foreground flex-shrink-0 accordion-icon"></i>
+          </button>
+          <div class="accordion-content">
+            <div class="px-5 pb-5 pt-0">
+              <p class="text-sm text-muted-foreground leading-relaxed">
+                A gente não some depois de fechar o contrato. Estamos aqui pra responder dúvidas, orientar e acompanhar você de verdade, com atenção e cuidado.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTATO ===================== -->
+  <section id="contato" class="py-12 md:py-20 scroll-mt-20">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-10">
+        <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest text-accent mb-5">Fale com a gente</p>
+        <h2 class="font-serif text-3xl md:text-4xl font-semibold text-foreground leading-tight">
+          Como chegar até nós
+        </h2>
+      </div>
+
+      <!-- Contact cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+
+        <!-- Phone -->
+        <a href="tel:+5541999565085" class="contact-card bg-card border border-border rounded-[var(--radius)] p-6 card-hover flex flex-col gap-3 text-left">
+          <div class="w-10 h-10 rounded-[var(--radius)] bg-primary/10 flex items-center justify-center">
+            <i data-lucide="phone" class="w-5 h-5 text-primary contact-icon transition-colors"></i>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1">Telefone</p>
+            <p class="font-semibold text-foreground text-sm">(41) 99956-5085</p>
+            <p class="text-xs text-muted-foreground mt-0.5">Ligue e fale direto</p>
+          </div>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/5541999565085" target="_blank" rel="noopener" class="contact-card bg-card border border-border rounded-[var(--radius)] p-6 card-hover flex flex-col gap-3 text-left">
+          <div class="w-10 h-10 rounded-[var(--radius)] flex items-center justify-center" style="background: rgba(37,211,102,0.12);">
+            <svg class="w-5 h-5 contact-icon transition-colors" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1">WhatsApp</p>
+            <p class="font-semibold text-foreground text-sm">(41) 99956-5085</p>
+            <p class="text-xs text-muted-foreground mt-0.5">Resposta rápida</p>
+          </div>
+        </a>
+
+        <!-- Address -->
+        <a href="https://maps.google.com/?cid=2720797789065129656&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="contact-card bg-card border border-border rounded-[var(--radius)] p-6 card-hover flex flex-col gap-3 text-left">
+          <div class="w-10 h-10 rounded-[var(--radius)] bg-primary/10 flex items-center justify-center">
+            <i data-lucide="map-pin" class="w-5 h-5 text-primary contact-icon transition-colors"></i>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1">Endereço</p>
+            <p class="font-semibold text-foreground text-sm">R. dos Monjoleiros, 26</p>
+            <p class="text-xs text-muted-foreground mt-0.5">Barreirinha, Curitiba - PR</p>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Hours card -->
+      <div class="bg-card border border-border rounded-[var(--radius)] p-6 md:p-8 max-w-lg mx-auto">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-9 h-9 rounded-[var(--radius)] bg-accent/15 flex items-center justify-center">
+            <i data-lucide="clock" class="w-4 h-4 text-accent"></i>
+          </div>
+          <h3 class="font-semibold text-foreground text-sm">Horário de Funcionamento</h3>
+        </div>
+        <div class="space-y-2.5">
+          <div class="flex justify-between items-center py-2 border-b border-border/50">
+            <span class="text-sm text-muted-foreground">Segunda-feira</span>
+            <span class="text-sm font-medium text-foreground">09:00 – 19:00</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-border/50">
+            <span class="text-sm text-muted-foreground">Terça-feira</span>
+            <span class="text-sm font-medium text-foreground">09:00 – 17:30</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-border/50">
+            <span class="text-sm text-muted-foreground">Quarta-feira</span>
+            <span class="text-sm font-medium text-foreground">09:00 – 17:30</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-border/50">
+            <span class="text-sm text-muted-foreground">Quinta-feira</span>
+            <span class="text-sm font-medium text-foreground">09:00 – 17:30</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-border/50">
+            <span class="text-sm text-muted-foreground">Sexta-feira</span>
+            <span class="text-sm font-medium text-foreground">09:00 – 17:30</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-border/50">
+            <span class="text-sm text-muted-foreground">Sábado</span>
+            <span class="text-sm font-medium text-muted-foreground">Fechado</span>
+          </div>
+          <div class="flex justify-between items-center py-2">
+            <span class="text-sm text-muted-foreground">Domingo</span>
+            <span class="text-sm font-medium text-muted-foreground">Fechado</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== CTA FINAL ===================== -->
+  <section id="cta-final" class="py-12 md:py-20 scroll-mt-20">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+      <div class="relative rounded-xl overflow-hidden p-8 md:p-14 text-center" style="background: hsl(var(--primary));">
+        <!-- Blob -->
+        <div class="absolute top-0 right-0 w-64 h-64 rounded-full pointer-events-none" style="background: hsl(var(--accent) / 0.20); filter: blur(60px); transform: translate(20%, -20%);"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 rounded-full pointer-events-none" style="background: hsl(var(--accent) / 0.15); filter: blur(50px); transform: translate(-20%, 20%);"></div>
+
+        <div class="relative z-10">
+          <h2 class="font-serif text-3xl md:text-4xl font-semibold leading-tight mb-4" style="color: hsl(var(--primary-foreground));">
+            Chega de preocupação<br />
+            <em class="not-italic" style="color: hsl(var(--accent));">com burocracia</em>
+          </h2>
+          <p class="text-sm md:text-base leading-relaxed mb-8 max-w-md mx-auto" style="color: hsl(var(--primary-foreground) / 0.75);">
+            A gente cuida da contabilidade pra você focar no que realmente importa. Entre em contato e veja como é simples.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="https://wa.me/5541999565085" target="_blank" rel="noopener"
+              class="inline-flex items-center justify-center gap-2 font-semibold text-sm px-6 py-3.5 rounded-[var(--radius)] text-white transition-opacity hover:opacity-90 w-full sm:w-auto"
+              style="background-color: #25d366;">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Falar no WhatsApp agora
+            </a>
+            <a href="tel:+5541999565085"
+              class="inline-flex items-center justify-center gap-2 font-semibold text-sm px-6 py-3.5 rounded-[var(--radius)] border transition-colors w-full sm:w-auto"
+              style="border-color: hsl(var(--primary-foreground) / 0.25); color: hsl(var(--primary-foreground) / 0.85);">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+              (41) 99956-5085
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="border-t border-border py-8">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+      <div class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-[var(--radius)] bg-primary flex items-center justify-center">
+          <span class="text-primary-foreground font-serif font-bold text-sm leading-none">D</span>
+        </div>
+        <span class="text-sm font-medium text-foreground">DB Contabilidade e Consultoria</span>
+      </div>
+      <p class="text-xs text-muted-foreground max-w-sm">
+        Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp button -->
+  <a href="https://wa.me/5541999565085" target="_blank" rel="noopener" aria-label="WhatsApp"
+    class="wa-pulse fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110"
+    style="background-color: #25d366;">
+    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- ===================== JS ===================== -->
+  <script>
+    // Init lucide icons
+    lucide.createIcons();
+
+    // Header scroll-shrink
+    const header = document.getElementById('main-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        header.classList.add('shrunk');
+      } else {
+        header.classList.remove('shrunk');
+      }
+    });
+
+    // Hamburger menu
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    let menuOpen = false;
+
+    hamburgerBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      hamburgerIcon.setAttribute('data-lucide', menuOpen ? 'x' : 'menu');
+      lucide.createIcons();
+    });
+
+    // Close mobile menu on nav link click
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        mobileMenu.classList.remove('open');
+        hamburgerIcon.setAttribute('data-lucide', 'menu');
+        lucide.createIcons();
+      });
+    });
+
+    // Accordion
+    function toggleAccordion(trigger) {
+      const item = trigger.closest('.accordion-item');
+      const content = item.querySelector('.accordion-content');
+      const isOpen = item.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.accordion-item.open').forEach(openItem => {
+        openItem.classList.remove('open');
+        openItem.querySelector('.accordion-content').classList.remove('open');
+      });
+
+      // Open clicked if was closed
+      if (!isOpen) {
+        item.classList.add('open');
+        content.classList.add('open');
+      }
+    }
+
+    // Scroll margin fix for sections
+    document.querySelectorAll('section[id]').forEach(section => {
+      section.style.scrollMarginTop = '80px';
+    });
+  </script>
+</body>
+</html>
