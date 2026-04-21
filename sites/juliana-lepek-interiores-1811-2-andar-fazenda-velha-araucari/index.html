@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juliana Lepek Interiores | Design de Interiores em Araucária e Curitiba</title>
+  <meta name="description" content="Projetos de interiores residenciais e comerciais com entrega no prazo, design moderno e funcional. 5 estrelas no Google. Fale com Juliana." />
+  <meta property="og:title" content="Juliana Lepek Interiores | Design de Interiores em Araucária e Curitiba" />
+  <meta property="og:description" content="Projetos residenciais e comerciais com entrega no prazo. 5 estrelas, 13 avaliações reais no Google." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=1200&h=630&fit=crop&q=80&auto=format" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+              DEFAULT: 'hsl(var(--primary))',
+              foreground: 'hsl(var(--primary-foreground))',
+            },
+            accent: {
+              DEFAULT: 'hsl(var(--accent))',
+              foreground: 'hsl(var(--accent-foreground))',
+            },
+            muted: {
+              DEFAULT: 'hsl(var(--muted))',
+              foreground: 'hsl(var(--muted-foreground))',
+            },
+            card: {
+              DEFAULT: 'hsl(var(--card))',
+            },
+            border: 'hsl(var(--border))',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Playfair Display', 'serif'],
+          },
+          borderRadius: {
+            DEFAULT: 'var(--radius)',
+            sm: 'calc(var(--radius) - 0.125rem)',
+            lg: 'calc(var(--radius) + 0.125rem)',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --background: 20 15% 97%;
+      --foreground: 220 15% 12%;
+      --primary: 220 20% 20%;
+      --primary-foreground: 0 0% 98%;
+      --accent: 35 65% 58%;
+      --accent-foreground: 220 15% 12%;
+      --muted: 20 15% 94%;
+      --muted-foreground: 220 10% 40%;
+      --card: 0 0% 100%;
+      --border: 220 15% 90%;
+      --radius: 0.25rem;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      font-family: 'Inter', sans-serif;
+    }
+
+    .font-display { font-family: 'Playfair Display', serif; }
+
+    /* Eyebrow underline accent */
+    .eyebrow-accent {
+      display: inline-block;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    .eyebrow-accent::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 48px;
+      height: 2px;
+      background-color: hsl(var(--accent));
+    }
+
+    /* Dot pattern */
+    .dot-pattern {
+      background-image: radial-gradient(circle, hsl(var(--foreground) / 0.08) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Marquee scroll */
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 1.5rem;
+      animation: marquee 40s linear infinite;
+      width: max-content;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    .marquee-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .marquee-fade-left {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 80px;
+      background: linear-gradient(to right, hsl(var(--muted)), transparent);
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .marquee-fade-right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 80px;
+      background: linear-gradient(to left, hsl(var(--muted)), transparent);
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* Review card quote */
+    .review-card {
+      position: relative;
+    }
+    .review-card::before {
+      content: '"';
+      font-family: 'Playfair Display', serif;
+      font-size: 120px;
+      line-height: 1;
+      color: hsl(var(--accent) / 0.12);
+      position: absolute;
+      top: -10px;
+      left: 12px;
+      pointer-events: none;
+    }
+
+    /* Service card hover */
+    .service-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px hsl(var(--foreground) / 0.1);
+      border-color: hsl(var(--accent));
+    }
+
+    /* Contact card hover */
+    .contact-card:hover .contact-icon {
+      color: hsl(var(--accent));
+    }
+
+    /* Blob */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    /* Pulse animation for WhatsApp */
+    @keyframes pulse-wpp {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+    }
+    .wpp-pulse {
+      animation: pulse-wpp 2s infinite;
+    }
+
+    /* Header bordered-minimal */
+    #site-header {
+      background-color: hsl(var(--card));
+      border-bottom: 1px solid hsl(var(--border));
+    }
+
+    /* Scroll margin for sticky header */
+    section[id] {
+      scroll-margin-top: 72px;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- HEADER: bordered-minimal -->
+  <header id="site-header" class="sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
+      <!-- Logo: avatar com inicial -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-[var(--radius)] flex items-center justify-center text-sm font-bold" style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">
+          JL
+        </div>
+        <span class="font-display font-semibold text-base text-foreground hidden sm:block">Juliana Lepek Interiores</span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="#sobre" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Sobre</a>
+        <a href="#especialidades" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Especialidades</a>
+        <a href="#avaliacoes" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Avaliações</a>
+        <a href="#contato" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Contato</a>
+        <a href="https://wa.me/5541995537465" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-[var(--radius)] text-white transition-colors"
+           style="background-color: #25d366;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </nav>
+
+      <!-- Mobile hamburger -->
+      <button id="menu-btn" class="md:hidden p-2 rounded-[var(--radius)] hover:bg-muted transition-colors" aria-label="Menu">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-border bg-card">
+      <nav class="flex flex-col px-4 py-3 gap-1">
+        <a href="#sobre" onclick="closeMobileMenu()" class="py-2 text-sm font-medium text-muted-foreground hover:text-foreground">Sobre</a>
+        <a href="#especialidades" onclick="closeMobileMenu()" class="py-2 text-sm font-medium text-muted-foreground hover:text-foreground">Especialidades</a>
+        <a href="#avaliacoes" onclick="closeMobileMenu()" class="py-2 text-sm font-medium text-muted-foreground hover:text-foreground">Avaliações</a>
+        <a href="#contato" onclick="closeMobileMenu()" class="py-2 text-sm font-medium text-muted-foreground hover:text-foreground">Contato</a>
+        <a href="https://wa.me/5541995537465" target="_blank" rel="noopener noreferrer"
+           class="mt-2 flex items-center justify-center gap-2 py-2.5 text-sm font-semibold rounded-[var(--radius)] text-white"
+           style="background-color: #25d366;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO: image-right -->
+  <section id="hero" class="relative overflow-hidden py-16 md:py-28 dot-pattern">
+    <!-- Blobs -->
+    <div class="blob w-96 h-96 -top-24 -left-24" style="background-color: hsl(var(--accent) / 0.25);"></div>
+    <div class="blob w-64 h-64 bottom-0 right-0" style="background-color: hsl(var(--primary) / 0.15);"></div>
+
+    <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+      <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <!-- Left: content -->
+        <div class="order-1">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-[var(--radius)] text-xs font-semibold uppercase tracking-widest mb-6"
+               style="background-color: hsl(var(--accent) / 0.15); color: hsl(var(--accent-foreground));">
+            <i data-lucide="award" class="w-3.5 h-3.5" style="color: hsl(var(--accent));"></i>
+            Referência em design de interiores em Curitiba
+          </div>
+
+          <!-- Headline -->
+          <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-5" style="color: hsl(var(--foreground));">
+            Design moderno.<br />
+            <em class="italic not-italic" style="color: hsl(var(--primary));">Entrega no prazo.</em>
+          </h1>
+
+          <!-- Subtítulo -->
+          <p class="text-base md:text-lg leading-relaxed mb-6" style="color: hsl(var(--muted-foreground));">
+            Projetos residenciais e comerciais que unem funcionalidade e estética. Cada detalhe explicado, cada prazo cumprido. Suporte completo durante toda a obra.
+          </p>
+
+          <!-- Rating -->
+          <div class="flex items-center gap-2 mb-8">
+            <div class="flex gap-0.5">
+              <span style="color: hsl(var(--accent));">★★★★★</span>
+            </div>
+            <span class="text-sm font-semibold" style="color: hsl(var(--foreground));">5 no Google</span>
+            <span class="text-sm" style="color: hsl(var(--muted-foreground));">· 13 avaliações</span>
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://wa.me/5541995537465" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[var(--radius)] text-sm font-semibold text-white w-full sm:w-auto transition-opacity hover:opacity-90"
+               style="background-color: #25d366;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Solicitar orçamento
+            </a>
+            <a href="tel:+5541995537465"
+               class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[var(--radius)] text-sm font-semibold border w-full sm:w-auto transition-colors hover:bg-muted"
+               style="border-color: hsl(var(--border)); color: hsl(var(--foreground));">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+              (41) 99553-7465
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: image -->
+        <div class="order-2 relative">
+          <!-- Badge flutuante (só desktop) -->
+          <div class="hidden sm:flex absolute -top-4 -left-4 z-20 items-center gap-2 px-3 py-2 rounded-[var(--radius)] shadow-lg text-xs font-semibold"
+               style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+            <span style="color: hsl(var(--accent));">★★★★★</span>
+            <span style="color: hsl(var(--foreground));">5 estrelas no Google</span>
+          </div>
+
+          <div class="relative aspect-[4/5] overflow-hidden rounded-[var(--radius)]"
+               style="border: 2px solid hsl(var(--accent));">
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=1500&fit=crop&q=80&auto=format"
+              alt="workspace detail natural light"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR: after-hero -->
+  <div class="w-full py-10" style="background-color: hsl(var(--primary));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="font-display text-4xl md:text-5xl font-bold mb-1" style="color: hsl(var(--primary-foreground));">100%</div>
+          <div class="text-xs uppercase tracking-widest font-medium" style="color: hsl(var(--primary-foreground) / 0.6);">Projetos no prazo</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl md:text-5xl font-bold mb-1" style="color: hsl(var(--accent));">5★</div>
+          <div class="text-xs uppercase tracking-widest font-medium" style="color: hsl(var(--primary-foreground) / 0.6);">Nota no Google</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl md:text-5xl font-bold mb-1" style="color: hsl(var(--primary-foreground));">13+</div>
+          <div class="text-xs uppercase tracking-widest font-medium" style="color: hsl(var(--primary-foreground) / 0.6);">Avaliações reais</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl md:text-5xl font-bold mb-1" style="color: hsl(var(--accent));">2+</div>
+          <div class="text-xs uppercase tracking-widest font-medium" style="color: hsl(var(--primary-foreground) / 0.6);">Projetos comerciais</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="py-16 md:py-28" style="background-color: hsl(var(--background));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+        <!-- Imagens -->
+        <div class="grid grid-cols-2 gap-4 order-2 md:order-1">
+          <div class="overflow-hidden rounded-[var(--radius)]" style="border: 1px solid hsl(var(--border));">
+            <img
+              src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=900&fit=crop&q=80&auto=format"
+              alt="local shop interior warm"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="mt-8 overflow-hidden rounded-[var(--radius)]" style="border: 1px solid hsl(var(--border));">
+            <img
+              src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=900&fit=crop&q=80&auto=format"
+              alt="cozy interior warm light"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        <!-- Texto -->
+        <div class="order-1 md:order-2">
+          <p class="eyebrow-accent text-xs font-bold uppercase tracking-widest mb-6" style="color: hsl(var(--accent));">
+            Sobre Juliana
+          </p>
+          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6" style="color: hsl(var(--foreground));">
+            Projetos que unem <em class="italic">design e resultado</em>
+          </h2>
+          <p class="text-base leading-relaxed mb-4" style="color: hsl(var(--muted-foreground));">
+            Juliana Lepek entrega projetos residenciais e comerciais com foco em funcionalidade, estética moderna e cumprimento rigoroso dos prazos. Cada projeto é acompanhado de perto, do briefing à execução.
+          </p>
+          <p class="text-base leading-relaxed mb-8" style="color: hsl(var(--muted-foreground));">
+            Clientes relatam clareza no contrato, suporte durante toda a obra e entregas que superam o que foi combinado. Atende tanto ambientes residenciais quanto comerciais, com identidade visual coerente e soluções criativas.
+          </p>
+
+          <!-- Micro-benefícios -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex gap-3">
+              <div class="flex-shrink-0 w-8 h-8 rounded-[var(--radius)] flex items-center justify-center" style="background-color: hsl(var(--accent) / 0.15);">
+                <i data-lucide="check" class="w-4 h-4" style="color: hsl(var(--accent));"></i>
+              </div>
+              <div>
+                <div class="text-sm font-semibold mb-0.5" style="color: hsl(var(--foreground));">Prazos cumpridos</div>
+                <div class="text-xs" style="color: hsl(var(--muted-foreground));">Entrega antes ou na data acordada</div>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="flex-shrink-0 w-8 h-8 rounded-[var(--radius)] flex items-center justify-center" style="background-color: hsl(var(--accent) / 0.15);">
+                <i data-lucide="check" class="w-4 h-4" style="color: hsl(var(--accent));"></i>
+              </div>
+              <div>
+                <div class="text-sm font-semibold mb-0.5" style="color: hsl(var(--foreground));">Contrato claro</div>
+                <div class="text-xs" style="color: hsl(var(--muted-foreground));">Sem surpresas no escopo ou custo</div>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="flex-shrink-0 w-8 h-8 rounded-[var(--radius)] flex items-center justify-center" style="background-color: hsl(var(--accent) / 0.15);">
+                <i data-lucide="check" class="w-4 h-4" style="color: hsl(var(--accent));"></i>
+              </div>
+              <div>
+                <div class="text-sm font-semibold mb-0.5" style="color: hsl(var(--foreground));">Suporte total na obra</div>
+                <div class="text-xs" style="color: hsl(var(--muted-foreground));">Acompanhamento em todos os imprevistos</div>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="flex-shrink-0 w-8 h-8 rounded-[var(--radius)] flex items-center justify-center" style="background-color: hsl(var(--accent) / 0.15);">
+                <i data-lucide="check" class="w-4 h-4" style="color: hsl(var(--accent));"></i>
+              </div>
+              <div>
+                <div class="text-sm font-semibold mb-0.5" style="color: hsl(var(--foreground));">Residencial e comercial</div>
+                <div class="text-xs" style="color: hsl(var(--muted-foreground));">Apartamentos, lojas e restaurantes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPECIALIDADES: 2x3-cards -->
+  <section id="especialidades" class="py-16 md:py-28" style="background-color: hsl(var(--muted));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <!-- Header -->
+      <div class="text-center mb-12 md:mb-16">
+        <p class="eyebrow-accent inline-block text-xs font-bold uppercase tracking-widest mb-6" style="color: hsl(var(--accent));">
+          Especialidades
+        </p>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" style="color: hsl(var(--foreground));">
+          Do projeto à <em class="italic">entrega final</em>
+        </h2>
+        <p class="mt-4 text-base max-w-xl mx-auto" style="color: hsl(var(--muted-foreground));">
+          Soluções de design com foco em resultado. Cada serviço pensado para funcionar no dia a dia.
+        </p>
+      </div>
+
+      <!-- Grid 2 colunas desktop, 1 coluna mobile -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Card 1: Principal -->
+        <div class="service-card relative p-8 rounded-[var(--radius)] cursor-default"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="absolute top-4 right-4">
+            <span class="text-xs font-bold uppercase tracking-wider px-2 py-1 rounded-[var(--radius)]"
+                  style="background-color: hsl(var(--accent)); color: hsl(var(--accent-foreground));">
+              Especialidade principal
+            </span>
+          </div>
+          <div class="w-14 h-14 rounded-[var(--radius)] flex items-center justify-center mb-5"
+               style="background-color: hsl(var(--accent) / 0.15);">
+            <i data-lucide="layout" class="w-7 h-7" style="color: hsl(var(--accent));"></i>
+          </div>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: hsl(var(--foreground));">Projeto de Interiores Completo</h3>
+          <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">
+            Desenvolvimento do projeto do zero: briefing, estudo de layout, paleta de materiais e acompanhamento da execução. Design moderno aliado à funcionalidade do espaço.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="service-card p-8 rounded-[var(--radius)] cursor-default"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-14 h-14 rounded-[var(--radius)] flex items-center justify-center mb-5"
+               style="background-color: hsl(var(--primary) / 0.1);">
+            <i data-lucide="store" class="w-7 h-7" style="color: hsl(var(--primary));"></i>
+          </div>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: hsl(var(--foreground));">Projetos Comerciais</h3>
+          <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">
+            Identidade visual aplicada ao espaço físico. Lojas, restaurantes, boutiques e escritórios com conceito coerente e ambiente que comunica a marca.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="service-card p-8 rounded-[var(--radius)] cursor-default"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-14 h-14 rounded-[var(--radius)] flex items-center justify-center mb-5"
+               style="background-color: hsl(var(--primary) / 0.1);">
+            <i data-lucide="home" class="w-7 h-7" style="color: hsl(var(--primary));"></i>
+          </div>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: hsl(var(--foreground));">Reformas Residenciais</h3>
+          <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">
+            Para quem quer renovar o apartamento ou a casa com design atual. Projeto detalhado, escolha de materiais e acompanhamento da execução até a entrega.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="service-card p-8 rounded-[var(--radius)] cursor-default"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-14 h-14 rounded-[var(--radius)] flex items-center justify-center mb-5"
+               style="background-color: hsl(var(--primary) / 0.1);">
+            <i data-lucide="message-circle" class="w-7 h-7" style="color: hsl(var(--primary));"></i>
+          </div>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: hsl(var(--foreground));">Consultoria e Assessoria</h3>
+          <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">
+            Para quem precisa de orientação pontual: escolha de revestimentos, layout de mobiliário, cores e materiais. Sem precisar contratar o projeto completo.
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="service-card p-8 rounded-[var(--radius)] cursor-default"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-14 h-14 rounded-[var(--radius)] flex items-center justify-center mb-5"
+               style="background-color: hsl(var(--primary) / 0.1);">
+            <i data-lucide="users" class="w-7 h-7" style="color: hsl(var(--primary));"></i>
+          </div>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: hsl(var(--foreground));">Parceria com Construtoras</h3>
+          <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">
+            Sinergia com equipes de construção e incorporação. Projetos que diferenciam empreendimentos, com propostas criativas e entregas consistentes.
+          </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="service-card p-8 rounded-[var(--radius)] cursor-default"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-14 h-14 rounded-[var(--radius)] flex items-center justify-center mb-5"
+               style="background-color: hsl(var(--primary) / 0.1);">
+            <i data-lucide="clock" class="w-7 h-7" style="color: hsl(var(--primary));"></i>
+          </div>
+          <h3 class="font-display text-xl font-bold mb-3" style="color: hsl(var(--foreground));">Gestão de Obras</h3>
+          <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">
+            Acompanhamento técnico da execução. Cada etapa conferida, cada detalhe explicado. O projeto é executado como foi aprovado, sem desvios.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AVALIAÇÕES: marquee-scroll -->
+  <section id="avaliacoes" class="py-16 md:py-28 overflow-hidden" style="background-color: hsl(var(--muted));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-12">
+        <p class="eyebrow-accent inline-block text-xs font-bold uppercase tracking-widest mb-6" style="color: hsl(var(--accent));">
+          O que os clientes dizem
+        </p>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" style="color: hsl(var(--foreground));">
+          13 clientes. <em class="italic">Nota máxima.</em>
+        </h2>
+        <p class="mt-4 text-base" style="color: hsl(var(--muted-foreground));">
+          Avaliações verificadas no Google. Sem filtro.
+        </p>
+      </div>
+    </div>
+
+    <!-- Marquee -->
+    <div class="marquee-wrapper">
+      <div class="marquee-fade-left"></div>
+      <div class="marquee-fade-right"></div>
+      <div class="marquee-track px-6 py-4">
+
+        <!-- Review 1 -->
+        <div class="review-card flex-shrink-0 w-80 p-6 rounded-[var(--radius)]"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4" style="color: hsl(var(--accent));">★★★★★</div>
+          <p class="text-sm leading-relaxed mb-5 relative z-10" style="color: hsl(var(--foreground));">
+            "A Ju fez o projeto da nossa casa e adoramos. Nosso desejo era unir design moderno e funcionalidade, e ficamos muito satisfeitos com as ideias e soluções apresentadas. Vale destacar que foi muito pontual com os prazos e clara no contrato."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+                 style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">N</div>
+            <div>
+              <div class="text-sm font-semibold" style="color: hsl(var(--foreground));">Nathália Soares</div>
+              <div class="text-xs" style="color: hsl(var(--muted-foreground));">Projeto residencial</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card flex-shrink-0 w-80 p-6 rounded-[var(--radius)]"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4" style="color: hsl(var(--accent));">★★★★★</div>
+          <p class="text-sm leading-relaxed mb-5 relative z-10" style="color: hsl(var(--foreground));">
+            "A Juliana é nossa parceira de projetos há bastante tempo e trouxe modernidade aos nossos ambientes aliado ao que sempre buscamos em termos de propósito. As entregas são excelentes. Ela é criativa, atenta às novidades e nos diferencia no segmento."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+                 style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">K</div>
+            <div>
+              <div class="text-sm font-semibold" style="color: hsl(var(--foreground));">Karyllin Goulartt</div>
+              <div class="text-xs" style="color: hsl(var(--muted-foreground));">Parceira de projetos</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card flex-shrink-0 w-80 p-6 rounded-[var(--radius)]"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4" style="color: hsl(var(--accent));">★★★★★</div>
+          <p class="text-sm leading-relaxed mb-5 relative z-10" style="color: hsl(var(--foreground));">
+            "A Ju foi sensacional. Fizemos 2 projetos comerciais com ela e a entrega foi antes do prazo, sempre explicando cada detalhe. Super recomendo!"
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+                 style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">J</div>
+            <div>
+              <div class="text-sm font-semibold" style="color: hsl(var(--foreground));">Jessica Souza</div>
+              <div class="text-xs" style="color: hsl(var(--muted-foreground));">Projetos comerciais</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="review-card flex-shrink-0 w-80 p-6 rounded-[var(--radius)]"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4" style="color: hsl(var(--accent));">★★★★★</div>
+          <p class="text-sm leading-relaxed mb-5 relative z-10" style="color: hsl(var(--foreground));">
+            "Excelente experiência com a Juliana. Trabalho impecável, atenciosa, explica tudo certinho. Super recomendo. Nossa pizzaria ganhou uma identidade através do projeto que ela montou."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+                 style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">M</div>
+            <div>
+              <div class="text-sm font-semibold" style="color: hsl(var(--foreground));">Mariana Fontana</div>
+              <div class="text-xs" style="color: hsl(var(--muted-foreground));">Projeto para pizzaria</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 5 -->
+        <div class="review-card flex-shrink-0 w-80 p-6 rounded-[var(--radius)]"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4" style="color: hsl(var(--accent));">★★★★★</div>
+          <p class="text-sm leading-relaxed mb-5 relative z-10" style="color: hsl(var(--foreground));">
+            "A Ju é muito dedicada e competente. O projeto do nosso apartamento ficou lindo e a execução ficou perfeita. Recomendo demais o trabalho dela."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+                 style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">F</div>
+            <div>
+              <div class="text-sm font-semibold" style="color: hsl(var(--foreground));">Floribella Laços Boutique</div>
+              <div class="text-xs" style="color: hsl(var(--muted-foreground));">Projeto de apartamento</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Duplicatas para loop contínuo -->
+        <div class="review-card flex-shrink-0 w-80 p-6 rounded-[var(--radius)]"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4" style="color: hsl(var(--accent));">★★★★★</div>
+          <p class="text-sm leading-relaxed mb-5 relative z-10" style="color: hsl(var(--foreground));">
+            "A Ju fez o projeto da nossa casa e adoramos. Nosso desejo era unir design moderno e funcionalidade, e ficamos muito satisfeitos com as ideias e soluções apresentadas. Vale destacar que foi muito pontual com os prazos e clara no contrato."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+                 style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">N</div>
+            <div>
+              <div class="text-sm font-semibold" style="color: hsl(var(--foreground));">Nathália Soares</div>
+              <div class="text-xs" style="color: hsl(var(--muted-foreground));">Projeto residencial</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card flex-shrink-0 w-80 p-6 rounded-[var(--radius)]"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4" style="color: hsl(var(--accent));">★★★★★</div>
+          <p class="text-sm leading-relaxed mb-5 relative z-10" style="color: hsl(var(--foreground));">
+            "A Juliana é nossa parceira de projetos há bastante tempo e trouxe modernidade aos nossos ambientes aliado ao que sempre buscamos em termos de propósito. As entregas são excelentes. Ela é criativa, atenta às novidades e nos diferencia no segmento."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+                 style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">K</div>
+            <div>
+              <div class="text-sm font-semibold" style="color: hsl(var(--foreground));">Karyllin Goulartt</div>
+              <div class="text-xs" style="color: hsl(var(--muted-foreground));">Parceira de projetos</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card flex-shrink-0 w-80 p-6 rounded-[var(--radius)]"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4" style="color: hsl(var(--accent));">★★★★★</div>
+          <p class="text-sm leading-relaxed mb-5 relative z-10" style="color: hsl(var(--foreground));">
+            "A Ju foi sensacional. Fizemos 2 projetos comerciais com ela e a entrega foi antes do prazo, sempre explicando cada detalhe. Super recomendo!"
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+                 style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">J</div>
+            <div>
+              <div class="text-sm font-semibold" style="color: hsl(var(--foreground));">Jessica Souza</div>
+              <div class="text-xs" style="color: hsl(var(--muted-foreground));">Projetos comerciais</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card flex-shrink-0 w-80 p-6 rounded-[var(--radius)]"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4" style="color: hsl(var(--accent));">★★★★★</div>
+          <p class="text-sm leading-relaxed mb-5 relative z-10" style="color: hsl(var(--foreground));">
+            "Excelente experiência com a Juliana. Trabalho impecável, atenciosa, explica tudo certinho. Super recomendo. Nossa pizzaria ganhou uma identidade através do projeto que ela montou."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+                 style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">M</div>
+            <div>
+              <div class="text-sm font-semibold" style="color: hsl(var(--foreground));">Mariana Fontana</div>
+              <div class="text-xs" style="color: hsl(var(--muted-foreground));">Projeto para pizzaria</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card flex-shrink-0 w-80 p-6 rounded-[var(--radius)]"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4" style="color: hsl(var(--accent));">★★★★★</div>
+          <p class="text-sm leading-relaxed mb-5 relative z-10" style="color: hsl(var(--foreground));">
+            "A Ju é muito dedicada e competente. O projeto do nosso apartamento ficou lindo e a execução ficou perfeita. Recomendo demais o trabalho dela."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+                 style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">F</div>
+            <div>
+              <div class="text-sm font-semibold" style="color: hsl(var(--foreground));">Floribella Laços Boutique</div>
+              <div class="text-xs" style="color: hsl(var(--muted-foreground));">Projeto de apartamento</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Link Google Reviews -->
+    <div class="max-w-7xl mx-auto px-4 md:px-6 mt-10 text-center">
+      <a href="https://maps.google.com/?cid=2175295714813534420&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+         target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:opacity-80"
+         style="color: hsl(var(--accent));">
+        Ver todas as 13 avaliações no Google
+        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="py-16 md:py-28" style="background-color: hsl(var(--background));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-12">
+        <p class="eyebrow-accent inline-block text-xs font-bold uppercase tracking-widest mb-6" style="color: hsl(var(--accent));">
+          Contato
+        </p>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" style="color: hsl(var(--foreground));">
+          Fale com <em class="italic">Juliana</em>
+        </h2>
+        <p class="mt-4 text-base" style="color: hsl(var(--muted-foreground));">
+          Disponível de segunda a sexta, das 9h às 17h.
+        </p>
+      </div>
+
+      <!-- Cards de contato -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+        <!-- Telefone -->
+        <a href="tel:+5541995537465"
+           class="contact-card group p-6 rounded-[var(--radius)] transition-all hover:shadow-md cursor-pointer"
+           style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center mb-4 transition-colors"
+               style="background-color: hsl(var(--primary) / 0.1);">
+            <i data-lucide="phone" class="contact-icon w-5 h-5 transition-colors" style="color: hsl(var(--primary));"></i>
+          </div>
+          <p class="text-xs font-bold uppercase tracking-widest mb-1" style="color: hsl(var(--muted-foreground));">Telefone</p>
+          <p class="text-base font-bold mb-1" style="color: hsl(var(--foreground));">(41) 99553-7465</p>
+          <p class="text-xs" style="color: hsl(var(--muted-foreground));">Seg a sex, 9h às 17h</p>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/5541995537465" target="_blank" rel="noopener noreferrer"
+           class="contact-card group p-6 rounded-[var(--radius)] transition-all hover:shadow-md cursor-pointer"
+           style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center mb-4"
+               style="background-color: rgba(37, 211, 102, 0.12);">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <p class="text-xs font-bold uppercase tracking-widest mb-1" style="color: hsl(var(--muted-foreground));">WhatsApp</p>
+          <p class="text-base font-bold mb-1" style="color: hsl(var(--foreground));">(41) 99553-7465</p>
+          <p class="text-xs" style="color: hsl(var(--muted-foreground));">Resposta rápida</p>
+        </a>
+
+        <!-- Endereço -->
+        <a href="https://maps.google.com/?cid=2175295714813534420&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+           target="_blank" rel="noopener noreferrer"
+           class="contact-card group p-6 rounded-[var(--radius)] transition-all hover:shadow-md cursor-pointer"
+           style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center mb-4 transition-colors"
+               style="background-color: hsl(var(--primary) / 0.1);">
+            <i data-lucide="map-pin" class="contact-icon w-5 h-5 transition-colors" style="color: hsl(var(--primary));"></i>
+          </div>
+          <p class="text-xs font-bold uppercase tracking-widest mb-1" style="color: hsl(var(--muted-foreground));">Endereço</p>
+          <p class="text-sm font-bold mb-1 leading-snug" style="color: hsl(var(--foreground));">R. Alberto Karas, 1811, 2 andar</p>
+          <p class="text-xs" style="color: hsl(var(--muted-foreground));">Fazenda Velha, Araucária - PR</p>
+        </a>
+      </div>
+
+      <!-- Horário de funcionamento -->
+      <div class="max-w-lg mx-auto p-6 rounded-[var(--radius)]"
+           style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-9 h-9 rounded-[var(--radius)] flex items-center justify-center"
+               style="background-color: hsl(var(--accent) / 0.15);">
+            <i data-lucide="clock" class="w-4 h-4" style="color: hsl(var(--accent));"></i>
+          </div>
+          <h3 class="font-display text-lg font-bold" style="color: hsl(var(--foreground));">Horário de funcionamento</h3>
+        </div>
+        <div class="space-y-2.5">
+          <div class="flex justify-between items-center py-2" style="border-bottom: 1px solid hsl(var(--border));">
+            <span class="text-sm" style="color: hsl(var(--foreground));">Segunda-feira</span>
+            <span class="text-sm font-semibold" style="color: hsl(var(--foreground));">09:00 – 17:00</span>
+          </div>
+          <div class="flex justify-between items-center py-2" style="border-bottom: 1px solid hsl(var(--border));">
+            <span class="text-sm" style="color: hsl(var(--foreground));">Terça-feira</span>
+            <span class="text-sm font-semibold" style="color: hsl(var(--foreground));">09:00 – 17:00</span>
+          </div>
+          <div class="flex justify-between items-center py-2" style="border-bottom: 1px solid hsl(var(--border));">
+            <span class="text-sm" style="color: hsl(var(--foreground));">Quarta-feira</span>
+            <span class="text-sm font-semibold" style="color: hsl(var(--foreground));">09:00 – 17:00</span>
+          </div>
+          <div class="flex justify-between items-center py-2" style="border-bottom: 1px solid hsl(var(--border));">
+            <span class="text-sm" style="color: hsl(var(--foreground));">Quinta-feira</span>
+            <span class="text-sm font-semibold" style="color: hsl(var(--foreground));">09:00 – 17:00</span>
+          </div>
+          <div class="flex justify-between items-center py-2" style="border-bottom: 1px solid hsl(var(--border));">
+            <span class="text-sm" style="color: hsl(var(--foreground));">Sexta-feira</span>
+            <span class="text-sm font-semibold" style="color: hsl(var(--foreground));">09:00 – 17:00</span>
+          </div>
+          <div class="flex justify-between items-center py-2" style="border-bottom: 1px solid hsl(var(--border));">
+            <span class="text-sm" style="color: hsl(var(--foreground));">Sábado</span>
+            <span class="text-sm font-medium" style="color: hsl(var(--muted-foreground));">Fechado</span>
+          </div>
+          <div class="flex justify-between items-center py-2">
+            <span class="text-sm" style="color: hsl(var(--foreground));">Domingo</span>
+            <span class="text-sm font-medium" style="color: hsl(var(--muted-foreground));">Fechado</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section id="cta-final" class="py-16 md:py-28 relative overflow-hidden" style="background-color: hsl(var(--primary));">
+    <!-- Blob decorativo -->
+    <div class="blob w-72 h-72 -bottom-16 -right-16 opacity-30" style="background-color: hsl(var(--accent));"></div>
+
+    <div class="max-w-3xl mx-auto px-4 md:px-6 text-center relative z-10">
+      <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-5"
+          style="color: hsl(var(--primary-foreground));">
+        Pronto para transformar <em class="italic">seu espaço?</em>
+      </h2>
+      <p class="text-base md:text-lg mb-8 max-w-lg mx-auto"
+         style="color: hsl(var(--primary-foreground) / 0.75);">
+        Envie uma mensagem agora. Sem compromisso. Entenda como funciona o processo e tire todas as dúvidas.
+      </p>
+      <a href="https://wa.me/5541995537465" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-[var(--radius)] text-base font-bold text-white w-full sm:w-auto transition-opacity hover:opacity-90"
+         style="background-color: #25d366;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar no WhatsApp agora
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8" style="background-color: hsl(var(--foreground));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+      <span class="font-display text-sm font-semibold" style="color: hsl(var(--primary-foreground));">Juliana Lepek Interiores</span>
+      <p class="text-xs" style="color: hsl(var(--primary-foreground) / 0.5);">
+        Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/5541995537465" target="_blank" rel="noopener noreferrer"
+     class="wpp-pulse fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110"
+     style="background-color: #25d366;"
+     aria-label="Falar no WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    // Inicializar Lucide icons
+    lucide.createIcons();
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      // Trocar ícone
+      const icon = menuBtn.querySelector('[data-lucide]');
+      if (mobileMenu.classList.contains('hidden')) {
+        icon.setAttribute('data-lucide', 'menu');
+      } else {
+        icon.setAttribute('data-lucide', 'x');
+      }
+      lucide.createIcons();
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.add('hidden');
+      const icon = menuBtn.querySelector('[data-lucide]');
+      icon.setAttribute('data-lucide', 'menu');
+      lucide.createIcons();
+    }
+
+    // Fechar menu ao clicar fora
+    document.addEventListener('click', (e) => {
+      if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
+  </script>
+</body>
+</html>
