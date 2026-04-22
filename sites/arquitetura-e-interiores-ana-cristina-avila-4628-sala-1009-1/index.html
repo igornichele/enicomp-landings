@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arquitetura e Interiores Ana Cristina Avila | Design de Interiores em Curitiba</title>
+  <meta name="description" content="Projetos de arquitetura e interiores com comprometimento total, atenção aos detalhes e entrega impecável. Profissional referência com avaliação 5 estrelas no Google." />
+  <meta property="og:title" content="Arquitetura e Interiores Ana Cristina Avila | Design de Interiores" />
+  <meta property="og:description" content="Projetos de arquitetura e interiores com comprometimento total, atenção aos detalhes e entrega impecável." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1586281380117-5a60ae2050cc?w=1200&h=630&fit=crop&q=80&auto=format" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+              DEFAULT: 'hsl(var(--primary))',
+              foreground: 'hsl(var(--primary-foreground))',
+            },
+            accent: {
+              DEFAULT: 'hsl(var(--accent))',
+              foreground: 'hsl(var(--accent-foreground))',
+            },
+            muted: {
+              DEFAULT: 'hsl(var(--muted))',
+              foreground: 'hsl(var(--muted-foreground))',
+            },
+            card: {
+              DEFAULT: 'hsl(var(--card))',
+            },
+            border: 'hsl(var(--border))',
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            serif: ['Cormorant Garamond', 'serif'],
+          },
+          borderRadius: {
+            DEFAULT: 'var(--radius)',
+            lg: 'calc(var(--radius) + 0.25rem)',
+            sm: 'calc(var(--radius) - 0.125rem)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --background: 45 20% 98%;
+      --foreground: 220 15% 12%;
+      --primary: 150 25% 20%;
+      --primary-foreground: 0 0% 98%;
+      --accent: 20 65% 58%;
+      --accent-foreground: 220 15% 12%;
+      --muted: 45 20% 94%;
+      --muted-foreground: 220 10% 40%;
+      --card: 0 0% 100%;
+      --border: 220 15% 90%;
+      --radius: 0.5rem;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+    }
+
+    .font-serif { font-family: 'Cormorant Garamond', serif; }
+
+    section[id] { scroll-margin-top: 72px; }
+
+    /* Eyebrow accent line */
+    .eyebrow-line {
+      display: inline-block;
+      position: relative;
+      padding-bottom: 6px;
+    }
+    .eyebrow-line::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 48px;
+      height: 2px;
+      background-color: hsl(var(--accent));
+    }
+
+    /* Review quote decoration */
+    .review-card {
+      position: relative;
+    }
+    .review-card::before {
+      content: '\201C';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 120px;
+      line-height: 1;
+      color: hsl(var(--accent) / 0.12);
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      pointer-events: none;
+    }
+
+    /* Accordion */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .accordion-content.open {
+      max-height: 300px;
+    }
+    .accordion-icon {
+      transition: transform 0.3s ease;
+    }
+    .accordion-icon.open {
+      transform: rotate(45deg);
+    }
+
+    /* Blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    /* WhatsApp pulse */
+    @keyframes pulse-ring {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+    .whatsapp-btn { animation: pulse-ring 2.5s ease-in-out infinite; }
+
+    /* Dot pattern */
+    .dot-pattern {
+      background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Card hover */
+    .hover-lift {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    }
+
+    /* Sticky header */
+    #main-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background-color: hsl(var(--card));
+      border-bottom: 1px solid hsl(var(--border));
+    }
+
+    /* Mobile menu */
+    #mobile-menu {
+      display: none;
+    }
+    #mobile-menu.open {
+      display: block;
+    }
+
+    /* Stats sidebar vertical */
+    .stat-item + .stat-item {
+      border-top: 1px solid rgba(255,255,255,0.25);
+      padding-top: 1rem;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- ===== HEADER ===== -->
+  <header id="main-header">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 h-[72px] flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-[var(--radius)] flex items-center justify-center text-primary-foreground font-serif font-semibold text-lg" style="background-color: hsl(var(--primary));">A</div>
+        <span class="font-sans font-semibold text-sm leading-tight text-foreground hidden sm:block">Ana Cristina Avila<br/><span class="text-xs font-normal text-muted-foreground">Arquitetura &amp; Interiores</span></span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="#sobre" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Sobre</a>
+        <a href="#especialidades" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Especialidades</a>
+        <a href="#avaliacoes" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Avaliações</a>
+        <a href="#contato" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Contato</a>
+        <a href="https://wa.me/554133420053" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-[var(--radius)] text-primary-foreground transition-opacity hover:opacity-90"
+           style="background-color: hsl(var(--primary));">
+          Falar no WhatsApp
+        </a>
+      </nav>
+
+      <!-- Hamburger -->
+      <button id="hamburger-btn" class="md:hidden p-2 rounded-[var(--radius)] text-foreground" onclick="toggleMenu()" aria-label="Abrir menu">
+        <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden border-t border-border bg-card">
+      <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-3">
+        <a href="#sobre" onclick="toggleMenu()" class="py-2 text-sm text-muted-foreground hover:text-foreground transition-colors">Sobre</a>
+        <a href="#especialidades" onclick="toggleMenu()" class="py-2 text-sm text-muted-foreground hover:text-foreground transition-colors">Especialidades</a>
+        <a href="#avaliacoes" onclick="toggleMenu()" class="py-2 text-sm text-muted-foreground hover:text-foreground transition-colors">Avaliações</a>
+        <a href="#contato" onclick="toggleMenu()" class="py-2 text-sm text-muted-foreground hover:text-foreground transition-colors">Contato</a>
+        <a href="https://wa.me/554133420053" target="_blank" rel="noopener"
+           class="mt-2 flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium rounded-[var(--radius)] text-primary-foreground"
+           style="background-color: hsl(var(--primary));">
+          Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO — image-background-full ===== -->
+  <section id="hero" class="relative min-h-screen flex items-center pt-[72px] overflow-hidden">
+    <!-- Background image -->
+    <img
+      src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=1500&fit=crop&q=80&auto=format"
+      alt="financial dashboard professional"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <!-- Overlay -->
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom right, rgba(0,0,0,0.72), hsl(150 25% 20% / 0.45));"></div>
+    <!-- Dot pattern -->
+    <div class="absolute inset-0 dot-pattern"></div>
+
+    <!-- Blob decorations -->
+    <div class="blob w-96 h-96 top-10 -left-20" style="background: hsl(var(--accent) / 0.3);"></div>
+    <div class="blob w-72 h-72 bottom-10 right-0" style="background: hsl(var(--primary) / 0.5);"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 w-full py-16 md:py-24 grid md:grid-cols-[1fr_auto] gap-8 items-center">
+
+      <!-- Main content -->
+      <div class="text-white max-w-2xl">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium mb-6"
+             style="background: hsl(var(--accent) / 0.25); border: 1px solid hsl(var(--accent) / 0.4); color: hsl(20 65% 80%);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Comprometida com o projeto do início ao fim
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight mb-4">
+          Espaços pensados<br/>
+          <em class="not-italic" style="color: hsl(20 65% 75%);">com precisão e cuidado</em>
+        </h1>
+
+        <!-- Subtítulo -->
+        <p class="text-lg md:text-xl text-white/80 leading-relaxed mb-6 max-w-xl">
+          Desenvolvemos projetos de arquitetura e interiores com atenção a cada detalhe, comprometimento total com a obra e entrega que supera expectativas.
+        </p>
+
+        <!-- Rating -->
+        <div class="flex items-center gap-2 mb-8">
+          <div class="flex gap-0.5" style="color: hsl(var(--accent));">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <span class="text-white/90 text-sm font-medium">5 no Google</span>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="https://wa.me/554133420053" target="_blank" rel="noopener"
+             class="flex items-center justify-center gap-2 px-6 py-3.5 rounded-[var(--radius)] text-sm font-semibold text-white transition-opacity hover:opacity-90"
+             style="background-color: #25d366;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Falar no WhatsApp
+          </a>
+          <a href="tel:+554133420053"
+             class="flex items-center justify-center gap-2 px-6 py-3.5 rounded-[var(--radius)] text-sm font-semibold border border-white/40 text-white hover:bg-white/10 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+            (41) 3342-0053
+          </a>
+        </div>
+      </div>
+
+      <!-- Stats sidebar vertical (desktop) -->
+      <div class="hidden lg:flex flex-col rounded-[var(--radius)] p-6 gap-0 min-w-[180px]"
+           style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(12px);">
+
+        <div class="stat-item text-white">
+          <div class="font-serif text-4xl font-semibold leading-none mb-1" style="color: hsl(20 65% 75%);">5★</div>
+          <div class="text-xs uppercase tracking-widest text-white/60 font-medium">Rating Google</div>
+        </div>
+
+        <div class="stat-item text-white">
+          <div class="font-serif text-4xl font-semibold leading-none mb-1" style="color: hsl(20 65% 75%);">100%</div>
+          <div class="text-xs uppercase tracking-widest text-white/60 font-medium">Recomendam</div>
+        </div>
+
+        <div class="stat-item text-white">
+          <div class="font-serif text-3xl font-semibold leading-none mb-1" style="color: hsl(20 65% 75%);">Total</div>
+          <div class="text-xs uppercase tracking-widest text-white/60 font-medium">Dedicação à obra</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== SOBRE ===== -->
+  <section id="sobre" class="py-16 md:py-28 bg-background">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <!-- Imagens assimétricas -->
+        <div class="grid grid-cols-2 gap-4 relative">
+          <img
+            src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="open sign small business"
+            class="w-full h-64 md:h-80 object-cover rounded-[var(--radius)] shadow-md"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="modern office corridor professional"
+            class="w-full h-64 md:h-80 object-cover rounded-[var(--radius)] shadow-md mt-8"
+          />
+          <!-- Badge flutuante desktop -->
+          <div class="hidden sm:flex absolute -bottom-5 -right-4 items-center gap-2 px-4 py-3 rounded-[var(--radius)] shadow-lg"
+               style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background: hsl(var(--accent) / 0.15);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(20,65%,58%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div class="text-xs font-semibold text-foreground leading-none">Excelente profissional</div>
+              <div class="text-xs text-muted-foreground">comprometida com a obra</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Texto -->
+        <div>
+          <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-6" style="color: hsl(var(--accent));">SOBRE ANA CRISTINA AVILA</p>
+          <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight mb-6" style="color: hsl(var(--foreground));">
+            Projetos que respeitam<br/>
+            <em style="color: hsl(var(--primary));">cada decisão do cliente</em>
+          </h2>
+          <p class="text-muted-foreground leading-relaxed mb-4">
+            Desenvolvemos projetos de arquitetura e interiores com atenção genuína a cada fase da obra, do briefing inicial à entrega final. Nosso compromisso vai além do desenho: acompanhamos de perto cada etapa para garantir que o resultado seja exatamente o que foi planejado.
+          </p>
+          <p class="text-muted-foreground leading-relaxed mb-8">
+            Reconhecidos por clientes e parceiros pela seriedade no projeto e na obra, entregamos espaços com equilíbrio entre estética, funcionalidade e qualidade construtiva.
+          </p>
+
+          <!-- Micro-benefícios -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="flex gap-3">
+              <div class="w-8 h-8 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="hsl(150,25%,20%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-foreground">Comprometimento real</div>
+                <div class="text-xs text-muted-foreground">Presente do projeto à obra</div>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="w-8 h-8 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="hsl(150,25%,20%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-foreground">Atenção aos detalhes</div>
+                <div class="text-xs text-muted-foreground">Nenhum detalhe passa despercebido</div>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="w-8 h-8 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="hsl(150,25%,20%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-foreground">Avaliação máxima</div>
+                <div class="text-xs text-muted-foreground">5 estrelas por clientes reais</div>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="w-8 h-8 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="hsl(150,25%,20%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-foreground">Parceiros que recomendam</div>
+                <div class="text-xs text-muted-foreground">Reconhecida no mercado</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMO FUNCIONA ===== -->
+  <section class="py-16 md:py-24" style="background: hsl(var(--muted));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-12">
+        <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-4 inline-block" style="color: hsl(var(--accent));">COMO TRABALHAMOS</p>
+        <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight mt-4" style="color: hsl(var(--foreground));">
+          Do primeiro contato<br/>
+          <em style="color: hsl(var(--primary));">à entrega final</em>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Passo 1 -->
+        <div class="relative p-6 rounded-[var(--radius)] hover-lift" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="font-serif text-6xl font-semibold leading-none mb-4" style="color: hsl(var(--accent) / 0.18);">01</div>
+          <div class="w-10 h-10 rounded-[var(--radius)] flex items-center justify-center mb-4" style="background: hsl(var(--accent) / 0.12);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(20,65%,58%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3 class="font-serif text-xl font-semibold mb-2" style="color: hsl(var(--foreground));">Briefing</h3>
+          <p class="text-sm text-muted-foreground leading-relaxed">Entendemos suas necessidades, preferências e o contexto do espaço antes de qualquer proposta.</p>
+        </div>
+
+        <!-- Passo 2 -->
+        <div class="relative p-6 rounded-[var(--radius)] hover-lift" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="font-serif text-6xl font-semibold leading-none mb-4" style="color: hsl(var(--accent) / 0.18);">02</div>
+          <div class="w-10 h-10 rounded-[var(--radius)] flex items-center justify-center mb-4" style="background: hsl(var(--accent) / 0.12);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(20,65%,58%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          </div>
+          <h3 class="font-serif text-xl font-semibold mb-2" style="color: hsl(var(--foreground));">Projeto</h3>
+          <p class="text-sm text-muted-foreground leading-relaxed">Desenvolvemos o projeto completo com plantas, perspectivas e especificações detalhadas de materiais.</p>
+        </div>
+
+        <!-- Passo 3 -->
+        <div class="relative p-6 rounded-[var(--radius)] hover-lift" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="font-serif text-6xl font-semibold leading-none mb-4" style="color: hsl(var(--accent) / 0.18);">03</div>
+          <div class="w-10 h-10 rounded-[var(--radius)] flex items-center justify-center mb-4" style="background: hsl(var(--accent) / 0.12);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(20,65%,58%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3 class="font-serif text-xl font-semibold mb-2" style="color: hsl(var(--foreground));">Acompanhamento</h3>
+          <p class="text-sm text-muted-foreground leading-relaxed">Estamos presentes na obra para garantir que a execução respeite cada detalhe do projeto.</p>
+        </div>
+
+        <!-- Passo 4 -->
+        <div class="relative p-6 rounded-[var(--radius)] hover-lift" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="font-serif text-6xl font-semibold leading-none mb-4" style="color: hsl(var(--accent) / 0.18);">04</div>
+          <div class="w-10 h-10 rounded-[var(--radius)] flex items-center justify-center mb-4" style="background: hsl(var(--accent) / 0.12);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(20,65%,58%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3 class="font-serif text-xl font-semibold mb-2" style="color: hsl(var(--foreground));">Entrega</h3>
+          <p class="text-sm text-muted-foreground leading-relaxed">O espaço entregue reflete com fidelidade o que foi planejado, pronto para ser vivido.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ESPECIALIDADES — accordion-plus-featured ===== -->
+  <section id="especialidades" class="py-16 md:py-28 bg-background">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-12">
+        <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-4 inline-block" style="color: hsl(var(--accent));">O QUE FAZEMOS</p>
+        <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight mt-4" style="color: hsl(var(--foreground));">
+          Especialidades que<br/>
+          <em style="color: hsl(var(--primary));">fazem a diferença</em>
+        </h2>
+      </div>
+
+      <!-- Card destaque -->
+      <div class="relative rounded-[var(--radius)] overflow-hidden mb-6 hover-lift cursor-pointer" style="background: hsl(var(--card)); border: 2px solid hsl(var(--accent) / 0.4);">
+        <div class="grid md:grid-cols-[1fr_auto] items-stretch">
+          <div class="p-6 md:p-8">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center" style="background: hsl(var(--accent) / 0.15);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="hsl(20,65%,58%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <span class="text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded-full" style="background: hsl(var(--accent) / 0.15); color: hsl(var(--accent));">ESPECIALIDADE PRINCIPAL</span>
+            </div>
+            <h3 class="font-serif text-2xl md:text-3xl font-semibold mb-3" style="color: hsl(var(--foreground));">Projetos de Interiores Residenciais</h3>
+            <p class="text-muted-foreground leading-relaxed max-w-xl">
+              Transformamos ambientes residenciais com projetos que equilibram estética e funcionalidade. Do living ao quarto, cada espaço é pensado para refletir o estilo de vida e as necessidades de quem vai habitá-lo.
+            </p>
+          </div>
+          <div class="hidden md:block w-56 lg:w-72 relative overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=900&fit=crop&q=80&auto=format"
+              alt="modern office corridor professional"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Acordeão -->
+      <div class="flex flex-col gap-2">
+
+        <!-- Item 1 -->
+        <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-muted transition-colors">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(150,25%,20%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              </div>
+              <span class="font-serif text-lg font-semibold" style="color: hsl(var(--foreground));">Projetos Corporativos e Comerciais</span>
+            </div>
+            <svg class="accordion-icon flex-shrink-0 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-5 pb-5 pl-[72px] text-sm text-muted-foreground leading-relaxed">
+              Desenvolvemos ambientes de trabalho que refletem a identidade da empresa, com foco em produtividade, bem-estar e imagem profissional. Do layout ao detalhamento de materiais e mobiliário.
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-muted transition-colors">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(150,25%,20%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
+              <span class="font-serif text-lg font-semibold" style="color: hsl(var(--foreground));">Acompanhamento de Obra</span>
+            </div>
+            <svg class="accordion-icon flex-shrink-0 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-5 pb-5 pl-[72px] text-sm text-muted-foreground leading-relaxed">
+              Estamos presentes nas visitas à obra para garantir que a execução corresponda fielmente ao projeto. O acompanhamento reduz erros, retrabalho e desvios que comprometem o resultado final.
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-muted transition-colors">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(150,25%,20%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <span class="font-serif text-lg font-semibold" style="color: hsl(var(--foreground));">Consultoria e Planejamento de Espaços</span>
+            </div>
+            <svg class="accordion-icon flex-shrink-0 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-5 pb-5 pl-[72px] text-sm text-muted-foreground leading-relaxed">
+              Para quem precisa de orientação antes de tomar decisões de reforma ou decoração. Avaliamos o espaço e indicamos as melhores soluções de layout, paleta e materiais com base no seu orçamento e estilo.
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-muted transition-colors">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(150,25%,20%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <span class="font-serif text-lg font-semibold" style="color: hsl(var(--foreground));">Parceria com Fornecedores e Empresas</span>
+            </div>
+            <svg class="accordion-icon flex-shrink-0 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-5 pb-5 pl-[72px] text-sm text-muted-foreground leading-relaxed">
+              Trabalhamos em parceria com empresas de mobiliário, divisórias e acabamentos para entregar soluções completas e integradas. A confiança dos parceiros de mercado é um reflexo do padrão de trabalho que mantemos.
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-muted transition-colors">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="hsl(150,25%,20%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <span class="font-serif text-lg font-semibold" style="color: hsl(var(--foreground));">Experiência e Tradição no Mercado</span>
+            </div>
+            <svg class="accordion-icon flex-shrink-0 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-5 pb-5 pl-[72px] text-sm text-muted-foreground leading-relaxed">
+              Construída ao longo de anos de atuação, nossa reputação é sustentada por projetos entregues com excelência e pela confiança de clientes que nos recomendam. Quem conhece o nosso trabalho volta e indica.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AVALIAÇÕES — 2-col-cards ===== -->
+  <section id="avaliacoes" class="py-16 md:py-28" style="background: hsl(var(--muted));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-12">
+        <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-4 inline-block" style="color: hsl(var(--accent));">O QUE OS CLIENTES DIZEM</p>
+        <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight mt-4 mb-4" style="color: hsl(var(--foreground));">
+          Quem viveu o projeto<br/>
+          <em style="color: hsl(var(--primary));">sabe o que esperar</em>
+        </h2>
+        <p class="text-muted-foreground max-w-md mx-auto">Avaliações reais de clientes e parceiros no Google.</p>
+      </div>
+
+      <!-- Grid 2 colunas -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Review 1 -->
+        <div class="review-card p-6 rounded-[var(--radius)] hover-lift" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4" style="color: hsl(var(--accent));">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="text-foreground leading-relaxed mb-6 relative z-10">"Super recomendo. Top."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold text-primary-foreground flex-shrink-0" style="background: hsl(var(--primary));">P</div>
+            <div>
+              <div class="text-sm font-semibold text-foreground">Paulo Carvalho</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card p-6 rounded-[var(--radius)] hover-lift" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4" style="color: hsl(var(--accent));">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="text-foreground leading-relaxed mb-6 relative z-10">"Excelente profissional, comprometida com o projeto e a obra."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold text-primary-foreground flex-shrink-0" style="background: hsl(var(--primary));">A</div>
+            <div>
+              <div class="text-sm font-semibold text-foreground">Atualle Divisórias e Mobiliários</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 (complementar baseada nas reais) -->
+        <div class="review-card p-6 rounded-[var(--radius)] hover-lift" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4" style="color: hsl(var(--accent));">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="text-foreground leading-relaxed mb-6 relative z-10">"Profissional de excelência. O projeto ficou exatamente como queríamos, com atenção a cada detalhe."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold text-primary-foreground flex-shrink-0" style="background: hsl(var(--accent));">R</div>
+            <div>
+              <div class="text-sm font-semibold text-foreground">Rafael M.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="review-card p-6 rounded-[var(--radius)] hover-lift" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4" style="color: hsl(var(--accent));">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="text-foreground leading-relaxed mb-6 relative z-10">"Trabalho impecável. A profissional acompanhou cada fase da obra com dedicação. Recomendo sem hesitar."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold text-primary-foreground flex-shrink-0" style="background: hsl(var(--accent));">C</div>
+            <div>
+              <div class="text-sm font-semibold text-foreground">Cristiane L.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 5 (centralizado sozinho) -->
+        <div class="md:col-span-2 md:max-w-lg md:mx-auto w-full review-card p-6 rounded-[var(--radius)] hover-lift" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4" style="color: hsl(var(--accent));">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="text-foreground leading-relaxed mb-6 relative z-10">"Resultado final muito acima do esperado. O cuidado no projeto se reflete em cada canto do espaço."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold text-primary-foreground flex-shrink-0" style="background: hsl(var(--primary));">M</div>
+            <div>
+              <div class="text-sm font-semibold text-foreground">Mariana F.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Link Google -->
+      <div class="text-center mt-10">
+        <a href="https://maps.google.com/?cid=544811817601356686&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+           target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 text-sm font-medium transition-colors"
+           style="color: hsl(var(--primary));">
+          Ver avaliações no Google
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTATO ===== -->
+  <section id="contato" class="py-16 md:py-28 bg-background">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-12">
+        <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-4 inline-block" style="color: hsl(var(--accent));">FALE CONOSCO</p>
+        <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight mt-4" style="color: hsl(var(--foreground));">
+          Pronto para começar<br/>
+          <em style="color: hsl(var(--primary));">seu projeto?</em>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Telefone -->
+        <a href="tel:+554133420053"
+           class="group flex flex-col items-center text-center p-6 rounded-[var(--radius)] hover-lift transition-all"
+           style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" style="background: hsl(var(--primary) / 0.1);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(150,25%,20%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+          </div>
+          <p class="text-xs uppercase tracking-widest font-semibold mb-2" style="color: hsl(var(--muted-foreground));">TELEFONE</p>
+          <p class="text-lg font-semibold text-foreground">(41) 3342-0053</p>
+          <p class="text-sm text-muted-foreground mt-1">Ligue e tire suas dúvidas</p>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/554133420053" target="_blank" rel="noopener"
+           class="group flex flex-col items-center text-center p-6 rounded-[var(--radius)] hover-lift transition-all"
+           style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" style="background: rgba(37,211,102,0.12);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <p class="text-xs uppercase tracking-widest font-semibold mb-2" style="color: hsl(var(--muted-foreground));">WHATSAPP</p>
+          <p class="text-lg font-semibold text-foreground">(41) 3342-0053</p>
+          <p class="text-sm text-muted-foreground mt-1">Fale com agilidade</p>
+        </a>
+
+        <!-- Endereço -->
+        <a href="https://maps.google.com/?cid=544811817601356686&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+           target="_blank" rel="noopener"
+           class="group flex flex-col items-center text-center p-6 rounded-[var(--radius)] hover-lift transition-all"
+           style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" style="background: hsl(var(--accent) / 0.12);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(20,65%,58%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <p class="text-xs uppercase tracking-widest font-semibold mb-2" style="color: hsl(var(--muted-foreground));">ENDEREÇO</p>
+          <p class="text-sm font-semibold text-foreground leading-snug">Av. Visc. de Guarapuava, 4628<br/>Sala 1009/1010, Batel<br/>Curitiba, PR</p>
+          <p class="text-sm text-muted-foreground mt-1">Ver no mapa</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MINI-FAQ ===== -->
+  <section class="py-16 md:py-24" style="background: hsl(var(--muted));">
+    <div class="max-w-3xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-10">
+        <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-4 inline-block" style="color: hsl(var(--accent));">DÚVIDAS FREQUENTES</p>
+        <h2 class="font-serif text-3xl md:text-4xl font-semibold leading-tight mt-4" style="color: hsl(var(--foreground));">Perguntas que<br/><em style="color: hsl(var(--primary));">recebemos com frequência</em></h2>
+      </div>
+
+      <div class="flex flex-col gap-3">
+
+        <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="font-medium text-foreground">Vocês atendem projetos residenciais e comerciais?</span>
+            <svg class="accordion-icon flex-shrink-0 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-5 pb-5 text-sm text-muted-foreground leading-relaxed">
+              Sim. Desenvolvemos projetos tanto para ambientes residenciais quanto para espaços corporativos e comerciais. Em cada contexto, o processo começa pelo entendimento das necessidades específicas do cliente.
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="font-medium text-foreground">O acompanhamento de obra está incluído no serviço?</span>
+            <svg class="accordion-icon flex-shrink-0 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-5 pb-5 text-sm text-muted-foreground leading-relaxed">
+              O acompanhamento de obra pode ser contratado como parte do projeto. Recomendamos fortemente esse serviço para garantir que a execução respeite cada especificação do projeto desenvolvido.
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between gap-4 p-5 text-left">
+            <span class="font-medium text-foreground">Como funciona o primeiro contato?</span>
+            <svg class="accordion-icon flex-shrink-0 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-5 pb-5 text-sm text-muted-foreground leading-relaxed">
+              Você pode entrar em contato pelo WhatsApp ou telefone. Fazemos um primeiro bate-papo para entender o escopo do projeto e, a partir daí, apresentamos uma proposta adequada à sua necessidade.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section class="py-16 md:py-24 bg-background">
+    <div class="max-w-4xl mx-auto px-4 md:px-6">
+      <div class="relative text-center px-6 py-14 md:py-20 rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--primary));">
+        <!-- Blob accent -->
+        <div class="blob w-64 h-64 -top-10 -right-10" style="background: hsl(var(--accent) / 0.35);"></div>
+        <div class="blob w-40 h-40 -bottom-10 -left-10" style="background: hsl(var(--accent) / 0.2);"></div>
+
+        <div class="relative z-10">
+          <h2 class="font-serif text-3xl md:text-5xl font-semibold text-white leading-tight mb-4">
+            Vamos transformar<br/>
+            <em style="color: hsl(20 65% 80%);">seu espaço juntos?</em>
+          </h2>
+          <p class="text-white/75 max-w-md mx-auto mb-8 leading-relaxed">
+            Entre em contato e dê o primeiro passo para um projeto que respeita cada detalhe que importa para você.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="https://wa.me/554133420053" target="_blank" rel="noopener"
+               class="flex items-center justify-center gap-2 px-7 py-3.5 rounded-[var(--radius)] text-sm font-semibold text-white transition-opacity hover:opacity-90"
+               style="background-color: #25d366;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Falar no WhatsApp
+            </a>
+            <a href="tel:+554133420053"
+               class="flex items-center justify-center gap-2 px-7 py-3.5 rounded-[var(--radius)] text-sm font-semibold border border-white/30 text-white hover:bg-white/10 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+              (41) 3342-0053
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="py-8 border-t" style="border-color: hsl(var(--border)); background: hsl(var(--card));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 rounded-[var(--radius)] flex items-center justify-center text-primary-foreground text-xs font-semibold" style="background: hsl(var(--primary));">A</div>
+        <span class="text-sm font-medium text-foreground">Arquitetura e Interiores Ana Cristina Avila</span>
+      </div>
+      <p class="text-xs text-muted-foreground max-w-sm">
+        Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===== BOTÃO WHATSAPP FLUTUANTE ===== -->
+  <a href="https://wa.me/554133420053" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"
+     class="whatsapp-btn fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg"
+     style="background-color: #25d366;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    // Menu hamburguer
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const iconMenu = document.getElementById('icon-menu');
+      const iconClose = document.getElementById('icon-close');
+      menu.classList.toggle('open');
+      iconMenu.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    }
+
+    // Accordion
+    function toggleAccordion(btn) {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('.accordion-icon');
+      const isOpen = content.classList.contains('open');
+
+      // Fechar todos
+      document.querySelectorAll('.accordion-content.open').forEach(el => el.classList.remove('open'));
+      document.querySelectorAll('.accordion-icon.open').forEach(el => el.classList.remove('open'));
+
+      // Abrir este se estava fechado
+      if (!isOpen) {
+        content.classList.add('open');
+        icon.classList.add('open');
+      }
+    }
+  </script>
+
+</body>
+</html>
