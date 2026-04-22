@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Renata Magalhães | Arquitetura e Interiores – Design de Interiores em Curitiba</title>
+  <meta name="description" content="Projetos de arquitetura e design de interiores com olhar criativo, atenção personalizada e acompanhamento de perto em cada etapa. Conheça o trabalho de Renata Magalhães." />
+  <meta property="og:title" content="Renata Magalhães | Arquitetura e Interiores" />
+  <meta property="og:description" content="Projetos de arquitetura e design de interiores com olhar criativo, atenção personalizada e acompanhamento de perto em cada etapa." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=1200&h=630&fit=crop&q=80&auto=format" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+              DEFAULT: 'hsl(var(--primary))',
+              foreground: 'hsl(var(--primary-foreground))',
+            },
+            accent: {
+              DEFAULT: 'hsl(var(--accent))',
+              foreground: 'hsl(var(--accent-foreground))',
+            },
+            muted: {
+              DEFAULT: 'hsl(var(--muted))',
+              foreground: 'hsl(var(--muted-foreground))',
+            },
+            card: {
+              DEFAULT: 'hsl(var(--card))',
+            },
+            border: 'hsl(var(--border))',
+          },
+          borderRadius: {
+            DEFAULT: 'var(--radius)',
+            sm: 'calc(var(--radius) - 2px)',
+            md: 'var(--radius)',
+            lg: 'calc(var(--radius) + 4px)',
+            xl: 'calc(var(--radius) + 8px)',
+          },
+          fontFamily: {
+            sans: ['Work Sans', 'sans-serif'],
+            serif: ['DM Serif Display', 'serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    :root {
+      --background: 45 20% 98%;
+      --foreground: 220 15% 12%;
+      --primary: 260 25% 22%;
+      --primary-foreground: 0 0% 98%;
+      --accent: 30 60% 62%;
+      --accent-foreground: 220 15% 12%;
+      --muted: 45 20% 94%;
+      --muted-foreground: 220 10% 40%;
+      --card: 0 0% 100%;
+      --border: 220 15% 90%;
+      --radius: 0.5rem;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Work Sans', sans-serif; background: hsl(var(--background)); color: hsl(var(--foreground)); }
+
+    .font-serif { font-family: 'DM Serif Display', serif; }
+
+    /* Dot pattern background */
+    .dot-pattern {
+      background-color: hsl(var(--primary));
+      background-image: radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    /* Eyebrow accent line */
+    .eyebrow-line {
+      display: inline-block;
+      position: relative;
+      padding-bottom: 8px;
+    }
+    .eyebrow-line::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 48px;
+      height: 2px;
+      background: hsl(var(--accent));
+    }
+
+    /* Hero section */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&h=1500&fit=crop&q=80&auto=format');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom right, rgba(0,0,0,0.72), hsl(260 25% 22% / 0.45));
+    }
+    .hero-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+
+    /* Stats sidebar */
+    .stats-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius);
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.07);
+    }
+    .stats-sidebar .stat-item {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .stats-sidebar .stat-item:last-child {
+      border-bottom: none;
+    }
+
+    /* Alternating rows */
+    .alt-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    @media (min-width: 768px) {
+      .alt-row {
+        grid-template-columns: 1fr 1fr;
+        min-height: 480px;
+      }
+    }
+
+    /* Masonry 3 col */
+    .masonry-grid {
+      columns: 1;
+      column-gap: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .masonry-grid {
+        columns: 2;
+      }
+    }
+    @media (min-width: 1024px) {
+      .masonry-grid {
+        columns: 3;
+      }
+    }
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Review card quote */
+    .review-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .review-card::before {
+      content: "\201C";
+      font-family: 'DM Serif Display', serif;
+      font-size: 120px;
+      line-height: 1;
+      color: hsl(var(--accent) / 0.12);
+      position: absolute;
+      top: -16px;
+      left: 12px;
+      pointer-events: none;
+    }
+
+    /* Blob */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    /* Card hover */
+    .card-hover {
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.10);
+      border-color: hsl(var(--accent));
+    }
+
+    /* Contact card hover */
+    .contact-card:hover .contact-icon {
+      color: hsl(var(--accent));
+    }
+
+    /* WhatsApp float */
+    .wa-float {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      z-index: 9999;
+      animation: wa-pulse 2.5s infinite;
+      transition: transform 0.2s ease;
+    }
+    .wa-float:hover { transform: scale(1.08); }
+    @keyframes wa-pulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 4px 32px rgba(37,211,102,0.7), 0 0 0 8px rgba(37,211,102,0.1); }
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+    }
+
+    /* Scroll margin for sticky header */
+    section[id] { scroll-margin-top: 72px; }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: block; }
+
+    /* Alt row image */
+    .alt-row-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+    @media (min-width: 768px) {
+      .alt-row-img {
+        height: 100%;
+        min-height: 480px;
+      }
+    }
+
+    /* Alt row text */
+    .alt-row-text {
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    @media (min-width: 768px) {
+      .alt-row-text {
+        padding: 4rem 3.5rem;
+      }
+    }
+
+    /* Order classes for alternating */
+    @media (min-width: 768px) {
+      .md-order-1 { order: 1; }
+      .md-order-2 { order: 2; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header class="dot-pattern shadow-md">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-white/15 border border-white/30 flex items-center justify-center flex-shrink-0">
+        <span class="font-serif text-white text-lg font-bold leading-none">R</span>
+      </div>
+      <div>
+        <span class="font-serif text-white text-base md:text-lg leading-tight block">Renata Magalhães</span>
+        <span class="text-white/60 text-xs tracking-widest uppercase block">Arquitetura &amp; Interiores</span>
+      </div>
+    </div>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-6">
+      <a href="#avaliacoes" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Avaliações</a>
+      <a href="#especialidades" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Especialidades</a>
+      <a href="#sobre" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Sobre</a>
+      <a href="#contato" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Contato</a>
+      <a href="https://wa.me/5541996666843" target="_blank" rel="noopener"
+         class="bg-[#25d366] text-white text-sm font-semibold px-4 py-2 rounded-[var(--radius)] hover:bg-[#20b858] transition-colors">
+        WhatsApp
+      </a>
+    </nav>
+
+    <!-- Hamburger -->
+    <button id="hamburger" class="md:hidden text-white p-2" aria-label="Menu" onclick="toggleMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="dot-pattern border-t border-white/10">
+    <nav class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-3">
+      <a href="#avaliacoes" onclick="closeMenu()" class="text-white/85 hover:text-white text-sm font-medium py-2 border-b border-white/10">Avaliações</a>
+      <a href="#especialidades" onclick="closeMenu()" class="text-white/85 hover:text-white text-sm font-medium py-2 border-b border-white/10">Especialidades</a>
+      <a href="#sobre" onclick="closeMenu()" class="text-white/85 hover:text-white text-sm font-medium py-2 border-b border-white/10">Sobre</a>
+      <a href="#contato" onclick="closeMenu()" class="text-white/85 hover:text-white text-sm font-medium py-2 border-b border-white/10">Contato</a>
+      <a href="https://wa.me/5541996666843" target="_blank" rel="noopener"
+         class="bg-[#25d366] text-white text-sm font-semibold px-4 py-3 rounded-[var(--radius)] text-center hover:bg-[#20b858] transition-colors mt-1">
+        Falar no WhatsApp
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section id="hero" class="hero-section pt-16">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-dots"></div>
+
+  <!-- Blob decorativo -->
+  <div class="blob w-80 h-80" style="background: hsl(var(--accent)); top: 10%; right: -5%; opacity: 0.18;"></div>
+  <div class="blob w-64 h-64" style="background: hsl(var(--primary)); bottom: 5%; left: -8%; opacity: 0.25;"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-24 md:py-32 w-full">
+    <div class="grid md:grid-cols-[1fr_auto] gap-10 items-center">
+
+      <!-- Conteúdo principal -->
+      <div class="max-w-2xl">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/25 text-white/90 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-8 backdrop-blur-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          Olhar criativo, acompanhamento de perto
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-serif text-white text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6">
+          Espaços que contam<br/>
+          <em class="not-italic" style="color: hsl(var(--accent));">a sua história</em>
+        </h1>
+
+        <!-- Subtítulo -->
+        <p class="text-white/80 text-lg md:text-xl leading-relaxed mb-6 max-w-xl">
+          Desenvolvemos projetos de arquitetura e interiores com atenção genuína ao que cada cliente busca,
+          acompanhando cada etapa de perto para que o resultado seja exatamente o que você imaginou.
+        </p>
+
+        <!-- Rating -->
+        <div class="flex items-center gap-2 mb-8">
+          <div class="flex gap-0.5">
+            <span style="color: hsl(var(--accent));" class="text-xl">★★★★★</span>
+          </div>
+          <span class="text-white/90 text-sm font-semibold">5 no Google</span>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="https://wa.me/5541996666843" target="_blank" rel="noopener"
+             class="flex items-center justify-center gap-2 bg-[#25d366] hover:bg-[#20b858] text-white font-semibold px-6 py-3.5 rounded-[var(--radius)] transition-colors text-base w-full sm:w-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Falar no WhatsApp
+          </a>
+          <a href="tel:+5541996666843"
+             class="flex items-center justify-center gap-2 border-2 border-white/40 hover:border-white text-white font-semibold px-6 py-3.5 rounded-[var(--radius)] transition-colors text-base backdrop-blur-sm w-full sm:w-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            (41) 99666-6843
+          </a>
+        </div>
+      </div>
+
+      <!-- Stats sidebar (vertical, dentro do hero) -->
+      <div class="hidden md:block stats-sidebar w-48">
+        <div class="stat-item text-center">
+          <div class="font-serif text-white text-3xl leading-tight">5★</div>
+          <div class="text-white/60 text-xs uppercase tracking-widest mt-1">Rating<br/>Google</div>
+        </div>
+        <div class="stat-item text-center">
+          <div class="font-serif text-white text-3xl leading-tight">100%</div>
+          <div class="text-white/60 text-xs uppercase tracking-widest mt-1">Recomendam</div>
+        </div>
+        <div class="stat-item text-center">
+          <div class="font-serif text-white text-3xl leading-tight">↑</div>
+          <div class="text-white/60 text-xs uppercase tracking-widest mt-1">Atenção<br/>ao cliente</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== AVALIAÇÕES ===================== -->
+<section id="avaliacoes" class="py-16 md:py-28" style="background: hsl(var(--muted));">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <!-- Header da seção -->
+    <div class="text-center mb-14">
+      <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-4" style="color: hsl(var(--accent));">O Que os Clientes Dizem</p>
+      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl mb-4" style="color: hsl(var(--foreground));">
+        Projetos que <em class="not-italic" style="color: hsl(var(--primary));">ficam na memória</em>
+      </h2>
+      <p class="text-base md:text-lg max-w-xl mx-auto" style="color: hsl(var(--muted-foreground));">
+        Cada depoimento é o reflexo de um projeto cuidado do início ao fim.
+      </p>
+    </div>
+
+    <!-- Masonry grid -->
+    <div class="masonry-grid">
+
+      <!-- Review 1 -->
+      <div class="masonry-item review-card bg-white rounded-[var(--radius)] p-6 shadow-sm border border-[hsl(var(--border))] card-hover">
+        <div class="flex gap-0.5 mb-4">
+          <span style="color: hsl(var(--accent));">★★★★★</span>
+        </div>
+        <p class="text-sm leading-relaxed mb-5" style="color: hsl(var(--foreground));">
+          "Renata possui um olhar criativo e atento nos projetos que desenvolve. Excelente arquiteta, recomendo!"
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+               style="background: hsl(var(--primary) / 0.12); color: hsl(var(--primary));">M</div>
+          <div>
+            <div class="text-sm font-semibold" style="color: hsl(var(--foreground));">Maria Fernanda Decker</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="masonry-item review-card bg-white rounded-[var(--radius)] p-6 shadow-sm border border-[hsl(var(--border))] card-hover">
+        <div class="flex gap-0.5 mb-4">
+          <span style="color: hsl(var(--accent));">★★★★★</span>
+        </div>
+        <p class="text-sm leading-relaxed mb-5" style="color: hsl(var(--foreground));">
+          "Profissional qualificada, que dá muita atenção ao que o cliente busca. Acompanha tudo de perto. Recomendo muito!"
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+               style="background: hsl(var(--accent) / 0.15); color: hsl(var(--accent-foreground));">T</div>
+          <div>
+            <div class="text-sm font-semibold" style="color: hsl(var(--foreground));">Thiago Machado</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="masonry-item review-card bg-white rounded-[var(--radius)] p-6 shadow-sm border border-[hsl(var(--border))] card-hover">
+        <div class="flex gap-0.5 mb-4">
+          <span style="color: hsl(var(--accent));">★★★★★</span>
+        </div>
+        <p class="text-sm leading-relaxed mb-5" style="color: hsl(var(--foreground));">
+          "Excelente profissional e o projeto ficou um espetáculo!"
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+               style="background: hsl(var(--primary) / 0.12); color: hsl(var(--primary));">S</div>
+          <div>
+            <div class="text-sm font-semibold" style="color: hsl(var(--foreground));">Sandra Barbosa</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Link Google -->
+    <div class="text-center mt-10">
+      <a href="https://maps.google.com/?cid=15347984403072174828&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+         target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 text-sm font-medium transition-colors"
+         style="color: hsl(var(--accent));">
+        Ver avaliações no Google
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 7h10v10"/><path d="M7 17 17 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ESPECIALIDADES (alternating-rows) ===================== -->
+<section id="especialidades" style="background: hsl(var(--background));">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-28">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-4" style="color: hsl(var(--accent));">Especialidades</p>
+      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl mb-4" style="color: hsl(var(--foreground));">
+        Do conceito à <em class="not-italic" style="color: hsl(var(--primary));">entrega final</em>
+      </h2>
+      <p class="text-base md:text-lg max-w-xl mx-auto" style="color: hsl(var(--muted-foreground));">
+        Cada projeto é desenvolvido com rigor técnico e atenção personalizada.
+      </p>
+    </div>
+  </div>
+
+  <!-- Row 1: Projeto de Interiores (imagem direita) -->
+  <div class="alt-row border-t border-[hsl(var(--border))]">
+    <div class="alt-row-text order-1 md-order-1" style="background: hsl(var(--background));">
+      <div class="max-w-md mx-auto md:mx-0 md:ml-auto md:mr-12 lg:mr-24">
+        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-6"
+             style="background: hsl(var(--accent) / 0.15); color: hsl(var(--accent));">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          Especialidade Principal
+        </div>
+        <h3 class="font-serif text-3xl md:text-4xl mb-4" style="color: hsl(var(--foreground));">Projeto de Interiores</h3>
+        <p class="leading-relaxed mb-6" style="color: hsl(var(--muted-foreground));">
+          Criamos projetos de interiores que traduzem a identidade e o estilo de vida de cada cliente.
+          Com um olhar criativo e atento, transformamos ambientes em espaços harmoniosos e funcionais,
+          do planejamento ao acabamento final.
+        </p>
+        <a href="https://wa.me/5541996666843" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 font-semibold text-sm transition-colors"
+           style="color: hsl(var(--accent));">
+          Solicitar orçamento
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="order-2 md-order-2 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&h=1500&fit=crop&q=80&auto=format"
+           alt="cozy interior warm light"
+           class="alt-row-img object-cover w-full" />
+    </div>
+  </div>
+
+  <!-- Row 2: Projeto Arquitetônico (imagem esquerda) -->
+  <div class="alt-row border-t border-[hsl(var(--border))]">
+    <div class="order-2 md:order-1 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1604176354204-9268737828e4?w=800&h=900&fit=crop&q=80&auto=format"
+           alt="boutique interior warm"
+           class="alt-row-img object-cover w-full" />
+    </div>
+    <div class="alt-row-text order-1 md:order-2" style="background: hsl(var(--muted));">
+      <div class="max-w-md mx-auto md:mx-0 md:ml-12 lg:ml-24">
+        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-6"
+             style="background: hsl(var(--primary) / 0.10); color: hsl(var(--primary));">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          Projeto Arquitetônico
+        </div>
+        <h3 class="font-serif text-3xl md:text-4xl mb-4" style="color: hsl(var(--foreground));">Projeto Arquitetônico</h3>
+        <p class="leading-relaxed mb-6" style="color: hsl(var(--muted-foreground));">
+          Desenvolvemos projetos arquitetônicos completos, desde a concepção até o detalhamento técnico.
+          Cada planta é pensada para unir estética, funcionalidade e as necessidades reais de quem vai habitar o espaço.
+        </p>
+        <a href="https://wa.me/5541996666843" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 font-semibold text-sm transition-colors"
+           style="color: hsl(var(--primary));">
+          Solicitar orçamento
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 3: Reforma e Adaptação (imagem direita) -->
+  <div class="alt-row border-t border-[hsl(var(--border))]">
+    <div class="alt-row-text order-1 md-order-1" style="background: hsl(var(--background));">
+      <div class="max-w-md mx-auto md:mx-0 md:ml-auto md:mr-12 lg:mr-24">
+        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-6"
+             style="background: hsl(var(--primary) / 0.10); color: hsl(var(--primary));">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+          Reforma &amp; Adaptação
+        </div>
+        <h3 class="font-serif text-3xl md:text-4xl mb-4" style="color: hsl(var(--foreground));">Reforma e Adaptação de Espaços</h3>
+        <p class="leading-relaxed mb-6" style="color: hsl(var(--muted-foreground));">
+          Transformamos ambientes existentes sem perder a essência do que já funciona.
+          Acompanhamos a execução de perto para garantir que cada detalhe da reforma seja entregue
+          exatamente como projetado.
+        </p>
+        <a href="https://wa.me/5541996666843" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 font-semibold text-sm transition-colors"
+           style="color: hsl(var(--accent));">
+          Solicitar orçamento
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="order-2 md-order-2 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=900&fit=crop&q=80&auto=format"
+           alt="local shop interior warm"
+           class="alt-row-img object-cover w-full" />
+    </div>
+  </div>
+
+  <!-- Row 4: Acompanhamento de Obra (imagem esquerda) -->
+  <div class="alt-row border-t border-[hsl(var(--border))]">
+    <div class="order-2 md:order-1 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1604176354204-9268737828e4?w=800&h=900&fit=crop&q=80&auto=format"
+           alt="boutique interior warm"
+           class="alt-row-img object-cover w-full" />
+    </div>
+    <div class="alt-row-text order-1 md:order-2" style="background: hsl(var(--muted));">
+      <div class="max-w-md mx-auto md:mx-0 md:ml-12 lg:ml-24">
+        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-6"
+             style="background: hsl(var(--primary) / 0.10); color: hsl(var(--primary));">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          Acompanhamento
+        </div>
+        <h3 class="font-serif text-3xl md:text-4xl mb-4" style="color: hsl(var(--foreground));">Acompanhamento de Obra</h3>
+        <p class="leading-relaxed mb-6" style="color: hsl(var(--muted-foreground));">
+          Não entregamos apenas o projeto e nos afastamos. Acompanhamos a execução da obra de perto,
+          garantindo que cada decisão tomada no papel se materialize com fidelidade e qualidade no espaço real.
+        </p>
+        <a href="https://wa.me/5541996666843" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 font-semibold text-sm transition-colors"
+           style="color: hsl(var(--primary));">
+          Solicitar orçamento
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOBRE ===================== -->
+<section id="sobre" class="py-16 md:py-28" style="background: hsl(var(--background));">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+      <!-- Imagens -->
+      <div class="grid grid-cols-2 gap-4 relative">
+        <div class="overflow-hidden rounded-[var(--radius)] shadow-lg">
+          <img src="https://images.unsplash.com/photo-1604176354204-9268737828e4?w=800&h=900&fit=crop&q=80&auto=format"
+               alt="boutique interior warm"
+               class="w-full h-64 md:h-80 object-cover hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="overflow-hidden rounded-[var(--radius)] shadow-lg mt-8">
+          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=900&fit=crop&q=80&auto=format"
+               alt="local shop interior warm"
+               class="w-full h-64 md:h-80 object-cover hover:scale-105 transition-transform duration-500" />
+        </div>
+        <!-- Badge flutuante -->
+        <div class="hidden sm:flex absolute -bottom-4 left-1/2 -translate-x-1/2 items-center gap-2
+                    bg-white rounded-full px-4 py-2 shadow-lg border border-[hsl(var(--border))]">
+          <span style="color: hsl(var(--accent));" class="text-base">★★★★★</span>
+          <span class="text-xs font-semibold" style="color: hsl(var(--foreground));">5 no Google</span>
+        </div>
+      </div>
+
+      <!-- Texto -->
+      <div class="mt-6 md:mt-0">
+        <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-6" style="color: hsl(var(--accent));">
+          Sobre Renata Magalhães
+        </p>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight mb-6" style="color: hsl(var(--foreground));">
+          Um olhar cuidadoso<br/>
+          <em class="not-italic" style="color: hsl(var(--primary));">em cada projeto</em>
+        </h2>
+        <p class="leading-relaxed mb-4" style="color: hsl(var(--muted-foreground));">
+          Desenvolvemos projetos de arquitetura e design de interiores com atenção genuína ao que cada
+          cliente busca. Cada espaço é tratado como único, com escuta ativa e acompanhamento próximo
+          em todas as etapas.
+        </p>
+        <p class="leading-relaxed mb-8" style="color: hsl(var(--muted-foreground));">
+          Nossa entrega não se limita ao projeto técnico. Estamos presentes da concepção ao acabamento,
+          garantindo que o resultado final seja exatamente o espetáculo que você imaginou.
+        </p>
+
+        <!-- Micro-benefícios -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="flex gap-3">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                 style="background: hsl(var(--accent) / 0.15);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                   stroke="hsl(var(--accent))" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-sm font-semibold mb-0.5" style="color: hsl(var(--foreground));">Olhar criativo</div>
+              <div class="text-xs" style="color: hsl(var(--muted-foreground));">Projetos com personalidade própria</div>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                 style="background: hsl(var(--accent) / 0.15);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                   stroke="hsl(var(--accent))" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-sm font-semibold mb-0.5" style="color: hsl(var(--foreground));">Atenção ao cliente</div>
+              <div class="text-xs" style="color: hsl(var(--muted-foreground));">Escuta ativa e personalização real</div>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                 style="background: hsl(var(--accent) / 0.15);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                   stroke="hsl(var(--accent))" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-sm font-semibold mb-0.5" style="color: hsl(var(--foreground));">Acompanhamento próximo</div>
+              <div class="text-xs" style="color: hsl(var(--muted-foreground));">Presente em todas as etapas da obra</div>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                 style="background: hsl(var(--accent) / 0.15);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                   stroke="hsl(var(--accent))" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-sm font-semibold mb-0.5" style="color: hsl(var(--foreground));">100% recomendada</div>
+              <div class="text-xs" style="color: hsl(var(--muted-foreground));">Nota máxima em todas as avaliações</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTATO ===================== -->
+<section id="contato" class="py-16 md:py-28" style="background: hsl(var(--muted));">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <div class="text-center mb-14">
+      <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-4" style="color: hsl(var(--accent));">Contato</p>
+      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl mb-4" style="color: hsl(var(--foreground));">
+        Vamos conversar sobre<br/>
+        <em class="not-italic" style="color: hsl(var(--primary));">o seu projeto</em>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Telefone -->
+      <a href="tel:+5541996666843"
+         class="contact-card bg-white rounded-[var(--radius)] p-6 border border-[hsl(var(--border))] card-hover flex flex-col items-start gap-4 no-underline">
+        <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center transition-colors"
+             style="background: hsl(var(--primary) / 0.10);">
+          <svg class="contact-icon transition-colors" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+               stroke="hsl(var(--primary))" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest mb-1" style="color: hsl(var(--muted-foreground));">Telefone</p>
+          <p class="font-semibold text-lg" style="color: hsl(var(--foreground));">(41) 99666-6843</p>
+          <p class="text-sm mt-0.5" style="color: hsl(var(--muted-foreground));">Ligue e agende uma conversa</p>
+        </div>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/5541996666843" target="_blank" rel="noopener"
+         class="contact-card bg-white rounded-[var(--radius)] p-6 border border-[hsl(var(--border))] card-hover flex flex-col items-start gap-4 no-underline">
+        <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center"
+             style="background: rgba(37,211,102,0.12);">
+          <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#25d366">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest mb-1" style="color: hsl(var(--muted-foreground));">WhatsApp</p>
+          <p class="font-semibold text-lg" style="color: hsl(var(--foreground));">(41) 99666-6843</p>
+          <p class="text-sm mt-0.5" style="color: hsl(var(--muted-foreground));">Resposta rápida pelo WhatsApp</p>
+        </div>
+      </a>
+
+      <!-- Endereço -->
+      <a href="https://maps.google.com/?cid=15347984403072174828&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+         target="_blank" rel="noopener"
+         class="contact-card bg-white rounded-[var(--radius)] p-6 border border-[hsl(var(--border))] card-hover flex flex-col items-start gap-4 no-underline">
+        <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center"
+             style="background: hsl(var(--accent) / 0.15);">
+          <svg class="contact-icon transition-colors" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+               stroke="hsl(var(--accent))" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest mb-1" style="color: hsl(var(--muted-foreground));">Endereço</p>
+          <p class="font-semibold text-base" style="color: hsl(var(--foreground));">Rua Padre Anchieta, 2540</p>
+          <p class="text-sm mt-0.5" style="color: hsl(var(--muted-foreground));">Bigorrilho, Curitiba - PR</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section id="cta-final" class="py-16 md:py-24 px-4 md:px-6">
+  <div class="max-w-4xl mx-auto relative overflow-hidden rounded-[var(--radius)] px-8 py-14 md:px-16 md:py-20 text-center"
+       style="background: hsl(var(--primary));">
+    <!-- Blob -->
+    <div class="blob w-64 h-64" style="background: hsl(var(--accent)); top: -30%; right: -10%; opacity: 0.25;"></div>
+    <div class="blob w-48 h-48" style="background: hsl(var(--accent)); bottom: -20%; left: -5%; opacity: 0.18;"></div>
+
+    <div class="relative z-10">
+      <p class="text-xs font-semibold uppercase tracking-widest mb-6" style="color: hsl(var(--accent));">
+        Pronto para começar?
+      </p>
+      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl mb-6" style="color: hsl(var(--primary-foreground));">
+        O seu espaço merece<br/>
+        <em class="not-italic" style="color: hsl(var(--accent));">um projeto à altura</em>
+      </h2>
+      <p class="text-base md:text-lg mb-10 max-w-xl mx-auto" style="color: rgba(255,255,255,0.75);">
+        Atendemos com atenção personalizada. Conte-nos sobre o seu projeto e vamos criar algo
+        que seja verdadeiramente seu.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://wa.me/5541996666843" target="_blank" rel="noopener"
+           class="flex items-center justify-center gap-2 bg-[#25d366] hover:bg-[#20b858] text-white font-semibold px-8 py-4 rounded-[var(--radius)] transition-colors text-base w-full sm:w-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Falar no WhatsApp
+        </a>
+        <a href="tel:+5541996666843"
+           class="flex items-center justify-center gap-2 border-2 border-white/30 hover:border-white text-white font-semibold px-8 py-4 rounded-[var(--radius)] transition-colors text-base w-full sm:w-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          (41) 99666-6843
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="py-8 px-4 border-t border-[hsl(var(--border))]" style="background: hsl(var(--muted));">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+    <div>
+      <span class="font-serif text-base font-medium" style="color: hsl(var(--foreground));">Renata Magalhães | Arquitetura e Interiores</span>
+    </div>
+    <p class="text-xs" style="color: hsl(var(--muted-foreground));">
+      Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
+    </p>
+  </div>
+</footer>
+
+<!-- ===================== WA FLOAT ===================== -->
+<a href="https://wa.me/5541996666843" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  function toggleMenu() {
+    var menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('open');
+  }
+  function closeMenu() {
+    var menu = document.getElementById('mobile-menu');
+    menu.classList.remove('open');
+  }
+  // Close menu on outside click
+  document.addEventListener('click', function(e) {
+    var menu = document.getElementById('mobile-menu');
+    var hamburger = document.getElementById('hamburger');
+    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+</script>
+
+</body>
+</html>
