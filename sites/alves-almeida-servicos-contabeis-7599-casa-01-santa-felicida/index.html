@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alves & Almeida Serviços Contábeis | Contabilidade e Certificado Digital | Curitiba</title>
+  <meta name="description" content="Serviços contábeis de confiança em Curitiba. Imposto de renda, certificado digital e consultoria com atendimento ágil e resultado garantido." />
+  <meta property="og:title" content="Alves & Almeida Serviços Contábeis | Contabilidade com Tradição" />
+  <meta property="og:description" content="Declaração de imposto de renda, certificado digital e consultoria contábil. Atendimento rápido, profissional e de confiança." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=630&fit=crop&q=80&auto=format" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+              DEFAULT: 'hsl(var(--primary))',
+              foreground: 'hsl(var(--primary-foreground))',
+            },
+            accent: {
+              DEFAULT: 'hsl(var(--accent))',
+              foreground: 'hsl(var(--accent-foreground))',
+            },
+            muted: {
+              DEFAULT: 'hsl(var(--muted))',
+              foreground: 'hsl(var(--muted-foreground))',
+            },
+            card: {
+              DEFAULT: 'hsl(var(--card))',
+            },
+            border: 'hsl(var(--border))',
+          },
+          borderRadius: {
+            DEFAULT: 'var(--radius)',
+            lg: 'var(--radius)',
+            md: 'calc(var(--radius) - 0.25rem)',
+            sm: 'calc(var(--radius) - 0.5rem)',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --background: 45 20% 98%;
+      --foreground: 220 15% 12%;
+      --primary: 200 35% 20%;
+      --primary-foreground: 0 0% 98%;
+      --accent: 40 75% 58%;
+      --accent-foreground: 220 15% 12%;
+      --muted: 45 20% 94%;
+      --muted-foreground: 220 10% 40%;
+      --card: 0 0% 100%;
+      --border: 220 15% 90%;
+      --radius: 1.25rem;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
+    body { background-color: hsl(var(--background)); color: hsl(var(--foreground)); }
+
+    .font-serif { font-family: 'Playfair Display', serif; }
+
+    /* Dot pattern */
+    .dot-pattern {
+      background-image: radial-gradient(circle, hsl(200 35% 20% / 0.12) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    /* Header dot pattern */
+    .header-dot {
+      background-color: hsl(var(--card));
+      background-image: radial-gradient(circle, hsl(200 35% 20% / 0.08) 1px, transparent 1px);
+      background-size: 18px 18px;
+    }
+
+    /* Section eyebrow underline */
+    .eyebrow-line {
+      display: inline-block;
+      position: relative;
+    }
+    .eyebrow-line::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 2px;
+      background-color: hsl(var(--accent));
+      margin-top: 6px;
+    }
+
+    /* Review quote decoration */
+    .review-card {
+      position: relative;
+      break-inside: avoid;
+      margin-bottom: 1.25rem;
+    }
+    .review-card::before {
+      content: '"';
+      font-family: 'Playfair Display', serif;
+      font-size: 120px;
+      line-height: 0.8;
+      color: hsl(var(--accent) / 0.12);
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Masonry 3 col */
+    .masonry-grid {
+      columns: 1;
+      column-gap: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .masonry-grid { columns: 2; }
+    }
+    @media (min-width: 1024px) {
+      .masonry-grid { columns: 3; }
+    }
+
+    /* Card hover */
+    .card-hover {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px hsl(200 35% 20% / 0.12);
+    }
+
+    /* Hero blob */
+    .blob {
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      filter: blur(60px);
+      opacity: 0.45;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    /* Sticky header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid hsl(var(--border));
+    }
+
+    /* Scroll margin for sections */
+    section[id] {
+      scroll-margin-top: 72px;
+    }
+
+    /* WhatsApp float */
+    .wa-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      background-color: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(37, 211, 102, 0.4);
+      z-index: 100;
+      animation: wapulse 2.5s infinite;
+    }
+    @keyframes wapulse {
+      0%, 100% { box-shadow: 0 4px 24px rgba(37, 211, 102, 0.4); }
+      50% { box-shadow: 0 4px 40px rgba(37, 211, 102, 0.7), 0 0 0 10px rgba(37, 211, 102, 0.08); }
+    }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: block; }
+
+    /* Stats sidebar vertical */
+    .stat-divider {
+      border-bottom: 1px solid hsl(var(--border));
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+    .stat-divider:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header-dot">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 h-[68px] flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-lg flex items-center justify-center text-base font-bold font-serif"
+             style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">
+          A
+        </div>
+        <span class="font-serif font-semibold text-sm md:text-base" style="color: hsl(var(--foreground));">
+          Alves &amp; Almeida
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium" style="color: hsl(var(--muted-foreground));">
+        <a href="#sobre" class="hover:text-foreground transition-colors" style="color: inherit;">Sobre</a>
+        <a href="#especialidades" class="hover:text-foreground transition-colors" style="color: inherit;">Especialidades</a>
+        <a href="#avaliacoes" class="hover:text-foreground transition-colors" style="color: inherit;">Avaliações</a>
+        <a href="#contato" class="hover:text-foreground transition-colors" style="color: inherit;">Contato</a>
+        <a href="https://wa.me/554132721013"
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-opacity hover:opacity-90"
+           style="background-color: #25d366; color: white;"
+           target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </nav>
+
+      <!-- Mobile hamburger -->
+      <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2" onclick="toggleMenu()" aria-label="Menu">
+        <span class="block w-5 h-0.5 rounded" style="background-color: hsl(var(--foreground));"></span>
+        <span class="block w-5 h-0.5 rounded" style="background-color: hsl(var(--foreground));"></span>
+        <span class="block w-5 h-0.5 rounded" style="background-color: hsl(var(--foreground));"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden border-t px-4 py-4 flex flex-col gap-4 text-sm font-medium"
+         style="border-color: hsl(var(--border)); background-color: hsl(var(--card));">
+      <a href="#sobre" onclick="closeMenu()" style="color: hsl(var(--foreground));">Sobre</a>
+      <a href="#especialidades" onclick="closeMenu()" style="color: hsl(var(--foreground));">Especialidades</a>
+      <a href="#avaliacoes" onclick="closeMenu()" style="color: hsl(var(--foreground));">Avaliações</a>
+      <a href="#contato" onclick="closeMenu()" style="color: hsl(var(--foreground));">Contato</a>
+      <a href="https://wa.me/554132721013"
+         class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-semibold"
+         style="background-color: #25d366; color: white;"
+         target="_blank" rel="noopener">
+        WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <!-- ============ HERO (no-image-typographic) ============ -->
+  <section id="hero" class="relative overflow-hidden dot-pattern py-24 md:py-40" style="background-color: hsl(var(--background));">
+    <!-- Blobs -->
+    <div class="blob w-80 h-80 -top-24 -left-24" style="background-color: hsl(var(--primary));"></div>
+    <div class="blob w-64 h-64 -bottom-16 -right-16" style="background-color: hsl(var(--accent));"></div>
+    <div class="blob w-48 h-48 top-1/2 right-16 hidden md:block" style="background-color: hsl(var(--primary)); opacity: 0.25;"></div>
+
+    <div class="relative max-w-5xl mx-auto px-4 md:px-6 text-center">
+
+      <!-- Badge -->
+      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-8"
+            style="background-color: hsl(var(--accent) / 0.15); color: hsl(var(--accent-foreground)); border: 1px solid hsl(var(--accent) / 0.3);">
+        Mais de uma geração cuidando das suas finanças
+      </span>
+
+      <!-- Headline -->
+      <h1 class="font-serif font-bold leading-tight mb-6"
+          style="font-size: clamp(2.5rem, 8vw, 5.5rem); color: hsl(var(--foreground));">
+        Contabilidade que você<br>
+        <em style="color: hsl(var(--primary)); font-style: italic;">pode confiar</em>
+      </h1>
+
+      <!-- Subtítulo -->
+      <p class="text-lg md:text-xl max-w-2xl mx-auto mb-6 leading-relaxed"
+         style="color: hsl(var(--muted-foreground));">
+        Resolvemos declarações de imposto de renda, certificado digital e consultoria contábil com agilidade,
+        precisão e um atendimento que já fideliza clientes há anos.
+      </p>
+
+      <!-- Rating -->
+      <div class="flex items-center justify-center gap-2 mb-10 text-sm font-medium" style="color: hsl(var(--muted-foreground));">
+        <span class="text-lg" style="color: hsl(var(--accent));">★★★★★</span>
+        <span class="font-semibold" style="color: hsl(var(--foreground));">4.2</span>
+        <span>no Google</span>
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="https://wa.me/554132721013"
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-base transition-opacity hover:opacity-90"
+           style="background-color: #25d366; color: white;"
+           target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar pelo WhatsApp
+        </a>
+        <a href="tel:+554132721013"
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-base transition-all hover:opacity-80"
+           style="border: 2px solid hsl(var(--primary)); color: hsl(var(--primary)); background: transparent;">
+          <i data-lucide="phone" style="width:18px; height:18px;"></i>
+          (41) 3272-1013
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ESPECIALIDADES ============ -->
+  <section id="especialidades" class="py-16 md:py-28" style="background-color: hsl(var(--muted));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+
+      <!-- Header da seção -->
+      <div class="text-center mb-12 md:mb-16">
+        <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-4 mx-auto"
+           style="color: hsl(var(--accent));">
+          O que fazemos
+        </p>
+        <h2 class="font-serif font-bold text-3xl md:text-5xl leading-tight mb-4"
+            style="color: hsl(var(--foreground));">
+          Nossas <em style="color: hsl(var(--primary)); font-style: italic;">especialidades</em>
+        </h2>
+        <p class="text-base md:text-lg max-w-xl mx-auto" style="color: hsl(var(--muted-foreground));">
+          Soluções contábeis completas, entregues com pontualidade e profissionalismo que nossos clientes já conhecem e confiam.
+        </p>
+      </div>
+
+      <!-- Grid 3x2 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <!-- Card 1: Principal -->
+        <div class="card-hover relative rounded-[var(--radius)] p-6 shadow-sm"
+             style="background-color: hsl(var(--card)); border: 2px solid hsl(var(--accent) / 0.4);">
+          <span class="absolute top-4 right-4 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full"
+                style="background-color: hsl(var(--accent)); color: hsl(var(--accent-foreground));">
+            Especialidade Principal
+          </span>
+          <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-4"
+               style="background-color: hsl(var(--accent) / 0.15); color: hsl(var(--accent));">
+            <i data-lucide="file-text" style="width:22px; height:22px;"></i>
+          </div>
+          <h3 class="font-serif font-semibold text-xl mb-2" style="color: hsl(var(--foreground));">
+            Imposto de Renda
+          </h3>
+          <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">
+            Declaramos o seu imposto de renda com atenção a cada detalhe, maximizando restituições e evitando problemas com a Receita Federal. Atendemos pessoas físicas há anos.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card-hover rounded-[var(--radius)] p-6 shadow-sm"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-4"
+               style="background-color: hsl(var(--primary) / 0.10); color: hsl(var(--primary));">
+            <i data-lucide="shield-check" style="width:22px; height:22px;"></i>
+          </div>
+          <h3 class="font-serif font-semibold text-xl mb-2" style="color: hsl(var(--foreground));">
+            Certificado Digital
+          </h3>
+          <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">
+            Emissão de certificado digital realizada no horário combinado, sem atrasos. Para pessoas físicas e jurídicas que precisam de agilidade e segurança.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card-hover rounded-[var(--radius)] p-6 shadow-sm"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-4"
+               style="background-color: hsl(var(--primary) / 0.10); color: hsl(var(--primary));">
+            <i data-lucide="briefcase" style="width:22px; height:22px;"></i>
+          </div>
+          <h3 class="font-serif font-semibold text-xl mb-2" style="color: hsl(var(--foreground));">
+            Consultoria Contábil
+          </h3>
+          <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">
+            Orientamos empresas e profissionais sobre obrigações fiscais, escolha de regime tributário e organização contábil, com linguagem clara e objetiva.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card-hover rounded-[var(--radius)] p-6 shadow-sm"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-4"
+               style="background-color: hsl(var(--primary) / 0.10); color: hsl(var(--primary));">
+            <i data-lucide="users" style="width:22px; height:22px;"></i>
+          </div>
+          <h3 class="font-serif font-semibold text-xl mb-2" style="color: hsl(var(--foreground));">
+            Atendimento Personalizado
+          </h3>
+          <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">
+            Para quem prefere um atendimento próximo, sem burocracia excessiva. Explicamos cada etapa do processo para que você entenda e tome decisões com segurança.
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card-hover rounded-[var(--radius)] p-6 shadow-sm"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-4"
+               style="background-color: hsl(var(--primary) / 0.10); color: hsl(var(--primary));">
+            <i data-lucide="repeat" style="width:22px; height:22px;"></i>
+          </div>
+          <h3 class="font-serif font-semibold text-xl mb-2" style="color: hsl(var(--foreground));">
+            Clientes de Longa Data
+          </h3>
+          <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">
+            Muitos dos nossos clientes nos acompanham há anos. Essa fidelidade é o reflexo de um serviço consistente, confiável e que evolui junto com as necessidades de cada um.
+          </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card-hover rounded-[var(--radius)] p-6 shadow-sm"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-4"
+               style="background-color: hsl(var(--primary) / 0.10); color: hsl(var(--primary));">
+            <i data-lucide="clock" style="width:22px; height:22px;"></i>
+          </div>
+          <h3 class="font-serif font-semibold text-xl mb-2" style="color: hsl(var(--foreground));">
+            Pontualidade e Compromisso
+          </h3>
+          <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">
+            Cumprimos prazos e horários. Quando você agenda um serviço conosco, sabe exatamente o que esperar, sem surpresas nem enrolação.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOBRE ============ -->
+  <section id="sobre" class="py-16 md:py-28" style="background-color: hsl(var(--background));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+
+        <!-- Imagens (lado esquerdo) -->
+        <div class="grid grid-cols-2 gap-4 relative">
+          <div class="rounded-[var(--radius)] overflow-hidden shadow-lg">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=900&fit=crop&q=80&auto=format"
+                 alt="financial dashboard professional"
+                 class="w-full h-auto object-cover" />
+          </div>
+          <div class="rounded-[var(--radius)] overflow-hidden shadow-lg mt-8">
+            <img src="https://images.unsplash.com/photo-1586281380117-5a60ae2050cc?w=800&h=900&fit=crop&q=80&auto=format"
+                 alt="clipboard professional desk laptop"
+                 class="w-full h-auto object-cover" />
+          </div>
+          <!-- Stats sidebar vertical -->
+          <div class="absolute -bottom-4 -left-4 rounded-[var(--radius)] shadow-xl px-5 py-4 hidden md:block"
+               style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground)); min-width: 160px;">
+            <div class="stat-divider">
+              <p class="font-serif font-bold text-3xl" style="color: hsl(var(--accent));">4.2★</p>
+              <p class="text-xs uppercase tracking-widest opacity-70 mt-0.5">Avaliação Google</p>
+            </div>
+            <div class="stat-divider">
+              <p class="font-serif font-bold text-3xl" style="color: hsl(var(--accent));">100%</p>
+              <p class="text-xs uppercase tracking-widest opacity-70 mt-0.5">No prazo</p>
+            </div>
+            <div>
+              <p class="font-serif font-bold text-3xl" style="color: hsl(var(--accent));">Anos</p>
+              <p class="text-xs uppercase tracking-widest opacity-70 mt-0.5">De confiança</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Texto (lado direito) -->
+        <div>
+          <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-5"
+             style="color: hsl(var(--accent));">
+            Sobre a Alves &amp; Almeida
+          </p>
+          <h2 class="font-serif font-bold text-3xl md:text-4xl leading-tight mb-5"
+              style="color: hsl(var(--foreground));">
+            Tradição e cuidado em<br>
+            <em style="color: hsl(var(--primary)); font-style: italic;">cada declaração</em>
+          </h2>
+          <p class="text-base leading-relaxed mb-4" style="color: hsl(var(--muted-foreground));">
+            Há anos, cuidamos das finanças das famílias e empresas que nos confiam seus documentos. Nossa equipe combina
+            experiência técnica com um atendimento próximo, capaz de transformar processos burocráticos em tarefas simples
+            para os nossos clientes.
+          </p>
+          <p class="text-base leading-relaxed mb-8" style="color: hsl(var(--muted-foreground));">
+            Desde a declaração do imposto de renda anual até a emissão de certificado digital, entregamos o serviço no horário
+            acordado, com precisão e sem complicação. É assim que construímos relações de confiança que duram gerações.
+          </p>
+
+          <!-- Micro-benefícios 2x2 -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5"
+                   style="background-color: hsl(var(--accent) / 0.15); color: hsl(var(--accent));">
+                <i data-lucide="check" style="width:16px; height:16px;"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm" style="color: hsl(var(--foreground));">Entrega no horário</p>
+                <p class="text-xs leading-relaxed mt-0.5" style="color: hsl(var(--muted-foreground));">Cumprimos o que foi combinado, sempre</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5"
+                   style="background-color: hsl(var(--accent) / 0.15); color: hsl(var(--accent));">
+                <i data-lucide="check" style="width:16px; height:16px;"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm" style="color: hsl(var(--foreground));">Clientes fiéis há anos</p>
+                <p class="text-xs leading-relaxed mt-0.5" style="color: hsl(var(--muted-foreground));">Relacionamentos que se renovam a cada declaração</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5"
+                   style="background-color: hsl(var(--accent) / 0.15); color: hsl(var(--accent));">
+                <i data-lucide="check" style="width:16px; height:16px;"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm" style="color: hsl(var(--foreground));">Serviço excelente</p>
+                <p class="text-xs leading-relaxed mt-0.5" style="color: hsl(var(--muted-foreground));">Qualidade reconhecida pelos próprios clientes</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5"
+                   style="background-color: hsl(var(--accent) / 0.15); color: hsl(var(--accent));">
+                <i data-lucide="check" style="width:16px; height:16px;"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm" style="color: hsl(var(--foreground));">Certificação digital ágil</p>
+                <p class="text-xs leading-relaxed mt-0.5" style="color: hsl(var(--muted-foreground));">Emitimos no prazo, sem burocracia desnecessária</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AVALIAÇÕES ============ -->
+  <section id="avaliacoes" class="py-16 md:py-28" style="background-color: hsl(var(--muted));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-4 mx-auto"
+           style="color: hsl(var(--accent));">
+          Depoimentos
+        </p>
+        <h2 class="font-serif font-bold text-3xl md:text-5xl leading-tight mb-4"
+            style="color: hsl(var(--foreground));">
+          O que os clientes <em style="color: hsl(var(--primary)); font-style: italic;">dizem</em>
+        </h2>
+        <p class="text-base md:text-lg max-w-xl mx-auto" style="color: hsl(var(--muted-foreground));">
+          Avaliações reais de quem já vivenciou nosso atendimento e confia no nosso trabalho há anos.
+        </p>
+      </div>
+
+      <!-- Masonry 3 colunas -->
+      <div class="masonry-grid">
+
+        <!-- Review 1: Darci Ceronato -->
+        <div class="review-card rounded-[var(--radius)] p-6 shadow-sm card-hover"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="relative z-10">
+            <div class="flex gap-1 mb-3" style="color: hsl(var(--accent));">
+              ★★★★★
+            </div>
+            <p class="text-sm leading-relaxed mb-4" style="color: hsl(var(--foreground));">
+              Faz alguns anos que faço o meu imposto de renda com a Luciana. Serviço excelente!
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+                   style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">
+                D
+              </div>
+              <div>
+                <p class="text-sm font-semibold" style="color: hsl(var(--foreground));">Darci Ceronato</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2: J. Thiago Castro -->
+        <div class="review-card rounded-[var(--radius)] p-6 shadow-sm card-hover"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="relative z-10">
+            <div class="flex gap-1 mb-3" style="color: hsl(var(--accent));">
+              ★★★★★
+            </div>
+            <p class="text-sm leading-relaxed mb-4" style="color: hsl(var(--foreground));">
+              Fizeram o certificado digital certinho e no horário. De boas.
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+                   style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">
+                J
+              </div>
+              <div>
+                <p class="text-sm font-semibold" style="color: hsl(var(--foreground));">J. Thiago Castro</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3: Rafael S Galvão -->
+        <div class="review-card rounded-[var(--radius)] p-6 shadow-sm card-hover"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="relative z-10">
+            <div class="flex gap-1 mb-3" style="color: hsl(var(--accent));">
+              ★★★★★
+            </div>
+            <p class="text-sm leading-relaxed mb-4" style="color: hsl(var(--foreground));">
+              Excelente!
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+                   style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">
+                R
+              </div>
+              <div>
+                <p class="text-sm font-semibold" style="color: hsl(var(--foreground));">Rafael S Galvão</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Link Google -->
+      <div class="text-center mt-10">
+        <a href="https://maps.google.com/?cid=14469392239061877600&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+           class="inline-flex items-center gap-2 text-sm font-semibold transition-opacity hover:opacity-70"
+           style="color: hsl(var(--primary));"
+           target="_blank" rel="noopener">
+          Ver avaliações no Google
+          <i data-lucide="arrow-up-right" style="width:16px; height:16px;"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ CONTATO ============ -->
+  <section id="contato" class="py-16 md:py-28" style="background-color: hsl(var(--background));">
+    <div class="max-w-5xl mx-auto px-4 md:px-6">
+
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-4 mx-auto"
+           style="color: hsl(var(--accent));">
+          Fale conosco
+        </p>
+        <h2 class="font-serif font-bold text-3xl md:text-5xl leading-tight mb-4"
+            style="color: hsl(var(--foreground));">
+          Estamos <em style="color: hsl(var(--primary)); font-style: italic;">prontos para atender</em>
+        </h2>
+        <p class="text-base md:text-lg max-w-xl mx-auto" style="color: hsl(var(--muted-foreground));">
+          Entre em contato pelo canal de sua preferência. Respondemos com agilidade.
+        </p>
+      </div>
+
+      <!-- Cards de contato -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+        <!-- Telefone -->
+        <a href="tel:+554132721013"
+           class="card-hover group rounded-[var(--radius)] p-6 flex flex-col items-center text-center gap-4 shadow-sm transition-all"
+           style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border)); text-decoration: none;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center transition-colors group-hover:bg-primary"
+               style="background-color: hsl(var(--primary) / 0.10); color: hsl(var(--primary));">
+            <i data-lucide="phone" style="width:22px; height:22px;"></i>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-widest mb-1" style="color: hsl(var(--muted-foreground));">Telefone</p>
+            <p class="font-bold text-lg" style="color: hsl(var(--foreground));">(41) 3272-1013</p>
+            <p class="text-xs mt-1" style="color: hsl(var(--muted-foreground));">Ligue agora</p>
+          </div>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/554132721013"
+           class="card-hover group rounded-[var(--radius)] p-6 flex flex-col items-center text-center gap-4 shadow-sm transition-all"
+           style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border)); text-decoration: none;"
+           target="_blank" rel="noopener">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center"
+               style="background-color: rgba(37,211,102,0.12); color: #25d366;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-widest mb-1" style="color: hsl(var(--muted-foreground));">WhatsApp</p>
+            <p class="font-bold text-lg" style="color: hsl(var(--foreground));">(41) 3272-1013</p>
+            <p class="text-xs mt-1" style="color: hsl(var(--muted-foreground));">Atendimento rápido</p>
+          </div>
+        </a>
+
+        <!-- Endereço -->
+        <a href="https://maps.google.com/?cid=14469392239061877600&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+           class="card-hover group rounded-[var(--radius)] p-6 flex flex-col items-center text-center gap-4 shadow-sm transition-all"
+           style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border)); text-decoration: none;"
+           target="_blank" rel="noopener">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center transition-colors group-hover:bg-primary"
+               style="background-color: hsl(var(--primary) / 0.10); color: hsl(var(--primary));">
+            <i data-lucide="map-pin" style="width:22px; height:22px;"></i>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-widest mb-1" style="color: hsl(var(--muted-foreground));">Endereço</p>
+            <p class="font-bold text-sm leading-snug" style="color: hsl(var(--foreground));">
+              Av. Manoel Ribas, 7599<br>
+              casa 01, Santa Felicidade<br>
+              Curitiba, PR
+            </p>
+            <p class="text-xs mt-1" style="color: hsl(var(--muted-foreground));">Ver no mapa</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="py-16 md:py-28" style="background-color: hsl(var(--muted));">
+    <div class="max-w-4xl mx-auto px-4 md:px-6">
+      <div class="relative rounded-[var(--radius)] overflow-hidden px-8 md:px-16 py-14 text-center"
+           style="background-color: hsl(var(--primary));">
+        <!-- Blob decorativo -->
+        <div class="blob w-64 h-64 -top-16 -right-16"
+             style="background-color: hsl(var(--accent)); opacity: 0.2;"></div>
+        <div class="blob w-48 h-48 -bottom-12 -left-12"
+             style="background-color: hsl(var(--accent)); opacity: 0.15;"></div>
+
+        <div class="relative z-10">
+          <p class="text-xs font-semibold uppercase tracking-widest mb-4 opacity-70"
+             style="color: hsl(var(--primary-foreground));">
+            Pronto para começar?
+          </p>
+          <h2 class="font-serif font-bold text-3xl md:text-5xl leading-tight mb-5"
+              style="color: hsl(var(--primary-foreground));">
+            Resolva sua contabilidade<br>
+            <em style="color: hsl(var(--accent)); font-style: italic;">sem complicação</em>
+          </h2>
+          <p class="text-base opacity-80 max-w-xl mx-auto mb-8"
+             style="color: hsl(var(--primary-foreground));">
+            Entre em contato agora. Atendemos com agilidade e profissionalismo para que você fique tranquilo com suas obrigações fiscais.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="https://wa.me/554132721013"
+               class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg font-bold text-base transition-opacity hover:opacity-90"
+               style="background-color: #25d366; color: white;"
+               target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Falar pelo WhatsApp
+            </a>
+            <a href="tel:+554132721013"
+               class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg font-semibold text-base transition-all hover:opacity-80"
+               style="border: 2px solid hsl(var(--primary-foreground) / 0.4); color: hsl(var(--primary-foreground)); background: transparent;">
+              <i data-lucide="phone" style="width:18px; height:18px;"></i>
+              Ligar agora
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="py-8 border-t" style="border-color: hsl(var(--border)); background-color: hsl(var(--background));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 text-center">
+      <p class="text-xs leading-relaxed" style="color: hsl(var(--muted-foreground));">
+        Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
+      </p>
+      <p class="text-xs mt-2" style="color: hsl(var(--muted-foreground));">
+        © 2024 Alves &amp; Almeida Serviços Contábeis
+      </p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flutuante -->
+  <a href="https://wa.me/554132721013" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script>
+    // Lucide icons
+    lucide.createIcons();
+
+    // Mobile menu
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('open');
+    }
+    function closeMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.remove('open');
+    }
+
+    // Fechar menu ao clicar fora
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('mobile-menu');
+      const hamburger = document.getElementById('hamburger');
+      if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
