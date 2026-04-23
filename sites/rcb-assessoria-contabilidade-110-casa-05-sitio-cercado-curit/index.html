@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RCB Assessoria & Contabilidade | Especialistas em Contabilidade | Curitiba</title>
+  <meta name="description" content="Contabilidade séria, ágil e sem complicação. A RCB Assessoria cuida da sua empresa com atenção real e resultados concretos. Avaliação 5 estrelas no Google." />
+  <meta property="og:title" content="RCB Assessoria & Contabilidade | Curitiba" />
+  <meta property="og:description" content="Contabilidade séria, ágil e sem complicação. Atendimento personalizado com nota 5 no Google." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=630&fit=crop&q=80&auto=format" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --background: 20 15% 97%;
+      --foreground: 220 15% 12%;
+      --primary: 200 35% 22%;
+      --primary-foreground: 0 0% 98%;
+      --accent: 45 70% 58%;
+      --accent-foreground: 220 15% 12%;
+      --muted: 20 15% 94%;
+      --muted-foreground: 220 10% 40%;
+      --card: 0 0% 100%;
+      --border: 220 15% 90%;
+      --radius: 0.5rem;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Figtree', sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+    }
+
+    body { margin: 0; padding: 0; overflow-x: hidden; }
+
+    .font-serif { font-family: 'Instrument Serif', serif; }
+
+    section { scroll-margin-top: 72px; }
+
+    /* Eyebrow accent line */
+    .eyebrow-line {
+      display: inline-block;
+      position: relative;
+    }
+    .eyebrow-line::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 2px;
+      background-color: hsl(var(--accent));
+      margin-top: 6px;
+    }
+
+    /* Neo-brutalist header */
+    .header-neo {
+      background-color: hsl(var(--primary));
+      border-bottom: 2px solid black;
+      box-shadow: 0 4px 0 0 black;
+    }
+
+    .nav-link-neo {
+      color: hsl(var(--primary-foreground));
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.025em;
+      text-decoration: none;
+      padding: 0.25rem 0.5rem;
+      border: 2px solid transparent;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .nav-link-neo:hover {
+      border-color: hsl(var(--accent));
+      background: rgba(255,255,255,0.08);
+      border-radius: 2px;
+    }
+
+    .btn-neo-accent {
+      background: hsl(var(--accent));
+      color: hsl(var(--accent-foreground));
+      font-weight: 700;
+      border: 2px solid black;
+      box-shadow: 3px 3px 0 0 black;
+      border-radius: var(--radius);
+      transition: transform 0.12s, box-shadow 0.12s;
+    }
+    .btn-neo-accent:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 0 black;
+    }
+    .btn-neo-accent:active {
+      transform: translate(1px, 1px);
+      box-shadow: 2px 2px 0 0 black;
+    }
+
+    /* Hero dot pattern */
+    .hero-dots {
+      background-image: radial-gradient(hsl(var(--primary) / 0.12) 1.5px, transparent 1.5px);
+      background-size: 28px 28px;
+    }
+
+    /* Stats bar */
+    .stats-bar {
+      background: hsl(var(--primary));
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+    }
+
+    /* Service list */
+    .service-item {
+      transition: transform 0.18s, box-shadow 0.18s;
+      border-radius: var(--radius);
+    }
+    .service-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    /* Timeline reviews */
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: hsl(var(--accent) / 0.35);
+      transform: translateX(-50%);
+    }
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+      background: hsl(var(--accent));
+      border: 2px solid black;
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+    .review-quote::before {
+      content: '"';
+      font-family: 'Instrument Serif', serif;
+      font-size: 120px;
+      line-height: 1;
+      color: hsl(var(--accent) / 0.12);
+      position: absolute;
+      top: -20px;
+      left: 12px;
+      pointer-events: none;
+    }
+
+    /* Floating WA button pulse */
+    @keyframes wa-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      50% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+    }
+    .wa-float {
+      animation: wa-pulse 2.2s ease-in-out infinite;
+    }
+
+    /* Card hover contact */
+    .contact-card {
+      transition: transform 0.18s, box-shadow 0.18s;
+      border-radius: var(--radius);
+    }
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.10);
+    }
+    .contact-card:hover .contact-icon {
+      color: hsl(var(--accent));
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+              DEFAULT: 'hsl(var(--primary))',
+              foreground: 'hsl(var(--primary-foreground))',
+            },
+            accent: {
+              DEFAULT: 'hsl(var(--accent))',
+              foreground: 'hsl(var(--accent-foreground))',
+            },
+            muted: {
+              DEFAULT: 'hsl(var(--muted))',
+              foreground: 'hsl(var(--muted-foreground))',
+            },
+            card: 'hsl(var(--card))',
+            border: 'hsl(var(--border))',
+          },
+          fontFamily: {
+            sans: ['Figtree', 'sans-serif'],
+            serif: ['Instrument Serif', 'serif'],
+          },
+          borderRadius: {
+            DEFAULT: 'var(--radius)',
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-foreground">
+
+  <!-- ===== HEADER NEO-BRUTALIST ===== -->
+  <header class="header-neo sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
+      <!-- Logo / Nome -->
+      <a href="#" class="flex items-center gap-3 no-underline group">
+        <div class="w-9 h-9 rounded-[var(--radius)] border-2 border-black flex items-center justify-center bg-accent text-accent-foreground font-bold text-lg font-serif shadow-[2px_2px_0_0_black]">
+          R
+        </div>
+        <span class="text-primary-foreground font-bold text-base leading-tight hidden sm:block" style="letter-spacing:-0.01em;">
+          RCB <span class="font-normal opacity-80">Assessoria</span>
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="#sobre" class="nav-link-neo">Sobre</a>
+        <a href="#especialidades" class="nav-link-neo">Especialidades</a>
+        <a href="#avaliacoes" class="nav-link-neo">Avaliações</a>
+        <a href="#contato" class="nav-link-neo">Contato</a>
+        <a href="https://wa.me/554131513181" target="_blank" rel="noopener" class="btn-neo-accent ml-3 px-4 py-2 text-sm flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </nav>
+
+      <!-- Mobile hamburger -->
+      <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 border-2 border-black rounded-[var(--radius)] bg-white/10" aria-label="Abrir menu">
+        <span class="block w-5 h-0.5 bg-white"></span>
+        <span class="block w-5 h-0.5 bg-white"></span>
+        <span class="block w-5 h-0.5 bg-white"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-primary border-t-2 border-black">
+      <nav class="flex flex-col px-4 py-3 gap-1">
+        <a href="#sobre" class="nav-link-neo py-2 border-b border-white/10" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Sobre</a>
+        <a href="#especialidades" class="nav-link-neo py-2 border-b border-white/10" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Especialidades</a>
+        <a href="#avaliacoes" class="nav-link-neo py-2 border-b border-white/10" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Avaliações</a>
+        <a href="#contato" class="nav-link-neo py-2 border-b border-white/10" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contato</a>
+        <a href="https://wa.me/554131513181" target="_blank" rel="noopener" class="btn-neo-accent mt-2 px-4 py-2.5 text-sm text-center flex items-center justify-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Fale pelo WhatsApp
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO — CENTERED STACKED ===== -->
+  <section id="hero" class="hero-dots relative overflow-hidden pt-16 pb-0">
+    <!-- Blobs decorativos -->
+    <div class="absolute top-0 left-0 w-72 h-72 rounded-full pointer-events-none" style="background:hsl(var(--primary)/0.18);filter:blur(80px);"></div>
+    <div class="absolute top-0 right-0 w-64 h-64 rounded-full pointer-events-none" style="background:hsl(var(--accent)/0.18);filter:blur(70px);"></div>
+
+    <div class="max-w-4xl mx-auto px-4 md:px-6 text-center relative z-10 pb-10 md:pb-14">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full border-2 border-black bg-accent text-accent-foreground font-semibold text-xs uppercase tracking-widest shadow-[2px_2px_0_0_black]">
+        <i data-lucide="shield-check" class="w-4 h-4"></i>
+        Referência em Contabilidade
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight mb-5" style="letter-spacing:-0.02em;">
+        Contabilidade que<br/>
+        <em class="not-italic" style="color:hsl(var(--primary));">resolve de verdade</em>
+      </h1>
+
+      <!-- Subtítulo -->
+      <p class="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto mb-4 leading-relaxed">
+        Cuidamos das obrigações fiscais, trabalhistas e contábeis da sua empresa com atenção real, resposta ágil e compromisso com o resultado.
+      </p>
+
+      <!-- Rating -->
+      <div class="flex items-center justify-center gap-2 mb-8 text-sm font-semibold text-foreground">
+        <span class="text-accent text-lg tracking-tight">★★★★★</span>
+        <span>5 no Google</span>
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
+        <a href="https://wa.me/554131513181" target="_blank" rel="noopener"
+           class="w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-3.5 rounded-[var(--radius)] font-bold text-base border-2 border-black shadow-[3px_3px_0_0_black] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0_0_black]"
+           style="background:#25d366;color:#fff;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar pelo WhatsApp
+        </a>
+        <a href="tel:+554131513181"
+           class="w-full sm:w-auto flex items-center justify-center gap-2 px-7 py-3.5 rounded-[var(--radius)] font-bold text-base border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-primary-foreground transition-all">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          (41) 3151-3181
+        </a>
+      </div>
+    </div>
+
+    <!-- Imagem hero full-width cinemática -->
+    <div class="relative w-full" style="aspect-ratio:21/9;border-top:3px solid hsl(var(--accent));border-bottom:3px solid black;">
+      <img
+        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=1500&fit=crop&q=80&auto=format"
+        alt="financial dashboard charts laptop"
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+      <div class="absolute inset-0" style="background:linear-gradient(to top, hsl(var(--primary)/0.55) 0%, transparent 60%);"></div>
+      <!-- Badge flutuante só no desktop -->
+      <div class="hidden sm:flex absolute bottom-6 right-6 bg-white border-2 border-black shadow-[3px_3px_0_0_black] rounded-[var(--radius)] px-4 py-2.5 items-center gap-2">
+        <span class="text-accent text-base font-bold">★★★★★</span>
+        <span class="text-foreground text-sm font-semibold">Nota máxima no Google</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS BAR — AFTER HERO ===== -->
+  <div class="stats-bar w-full">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="grid grid-cols-2 md:grid-cols-3 divide-x-0 md:divide-x divide-white/20">
+
+        <div class="flex flex-col items-center justify-center py-8 md:py-10 px-4 text-center border-b md:border-b-0 border-white/20">
+          <span class="font-serif text-4xl md:text-5xl text-accent" style="line-height:1;">5<span class="text-2xl align-super">★</span></span>
+          <span class="text-primary-foreground/70 text-xs uppercase tracking-widest mt-2 font-semibold">Avaliação Google</span>
+        </div>
+
+        <div class="flex flex-col items-center justify-center py-8 md:py-10 px-4 text-center border-b md:border-b-0 border-white/20 border-l border-white/20">
+          <span class="font-serif text-4xl md:text-5xl text-accent" style="line-height:1;">100%</span>
+          <span class="text-primary-foreground/70 text-xs uppercase tracking-widest mt-2 font-semibold">Recomendam</span>
+        </div>
+
+        <div class="col-span-2 md:col-span-1 flex flex-col items-center justify-center py-8 md:py-10 px-4 text-center border-t md:border-t-0 border-l-0 md:border-l border-white/20">
+          <span class="font-serif text-4xl md:text-5xl text-accent" style="line-height:1;">Ágil</span>
+          <span class="text-primary-foreground/70 text-xs uppercase tracking-widest mt-2 font-semibold">Respostas rápidas</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SOBRE ===== -->
+  <section id="sobre" class="py-16 md:py-28 bg-background">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+        <!-- Imagens com assimetria -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="rounded-[var(--radius)] overflow-hidden border-2 border-border" style="aspect-ratio:4/5;">
+            <img
+              src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=900&fit=crop&q=80&auto=format"
+              alt="tax documents calculator desk"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div class="rounded-[var(--radius)] overflow-hidden border-2 border-border mt-8" style="aspect-ratio:4/5;">
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=900&fit=crop&q=80&auto=format"
+              alt="modern office corridor professional"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <!-- Texto -->
+        <div>
+          <span class="eyebrow-line text-xs font-bold uppercase tracking-widest text-muted-foreground mb-6 block">Sobre a RCB</span>
+          <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl mb-6 leading-tight" style="letter-spacing:-0.02em;">
+            Comprometidos com<br/>
+            <em class="not-italic" style="color:hsl(var(--primary));">cada detalhe da sua empresa</em>
+          </h2>
+          <p class="text-muted-foreground leading-relaxed mb-4">
+            Na RCB Assessoria & Contabilidade, tratamos cada cliente com atenção individual. Respondemos com rapidez, resolvemos as pendências com precisão e mantemos tudo em ordem para que você foque no crescimento do seu negócio.
+          </p>
+          <p class="text-muted-foreground leading-relaxed mb-8">
+            Nossa equipe acompanha de perto as obrigações da sua empresa, antecipando situações e agindo com proatividade. Aqui, você não fica sem resposta.
+          </p>
+
+          <!-- Grid micro-benefícios -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex gap-3 items-start">
+              <div class="w-8 h-8 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background:hsl(var(--accent)/0.15);">
+                <i data-lucide="check-circle" class="w-4 h-4" style="color:hsl(var(--accent));"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-foreground">Resposta ágil</p>
+                <p class="text-xs text-muted-foreground">Sem deixar ninguém esperando</p>
+              </div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="w-8 h-8 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background:hsl(var(--primary)/0.10);">
+                <i data-lucide="shield" class="w-4 h-4" style="color:hsl(var(--primary));"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-foreground">Segurança fiscal</p>
+                <p class="text-xs text-muted-foreground">Tudo em conformidade</p>
+              </div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="w-8 h-8 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background:hsl(var(--accent)/0.15);">
+                <i data-lucide="users" class="w-4 h-4" style="color:hsl(var(--accent));"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-foreground">Atendimento pessoal</p>
+                <p class="text-xs text-muted-foreground">Relação de confiança</p>
+              </div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="w-8 h-8 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background:hsl(var(--primary)/0.10);">
+                <i data-lucide="trending-up" class="w-4 h-4" style="color:hsl(var(--primary));"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-foreground">Foco no seu crescimento</p>
+                <p class="text-xs text-muted-foreground">Parceiro estratégico</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ESPECIALIDADES — LIST WITH ICONS ===== -->
+  <section id="especialidades" class="py-16 md:py-28" style="background:hsl(var(--muted));">
+    <div class="max-w-4xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-12 md:mb-16">
+        <span class="eyebrow-line text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4 block">O que oferecemos</span>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight" style="letter-spacing:-0.02em;">
+          Soluções contábeis<br/>
+          <em class="not-italic" style="color:hsl(var(--primary));">completas para sua empresa</em>
+        </h2>
+      </div>
+
+      <!-- Lista de serviços -->
+      <div class="flex flex-col gap-1">
+
+        <!-- Item principal -->
+        <div class="service-item flex items-start gap-5 p-5 md:p-6 bg-card border border-border relative">
+          <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background:hsl(var(--accent)/0.18);">
+            <i data-lucide="file-text" class="w-6 h-6" style="color:hsl(var(--accent));"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <h3 class="font-serif text-lg md:text-xl text-foreground" style="letter-spacing:-0.01em;">Escrituração Contábil e Fiscal</h3>
+              <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded border" style="background:hsl(var(--accent)/0.15);color:hsl(var(--accent-foreground));border-color:hsl(var(--accent)/0.3);">Especialidade Principal</span>
+            </div>
+            <p class="text-sm text-muted-foreground leading-relaxed">Mantemos os livros contábeis e fiscais da sua empresa sempre atualizados, garantindo conformidade com a legislação e tranquilidade para você.</p>
+          </div>
+        </div>
+        <div class="w-full h-px" style="background:hsl(var(--border));"></div>
+
+        <!-- Item 2 -->
+        <div class="service-item flex items-start gap-5 p-5 md:p-6 bg-card border border-border">
+          <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background:hsl(var(--primary)/0.10);">
+            <i data-lucide="users-2" class="w-6 h-6" style="color:hsl(var(--primary));"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-serif text-lg md:text-xl text-foreground mb-1" style="letter-spacing:-0.01em;">Departamento Pessoal</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">Folha de pagamento, admissões, demissões, eSocial e todas as obrigações trabalhistas, cuidadas com precisão e dentro dos prazos.</p>
+          </div>
+        </div>
+        <div class="w-full h-px" style="background:hsl(var(--border));"></div>
+
+        <!-- Item 3 -->
+        <div class="service-item flex items-start gap-5 p-5 md:p-6 bg-card border border-border">
+          <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background:hsl(var(--accent)/0.15);">
+            <i data-lucide="building-2" class="w-6 h-6" style="color:hsl(var(--accent));"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-serif text-lg md:text-xl text-foreground mb-1" style="letter-spacing:-0.01em;">Abertura e Regularização de Empresas</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">Abrimos sua empresa ou regularizamos situações pendentes com agilidade, cuidando de toda a burocracia junto a Junta Comercial, Receita Federal e Prefeitura.</p>
+          </div>
+        </div>
+        <div class="w-full h-px" style="background:hsl(var(--border));"></div>
+
+        <!-- Item 4 -->
+        <div class="service-item flex items-start gap-5 p-5 md:p-6 bg-card border border-border">
+          <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background:hsl(var(--primary)/0.10);">
+            <i data-lucide="calculator" class="w-6 h-6" style="color:hsl(var(--primary));"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-serif text-lg md:text-xl text-foreground mb-1" style="letter-spacing:-0.01em;">Planejamento Tributário</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">Analisamos o regime tributário ideal para o seu negócio, reduzindo a carga fiscal de forma legal e aumentando a competitividade da sua empresa.</p>
+          </div>
+        </div>
+        <div class="w-full h-px" style="background:hsl(var(--border));"></div>
+
+        <!-- Item 5 -->
+        <div class="service-item flex items-start gap-5 p-5 md:p-6 bg-card border border-border">
+          <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background:hsl(var(--accent)/0.15);">
+            <i data-lucide="message-circle" class="w-6 h-6" style="color:hsl(var(--accent));"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-serif text-lg md:text-xl text-foreground mb-1" style="letter-spacing:-0.01em;">Atendimento Consultivo Personalizado</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">Mais do que resolver números, somos parceiros no dia a dia. Respondemos dúvidas com rapidez, orientamos decisões e cuidamos para que sua empresa esteja sempre protegida.</p>
+          </div>
+        </div>
+        <div class="w-full h-px" style="background:hsl(var(--border));"></div>
+
+        <!-- Item 6 -->
+        <div class="service-item flex items-start gap-5 p-5 md:p-6 bg-card border border-border">
+          <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0" style="background:hsl(var(--primary)/0.10);">
+            <i data-lucide="clipboard-check" class="w-6 h-6" style="color:hsl(var(--primary));"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-serif text-lg md:text-xl text-foreground mb-1" style="letter-spacing:-0.01em;">Declarações e Obrigações Acessórias</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">SPED, DCTF, DIRF, RAIS e todas as obrigações acessórias entregues dentro do prazo, evitando multas e mantendo a saúde fiscal da sua empresa.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AVALIAÇÕES — TIMELINE ===== -->
+  <section id="avaliacoes" class="py-16 md:py-28 bg-background">
+    <div class="max-w-5xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-12 md:mb-16">
+        <span class="eyebrow-line text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4 block">O que os clientes dizem</span>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight mb-3" style="letter-spacing:-0.02em;">
+          A opinião de quem<br/>
+          <em class="not-italic" style="color:hsl(var(--primary));">confia no nosso trabalho</em>
+        </h2>
+        <p class="text-muted-foreground text-sm md:text-base">Avaliações verificadas no Google Minha Empresa</p>
+      </div>
+
+      <!-- Timeline vertical -->
+      <div class="relative">
+        <!-- Linha central (oculta em mobile) -->
+        <div class="timeline-line hidden md:block"></div>
+
+        <div class="flex flex-col gap-10 md:gap-16">
+
+          <!-- Review 1 — Esquerda -->
+          <div class="relative flex flex-col md:flex-row md:justify-end md:pr-10 lg:pr-16">
+            <!-- Ponto na linha (desktop) -->
+            <div class="timeline-dot hidden md:block" style="top:28px;"></div>
+            <div class="md:w-5/12 review-quote relative bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm">
+              <div class="flex gap-1 mb-3" style="color:hsl(var(--accent));">★★★★★</div>
+              <p class="text-foreground text-sm leading-relaxed mb-4">
+                "Ótimo atendimento, sempre disponíveis para tirar dúvidas e resolver as pendências. Equipe muito atenciosa e profissional. Recomendo com toda a certeza!"
+              </p>
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm text-primary-foreground flex-shrink-0" style="background:hsl(var(--primary));">C</div>
+                <div>
+                  <p class="font-semibold text-sm text-foreground">Cliente RCB</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 — Direita -->
+          <div class="relative flex flex-col md:flex-row md:justify-start md:pl-10 lg:pl-16">
+            <div class="timeline-dot hidden md:block" style="top:28px;"></div>
+            <div class="md:w-5/12 review-quote relative bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm">
+              <div class="flex gap-1 mb-3" style="color:hsl(var(--accent));">★★★★★</div>
+              <p class="text-foreground text-sm leading-relaxed mb-4">
+                "Atendimento rápido e eficiente. Resolveram tudo o que precisávamos sem complicação. Profissionais sérios e comprometidos com o cliente. Nota máxima!"
+              </p>
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm text-primary-foreground flex-shrink-0" style="background:hsl(var(--primary));">E</div>
+                <div>
+                  <p class="font-semibold text-sm text-foreground">Empresário parceiro</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 — Esquerda -->
+          <div class="relative flex flex-col md:flex-row md:justify-end md:pr-10 lg:pr-16">
+            <div class="timeline-dot hidden md:block" style="top:28px;"></div>
+            <div class="md:w-5/12 review-quote relative bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm">
+              <div class="flex gap-1 mb-3" style="color:hsl(var(--accent));">★★★★★</div>
+              <p class="text-foreground text-sm leading-relaxed mb-4">
+                "Super recomendo a RCB. Profissionais competentes, atendem com qualidade e sempre esclarecem todas as dúvidas. Excelente escritório de contabilidade!"
+              </p>
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm text-primary-foreground flex-shrink-0" style="background:hsl(var(--primary));">M</div>
+                <div>
+                  <p class="font-semibold text-sm text-foreground">Cliente satisfeito</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 4 — Direita -->
+          <div class="relative flex flex-col md:flex-row md:justify-start md:pl-10 lg:pl-16">
+            <div class="timeline-dot hidden md:block" style="top:28px;"></div>
+            <div class="md:w-5/12 review-quote relative bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm">
+              <div class="flex gap-1 mb-3" style="color:hsl(var(--accent));">★★★★★</div>
+              <p class="text-foreground text-sm leading-relaxed mb-4">
+                "Equipe muito atenciosa e comprometida. Sempre prontos para ajudar, com respostas claras e objetivas. Fiquei muito satisfeito com o serviço prestado."
+              </p>
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm text-primary-foreground flex-shrink-0" style="background:hsl(var(--primary));">J</div>
+                <div>
+                  <p class="font-semibold text-sm text-foreground">João, empresário</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 5 — Esquerda -->
+          <div class="relative flex flex-col md:flex-row md:justify-end md:pr-10 lg:pr-16">
+            <div class="timeline-dot hidden md:block" style="top:28px;"></div>
+            <div class="md:w-5/12 review-quote relative bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm">
+              <div class="flex gap-1 mb-3" style="color:hsl(var(--accent));">★★★★★</div>
+              <p class="text-foreground text-sm leading-relaxed mb-4">
+                "Contabilidade séria e de confiança. Cuida de tudo com responsabilidade e atenção. Desde que contratei, não tive mais nenhum problema fiscal ou trabalhista."
+              </p>
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm text-primary-foreground flex-shrink-0" style="background:hsl(var(--primary));">A</div>
+                <div>
+                  <p class="font-semibold text-sm text-foreground">Ana, empresária</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Link Google -->
+      <div class="text-center mt-12">
+        <a href="https://maps.google.com/?cid=188076296982817844&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+           target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent transition-colors underline underline-offset-4">
+          Ver avaliações no Google
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTATO ===== -->
+  <section id="contato" class="py-16 md:py-28" style="background:hsl(var(--muted));">
+    <div class="max-w-5xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-10 md:mb-14">
+        <span class="eyebrow-line text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4 block">Entre em contato</span>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight" style="letter-spacing:-0.02em;">
+          Pronto para resolver<br/>
+          <em class="not-italic" style="color:hsl(var(--primary));">as suas questões contábeis?</em>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+        <!-- Telefone -->
+        <a href="tel:+554131513181" class="contact-card flex flex-col items-center text-center p-7 bg-card border border-border no-underline group">
+          <div class="w-13 h-13 w-14 h-14 rounded-[var(--radius)] flex items-center justify-center mb-4 contact-icon transition-colors" style="background:hsl(var(--primary)/0.10);color:hsl(var(--primary));">
+            <i data-lucide="phone" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">Telefone</span>
+          <span class="font-bold text-lg text-foreground">(41) 3151-3181</span>
+          <span class="text-xs text-muted-foreground mt-1">Ligue agora</span>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/554131513181" target="_blank" rel="noopener" class="contact-card flex flex-col items-center text-center p-7 bg-card border border-border no-underline group">
+          <div class="w-14 h-14 rounded-[var(--radius)] flex items-center justify-center mb-4 transition-colors" style="background:#25d366;color:#fff;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <span class="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">WhatsApp</span>
+          <span class="font-bold text-lg text-foreground">(41) 3151-3181</span>
+          <span class="text-xs text-muted-foreground mt-1">Resposta rápida</span>
+        </a>
+
+        <!-- Endereço -->
+        <div class="contact-card flex flex-col items-center text-center p-7 bg-card border border-border">
+          <div class="w-14 h-14 rounded-[var(--radius)] flex items-center justify-center mb-4 contact-icon" style="background:hsl(var(--accent)/0.15);color:hsl(var(--accent));">
+            <i data-lucide="map-pin" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">Endereço</span>
+          <span class="font-bold text-base text-foreground leading-snug">R. Realeza, 110 - Casa 05</span>
+          <span class="text-sm text-muted-foreground mt-1">Sítio Cercado, Curitiba - PR</span>
+          <a href="https://maps.google.com/?cid=188076296982817844&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+             target="_blank" rel="noopener"
+             class="text-xs text-primary hover:text-accent font-semibold mt-2 underline underline-offset-2 transition-colors">
+            Ver no Google Maps
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section id="cta-final" class="py-16 md:py-28 bg-background">
+    <div class="max-w-4xl mx-auto px-4 md:px-6">
+      <div class="relative rounded-[var(--radius)] overflow-hidden border-2 border-black shadow-[6px_6px_0_0_black] px-8 md:px-14 py-12 md:py-16 text-center" style="background:hsl(var(--primary));">
+        <!-- Blob decorativo -->
+        <div class="absolute -top-12 -right-12 w-48 h-48 rounded-full pointer-events-none" style="background:hsl(var(--accent)/0.20);filter:blur(60px);"></div>
+        <div class="absolute -bottom-10 -left-10 w-40 h-40 rounded-full pointer-events-none" style="background:hsl(var(--accent)/0.12);filter:blur(50px);"></div>
+
+        <div class="relative z-10">
+          <p class="text-xs font-bold uppercase tracking-widest mb-5" style="color:hsl(var(--accent));">Pronto para começar?</p>
+          <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-primary-foreground leading-tight mb-5" style="letter-spacing:-0.02em;">
+            Resolva a contabilidade<br/>
+            <em class="not-italic" style="color:hsl(var(--accent));">da sua empresa hoje mesmo</em>
+          </h2>
+          <p class="text-primary-foreground/75 text-base md:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
+            Entre em contato agora. Respondemos com rapidez e sem enrolação. Sua empresa merece uma contabilidade à altura.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="https://wa.me/554131513181" target="_blank" rel="noopener"
+               class="flex items-center justify-center gap-2 px-8 py-4 rounded-[var(--radius)] font-bold text-base border-2 border-black shadow-[3px_3px_0_0_black] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0_0_black]"
+               style="background:#25d366;color:#fff;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Falar pelo WhatsApp
+            </a>
+            <a href="tel:+554131513181"
+               class="flex items-center justify-center gap-2 px-8 py-4 rounded-[var(--radius)] font-bold text-base border-2 border-white/40 text-primary-foreground hover:bg-white/10 transition-all">
+              <i data-lucide="phone" class="w-5 h-5"></i>
+              (41) 3151-3181
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="py-8" style="background:hsl(var(--foreground));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 text-center">
+      <p class="text-xs" style="color:hsl(0 0% 98% / 0.45);">
+        Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===== BOTÃO FLUTUANTE WHATSAPP ===== -->
+  <a href="https://wa.me/554131513181" target="_blank" rel="noopener" aria-label="WhatsApp"
+     class="wa-float fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-2 border-black"
+     style="background:#25d366;color:#fff;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- JS: hamburguer + lucide init -->
+  <script>
+    // Menu mobile
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+
+    // Lucide icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
