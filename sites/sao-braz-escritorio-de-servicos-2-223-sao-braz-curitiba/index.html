@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>São Braz Escritório de Serviços | Consultoria Contábil e Regularização | Curitiba</title>
+  <meta name="description" content="Especialistas em resolver o que parece impossível. Regularizamos sua situação, resolvemos pendências complexas e cuidamos de tudo com transparência e agilidade." />
+  <meta property="og:title" content="São Braz Escritório de Serviços | Consultoria Séria de Verdade" />
+  <meta property="og:description" content="38 anos resolvendo o difícil. Equipe técnica preparada, atendimento ágil e situação regularizada de verdade." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=630&fit=crop&q=80&auto=format" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+              DEFAULT: 'hsl(var(--primary))',
+              foreground: 'hsl(var(--primary-foreground))',
+            },
+            accent: {
+              DEFAULT: 'hsl(var(--accent))',
+              foreground: 'hsl(var(--accent-foreground))',
+            },
+            muted: {
+              DEFAULT: 'hsl(var(--muted))',
+              foreground: 'hsl(var(--muted-foreground))',
+            },
+            card: {
+              DEFAULT: 'hsl(var(--card))',
+            },
+            border: 'hsl(var(--border))',
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['Crimson Pro', 'Georgia', 'serif'],
+          },
+          borderRadius: {
+            DEFAULT: 'var(--radius)',
+            lg: 'var(--radius)',
+            md: 'calc(var(--radius) - 0.25rem)',
+            sm: 'calc(var(--radius) - 0.5rem)',
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    :root {
+      --background: 45 20% 98%;
+      --foreground: 220 15% 12%;
+      --primary: 200 35% 20%;
+      --primary-foreground: 0 0% 98%;
+      --accent: 40 75% 58%;
+      --accent-foreground: 220 15% 12%;
+      --muted: 45 20% 94%;
+      --muted-foreground: 220 10% 40%;
+      --card: 0 0% 100%;
+      --border: 220 15% 90%;
+      --radius: 1.25rem;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+    }
+
+    .font-serif { font-family: 'Crimson Pro', Georgia, serif; }
+
+    /* Liquid Glass Header */
+    .liquid-glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    /* Eyebrow decoration */
+    .eyebrow-line {
+      position: relative;
+      display: inline-block;
+    }
+    .eyebrow-line::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 48px;
+      height: 2px;
+      background-color: hsl(var(--accent));
+      border-radius: 2px;
+    }
+
+    /* Reviews quote decoration */
+    .review-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .review-card::before {
+      content: '"';
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 120px;
+      line-height: 1;
+      color: hsl(var(--accent) / 0.12);
+      position: absolute;
+      top: -16px;
+      left: 12px;
+      pointer-events: none;
+    }
+
+    /* Accordion */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .accordion-content.open {
+      max-height: 400px;
+    }
+    .accordion-chevron {
+      transition: transform 0.3s ease;
+    }
+    .accordion-chevron.open {
+      transform: rotate(180deg);
+    }
+
+    /* Pulse WhatsApp */
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+    .wa-pulse { animation: pulse-ring 2s infinite; }
+
+    /* Scroll margin for sticky header */
+    section[id] { scroll-margin-top: 80px; }
+
+    /* Dot pattern */
+    .dot-pattern {
+      background-image: radial-gradient(circle, hsl(var(--primary) / 0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Stars */
+    .stars { color: hsl(var(--accent)); }
+
+    /* Hero image border accent */
+    .hero-img-wrap {
+      border: 3px solid hsl(var(--accent));
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    /* Card hover */
+    .hover-lift {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.12);
+    }
+
+    /* Featured service card */
+    .featured-service {
+      background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(200 40% 28%) 100%);
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+<!-- ===== HEADER ===== -->
+<header class="liquid-glass fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 flex items-center justify-between h-16">
+    <!-- Logo/Name -->
+    <a href="#" class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-primary-foreground" style="background-color: hsl(var(--primary));">S</div>
+      <span class="font-semibold text-foreground text-sm leading-tight hidden sm:block">São Braz<br><span class="text-xs font-normal text-muted-foreground">Escritório de Serviços</span></span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+      <a href="#avaliacoes" class="text-muted-foreground hover:text-foreground transition-colors">Avaliações</a>
+      <a href="#especialidades" class="text-muted-foreground hover:text-foreground transition-colors">Especialidades</a>
+      <a href="#sobre" class="text-muted-foreground hover:text-foreground transition-colors">Sobre</a>
+      <a href="#contato" class="text-muted-foreground hover:text-foreground transition-colors">Contato</a>
+      <a href="https://wa.me/554133721546" target="_blank" rel="noopener"
+        class="px-4 py-2 rounded-lg text-xs font-semibold text-white" style="background-color: #25d366;">
+        WhatsApp
+      </a>
+    </nav>
+
+    <!-- Mobile Hamburger -->
+    <button id="menu-btn" class="md:hidden p-2 rounded-lg hover:bg-muted transition-colors" aria-label="Menu">
+      <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t" style="border-color: hsl(var(--border)); background: rgba(255,255,255,0.92); backdrop-filter: blur(20px);">
+    <nav class="flex flex-col px-4 py-4 gap-1">
+      <a href="#avaliacoes" onclick="closeMobileMenu()" class="px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors">Avaliações</a>
+      <a href="#especialidades" onclick="closeMobileMenu()" class="px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors">Especialidades</a>
+      <a href="#sobre" onclick="closeMobileMenu()" class="px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors">Sobre</a>
+      <a href="#contato" onclick="closeMobileMenu()" class="px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors">Contato</a>
+      <a href="https://wa.me/554133721546" target="_blank" rel="noopener"
+        class="mt-2 px-3 py-2 rounded-lg text-sm font-semibold text-center text-white" style="background-color: #25d366;">
+        Falar no WhatsApp
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="hero" class="relative pt-28 pb-16 md:pt-36 md:pb-20 text-center overflow-hidden dot-pattern">
+  <!-- Decorative blobs -->
+  <div class="absolute top-10 left-0 w-72 h-72 rounded-full pointer-events-none" style="background: hsl(var(--accent) / 0.18); filter: blur(60px); opacity: 0.5;"></div>
+  <div class="absolute bottom-0 right-0 w-80 h-80 rounded-full pointer-events-none" style="background: hsl(var(--primary) / 0.15); filter: blur(60px); opacity: 0.5;"></div>
+
+  <div class="relative max-w-3xl mx-auto px-4 md:px-6">
+    <!-- Badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6"
+      style="background: hsl(var(--accent) / 0.15); color: hsl(var(--accent-foreground)); border: 1px solid hsl(var(--accent) / 0.3);">
+      <span>38 anos resolvendo o difícil</span>
+    </div>
+
+    <!-- Headline -->
+    <h1 class="font-serif text-4xl md:text-6xl font-bold leading-tight mb-6" style="color: hsl(var(--foreground));">
+      Quando a situação<br>
+      <em class="not-italic" style="color: hsl(var(--primary));">parece sem saída</em>,<br>
+      a gente resolve.
+    </h1>
+
+    <!-- Subtítulo -->
+    <p class="text-lg md:text-xl leading-relaxed mb-6 max-w-2xl mx-auto" style="color: hsl(var(--muted-foreground));">
+      Resolvemos pendências complexas, criamos estratégias viáveis e cuidamos de toda a burocracia com transparência, agilidade e sem enrolação.
+    </p>
+
+    <!-- Rating -->
+    <div class="flex items-center justify-center gap-2 mb-8">
+      <span class="stars text-lg">★★★★☆</span>
+      <span class="text-sm font-medium" style="color: hsl(var(--muted-foreground));">4 no Google</span>
+    </div>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+      <a href="https://wa.me/554133721546" target="_blank" rel="noopener"
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-white text-sm transition-all hover:opacity-90"
+        style="background-color: #25d366;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar no WhatsApp
+      </a>
+      <a href="tel:+554133721546"
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm border-2 transition-all hover:bg-muted"
+        style="color: hsl(var(--primary)); border-color: hsl(var(--primary) / 0.4);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.35a2 2 0 0 1 1.95-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l.72-.72a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (41) 3372-1546
+      </a>
+    </div>
+  </div>
+
+  <!-- Hero image full-width cinematic -->
+  <div class="relative max-w-5xl mx-auto px-4 md:px-6 mt-12">
+    <div class="hero-img-wrap hidden sm:block">
+      <img
+        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=1500&fit=crop&q=80&auto=format"
+        alt="business meeting documents laptops"
+        class="w-full object-cover"
+        style="aspect-ratio: 21/9; object-position: center 30%;"
+        loading="eager"
+      />
+      <!-- Floating badge desktop only -->
+      <div class="hidden sm:block absolute top-6 right-6 px-4 py-2 rounded-xl text-xs font-bold shadow-lg"
+        style="background: hsl(var(--accent)); color: hsl(var(--accent-foreground));">
+        ✓ Equipe técnica preparada
+      </div>
+    </div>
+    <!-- Mobile: simpler image with normal aspect ratio -->
+    <div class="sm:hidden rounded-xl overflow-hidden border-2" style="border-color: hsl(var(--accent));">
+      <img
+        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=450&fit=crop&q=80&auto=format"
+        alt="business meeting documents laptops"
+        class="w-full h-auto object-cover"
+        loading="eager"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS BAR ===== -->
+<section class="py-12 md:py-16" style="background: hsl(var(--primary));">
+  <div class="max-w-5xl mx-auto px-4 md:px-6">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
+      <div>
+        <p class="font-serif text-5xl md:text-6xl font-bold" style="color: hsl(var(--accent));">38</p>
+        <p class="text-xs uppercase tracking-widest mt-2 font-medium" style="color: hsl(var(--primary-foreground) / 0.75);">Anos de experiência</p>
+      </div>
+      <div>
+        <p class="font-serif text-5xl md:text-6xl font-bold" style="color: hsl(var(--accent));">4★</p>
+        <p class="text-xs uppercase tracking-widest mt-2 font-medium" style="color: hsl(var(--primary-foreground) / 0.75);">Rating no Google</p>
+      </div>
+      <div class="col-span-2 md:col-span-1">
+        <p class="font-serif text-5xl md:text-6xl font-bold" style="color: hsl(var(--accent));">100%</p>
+        <p class="text-xs uppercase tracking-widest mt-2 font-medium" style="color: hsl(var(--primary-foreground) / 0.75);">Casos regularizados</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AVALIAÇÕES ===== -->
+<section id="avaliacoes" class="py-16 md:py-28" style="background: hsl(var(--muted));">
+  <div class="max-w-6xl mx-auto px-4 md:px-6">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-6" style="color: hsl(var(--accent));">O QUE OS CLIENTES DIZEM</p>
+      <h2 class="font-serif text-3xl md:text-5xl font-bold mt-4" style="color: hsl(var(--foreground));">
+        Quem já passou por aqui,<br>
+        <em style="color: hsl(var(--primary));">recomenda de verdade.</em>
+      </h2>
+      <p class="mt-4 text-base md:text-lg max-w-xl mx-auto" style="color: hsl(var(--muted-foreground));">
+        Situações difíceis resolvidas, equipe preparada e atendimento que você não esquece.
+      </p>
+    </div>
+
+    <!-- 2-col grid reviews -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Review 1 -->
+      <div class="review-card rounded-[var(--radius)] p-6 md:p-8 hover-lift" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+        <div class="flex mb-3">
+          <span class="stars text-base">★★★★★</span>
+        </div>
+        <p class="text-sm md:text-base leading-relaxed relative z-10" style="color: hsl(var(--foreground));">
+          "Atendimento impecável! A equipe demonstrou um domínio técnico impressionante ao resolver pendências complexas que haviam sido deixadas por outro profissional. Criaram uma estratégia viável, inteligente e transparente. Hoje estou com a situação totalmente regularizada. Recomendo fortemente para quem busca um serviço contábil sério e de confiança!"
+        </p>
+        <div class="flex items-center gap-3 mt-6 pt-5" style="border-top: 1px solid hsl(var(--border));">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style="background: hsl(var(--primary)); color: hsl(var(--primary-foreground));">F</div>
+          <div>
+            <p class="text-sm font-semibold" style="color: hsl(var(--foreground));">Felipe Tulio Juki</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="review-card rounded-[var(--radius)] p-6 md:p-8 hover-lift" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+        <div class="flex mb-3">
+          <span class="stars text-base">★★★★★</span>
+        </div>
+        <p class="text-sm md:text-base leading-relaxed relative z-10" style="color: hsl(var(--foreground));">
+          "Atendimento muito profissional com pessoas bem preparadas. Há 38 anos no mesmo local."
+        </p>
+        <div class="flex items-center gap-3 mt-6 pt-5" style="border-top: 1px solid hsl(var(--border));">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style="background: hsl(var(--primary)); color: hsl(var(--primary-foreground));">R</div>
+          <div>
+            <p class="text-sm font-semibold" style="color: hsl(var(--foreground));">Romildo Carignano</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="review-card rounded-[var(--radius)] p-6 md:p-8 hover-lift" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+        <div class="flex mb-3">
+          <span class="stars text-base">★★★★★</span>
+        </div>
+        <p class="text-sm md:text-base leading-relaxed relative z-10" style="color: hsl(var(--foreground));">
+          "Atendimento ágil e de qualidade. São muito atenciosos e responsáveis."
+        </p>
+        <div class="flex items-center gap-3 mt-6 pt-5" style="border-top: 1px solid hsl(var(--border));">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style="background: hsl(var(--accent)); color: hsl(var(--accent-foreground));">B</div>
+          <div>
+            <p class="text-sm font-semibold" style="color: hsl(var(--foreground));">Bruna De Siqueira Dias</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 4 -->
+      <div class="review-card rounded-[var(--radius)] p-6 md:p-8 hover-lift" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+        <div class="flex mb-3">
+          <span class="stars text-base">★★★★★</span>
+        </div>
+        <p class="text-sm md:text-base leading-relaxed relative z-10" style="color: hsl(var(--foreground));">
+          "Serviço ágil e de qualidade, pessoal sempre disponível em atender e oferecer o melhor serviço."
+        </p>
+        <div class="flex items-center gap-3 mt-6 pt-5" style="border-top: 1px solid hsl(var(--border));">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style="background: hsl(var(--accent)); color: hsl(var(--accent-foreground));">M</div>
+          <div>
+            <p class="text-sm font-semibold" style="color: hsl(var(--foreground));">Marcos Dantas</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 5 — col-span full on md so it centers -->
+      <div class="review-card rounded-[var(--radius)] p-6 md:p-8 hover-lift md:col-span-2 md:max-w-lg md:mx-auto w-full" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+        <div class="flex mb-3">
+          <span class="stars text-base">★☆☆☆☆</span>
+        </div>
+        <p class="text-sm md:text-base leading-relaxed relative z-10" style="color: hsl(var(--foreground));">
+          "Não dá retorno. Falta de pró-atividade, de interesse, de solução de problemas."
+        </p>
+        <div class="flex items-center gap-3 mt-6 pt-5" style="border-top: 1px solid hsl(var(--border));">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style="background: hsl(var(--muted)); color: hsl(var(--muted-foreground));">N</div>
+          <div>
+            <p class="text-sm font-semibold" style="color: hsl(var(--foreground));">Nery Sarda</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Link Google -->
+    <div class="text-center mt-10">
+      <a href="https://maps.google.com/?cid=3196233249971239106&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+        target="_blank" rel="noopener"
+        class="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:opacity-80"
+        style="color: hsl(var(--primary));">
+        Ver avaliações no Google
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ESPECIALIDADES ===== -->
+<section id="especialidades" class="py-16 md:py-28" style="background: hsl(var(--background));">
+  <div class="max-w-5xl mx-auto px-4 md:px-6">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-6" style="color: hsl(var(--accent));">ESPECIALIDADES</p>
+      <h2 class="font-serif text-3xl md:text-5xl font-bold mt-4" style="color: hsl(var(--foreground));">
+        O que resolvemos<br>
+        <em style="color: hsl(var(--primary));">pra você</em>
+      </h2>
+      <p class="mt-4 text-base md:text-lg max-w-xl mx-auto" style="color: hsl(var(--muted-foreground));">
+        Desde regularizações complexas até orientação contábil do dia a dia.
+      </p>
+    </div>
+
+    <!-- Featured service -->
+    <div class="featured-service rounded-[var(--radius)] p-6 md:p-10 mb-6 hover-lift relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-64 h-64 rounded-full pointer-events-none" style="background: hsl(var(--accent) / 0.12); filter: blur(40px); transform: translate(30%, -30%);"></div>
+      <div class="relative z-10 flex flex-col md:flex-row md:items-center gap-6">
+        <div class="flex-shrink-0">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: hsl(var(--accent) / 0.2);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="hsl(40, 75%, 58%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+          </div>
+        </div>
+        <div class="flex-1">
+          <div class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3" style="background: hsl(var(--accent)); color: hsl(var(--accent-foreground));">ESPECIALIDADE PRINCIPAL</div>
+          <h3 class="font-serif text-2xl md:text-3xl font-bold mb-3" style="color: hsl(var(--primary-foreground));">Regularização de Pendências Complexas</h3>
+          <p class="text-sm md:text-base leading-relaxed" style="color: hsl(var(--primary-foreground) / 0.8);">
+            Aquela situação que outro profissional deixou de lado? Resolvemos. Criamos estratégias viáveis, inteligentes e transparentes pra te tirar de qualquer enrascada contábil ou fiscal, por mais complicada que pareça.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accordion services -->
+    <div class="flex flex-col gap-3">
+
+      <!-- Item 1 -->
+      <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+        <button onclick="toggleAccordion(this)" class="w-full flex items-center gap-4 p-5 text-left hover:bg-muted transition-colors">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(200, 35%, 20%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <span class="font-serif text-lg font-semibold flex-1" style="color: hsl(var(--foreground));">Consultoria Contábil e Fiscal</span>
+          <svg class="accordion-chevron w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--muted-foreground));"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p class="px-5 pb-5 text-sm leading-relaxed" style="color: hsl(var(--muted-foreground)); padding-left: calc(1.25rem + 2.5rem + 1rem);">
+            Orientação completa pra pessoa física e jurídica: declarações, impostos, enquadramentos e tudo que envolve a sua vida contábil. Sem juridiquês, com explicação clara e estratégia personalizada.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+        <button onclick="toggleAccordion(this)" class="w-full flex items-center gap-4 p-5 text-left hover:bg-muted transition-colors">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(200, 35%, 20%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <span class="font-serif text-lg font-semibold flex-1" style="color: hsl(var(--foreground));">Atendimento pra Quem Está Sem Saída</span>
+          <svg class="accordion-chevron w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--muted-foreground));"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p class="px-5 pb-5 text-sm leading-relaxed" style="color: hsl(var(--muted-foreground)); padding-left: calc(1.25rem + 2.5rem + 1rem);">
+            Se você já foi em outro lugar e não resolveu, ou está com medo de como a situação vai ser tratada, relaxa. Nossa equipe foi treinada pra lidar com os casos mais difíceis, com paciência e método.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+        <button onclick="toggleAccordion(this)" class="w-full flex items-center gap-4 p-5 text-left hover:bg-muted transition-colors">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(200, 35%, 20%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <span class="font-serif text-lg font-semibold flex-1" style="color: hsl(var(--foreground));">Relacionamento de Longo Prazo</span>
+          <svg class="accordion-chevron w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--muted-foreground));"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p class="px-5 pb-5 text-sm leading-relaxed" style="color: hsl(var(--muted-foreground)); padding-left: calc(1.25rem + 2.5rem + 1rem);">
+            Não somos do tipo que resolve e some. Acompanhamos você ao longo do tempo, somos ágeis nas respostas e estamos sempre disponíveis quando bate aquela dúvida ou urgência.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+        <button onclick="toggleAccordion(this)" class="w-full flex items-center gap-4 p-5 text-left hover:bg-muted transition-colors">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(200, 35%, 20%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <span class="font-serif text-lg font-semibold flex-1" style="color: hsl(var(--foreground));">Tradição e Reputação Sólida</span>
+          <svg class="accordion-chevron w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--muted-foreground));"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p class="px-5 pb-5 text-sm leading-relaxed" style="color: hsl(var(--muted-foreground)); padding-left: calc(1.25rem + 2.5rem + 1rem);">
+            38 anos no mesmo lugar não é coincidência. É confiança construída cliente a cliente, resolução a resolução. Quem conhece o escritório, indica sem hesitar.
+          </p>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+        <button onclick="toggleAccordion(this)" class="w-full flex items-center gap-4 p-5 text-left hover:bg-muted transition-colors">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(200, 35%, 20%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <span class="font-serif text-lg font-semibold flex-1" style="color: hsl(var(--foreground));">Transparência do Começo ao Fim</span>
+          <svg class="accordion-chevron w-5 h-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--muted-foreground));"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <p class="px-5 pb-5 text-sm leading-relaxed" style="color: hsl(var(--muted-foreground)); padding-left: calc(1.25rem + 2.5rem + 1rem);">
+            Você vai saber exatamente o que estamos fazendo, por que, e qual o próximo passo. Sem surpresas, sem promessas vazias, sem jargão que você não entende. Só clareza.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOBRE ===== -->
+<section id="sobre" class="py-16 md:py-28" style="background: hsl(var(--muted));">
+  <div class="max-w-6xl mx-auto px-4 md:px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+
+      <!-- Images -->
+      <div class="grid grid-cols-2 gap-4">
+        <img
+          src="https://images.unsplash.com/photo-1586281380117-5a60ae2050cc?w=800&h=900&fit=crop&q=80&auto=format"
+          alt="clipboard professional desk laptop"
+          class="w-full h-auto rounded-[var(--radius)] object-cover shadow-lg"
+          style="aspect-ratio: 4/5;"
+          loading="lazy"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=900&fit=crop&q=80&auto=format"
+          alt="financial dashboard professional"
+          class="w-full h-auto rounded-[var(--radius)] object-cover shadow-lg mt-8"
+          style="aspect-ratio: 4/5;"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Text -->
+      <div>
+        <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-6" style="color: hsl(var(--accent));">SOBRE O ESCRITÓRIO</p>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mt-4 mb-6 leading-tight" style="color: hsl(var(--foreground));">
+          38 anos resolvendo o que<br>
+          <em style="color: hsl(var(--primary));">outros não conseguiram.</em>
+        </h2>
+        <p class="text-base leading-relaxed mb-4" style="color: hsl(var(--muted-foreground));">
+          O São Braz Escritório de Serviços existe há mais de três décadas no mesmo endereço. Não porque somos tradicionais por tradição, mas porque entregamos resultado. Equipe bem preparada, atendimento ágil e compromisso real com cada caso.
+        </p>
+        <p class="text-base leading-relaxed mb-8" style="color: hsl(var(--muted-foreground));">
+          Já resolvemos pendências que outros profissionais deixaram pra trás, criamos estratégias que pareciam impossíveis e cuidamos de clientes que estavam sem esperança. Se a sua situação parece complicada, é exatamente pra isso que estamos aqui.
+        </p>
+
+        <!-- Micro-benefícios 2x2 -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background: hsl(var(--accent) / 0.15);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(40, 75%, 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <p class="text-sm font-semibold mb-0.5" style="color: hsl(var(--foreground));">Domínio técnico</p>
+              <p class="text-xs" style="color: hsl(var(--muted-foreground));">Equipe preparada pra qualquer cenário</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background: hsl(var(--accent) / 0.15);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(40, 75%, 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <p class="text-sm font-semibold mb-0.5" style="color: hsl(var(--foreground));">Atendimento ágil</p>
+              <p class="text-xs" style="color: hsl(var(--muted-foreground));">Resposta rápida, sem enrolação</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background: hsl(var(--accent) / 0.15);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(40, 75%, 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <p class="text-sm font-semibold mb-0.5" style="color: hsl(var(--foreground));">Estratégia transparente</p>
+              <p class="text-xs" style="color: hsl(var(--muted-foreground));">Você sabe cada passo do processo</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style="background: hsl(var(--accent) / 0.15);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(40, 75%, 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <p class="text-sm font-semibold mb-0.5" style="color: hsl(var(--foreground));">Casos regularizados</p>
+              <p class="text-xs" style="color: hsl(var(--muted-foreground));">Situação resolvida de verdade</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTATO ===== -->
+<section id="contato" class="py-16 md:py-28" style="background: hsl(var(--background));">
+  <div class="max-w-5xl mx-auto px-4 md:px-6">
+    <div class="text-center mb-12">
+      <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-6" style="color: hsl(var(--accent));">CONTATO</p>
+      <h2 class="font-serif text-3xl md:text-5xl font-bold mt-4" style="color: hsl(var(--foreground));">
+        A gente está<br>
+        <em style="color: hsl(var(--primary));">aqui pra você.</em>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Telefone -->
+      <a href="tel:+554133721546"
+        class="rounded-[var(--radius)] p-6 text-center hover-lift group"
+        style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 transition-colors group-hover:bg-primary" style="background: hsl(var(--primary) / 0.1);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="hsl(200, 35%, 20%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-white transition-colors"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.35a2 2 0 0 1 1.95-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l.72-.72a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: hsl(var(--muted-foreground));">TELEFONE</p>
+        <p class="font-bold text-base" style="color: hsl(var(--foreground));">(41) 3372-1546</p>
+        <p class="text-xs mt-1" style="color: hsl(var(--muted-foreground));">Ligue agora</p>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/554133721546" target="_blank" rel="noopener"
+        class="rounded-[var(--radius)] p-6 text-center hover-lift group"
+        style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 transition-colors group-hover:opacity-90" style="background: rgba(37, 211, 102, 0.12);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: hsl(var(--muted-foreground));">WHATSAPP</p>
+        <p class="font-bold text-base" style="color: hsl(var(--foreground));">(41) 3372-1546</p>
+        <p class="text-xs mt-1" style="color: hsl(var(--muted-foreground));">Manda uma mensagem</p>
+      </a>
+
+      <!-- Endereço -->
+      <a href="https://maps.google.com/?cid=3196233249971239106&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+        target="_blank" rel="noopener"
+        class="rounded-[var(--radius)] p-6 text-center hover-lift group"
+        style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 transition-colors group-hover:bg-primary" style="background: hsl(var(--primary) / 0.1);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="hsl(200, 35%, 20%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-white transition-colors"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: hsl(var(--muted-foreground));">ENDEREÇO</p>
+        <p class="font-bold text-sm" style="color: hsl(var(--foreground));">Rua Antônio Escorsin, 2.223</p>
+        <p class="text-xs mt-1" style="color: hsl(var(--muted-foreground));">São Braz, Curitiba, PR</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA FINAL ===== -->
+<section class="py-16 md:py-28 px-4 md:px-6">
+  <div class="max-w-4xl mx-auto rounded-[var(--radius)] p-8 md:p-14 text-center relative overflow-hidden" style="background: hsl(var(--primary));">
+    <!-- Blob decorativo accent -->
+    <div class="absolute bottom-0 right-0 w-64 h-64 rounded-full pointer-events-none" style="background: hsl(var(--accent) / 0.2); filter: blur(50px); transform: translate(30%, 30%);"></div>
+    <div class="absolute top-0 left-0 w-48 h-48 rounded-full pointer-events-none" style="background: hsl(var(--accent) / 0.1); filter: blur(40px); transform: translate(-30%, -30%);"></div>
+
+    <div class="relative z-10">
+      <p class="text-xs font-semibold uppercase tracking-widest mb-4" style="color: hsl(var(--accent));">PRONTO PRA RESOLVER?</p>
+      <h2 class="font-serif text-3xl md:text-5xl font-bold mb-4 leading-tight" style="color: hsl(var(--primary-foreground));">
+        Resolve de vez.<br>
+        <em style="color: hsl(var(--accent));">A gente cuida do resto.</em>
+      </h2>
+      <p class="text-base md:text-lg mb-8 max-w-xl mx-auto" style="color: hsl(var(--primary-foreground) / 0.75);">
+        Entre em contato agora pelo WhatsApp. Sem comprometimento, sem formulário longo. É só mandar uma mensagem.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://wa.me/554133721546" target="_blank" rel="noopener"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-white text-base transition-all hover:opacity-90 shadow-lg"
+          style="background-color: #25d366;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar no WhatsApp
+        </a>
+        <a href="tel:+554133721546"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-base border-2 transition-all"
+          style="color: hsl(var(--primary-foreground)); border-color: rgba(255,255,255,0.3); hover:border-white;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.35a2 2 0 0 1 1.95-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l.72-.72a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Ligar agora
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="py-8 px-4 md:px-6 text-center border-t" style="border-color: hsl(var(--border)); background: hsl(var(--background));">
+  <p class="text-xs" style="color: hsl(var(--muted-foreground));">
+    © 2025 São Braz Escritório de Serviços. Rua Antônio Escorsin, 2.223, São Braz, Curitiba, PR.
+  </p>
+  <p class="text-xs mt-1" style="color: hsl(var(--muted-foreground) / 0.6);">
+    Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
+  </p>
+</footer>
+
+<!-- ===== FLOATING WHATSAPP BUTTON ===== -->
+<a href="https://wa.me/554133721546" target="_blank" rel="noopener"
+  class="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-xl wa-pulse"
+  style="background-color: #25d366;"
+  aria-label="Falar no WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  menuBtn.addEventListener('click', () => {
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden', !isOpen);
+    iconClose.classList.toggle('hidden', isOpen);
+  });
+
+  function closeMobileMenu() {
+    mobileMenu.classList.add('hidden');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+  }
+
+  // Accordion
+  function toggleAccordion(btn) {
+    const content = btn.nextElementSibling;
+    const chevron = btn.querySelector('.accordion-chevron');
+    const isOpen = content.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+    document.querySelectorAll('.accordion-chevron').forEach(c => c.classList.remove('open'));
+
+    if (!isOpen) {
+      content.classList.add('open');
+      chevron.classList.add('open');
+    }
+  }
+</script>
+
+</body>
+</html>
