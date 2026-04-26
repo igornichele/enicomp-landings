@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Macetti Contabilidade Ltda | Escritório de Contabilidade | Maringá - PR</title>
+  <meta name="description" content="Macetti Contabilidade Ltda: tradição, qualidade técnica e atendimento impecável. Referência em contabilidade com equipe especializada e altamente capacitada." />
+  <meta property="og:title" content="Macetti Contabilidade Ltda | Escritório de Contabilidade | Maringá - PR" />
+  <meta property="og:description" content="Atendimento impecável, equipe especializada e profissionais de peso. Contabilidade com tradição e compromisso real com o seu desenvolvimento." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop&q=80&auto=format" />
+  <meta property="og:type" content="website" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+              DEFAULT: 'hsl(var(--primary))',
+              foreground: 'hsl(var(--primary-foreground))',
+            },
+            accent: {
+              DEFAULT: 'hsl(var(--accent))',
+              foreground: 'hsl(var(--accent-foreground))',
+            },
+            muted: {
+              DEFAULT: 'hsl(var(--muted))',
+              foreground: 'hsl(var(--muted-foreground))',
+            },
+            card: {
+              DEFAULT: 'hsl(var(--card))',
+            },
+            border: 'hsl(var(--border))',
+          },
+          borderRadius: {
+            DEFAULT: 'var(--radius)',
+            lg: 'var(--radius)',
+            md: 'calc(var(--radius) - 2px)',
+            sm: 'calc(var(--radius) - 4px)',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['"Playfair Display"', 'serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --background: 0 0% 98%;
+      --foreground: 220 15% 12%;
+      --primary: 0 45% 25%;
+      --primary-foreground: 0 0% 98%;
+      --accent: 40 75% 58%;
+      --accent-foreground: 220 15% 12%;
+      --muted: 0 0% 94%;
+      --muted-foreground: 220 10% 40%;
+      --card: 0 0% 100%;
+      --border: 220 15% 90%;
+      --radius: 0.875rem;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: hsl(var(--background));
+      color: hsl(var(--foreground));
+      font-family: 'Inter', sans-serif;
+    }
+
+    body { overflow-x: hidden; }
+
+    .font-display { font-family: 'Playfair Display', serif; }
+
+    /* Dot pattern */
+    .dot-pattern {
+      background-color: hsl(var(--primary));
+      background-image: radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    /* Section scroll offset for sticky header */
+    section[id] { scroll-margin-top: 72px; }
+
+    /* Eyebrow accent underline */
+    .eyebrow-accent {
+      display: inline-block;
+      position: relative;
+      padding-bottom: 8px;
+    }
+    .eyebrow-accent::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 48px;
+      height: 2px;
+      background: hsl(var(--accent));
+    }
+
+    /* Masonry reviews */
+    .masonry-grid {
+      columns: 1;
+      column-gap: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .masonry-grid { columns: 2; }
+    }
+    @media (min-width: 1024px) {
+      .masonry-grid { columns: 3; }
+    }
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Review quote decoration */
+    .review-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .review-card::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 120px;
+      line-height: 1;
+      color: hsl(var(--accent) / 0.12);
+      position: absolute;
+      top: -10px;
+      left: 12px;
+      pointer-events: none;
+    }
+
+    /* Accordion */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .accordion-content.open {
+      max-height: 500px;
+    }
+    .accordion-icon {
+      transition: transform 0.3s ease;
+    }
+    .accordion-icon.open {
+      transform: rotate(45deg);
+    }
+
+    /* Card hover */
+    .card-hover {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px -8px rgba(0,0,0,0.15);
+    }
+
+    /* Floating WhatsApp pulse */
+    @keyframes wapulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+    }
+    .wa-float {
+      animation: wapulse 2.5s infinite;
+    }
+
+    /* Blob */
+    .blob {
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    /* Hero image accent border */
+    .hero-img-wrap {
+      position: relative;
+    }
+    .hero-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 3px solid hsl(var(--accent));
+      border-radius: var(--radius);
+      transform: translate(12px, 12px);
+      z-index: 0;
+    }
+
+    /* Hamburger menu */
+    #mobile-menu {
+      display: none;
+    }
+    #mobile-menu.open {
+      display: block;
+    }
+  </style>
+</head>
+<body class="bg-background text-foreground">
+
+  <!-- ============ HEADER ============ -->
+  <header class="sticky top-0 z-50 backdrop-blur-md" style="background: rgba(85,21,21,0.95);">
+    <!-- Dot pattern overlay -->
+    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px); background-size: 18px 18px; pointer-events:none;"></div>
+    <div class="relative max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center text-white font-display font-bold text-lg" style="background: hsl(var(--accent));">
+          M
+        </div>
+        <span class="font-display font-semibold text-white text-lg leading-tight hidden sm:block">Macetti <span class="font-normal opacity-80 text-sm block leading-none">Contabilidade</span></span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="#sobre" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Sobre</a>
+        <a href="#especialidades" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Especialidades</a>
+        <a href="#avaliacoes" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Avaliações</a>
+        <a href="#contato" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Contato</a>
+        <a href="https://wa.me/5544991051377" target="_blank" rel="noopener"
+           class="flex items-center gap-2 px-4 py-2 rounded-[var(--radius)] font-medium text-sm transition-all"
+           style="background:#25d366; color:#fff;">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          Falar conosco
+        </a>
+      </nav>
+
+      <!-- Hamburger -->
+      <button id="hamburger-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Abrir menu">
+        <span class="block w-6 h-0.5 bg-white rounded"></span>
+        <span class="block w-6 h-0.5 bg-white rounded"></span>
+        <span class="block w-6 h-0.5 bg-white rounded"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="relative md:hidden border-t border-white/10 bg-primary/95 backdrop-blur-md">
+      <nav class="flex flex-col px-4 py-4 gap-3">
+        <a href="#sobre" class="text-white/80 hover:text-white text-sm font-medium py-2 border-b border-white/10" onclick="closeMobileMenu()">Sobre</a>
+        <a href="#especialidades" class="text-white/80 hover:text-white text-sm font-medium py-2 border-b border-white/10" onclick="closeMobileMenu()">Especialidades</a>
+        <a href="#avaliacoes" class="text-white/80 hover:text-white text-sm font-medium py-2 border-b border-white/10" onclick="closeMobileMenu()">Avaliações</a>
+        <a href="#contato" class="text-white/80 hover:text-white text-sm font-medium py-2 border-b border-white/10" onclick="closeMobileMenu()">Contato</a>
+        <a href="https://wa.me/5544991051377" target="_blank" rel="noopener"
+           class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-[var(--radius)] font-medium text-sm mt-1"
+           style="background:#25d366; color:#fff;">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          Falar conosco
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ HERO (image-left) ============ -->
+  <section id="hero" class="relative overflow-hidden bg-background py-16 md:py-28">
+    <!-- Blobs -->
+    <div class="blob absolute -top-32 -left-32 w-96 h-96" style="background: hsl(var(--primary) / 0.18);"></div>
+    <div class="blob absolute -bottom-24 -right-24 w-80 h-80" style="background: hsl(var(--accent) / 0.18);"></div>
+    <!-- Dot pattern subtle -->
+    <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle, hsl(var(--muted-foreground) / 0.15) 1px, transparent 1px); background-size: 24px 24px; pointer-events:none;"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 md:px-6">
+      <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+
+        <!-- Imagem (order-2 mobile, order-1 desktop) -->
+        <div class="order-2 md:order-1">
+          <div class="hero-img-wrap relative">
+            <img
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=1500&fit=crop&q=80&auto=format"
+              alt="business meeting documents laptops"
+              class="relative z-10 w-full object-cover rounded-[var(--radius)]"
+              style="aspect-ratio: 4/5;"
+            />
+            <!-- Floating badge (desktop only) -->
+            <div class="hidden sm:flex absolute top-6 -right-5 z-20 items-center gap-2 px-3 py-2 rounded-[var(--radius)] shadow-lg text-xs font-semibold"
+                 style="background: hsl(var(--card)); border: 1px solid hsl(var(--border)); color: hsl(var(--foreground));">
+              <span style="color: hsl(var(--accent));">★</span>
+              <span>5,0 no Google</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conteúdo (order-1 mobile, order-2 desktop) -->
+        <div class="order-1 md:order-2 flex flex-col gap-6">
+          <!-- Badge -->
+          <div class="inline-flex w-fit items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider border"
+               style="background: hsl(var(--accent) / 0.12); color: hsl(var(--accent-foreground)); border-color: hsl(var(--accent) / 0.3);">
+            <i data-lucide="award" class="w-3.5 h-3.5" style="color: hsl(var(--accent));"></i>
+            Equipe especializada e altamente capacitada
+          </div>
+
+          <!-- Headline -->
+          <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground">
+            Contabilidade com<br />
+            <em class="not-italic" style="color: hsl(var(--primary));">tradição e rigor</em><br />
+            técnico
+          </h1>
+
+          <!-- Subtítulo -->
+          <p class="text-base md:text-lg leading-relaxed" style="color: hsl(var(--muted-foreground));">
+            Há anos unimos conhecimento técnico e atendimento impecável para cuidar da saúde contábil de empresas e profissionais. Nossa equipe é reconhecida pela qualidade, responsabilidade e comprometimento real com o seu crescimento.
+          </p>
+
+          <!-- Rating line (editorial, sem stats bar) -->
+          <div class="flex items-center gap-2 text-sm" style="color: hsl(var(--muted-foreground));">
+            <span class="text-base" style="color: hsl(var(--accent));">★★★★★</span>
+            <span class="font-semibold" style="color: hsl(var(--foreground));">5,0 no Google</span>
+            <span class="mx-1 opacity-40">·</span>
+            <span>Avaliação máxima dos nossos clientes</span>
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://wa.me/5544991051377" target="_blank" rel="noopener"
+               class="flex items-center justify-center gap-2 px-6 py-3 rounded-[var(--radius)] font-semibold text-sm transition-all hover:opacity-90 w-full sm:w-auto"
+               style="background: #25d366; color: #fff;">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.126 1.526 5.855L0 24l6.335-1.483A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.034-1.387l-.361-.214-3.741.876.944-3.638-.235-.374A9.815 9.815 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+              </svg>
+              Falar no WhatsApp
+            </a>
+            <a href="tel:+5544991051377"
+               class="flex items-center justify-center gap-2 px-6 py-3 rounded-[var(--radius)] font-semibold text-sm border transition-all hover:bg-muted w-full sm:w-auto"
+               style="border-color: hsl(var(--primary)); color: hsl(var(--primary));">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+              (44) 99105-1377
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOBRE ============ -->
+  <section id="sobre" class="py-16 md:py-28" style="background: hsl(var(--muted));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
+
+        <!-- Imagens -->
+        <div class="grid grid-cols-2 gap-4 relative">
+          <img
+            src="https://images.unsplash.com/photo-1586281380117-5a60ae2050cc?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="clipboard open projects laptop desk"
+            class="w-full object-cover rounded-[var(--radius)] shadow-md"
+            style="aspect-ratio: 4/5;"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="modern office corridor professional"
+            class="w-full object-cover rounded-[var(--radius)] shadow-md mt-8"
+            style="aspect-ratio: 4/5;"
+          />
+          <!-- Accent decoration -->
+          <div class="absolute -bottom-4 -left-4 w-20 h-20 rounded-[var(--radius)] opacity-20"
+               style="background: hsl(var(--primary));"></div>
+        </div>
+
+        <!-- Texto -->
+        <div class="flex flex-col gap-6">
+          <span class="eyebrow-accent text-xs font-semibold uppercase tracking-widest" style="color: hsl(var(--accent));">
+            Sobre a Macetti
+          </span>
+
+          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-foreground">
+            Profissionalismo e<br />
+            <em style="color: hsl(var(--primary));">habilidade técnica</em><br />
+            a serviço de você
+          </h2>
+
+          <p class="text-base leading-relaxed" style="color: hsl(var(--muted-foreground));">
+            Na Macetti Contabilidade, acreditamos que uma boa contabilidade vai além dos números. Somos uma peça-chave no desenvolvimento profissional dos nossos clientes, com um time responsável, qualificado e comprometido com resultados reais.
+          </p>
+          <p class="text-base leading-relaxed" style="color: hsl(var(--muted-foreground));">
+            Nosso centro de treinamentos e atendimento reúne especialistas reconhecidos pela excelência técnica e pelo cuidado no relacionamento, garantindo que cada cliente receba orientações precisas e uma parceria de longo prazo.
+          </p>
+
+          <!-- Micro-benefícios -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+            <div class="flex items-start gap-3 p-3 rounded-[var(--radius)]" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+                <i data-lucide="check-circle" class="w-4 h-4" style="color: hsl(var(--primary));"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-foreground">Equipe qualificada</p>
+                <p class="text-xs mt-0.5" style="color: hsl(var(--muted-foreground));">Profissionais bastante qualificados e responsáveis</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-[var(--radius)]" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+                <i data-lucide="check-circle" class="w-4 h-4" style="color: hsl(var(--primary));"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-foreground">Atendimento nota mil</p>
+                <p class="text-xs mt-0.5" style="color: hsl(var(--muted-foreground));">Reconhecido pelos clientes em cada avaliação</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-[var(--radius)]" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+                <i data-lucide="check-circle" class="w-4 h-4" style="color: hsl(var(--primary));"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-foreground">Centro de treinamentos</p>
+                <p class="text-xs mt-0.5" style="color: hsl(var(--muted-foreground));">Capacitação e especialização para o seu crescimento</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-[var(--radius)]" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+              <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style="background: hsl(var(--primary) / 0.1);">
+                <i data-lucide="check-circle" class="w-4 h-4" style="color: hsl(var(--primary));"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-foreground">Ferramentas modernas</p>
+                <p class="text-xs mt-0.5" style="color: hsl(var(--muted-foreground));">Eneagrama e metodologias para melhor gestão</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AVALIAÇÕES (masonry-3col) ============ -->
+  <section id="avaliacoes" class="py-16 md:py-28 bg-background">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+
+      <div class="text-center mb-12">
+        <span class="eyebrow-accent text-xs font-semibold uppercase tracking-widest" style="color: hsl(var(--accent));">
+          O que os clientes dizem
+        </span>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-4 text-foreground">
+          Histórias reais de<br />
+          <em style="color: hsl(var(--primary));">quem confia em nós</em>
+        </h2>
+        <p class="text-base max-w-xl mx-auto" style="color: hsl(var(--muted-foreground));">
+          Avaliações verificadas no Google por clientes que vivenciaram nosso atendimento e serviços.
+        </p>
+      </div>
+
+      <!-- Masonry grid -->
+      <div class="masonry-grid">
+
+        <!-- Review 1 -->
+        <div class="masonry-item review-card rounded-[var(--radius)] p-6 shadow-sm card-hover" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex items-center gap-1 mb-3" style="color: hsl(var(--accent));">
+            <span>★★★★★</span>
+          </div>
+          <p class="text-sm leading-relaxed relative z-10" style="color: hsl(var(--foreground));">
+            "Excelente empresa. É um privilégio contar com o seu profissionalismo e habilidades técnicas. Obrigada por ser uma peça-chave no meu desenvolvimento profissional."
+          </p>
+          <div class="flex items-center gap-3 mt-4 pt-4" style="border-top: 1px solid hsl(var(--border));">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-semibold flex-shrink-0"
+                 style="background: hsl(var(--primary));">F</div>
+            <span class="font-medium text-sm text-foreground">Fabiana Cardoso</span>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="masonry-item review-card rounded-[var(--radius)] p-6 shadow-sm card-hover" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex items-center gap-1 mb-3" style="color: hsl(var(--accent));">
+            <span>★★★★★</span>
+          </div>
+          <p class="text-sm leading-relaxed relative z-10" style="color: hsl(var(--foreground));">
+            "Que top esse centro de treinamento. Profissionais bastante qualificados, responsáveis, conhecem sobre o assunto. Nota 10, parabéns."
+          </p>
+          <div class="flex items-center gap-3 mt-4 pt-4" style="border-top: 1px solid hsl(var(--border));">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-semibold flex-shrink-0"
+                 style="background: hsl(var(--primary));">R</div>
+            <span class="font-medium text-sm text-foreground">Reinaldo Roberto</span>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="masonry-item review-card rounded-[var(--radius)] p-6 shadow-sm card-hover" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex items-center gap-1 mb-3" style="color: hsl(var(--accent));">
+            <span>★★★★★</span>
+          </div>
+          <p class="text-sm leading-relaxed relative z-10" style="color: hsl(var(--foreground));">
+            "Melhor Centro de Treinamentos, equipe especializada e muito capacitada, atendimento nota mil! Parabéns para toda a equipe!"
+          </p>
+          <div class="flex items-center gap-3 mt-4 pt-4" style="border-top: 1px solid hsl(var(--border));">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-semibold flex-shrink-0"
+                 style="background: hsl(var(--primary));">R</div>
+            <span class="font-medium text-sm text-foreground">Rafa Menegollo</span>
+          </div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="masonry-item review-card rounded-[var(--radius)] p-6 shadow-sm card-hover" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex items-center gap-1 mb-3" style="color: hsl(var(--accent));">
+            <span>★★★★★</span>
+          </div>
+          <p class="text-sm leading-relaxed relative z-10" style="color: hsl(var(--foreground));">
+            "Empresa top, vocês são profissionais de peso. Atendimento impecável. Já garanti minha especialização."
+          </p>
+          <div class="flex items-center gap-3 mt-4 pt-4" style="border-top: 1px solid hsl(var(--border));">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-semibold flex-shrink-0"
+                 style="background: hsl(var(--primary));">S</div>
+            <span class="font-medium text-sm text-foreground">Stacy Louren</span>
+          </div>
+        </div>
+
+        <!-- Review 5 -->
+        <div class="masonry-item review-card rounded-[var(--radius)] p-6 shadow-sm card-hover" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="flex items-center gap-1 mb-3" style="color: hsl(var(--accent));">
+            <span>★★★★★</span>
+          </div>
+          <p class="text-sm leading-relaxed relative z-10" style="color: hsl(var(--foreground));">
+            "Top por demais. Eneagrama, ferramenta importantíssima para uma melhora no desempenho de nossa gestão."
+          </p>
+          <div class="flex items-center gap-3 mt-4 pt-4" style="border-top: 1px solid hsl(var(--border));">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-semibold flex-shrink-0"
+                 style="background: hsl(var(--primary));">C</div>
+            <span class="font-medium text-sm text-foreground">Clemente Vieira dos Santos</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Link Google -->
+      <div class="text-center mt-10">
+        <a href="https://maps.google.com/?cid=1687373114050460626&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+           target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 text-sm font-medium transition-colors"
+           style="color: hsl(var(--primary));">
+          Ver avaliações no Google
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ESPECIALIDADES (accordion-plus-featured) ============ -->
+  <section id="especialidades" class="py-16 md:py-28" style="background: hsl(var(--muted));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+
+      <div class="text-center mb-12">
+        <span class="eyebrow-accent text-xs font-semibold uppercase tracking-widest" style="color: hsl(var(--accent));">
+          Especialidades
+        </span>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-4 text-foreground">
+          Soluções contábeis<br />
+          <em style="color: hsl(var(--primary));">completas e precisas</em>
+        </h2>
+        <p class="text-base max-w-xl mx-auto" style="color: hsl(var(--muted-foreground));">
+          Oferecemos um portfólio completo de serviços contábeis, com foco em qualidade técnica e atendimento próximo.
+        </p>
+      </div>
+
+      <!-- Card destaque -->
+      <div class="rounded-[var(--radius)] overflow-hidden shadow-md mb-8 card-hover" style="background: hsl(var(--card)); border: 2px solid hsl(var(--accent) / 0.4);">
+        <div class="grid md:grid-cols-2">
+          <div class="p-8 md:p-10 flex flex-col gap-4 justify-center">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center flex-shrink-0"
+                   style="background: hsl(var(--accent) / 0.15);">
+                <i data-lucide="briefcase" class="w-6 h-6" style="color: hsl(var(--accent));"></i>
+              </div>
+              <span class="text-xs font-bold uppercase tracking-wider px-2 py-1 rounded-full"
+                    style="background: hsl(var(--accent) / 0.15); color: hsl(var(--accent-foreground));">
+                Especialidade principal
+              </span>
+            </div>
+            <h3 class="font-display text-2xl md:text-3xl font-bold text-foreground">Contabilidade Empresarial Completa</h3>
+            <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">
+              Cuidamos de toda a gestão contábil da sua empresa: escrituração fiscal, apuração de impostos, balanços patrimoniais, DRE e relatórios gerenciais. Nossa equipe garante conformidade legal e visão estratégica para o seu negócio crescer com segurança.
+            </p>
+            <a href="https://wa.me/5544991051377" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 w-fit px-5 py-2.5 rounded-[var(--radius)] font-semibold text-sm transition-all"
+               style="background: hsl(var(--primary)); color: hsl(var(--primary-foreground));">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              Solicitar atendimento
+            </a>
+          </div>
+          <div class="hidden md:block">
+            <img
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=900&fit=crop&q=80&auto=format"
+              alt="business meeting documents laptops"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion de serviços secundários -->
+      <div class="flex flex-col gap-3">
+
+        <!-- Item 1 -->
+        <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <button class="accordion-btn w-full flex items-center gap-4 p-5 text-left hover:bg-muted/50 transition-colors" onclick="toggleAccordion(this)">
+            <div class="w-10 h-10 rounded-md flex items-center justify-center flex-shrink-0"
+                 style="background: hsl(var(--primary) / 0.1);">
+              <i data-lucide="file-text" class="w-5 h-5" style="color: hsl(var(--primary));"></i>
+            </div>
+            <span class="font-display font-semibold text-base md:text-lg text-foreground flex-1">Departamento Pessoal e Folha de Pagamento</span>
+            <i data-lucide="plus" class="w-5 h-5 accordion-icon flex-shrink-0" style="color: hsl(var(--muted-foreground));"></i>
+          </button>
+          <div class="accordion-content">
+            <div class="px-5 pb-5 pt-1 ml-14" style="color: hsl(var(--muted-foreground));">
+              <p class="text-sm leading-relaxed">
+                Gerenciamos toda a rotina do departamento pessoal: admissões, demissões, férias, 13º salário, FGTS, INSS e eSocial. Processamos a folha de pagamento com precisão e dentro dos prazos legais, garantindo tranquilidade para sua empresa.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <button class="accordion-btn w-full flex items-center gap-4 p-5 text-left hover:bg-muted/50 transition-colors" onclick="toggleAccordion(this)">
+            <div class="w-10 h-10 rounded-md flex items-center justify-center flex-shrink-0"
+                 style="background: hsl(var(--primary) / 0.1);">
+              <i data-lucide="calculator" class="w-5 h-5" style="color: hsl(var(--primary));"></i>
+            </div>
+            <span class="font-display font-semibold text-base md:text-lg text-foreground flex-1">Planejamento Tributário</span>
+            <i data-lucide="plus" class="w-5 h-5 accordion-icon flex-shrink-0" style="color: hsl(var(--muted-foreground));"></i>
+          </button>
+          <div class="accordion-content">
+            <div class="px-5 pb-5 pt-1 ml-14" style="color: hsl(var(--muted-foreground));">
+              <p class="text-sm leading-relaxed">
+                Analisamos o enquadramento tributário ideal para sua empresa, seja Simples Nacional, Lucro Presumido ou Lucro Real. Buscamos a redução legal da carga de impostos, preservando sua margem e garantindo segurança fiscal.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <button class="accordion-btn w-full flex items-center gap-4 p-5 text-left hover:bg-muted/50 transition-colors" onclick="toggleAccordion(this)">
+            <div class="w-10 h-10 rounded-md flex items-center justify-center flex-shrink-0"
+                 style="background: hsl(var(--primary) / 0.1);">
+              <i data-lucide="building-2" class="w-5 h-5" style="color: hsl(var(--primary));"></i>
+            </div>
+            <span class="font-display font-semibold text-base md:text-lg text-foreground flex-1">Abertura e Regularização de Empresas</span>
+            <i data-lucide="plus" class="w-5 h-5 accordion-icon flex-shrink-0" style="color: hsl(var(--muted-foreground));"></i>
+          </button>
+          <div class="accordion-content">
+            <div class="px-5 pb-5 pt-1 ml-14" style="color: hsl(var(--muted-foreground));">
+              <p class="text-sm leading-relaxed">
+                Orientamos e executamos todo o processo de abertura de empresa, desde a escolha do tipo societário até o registro em juntas, Receita Federal e prefeitura. Também atuamos na regularização de pendências e atualização de dados cadastrais.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <button class="accordion-btn w-full flex items-center gap-4 p-5 text-left hover:bg-muted/50 transition-colors" onclick="toggleAccordion(this)">
+            <div class="w-10 h-10 rounded-md flex items-center justify-center flex-shrink-0"
+                 style="background: hsl(var(--primary) / 0.1);">
+              <i data-lucide="graduation-cap" class="w-5 h-5" style="color: hsl(var(--primary));"></i>
+            </div>
+            <span class="font-display font-semibold text-base md:text-lg text-foreground flex-1">Centro de Treinamentos e Capacitação</span>
+            <i data-lucide="plus" class="w-5 h-5 accordion-icon flex-shrink-0" style="color: hsl(var(--muted-foreground));"></i>
+          </button>
+          <div class="accordion-content">
+            <div class="px-5 pb-5 pt-1 ml-14" style="color: hsl(var(--muted-foreground));">
+              <p class="text-sm leading-relaxed">
+                Oferecemos treinamentos especializados para gestores, empreendedores e profissionais que desejam aprimorar sua gestão. Utilizamos ferramentas como o Eneagrama para desenvolver liderança, autoconhecimento e desempenho organizacional.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <button class="accordion-btn w-full flex items-center gap-4 p-5 text-left hover:bg-muted/50 transition-colors" onclick="toggleAccordion(this)">
+            <div class="w-10 h-10 rounded-md flex items-center justify-center flex-shrink-0"
+                 style="background: hsl(var(--primary) / 0.1);">
+              <i data-lucide="bar-chart-2" class="w-5 h-5" style="color: hsl(var(--primary));"></i>
+            </div>
+            <span class="font-display font-semibold text-base md:text-lg text-foreground flex-1">Consultoria Contábil e Gestão Financeira</span>
+            <i data-lucide="plus" class="w-5 h-5 accordion-icon flex-shrink-0" style="color: hsl(var(--muted-foreground));"></i>
+          </button>
+          <div class="accordion-content">
+            <div class="px-5 pb-5 pt-1 ml-14" style="color: hsl(var(--muted-foreground));">
+              <p class="text-sm leading-relaxed">
+                Apoiamos gestores e empreendedores com análises financeiras, diagnósticos de saúde contábil e estratégias de crescimento sustentável. Somos parceiros estratégicos no seu desenvolvimento profissional e empresarial.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Como funciona -->
+      <div class="mt-16">
+        <div class="text-center mb-10">
+          <span class="eyebrow-accent text-xs font-semibold uppercase tracking-widest" style="color: hsl(var(--accent));">Como funciona</span>
+          <h3 class="font-display text-2xl md:text-3xl font-bold mt-4 text-foreground">
+            Simples e direto ao ponto
+          </h3>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="flex flex-col items-center text-center gap-3">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center font-display font-bold text-xl"
+                 style="background: hsl(var(--primary)); color: hsl(var(--primary-foreground));">1</div>
+            <h4 class="font-semibold text-base text-foreground">Primeiro contato</h4>
+            <p class="text-sm" style="color: hsl(var(--muted-foreground));">Você nos chama no WhatsApp ou por telefone e apresenta sua situação.</p>
+          </div>
+          <div class="flex flex-col items-center text-center gap-3">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center font-display font-bold text-xl"
+                 style="background: hsl(var(--primary)); color: hsl(var(--primary-foreground));">2</div>
+            <h4 class="font-semibold text-base text-foreground">Diagnóstico gratuito</h4>
+            <p class="text-sm" style="color: hsl(var(--muted-foreground));">Analisamos suas necessidades e indicamos as soluções mais adequadas.</p>
+          </div>
+          <div class="flex flex-col items-center text-center gap-3">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center font-display font-bold text-xl"
+                 style="background: hsl(var(--primary)); color: hsl(var(--primary-foreground));">3</div>
+            <h4 class="font-semibold text-base text-foreground">Proposta personalizada</h4>
+            <p class="text-sm" style="color: hsl(var(--muted-foreground));">Apresentamos um plano claro e transparente para o seu perfil.</p>
+          </div>
+          <div class="flex flex-col items-center text-center gap-3">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center font-display font-bold text-xl"
+                 style="background: hsl(var(--accent)); color: hsl(var(--accent-foreground));">4</div>
+            <h4 class="font-semibold text-base text-foreground">Parceria de longo prazo</h4>
+            <p class="text-sm" style="color: hsl(var(--muted-foreground));">Iniciamos o atendimento e seguimos ao seu lado no crescimento.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ CONTATO ============ -->
+  <section id="contato" class="py-16 md:py-28 bg-background">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+
+      <div class="text-center mb-12">
+        <span class="eyebrow-accent text-xs font-semibold uppercase tracking-widest" style="color: hsl(var(--accent));">
+          Contato
+        </span>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-4 text-foreground">
+          Estamos prontos<br />
+          <em style="color: hsl(var(--primary));">para atendê-lo</em>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Telefone -->
+        <div class="card-hover rounded-[var(--radius)] p-6 flex flex-col gap-4 group" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center transition-colors"
+               style="background: hsl(var(--primary) / 0.1);">
+            <i data-lucide="phone" class="w-6 h-6 transition-colors" style="color: hsl(var(--primary));"></i>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-widest font-semibold mb-1" style="color: hsl(var(--muted-foreground));">Telefone</p>
+            <a href="tel:+5544991051377" class="font-bold text-lg text-foreground hover:opacity-80 transition-opacity">(44) 99105-1377</a>
+            <p class="text-xs mt-1" style="color: hsl(var(--muted-foreground));">Ligue diretamente para nós</p>
+          </div>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="card-hover rounded-[var(--radius)] p-6 flex flex-col gap-4 group" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center transition-colors"
+               style="background: rgba(37,211,102,0.12);">
+            <i data-lucide="message-circle" class="w-6 h-6" style="color: #25d366;"></i>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-widest font-semibold mb-1" style="color: hsl(var(--muted-foreground));">WhatsApp</p>
+            <a href="https://wa.me/5544991051377" target="_blank" rel="noopener"
+               class="font-bold text-lg text-foreground hover:opacity-80 transition-opacity">(44) 99105-1377</a>
+            <p class="text-xs mt-1" style="color: hsl(var(--muted-foreground));">Envie uma mensagem agora</p>
+          </div>
+        </div>
+
+        <!-- Endereço -->
+        <div class="card-hover rounded-[var(--radius)] p-6 flex flex-col gap-4 group" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-12 h-12 rounded-[var(--radius)] flex items-center justify-center transition-colors"
+               style="background: hsl(var(--primary) / 0.1);">
+            <i data-lucide="map-pin" class="w-6 h-6" style="color: hsl(var(--primary));"></i>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-widest font-semibold mb-1" style="color: hsl(var(--muted-foreground));">Endereço</p>
+            <a href="https://maps.google.com/?cid=1687373114050460626&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+               target="_blank" rel="noopener"
+               class="font-bold text-base text-foreground hover:opacity-80 transition-opacity leading-snug">
+              Av. Alziro Zarur, 1537, Térreo<br />
+              Conj. Res. Ney Braga<br />
+              Maringá - PR, 87075-000
+            </a>
+            <p class="text-xs mt-1" style="color: hsl(var(--muted-foreground));">Ver no Google Maps</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Mini FAQ -->
+      <div class="mt-16">
+        <div class="text-center mb-8">
+          <span class="eyebrow-accent text-xs font-semibold uppercase tracking-widest" style="color: hsl(var(--accent));">Perguntas frequentes</span>
+          <h3 class="font-display text-2xl md:text-3xl font-bold mt-4 text-foreground">Dúvidas comuns</h3>
+        </div>
+        <div class="max-w-3xl mx-auto flex flex-col gap-3">
+
+          <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+            <button class="accordion-btn w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-muted/50 transition-colors" onclick="toggleAccordion(this)">
+              <span class="font-semibold text-sm md:text-base text-foreground">Atendem empresas de todos os portes?</span>
+              <i data-lucide="plus" class="w-5 h-5 accordion-icon flex-shrink-0" style="color: hsl(var(--muted-foreground));"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="px-5 pb-5 pt-1" style="color: hsl(var(--muted-foreground));">
+                <p class="text-sm leading-relaxed">Sim, atendemos desde MEIs e microempresas até empresas de médio porte. Cada cliente recebe um plano personalizado de acordo com seu porte, segmento e necessidades específicas.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+            <button class="accordion-btn w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-muted/50 transition-colors" onclick="toggleAccordion(this)">
+              <span class="font-semibold text-sm md:text-base text-foreground">O atendimento pode ser feito de forma remota?</span>
+              <i data-lucide="plus" class="w-5 h-5 accordion-icon flex-shrink-0" style="color: hsl(var(--muted-foreground));"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="px-5 pb-5 pt-1" style="color: hsl(var(--muted-foreground));">
+                <p class="text-sm leading-relaxed">Sim, oferecemos atendimento presencial e remoto. Muitos serviços são realizados de forma digital, com comunicação ágil via WhatsApp e sistemas online, garantindo praticidade para o cliente.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-[var(--radius)] overflow-hidden" style="background: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+            <button class="accordion-btn w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-muted/50 transition-colors" onclick="toggleAccordion(this)">
+              <span class="font-semibold text-sm md:text-base text-foreground">Como solicitar um orçamento?</span>
+              <i data-lucide="plus" class="w-5 h-5 accordion-icon flex-shrink-0" style="color: hsl(var(--muted-foreground));"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="px-5 pb-5 pt-1" style="color: hsl(var(--muted-foreground));">
+                <p class="text-sm leading-relaxed">Entre em contato conosco pelo WhatsApp ou telefone. Nossa equipe retorna rapidamente com um diagnóstico inicial gratuito e uma proposta personalizada para a sua situação.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section id="cta-final" class="py-16 md:py-28" style="background: hsl(var(--muted));">
+    <div class="max-w-4xl mx-auto px-4 md:px-6">
+      <div class="relative rounded-[var(--radius)] overflow-hidden p-8 md:p-14 text-center"
+           style="background: hsl(var(--primary));">
+        <!-- Blob decorativo -->
+        <div class="blob absolute -top-16 -right-16 w-64 h-64"
+             style="background: hsl(var(--accent) / 0.25);"></div>
+        <div class="blob absolute -bottom-16 -left-16 w-56 h-56"
+             style="background: hsl(var(--accent) / 0.15);"></div>
+
+        <div class="relative z-10 flex flex-col items-center gap-6">
+          <span class="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full"
+                style="background: hsl(var(--accent) / 0.2); color: hsl(var(--accent));">
+            Comece hoje mesmo
+          </span>
+          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+            Sua contabilidade nas<br />
+            <em style="color: hsl(var(--accent));">mãos certas</em>
+          </h2>
+          <p class="text-white/80 text-base md:text-lg max-w-xl leading-relaxed">
+            Fale conosco agora e descubra como podemos ser a peça-chave no desenvolvimento do seu negócio. Atendimento ágil e sem complicações.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto justify-center">
+            <a href="https://wa.me/5544991051377" target="_blank" rel="noopener"
+               class="flex items-center justify-center gap-2 px-8 py-3.5 rounded-[var(--radius)] font-bold text-base transition-all hover:opacity-90 w-full sm:w-auto"
+               style="background: #25d366; color: #fff;">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.126 1.526 5.855L0 24l6.335-1.483A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.034-1.387l-.361-.214-3.741.876.944-3.638-.235-.374A9.815 9.815 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+              </svg>
+              Falar no WhatsApp
+            </a>
+            <a href="tel:+5544991051377"
+               class="flex items-center justify-center gap-2 px-8 py-3.5 rounded-[var(--radius)] font-bold text-base transition-all w-full sm:w-auto"
+               style="border: 2px solid rgba(255,255,255,0.4); color: #fff;">
+              <i data-lucide="phone" class="w-5 h-5"></i>
+              Ligar agora
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="py-8 border-t" style="background: hsl(var(--foreground)); border-color: rgba(255,255,255,0.08);">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-display font-bold"
+             style="background: hsl(var(--accent));">M</div>
+        <span class="font-display font-semibold text-white text-sm">Macetti Contabilidade Ltda</span>
+      </div>
+      <p class="text-xs text-center" style="color: rgba(255,255,255,0.4);">
+        Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ============ FLOATING WhatsApp ============ -->
+  <a href="https://wa.me/5544991051377" target="_blank" rel="noopener" aria-label="WhatsApp"
+     class="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg wa-float transition-transform hover:scale-110"
+     style="background: #25d366;">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.126 1.526 5.855L0 24l6.335-1.483A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.034-1.387l-.361-.214-3.741.876.944-3.638-.235-.374A9.815 9.815 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+    </svg>
+  </a>
+
+  <!-- ============ JS ============ -->
+  <script>
+    // Initialize lucide icons
+    lucide.createIcons();
+
+    // Hamburger menu
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburgerBtn.addEventListener('click', function() {
+      mobileMenu.classList.toggle('open');
+    });
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+    }
+
+    // Accordion
+    function toggleAccordion(btn) {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('.accordion-icon');
+      const isOpen = content.classList.contains('open');
+
+      // Close all in same parent group
+      const parentGroup = btn.closest('.flex.flex-col.gap-3, .max-w-3xl');
+      if (parentGroup) {
+        parentGroup.querySelectorAll('.accordion-content.open').forEach(el => {
+          el.classList.remove('open');
+        });
+        parentGroup.querySelectorAll('.accordion-icon.open').forEach(el => {
+          el.classList.remove('open');
+        });
+      }
+
+      if (!isOpen) {
+        content.classList.add('open');
+        icon.classList.add('open');
+      }
+    }
+  </script>
+</body>
+</html>
