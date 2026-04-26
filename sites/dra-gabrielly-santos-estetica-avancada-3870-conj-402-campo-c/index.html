@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dra. Gabrielly Santos Estética Avançada | Procedimentos Estéticos em Curitiba</title>
+  <meta name="description" content="Botox, preenchimento labial, bigode chinês e estimulador de colágeno com resultados incríveis e toque natural. Agende sua consulta!" />
+  <meta property="og:title" content="Dra. Gabrielly Santos Estética Avançada | Curitiba" />
+  <meta property="og:description" content="Resultados naturais que você vai amar. Procedimentos estéticos com atenção aos detalhes e excelência comprovada." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=1200&h=630&fit=crop&q=80&auto=format" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+              DEFAULT: 'hsl(var(--primary))',
+              foreground: 'hsl(var(--primary-foreground))',
+            },
+            accent: {
+              DEFAULT: 'hsl(var(--accent))',
+              foreground: 'hsl(var(--accent-foreground))',
+            },
+            muted: {
+              DEFAULT: 'hsl(var(--muted))',
+              foreground: 'hsl(var(--muted-foreground))',
+            },
+            card: {
+              DEFAULT: 'hsl(var(--card))',
+            },
+            border: 'hsl(var(--border))',
+          },
+          borderRadius: {
+            DEFAULT: 'var(--radius)',
+            lg: 'var(--radius)',
+            md: 'calc(var(--radius) - 2px)',
+            sm: 'calc(var(--radius) - 4px)',
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            display: ['"Crimson Pro"', 'serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    :root {
+      --background: 30 20% 98%;
+      --foreground: 220 15% 12%;
+      --primary: 160 30% 22%;
+      --primary-foreground: 0 0% 98%;
+      --accent: 40 70% 58%;
+      --accent-foreground: 220 15% 12%;
+      --muted: 30 20% 94%;
+      --muted-foreground: 220 10% 40%;
+      --card: 0 0% 100%;
+      --border: 220 15% 90%;
+      --radius: 0.875rem;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Outfit', sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+    }
+
+    body { overflow-x: hidden; }
+
+    .font-display { font-family: 'Crimson Pro', serif; }
+
+    section { scroll-margin-top: 72px; }
+
+    /* Eyebrow accent line */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: hsl(var(--primary));
+      position: relative;
+    }
+    .eyebrow::after {
+      content: '';
+      display: inline-block;
+      width: 48px;
+      height: 2px;
+      background: hsl(var(--accent));
+      border-radius: 2px;
+    }
+
+    /* Timeline */
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, hsl(var(--accent)) 10%, hsl(var(--accent)) 90%, transparent);
+      transform: translateX(-50%);
+    }
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+      background: hsl(var(--accent));
+      border-radius: 50%;
+      border: 3px solid hsl(var(--background));
+      box-shadow: 0 0 0 2px hsl(var(--accent));
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    /* Review quote */
+    .review-card {
+      position: relative;
+    }
+    .review-card::before {
+      content: '"';
+      font-family: 'Crimson Pro', serif;
+      font-size: 120px;
+      line-height: 1;
+      color: hsl(var(--accent) / 0.12);
+      position: absolute;
+      top: -20px;
+      left: 12px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Dot pattern */
+    .dot-pattern {
+      background-image: radial-gradient(hsl(var(--foreground) / 0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Cards hover */
+    .service-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px hsl(var(--primary) / 0.12);
+      border-color: hsl(var(--accent));
+    }
+
+    .contact-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .contact-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px hsl(var(--primary) / 0.1);
+    }
+    .contact-card:hover .contact-icon {
+      color: hsl(var(--accent));
+    }
+
+    /* Pulse WhatsApp */
+    @keyframes pulse-wpp {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+      50% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+    }
+    .wpp-float { animation: pulse-wpp 2.5s ease infinite; }
+
+    /* Stats number */
+    .stat-number {
+      font-family: 'Crimson Pro', serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    /* Split header */
+    .split-header-inner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .split-nav-left { display: flex; gap: 1.5rem; justify-content: flex-end; }
+    .split-nav-right { display: flex; gap: 1.5rem; justify-content: flex-start; }
+
+    @media (max-width: 767px) {
+      .split-header-inner { grid-template-columns: 1fr auto; }
+      .split-nav-left, .split-nav-right { display: none; }
+    }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+
+    /* Blob */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    /* Hero image cinematic border */
+    .hero-img-wrap {
+      border: 2px solid hsl(var(--accent));
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    /* Step number */
+    .step-num {
+      font-family: 'Crimson Pro', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: hsl(var(--accent) / 0.18);
+      line-height: 1;
+    }
+
+    /* FAQ */
+    details summary { cursor: pointer; list-style: none; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .faq-icon { transform: rotate(45deg); }
+    .faq-icon { transition: transform 0.2s ease; }
+  </style>
+</head>
+<body class="bg-background text-foreground font-sans">
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="sticky top-0 z-50 bg-card/90 backdrop-blur-md border-b border-border shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <div class="split-header-inner">
+        <!-- Nav esquerda -->
+        <nav class="split-nav-left">
+          <a href="#sobre" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Sobre</a>
+          <a href="#avaliacoes" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Avaliações</a>
+        </nav>
+
+        <!-- Logo central -->
+        <div class="flex items-center gap-2 justify-self-center">
+          <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+            <span class="text-primary-foreground font-display font-semibold text-lg leading-none">G</span>
+          </div>
+          <div class="hidden sm:block">
+            <div class="font-display font-semibold text-primary leading-tight text-[0.9rem]">Dra. Gabrielly Santos</div>
+            <div class="text-[0.65rem] text-muted-foreground uppercase tracking-widest">Estética Avançada</div>
+          </div>
+        </div>
+
+        <!-- Nav direita -->
+        <nav class="split-nav-right">
+          <a href="#especialidades" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Especialidades</a>
+          <a href="#contato" class="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Contato</a>
+        </nav>
+
+        <!-- Hamburguer mobile -->
+        <button id="menu-btn" class="md:hidden ml-auto p-2 rounded-md text-muted-foreground hover:text-primary hover:bg-muted transition-colors" aria-label="Menu">
+          <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+          <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Mobile menu dropdown -->
+      <nav id="mobile-menu" class="flex-col gap-1 pt-3 pb-2 md:hidden">
+        <a href="#sobre" class="block px-3 py-2 text-sm font-medium rounded-md hover:bg-muted transition-colors" onclick="closeMobileMenu()">Sobre</a>
+        <a href="#avaliacoes" class="block px-3 py-2 text-sm font-medium rounded-md hover:bg-muted transition-colors" onclick="closeMobileMenu()">Avaliações</a>
+        <a href="#especialidades" class="block px-3 py-2 text-sm font-medium rounded-md hover:bg-muted transition-colors" onclick="closeMobileMenu()">Especialidades</a>
+        <a href="#contato" class="block px-3 py-2 text-sm font-medium rounded-md hover:bg-muted transition-colors" onclick="closeMobileMenu()">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero" class="relative overflow-hidden dot-pattern py-16 md:py-28">
+    <!-- Blobs -->
+    <div class="blob w-72 h-72 bg-accent/40 -top-16 -left-16"></div>
+    <div class="blob w-64 h-64 bg-primary/30 bottom-0 right-0"></div>
+
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 bg-accent/15 text-accent-foreground border border-accent/30 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wide mb-6">
+        <span>✦</span>
+        <span>Atenção aos detalhes que fazem diferença</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-display text-4xl md:text-6xl font-semibold leading-tight mb-4 text-foreground">
+        Resultados que você<br>
+        <em class="not-italic text-primary">vai amar de verdade</em>
+      </h1>
+
+      <!-- Subtítulo -->
+      <p class="text-muted-foreground text-base md:text-lg max-w-xl mx-auto leading-relaxed mb-5">
+        Botox, preenchimento, bigode chinês e estimulador de colágeno aplicados com cuidado e precisão. O resultado fica natural, exatamente como você quer.
+      </p>
+
+      <!-- Rating -->
+      <div class="flex items-center justify-center gap-2 mb-7">
+        <span class="text-accent text-lg tracking-tight">★★★★★</span>
+        <span class="text-sm font-semibold text-foreground">5 no Google</span>
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-3 justify-center items-center mb-12">
+        <a href="https://wa.me/5541996165992" target="_blank" rel="noopener"
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[var(--radius)] text-sm font-semibold text-white transition-all hover:opacity-90 hover:shadow-lg"
+           style="background:#25d366">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.126 1.527 5.858L0 24l6.307-1.508A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.899 0-3.668-.518-5.184-1.42l-.372-.217-3.743.895.929-3.634-.24-.383A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Agendar pelo WhatsApp
+        </a>
+        <a href="tel:+5541996165992"
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[var(--radius)] text-sm font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18a2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (41) 99616-5992
+        </a>
+      </div>
+
+      <!-- Hero image cinematic -->
+      <div class="relative">
+        <div class="hero-img-wrap aspect-[21/9] w-full overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=1200&h=1500&fit=crop&q=80&auto=format"
+            alt="clinic reception minimalist"
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
+        <!-- Badge flutuante (só desktop) -->
+        <div class="hidden sm:block absolute top-4 right-4 bg-card/95 backdrop-blur-sm border border-border rounded-[var(--radius)] px-4 py-2 shadow-lg">
+          <div class="text-xs text-muted-foreground uppercase tracking-wide font-medium">Avaliação Google</div>
+          <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="text-accent font-bold">★★★★★</span>
+            <span class="font-display font-semibold text-foreground">5,0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STATS BAR ===================== -->
+  <section class="bg-primary text-primary-foreground py-10">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
+        <div>
+          <div class="stat-number text-accent">5,0</div>
+          <div class="text-xs uppercase tracking-widest text-primary-foreground/70 mt-1 font-medium">Rating Google</div>
+        </div>
+        <div>
+          <div class="stat-number text-accent">100%</div>
+          <div class="text-xs uppercase tracking-widest text-primary-foreground/70 mt-1 font-medium">Indicariam de novo</div>
+        </div>
+        <div class="col-span-2 md:col-span-1">
+          <div class="stat-number text-accent">Natural</div>
+          <div class="text-xs uppercase tracking-widest text-primary-foreground/70 mt-1 font-medium">Resultado garantido</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SOBRE ===================== -->
+  <section id="sobre" class="py-16 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Imagens -->
+        <div class="grid grid-cols-2 gap-4 order-2 md:order-1">
+          <div class="rounded-[var(--radius)] overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&h=900&fit=crop&q=80&auto=format"
+              alt="modern medical clinic"
+              class="w-full h-full object-cover aspect-[3/4]"
+              loading="lazy"
+            />
+          </div>
+          <div class="rounded-[var(--radius)] overflow-hidden mt-8">
+            <img
+              src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&h=900&fit=crop&q=80&auto=format"
+              alt="physiotherapy session"
+              class="w-full h-full object-cover aspect-[3/4]"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <!-- Texto -->
+        <div class="order-1 md:order-2">
+          <div class="eyebrow mb-4">Sobre a Dra. Gabrielly</div>
+          <h2 class="font-display text-3xl md:text-5xl font-semibold leading-tight mb-5 text-foreground">
+            Atenção aos detalhes<br>
+            <em class="not-italic text-primary">que fazem toda a diferença</em>
+          </h2>
+          <p class="text-muted-foreground leading-relaxed mb-4">
+            Atendemos com cuidado e precisão pra entregar resultados que ficam naturais, exatamente como você imaginou. Cada procedimento é pensado nos mínimos detalhes, do primeiro contato até o resultado final.
+          </p>
+          <p class="text-muted-foreground leading-relaxed mb-8">
+            Botox, preenchimento labial, bigode chinês, estimulador de colágeno: tratamos cada procedimento como único, porque cada rosto é único.
+          </p>
+
+          <!-- Micro-benefícios -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-md bg-accent/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(40,70%,58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-foreground">Resultado natural</div>
+                <div class="text-xs text-muted-foreground">Exatamente como você quer, sem exageros</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-md bg-accent/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(40,70%,58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-foreground">Atenciosa e detalhista</div>
+                <div class="text-xs text-muted-foreground">Do diagnóstico ao pós-procedimento</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-md bg-accent/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(40,70%,58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-foreground">Ambiente acolhedor</div>
+                <div class="text-xs text-muted-foreground">Você se sente confortável desde a chegada</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-md bg-accent/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(40,70%,58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-foreground">Quem foi, volta</div>
+                <div class="text-xs text-muted-foreground">E indica pras amigas de olhos fechados</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== AVALIAÇÕES ===================== -->
+  <section id="avaliacoes" class="py-16 md:py-28 bg-muted/50">
+    <div class="max-w-4xl mx-auto px-4 md:px-6">
+      <!-- Cabeçalho -->
+      <div class="text-center mb-16">
+        <div class="eyebrow justify-center mb-4">O que as pacientes dizem</div>
+        <h2 class="font-display text-3xl md:text-5xl font-semibold leading-tight mb-4 text-foreground">
+          Histórias reais de quem<br>
+          <em class="not-italic text-primary">já transformou o visual</em>
+        </h2>
+        <p class="text-muted-foreground max-w-md mx-auto">Avaliações reais do Google, de pacientes que viveram a experiência na prática.</p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="relative">
+        <!-- Linha vertical (só visível em md+) -->
+        <div class="timeline-line hidden md:block"></div>
+
+        <div class="flex flex-col gap-12 md:gap-16">
+
+          <!-- Review 1 — esquerda -->
+          <div class="relative md:w-[46%] md:self-start md:mr-auto">
+            <div class="timeline-dot hidden md:block" style="top: 28px;"></div>
+            <div class="review-card bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm relative overflow-hidden">
+              <div class="relative z-10">
+                <div class="flex gap-1 mb-3">
+                  <span class="text-accent">★★★★★</span>
+                </div>
+                <p class="text-foreground text-sm leading-relaxed mb-4">
+                  "Adorei a experiência, fui atendida super bem pela doutora, e o resultado ficou ótimo. Fiz botox, preenchimento de lábio, bigode chinês e estimulador de colágeno, e com certeza vou voltar fazer mais procedimentos. Fica aqui minha indicação!"
+                </p>
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span class="text-primary font-semibold text-sm">R</span>
+                  </div>
+                  <div>
+                    <div class="text-sm font-semibold text-foreground">Rosely Prantl</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 — direita -->
+          <div class="relative md:w-[46%] md:self-end md:ml-auto">
+            <div class="timeline-dot hidden md:block" style="top: 28px;"></div>
+            <div class="review-card bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm relative overflow-hidden">
+              <div class="relative z-10">
+                <div class="flex gap-1 mb-3">
+                  <span class="text-accent">★★★★★</span>
+                </div>
+                <p class="text-foreground text-sm leading-relaxed mb-4">
+                  "Fiz procedimento com a Dra. Gabrielly e os resultados ficaram incríveis. Super indico!"
+                </p>
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span class="text-primary font-semibold text-sm">A</span>
+                  </div>
+                  <div>
+                    <div class="text-sm font-semibold text-foreground">Andreia Santos Rocha</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 — esquerda -->
+          <div class="relative md:w-[46%] md:self-start md:mr-auto">
+            <div class="timeline-dot hidden md:block" style="top: 28px;"></div>
+            <div class="review-card bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm relative overflow-hidden">
+              <div class="relative z-10">
+                <div class="flex gap-1 mb-3">
+                  <span class="text-accent">★★★★★</span>
+                </div>
+                <p class="text-foreground text-sm leading-relaxed mb-4">
+                  "Super recomendo a Dra. Gabrielly! Ela é extremamente atenta aos detalhes, o que reflete na excelência do seu trabalho."
+                </p>
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span class="text-primary font-semibold text-sm">C</span>
+                  </div>
+                  <div>
+                    <div class="text-sm font-semibold text-foreground">Camila C. Barreiros</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 4 — direita -->
+          <div class="relative md:w-[46%] md:self-end md:ml-auto">
+            <div class="timeline-dot hidden md:block" style="top: 28px;"></div>
+            <div class="review-card bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm relative overflow-hidden">
+              <div class="relative z-10">
+                <div class="flex gap-1 mb-3">
+                  <span class="text-accent">★★★★★</span>
+                </div>
+                <p class="text-foreground text-sm leading-relaxed mb-4">
+                  "Profissional extremamente atenciosa e detalhista! Fiz meu preenchimento labial com ela e simplesmente amei o resultado. Ficou super natural, exatamente como eu queria. Recomendo de olhos fechados!"
+                </p>
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span class="text-primary font-semibold text-sm">G</span>
+                  </div>
+                  <div>
+                    <div class="text-sm font-semibold text-foreground">Giseli Aparecida</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 5 — esquerda -->
+          <div class="relative md:w-[46%] md:self-start md:mr-auto">
+            <div class="timeline-dot hidden md:block" style="top: 28px;"></div>
+            <div class="review-card bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm relative overflow-hidden">
+              <div class="relative z-10">
+                <div class="flex gap-1 mb-3">
+                  <span class="text-accent">★★★★★</span>
+                </div>
+                <p class="text-foreground text-sm leading-relaxed mb-4">
+                  "Muito bom atendimento, Dra. Gabrielly! Procedimento incrível e ela é muito atenciosa, cuidadosa e gentil. Parabéns pelo trabalho incrível."
+                </p>
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span class="text-primary font-semibold text-sm">S</span>
+                  </div>
+                  <div>
+                    <div class="text-sm font-semibold text-foreground">Simei Prantl</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Link Google -->
+      <div class="text-center mt-12">
+        <a href="https://maps.google.com/?cid=8695396466297483590&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-accent transition-colors">
+          Ver todas as avaliações no Google
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== COMO FUNCIONA ===================== -->
+  <section class="py-16 md:py-28">
+    <div class="max-w-5xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-14">
+        <div class="eyebrow justify-center mb-4">Simples assim</div>
+        <h2 class="font-display text-3xl md:text-4xl font-semibold leading-tight text-foreground">
+          Como é o processo<br>
+          <em class="not-italic text-primary">do começo ao resultado</em>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="text-center md:text-left">
+          <div class="step-num mb-2">01</div>
+          <h3 class="font-display text-xl font-semibold mb-2 text-foreground">Entre em contato</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">Manda uma mensagem no WhatsApp ou liga. Sem burocracia, sem espera.</p>
+        </div>
+        <div class="text-center md:text-left">
+          <div class="step-num mb-2">02</div>
+          <h3 class="font-display text-xl font-semibold mb-2 text-foreground">Avaliação personalizada</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">A Dra. Gabrielly entende o que você quer e indica o melhor tratamento.</p>
+        </div>
+        <div class="text-center md:text-left">
+          <div class="step-num mb-2">03</div>
+          <h3 class="font-display text-xl font-semibold mb-2 text-foreground">Procedimento seguro</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">Aplicação com cuidado e atenção, num ambiente confortável e acolhedor.</p>
+        </div>
+        <div class="text-center md:text-left">
+          <div class="step-num mb-2">04</div>
+          <h3 class="font-display text-xl font-semibold mb-2 text-foreground">Resultado natural</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">Você sai com o resultado que queria e ainda indica pras amigas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ESPECIALIDADES ===================== -->
+  <section id="especialidades" class="py-16 md:py-28 bg-muted/40">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-14">
+        <div class="eyebrow justify-center mb-4">O que fazemos</div>
+        <h2 class="font-display text-3xl md:text-5xl font-semibold leading-tight mb-4 text-foreground">
+          Procedimentos feitos<br>
+          <em class="not-italic text-primary">com cuidado e precisão</em>
+        </h2>
+        <p class="text-muted-foreground max-w-lg mx-auto">Cada técnica aplicada com atenção, pra você sair exatamente como imaginou.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Card 1 — Destaque -->
+        <div class="service-card bg-card border-2 border-accent/50 rounded-[var(--radius)] p-7 relative overflow-hidden shadow-md">
+          <div class="absolute top-4 right-4">
+            <span class="bg-accent text-accent-foreground text-[0.6rem] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full">Especialidade Principal</span>
+          </div>
+          <div class="w-14 h-14 rounded-xl bg-accent/15 flex items-center justify-center mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="hsl(40,70%,58%)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="font-display text-2xl font-semibold mb-2 text-foreground">Toxina Botulínica (Botox)</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">Aplicação precisa pra suavizar rugas e linhas de expressão, com resultado natural e sem aquela cara de "fiz alguma coisa".</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="service-card bg-card border border-border rounded-[var(--radius)] p-7 shadow-sm">
+          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="hsl(160,30%,22%)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3 class="font-display text-2xl font-semibold mb-2 text-foreground">Preenchimento Labial</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">Lábios mais volumosos e definidos, com ácido hialurônico. O resultado fica exatamente como você quer, natural e equilibrado.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="service-card bg-card border border-border rounded-[var(--radius)] p-7 shadow-sm">
+          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="hsl(160,30%,22%)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          </div>
+          <h3 class="font-display text-2xl font-semibold mb-2 text-foreground">Bigode Chinês</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">Tratamento pra suavizar as linhas que descem dos cantos da boca, devolvendo leveza e harmonia ao rosto.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="service-card bg-card border border-border rounded-[var(--radius)] p-7 shadow-sm">
+          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="hsl(160,30%,22%)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3 class="font-display text-2xl font-semibold mb-2 text-foreground">Estimulador de Colágeno</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">Biostimulação que ativa a produção natural de colágeno, melhorando a firmeza e textura da pele com resultados progressivos.</p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="service-card bg-card border border-border rounded-[var(--radius)] p-7 shadow-sm">
+          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="hsl(160,30%,22%)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="font-display text-2xl font-semibold mb-2 text-foreground">Indicação e Rede de Confiança</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">Quem passa pela Dra. Gabrielly indica pras amigas. Esse é o melhor termômetro de resultado que existe.</p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="service-card bg-card border border-border rounded-[var(--radius)] p-7 shadow-sm">
+          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="hsl(160,30%,22%)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <h3 class="font-display text-2xl font-semibold mb-2 text-foreground">Avaliação Personalizada</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">Cada rosto é único. Antes de qualquer procedimento, entendemos o que você quer e indicamos o melhor caminho pra você.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTATO ===================== -->
+  <section id="contato" class="py-16 md:py-28">
+    <div class="max-w-5xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-12">
+        <div class="eyebrow justify-center mb-4">Fale com a gente</div>
+        <h2 class="font-display text-3xl md:text-4xl font-semibold leading-tight mb-3 text-foreground">
+          Pronta pra agendar?<br>
+          <em class="not-italic text-primary">É só chamar</em>
+        </h2>
+        <p class="text-muted-foreground">Respondemos rápido e sem enrolação.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+        <!-- Telefone -->
+        <a href="tel:+5541996165992"
+           class="contact-card bg-card border border-border rounded-[var(--radius)] p-6 text-center shadow-sm block">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="contact-icon transition-colors duration-200" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="hsl(160,30%,22%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18a2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-1">Telefone</div>
+          <div class="font-semibold text-foreground">(41) 99616-5992</div>
+          <div class="text-xs text-muted-foreground mt-1">Ligue quando quiser</div>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/5541996165992" target="_blank" rel="noopener"
+           class="contact-card bg-card border border-border rounded-[var(--radius)] p-6 text-center shadow-sm block">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4" style="background:rgba(37,211,102,0.12)">
+            <svg class="contact-icon transition-colors duration-200" viewBox="0 0 24 24" width="22" height="22" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.126 1.527 5.858L0 24l6.307-1.508A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.899 0-3.668-.518-5.184-1.42l-.372-.217-3.743.895.929-3.634-.24-.383A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          </div>
+          <div class="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-1">WhatsApp</div>
+          <div class="font-semibold text-foreground">(41) 99616-5992</div>
+          <div class="text-xs text-muted-foreground mt-1">Resposta rápida</div>
+        </a>
+
+        <!-- Endereço -->
+        <a href="https://maps.google.com/?cid=8695396466297483590&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener"
+           class="contact-card bg-card border border-border rounded-[var(--radius)] p-6 text-center shadow-sm block">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="contact-icon transition-colors duration-200" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="hsl(160,30%,22%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-1">Endereço</div>
+          <div class="font-semibold text-foreground text-sm">R. Dep. Heitor Alencar Furtado, 3870 Conj 402</div>
+          <div class="text-xs text-muted-foreground mt-1">Campo Comprido, Curitiba - PR</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MINI FAQ ===================== -->
+  <section class="py-12 md:py-20 bg-muted/40">
+    <div class="max-w-2xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-10">
+        <div class="eyebrow justify-center mb-4">Dúvidas frequentes</div>
+        <h2 class="font-display text-2xl md:text-3xl font-semibold text-foreground">Perguntas rápidas</h2>
+      </div>
+
+      <div class="flex flex-col gap-3">
+
+        <details class="bg-card border border-border rounded-[var(--radius)] overflow-hidden group">
+          <summary class="flex items-center justify-between px-5 py-4 font-medium text-foreground text-sm hover:bg-muted/50 transition-colors">
+            <span>Os procedimentos ficam com aspecto natural?</span>
+            <svg class="faq-icon flex-shrink-0 ml-3 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <div class="px-5 pb-4 text-sm text-muted-foreground leading-relaxed border-t border-border pt-3">
+            Sim! Nossa preocupação principal é que o resultado seja natural e harmonioso. As pacientes relatam que o resultado fica exatamente como queriam, sem exageros.
+          </div>
+        </details>
+
+        <details class="bg-card border border-border rounded-[var(--radius)] overflow-hidden group">
+          <summary class="flex items-center justify-between px-5 py-4 font-medium text-foreground text-sm hover:bg-muted/50 transition-colors">
+            <span>Como funciona o agendamento?</span>
+            <svg class="faq-icon flex-shrink-0 ml-3 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <div class="px-5 pb-4 text-sm text-muted-foreground leading-relaxed border-t border-border pt-3">
+            É simples: manda uma mensagem pelo WhatsApp ou liga pra gente. Respondemos rápido e combinamos o melhor horário pra você.
+          </div>
+        </details>
+
+        <details class="bg-card border border-border rounded-[var(--radius)] overflow-hidden group">
+          <summary class="flex items-center justify-between px-5 py-4 font-medium text-foreground text-sm hover:bg-muted/50 transition-colors">
+            <span>É necessária consulta antes do procedimento?</span>
+            <svg class="faq-icon flex-shrink-0 ml-3 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <div class="px-5 pb-4 text-sm text-muted-foreground leading-relaxed border-t border-border pt-3">
+            Fazemos uma avaliação personalizada pra entender o que você quer e indicar o melhor tratamento. Essa etapa é fundamental pra garantir o melhor resultado.
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA FINAL ===================== -->
+  <section class="py-16 md:py-28">
+    <div class="max-w-4xl mx-auto px-4 md:px-6">
+      <div class="bg-primary rounded-[var(--radius)] px-8 py-14 md:px-16 text-center relative overflow-hidden">
+        <!-- Blob decorativo -->
+        <div class="blob w-64 h-64 bg-accent/30 -bottom-12 -right-12"></div>
+        <div class="blob w-48 h-48 bg-accent/20 -top-8 -left-8"></div>
+
+        <div class="relative z-10">
+          <div class="inline-flex items-center gap-2 bg-primary-foreground/10 text-primary-foreground border border-primary-foreground/20 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wide mb-6">
+            ✦ Resultados que você vai amar
+          </div>
+          <h2 class="font-display text-3xl md:text-5xl font-semibold text-primary-foreground leading-tight mb-4">
+            Pronta pra dar esse<br>
+            <em class="not-italic text-accent">passo com confiança?</em>
+          </h2>
+          <p class="text-primary-foreground/80 mb-8 max-w-md mx-auto leading-relaxed">
+            Agende sua consulta hoje. Respondemos rápido e te acompanhamos do primeiro contato ao resultado final.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://wa.me/5541996165992" target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-[var(--radius)] text-sm font-bold text-white transition-all hover:opacity-90 hover:shadow-xl w-full sm:w-auto"
+               style="background:#25d366">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.126 1.527 5.858L0 24l6.307-1.508A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.899 0-3.668-.518-5.184-1.42l-.372-.217-3.743.895.929-3.634-.24-.383A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              Agendar pelo WhatsApp
+            </a>
+            <a href="tel:+5541996165992"
+               class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-[var(--radius)] text-sm font-semibold border-2 border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 transition-all w-full sm:w-auto">
+              (41) 99616-5992
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-muted/50 border-t border-border py-8">
+    <div class="max-w-5xl mx-auto px-4 md:px-6 text-center">
+      <div class="flex items-center justify-center gap-2 mb-3">
+        <div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center">
+          <span class="text-primary-foreground font-display font-semibold text-sm">G</span>
+        </div>
+        <span class="font-display font-semibold text-primary text-sm">Dra. Gabrielly Santos Estética Avançada</span>
+      </div>
+      <p class="text-xs text-muted-foreground mb-1">R. Dep. Heitor Alencar Furtado, 3870, Conj 402 - Campo Comprido, Curitiba - PR</p>
+      <p class="text-xs text-muted-foreground/60 mt-3">Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.</p>
+    </div>
+  </footer>
+
+  <!-- ===================== FLOATING WHATSAPP ===================== -->
+  <a href="https://wa.me/5541996165992" target="_blank" rel="noopener"
+     class="wpp-float fixed bottom-5 right-5 w-14 h-14 rounded-full flex items-center justify-center shadow-xl z-50 transition-transform hover:scale-110"
+     style="background:#25d366"
+     aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.126 1.527 5.858L0 24l6.307-1.508A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.899 0-3.668-.518-5.184-1.42l-.372-.217-3.743.895.929-3.634-.24-.383A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+  </a>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconMenu = document.getElementById('icon-menu');
+    const iconClose = document.getElementById('icon-close');
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      iconMenu.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    }
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('open');
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        mobileMenu.classList.add('open');
+        iconMenu.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+      }
+    });
+
+    // Initialize lucide icons
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  </script>
+</body>
+</html>
