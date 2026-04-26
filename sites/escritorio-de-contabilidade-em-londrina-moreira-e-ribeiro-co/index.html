@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escritório de Contabilidade em Londrina | Moreira e Ribeiro Contabilidade Consultiva</title>
+  <meta name="description" content="Contabilidade consultiva em Londrina com avaliação 5 estrelas no Google. Responsabilidade, precisão e resultado. Fale com nossa equipe." />
+  <meta property="og:title" content="Moreira e Ribeiro Contabilidade Consultiva | Londrina" />
+  <meta property="og:description" content="Escritório de contabilidade com nota 5 no Google. Responsabilidade, precisão e resultado para o seu negócio." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=630&fit=crop&q=80&auto=format" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+              DEFAULT: 'hsl(var(--primary))',
+              foreground: 'hsl(var(--primary-foreground))',
+            },
+            accent: {
+              DEFAULT: 'hsl(var(--accent))',
+              foreground: 'hsl(var(--accent-foreground))',
+            },
+            muted: {
+              DEFAULT: 'hsl(var(--muted))',
+              foreground: 'hsl(var(--muted-foreground))',
+            },
+            card: {
+              DEFAULT: 'hsl(var(--card))',
+            },
+            border: 'hsl(var(--border))',
+          },
+          borderRadius: {
+            DEFAULT: 'var(--radius)',
+            lg: 'var(--radius)',
+            md: 'calc(var(--radius) - 0.25rem)',
+            sm: 'calc(var(--radius) - 0.5rem)',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Playfair Display', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --background: 45 20% 98%;
+      --foreground: 220 15% 12%;
+      --primary: 220 20% 20%;
+      --primary-foreground: 0 0% 98%;
+      --accent: 35 65% 58%;
+      --accent-foreground: 220 15% 12%;
+      --muted: 45 20% 94%;
+      --muted-foreground: 220 10% 40%;
+      --card: 0 0% 100%;
+      --border: 220 15% 90%;
+      --radius: 1.75rem;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+    }
+
+    .font-display {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Eyebrow accent line */
+    .eyebrow-line {
+      display: inline-block;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    .eyebrow-line::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 48px;
+      height: 2px;
+      background-color: hsl(var(--accent));
+    }
+
+    /* Stats bar numbers */
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    /* Review masonry */
+    .masonry-grid {
+      columns: 3;
+      column-gap: 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .masonry-grid {
+        columns: 2;
+      }
+    }
+    @media (max-width: 600px) {
+      .masonry-grid {
+        columns: 1;
+      }
+    }
+
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Review quote decoration */
+    .review-card {
+      position: relative;
+    }
+    .review-card::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 120px;
+      line-height: 0.8;
+      color: hsl(var(--accent) / 0.12);
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      pointer-events: none;
+    }
+
+    /* Hero clip-path diagonal */
+    .hero-image-diagonal {
+      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    /* Service item hover */
+    .service-item {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .service-item:hover {
+      transform: translateY(-4px);
+    }
+
+    /* Contact card hover */
+    .contact-card:hover .contact-icon {
+      color: hsl(var(--accent));
+    }
+
+    /* Blob decoration */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    /* Dot pattern */
+    .dot-pattern {
+      background-image: radial-gradient(circle, hsl(var(--primary-foreground) / 0.15) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    /* Scroll margin for sticky header */
+    section[id] {
+      scroll-margin-top: 90px;
+    }
+
+    /* Floating pill header */
+    .header-pill {
+      position: fixed;
+      top: 12px;
+      left: 16px;
+      right: 16px;
+      z-index: 50;
+      background: hsl(var(--card) / 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 9999px;
+      box-shadow: 0 4px 24px hsl(var(--foreground) / 0.08), 0 1px 3px hsl(var(--foreground) / 0.06);
+      border: 1px solid hsl(var(--border));
+    }
+
+    /* Pulse animation for WhatsApp button */
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: 0.6; }
+      70% { transform: scale(1.35); opacity: 0; }
+      100% { transform: scale(1.35); opacity: 0; }
+    }
+    .whatsapp-pulse::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #25d366;
+      animation: pulse-ring 2s ease-out infinite;
+    }
+
+    /* Mobile menu */
+    #mobile-menu {
+      display: none;
+    }
+    #mobile-menu.open {
+      display: flex;
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+
+  <!-- FLOATING PILL HEADER -->
+  <header class="header-pill">
+    <div class="flex items-center justify-between px-5 py-3">
+      <!-- Logo / Name -->
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">
+          M
+        </div>
+        <span class="font-semibold text-sm hidden sm:block" style="color: hsl(var(--foreground));">Moreira e Ribeiro</span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="#sobre" class="text-sm px-4 py-1.5 rounded-full transition-colors hover:bg-muted" style="color: hsl(var(--muted-foreground));">Sobre</a>
+        <a href="#especialidades" class="text-sm px-4 py-1.5 rounded-full transition-colors hover:bg-muted" style="color: hsl(var(--muted-foreground));">Especialidades</a>
+        <a href="#avaliacoes" class="text-sm px-4 py-1.5 rounded-full transition-colors hover:bg-muted" style="color: hsl(var(--muted-foreground));">Avaliações</a>
+        <a href="#contato" class="text-sm px-4 py-1.5 rounded-full transition-colors hover:bg-muted" style="color: hsl(var(--muted-foreground));">Contato</a>
+        <a href="https://wa.me/5543988542459" target="_blank" rel="noopener"
+           class="ml-2 text-sm px-5 py-2 rounded-full font-medium text-white transition-opacity hover:opacity-90"
+           style="background-color: #25d366;">
+          WhatsApp
+        </a>
+      </nav>
+
+      <!-- Hamburger -->
+      <button id="hamburger-btn" class="md:hidden p-2 rounded-full hover:bg-muted transition-colors" aria-label="Abrir menu" onclick="toggleMenu()">
+        <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+        <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu dropdown -->
+    <div id="mobile-menu" class="flex-col gap-1 px-4 pb-4 pt-1 md:hidden">
+      <a href="#sobre" onclick="closeMenu()" class="block text-sm px-4 py-2.5 rounded-2xl hover:bg-muted transition-colors" style="color: hsl(var(--foreground));">Sobre</a>
+      <a href="#especialidades" onclick="closeMenu()" class="block text-sm px-4 py-2.5 rounded-2xl hover:bg-muted transition-colors" style="color: hsl(var(--foreground));">Especialidades</a>
+      <a href="#avaliacoes" onclick="closeMenu()" class="block text-sm px-4 py-2.5 rounded-2xl hover:bg-muted transition-colors" style="color: hsl(var(--foreground));">Avaliações</a>
+      <a href="#contato" onclick="closeMenu()" class="block text-sm px-4 py-2.5 rounded-2xl hover:bg-muted transition-colors" style="color: hsl(var(--foreground));">Contato</a>
+      <a href="https://wa.me/5543988542459" target="_blank" rel="noopener"
+         class="block text-sm text-center px-4 py-2.5 rounded-2xl font-medium text-white mt-1"
+         style="background-color: #25d366;">
+        Falar no WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <!-- ============================================================ -->
+  <!-- HERO — image-split-diagonal -->
+  <!-- ============================================================ -->
+  <section id="hero" class="relative min-h-screen overflow-hidden" style="background-color: hsl(var(--primary));">
+
+    <!-- Dot pattern overlay -->
+    <div class="dot-pattern absolute inset-0 z-0"></div>
+
+    <!-- Blob decorations -->
+    <div class="blob w-64 h-64 top-10 left-10 z-0" style="background-color: hsl(var(--accent) / 0.3);"></div>
+    <div class="blob w-48 h-48 bottom-20 left-1/4 z-0" style="background-color: hsl(var(--accent) / 0.2);"></div>
+
+    <div class="relative z-10 grid md:grid-cols-2 min-h-screen pt-24 md:pt-0">
+
+      <!-- Left — content -->
+      <div class="flex flex-col justify-center px-6 md:px-12 lg:px-20 py-16 md:py-28">
+
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 mb-6 self-start">
+          <span class="text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full border"
+                style="color: hsl(var(--accent)); border-color: hsl(var(--accent) / 0.4); background-color: hsl(var(--accent) / 0.1);">
+            Referência em Contabilidade
+          </span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6" style="color: hsl(var(--primary-foreground));">
+          Contabilidade que<br />
+          <em class="not-italic" style="color: hsl(var(--accent));">resolve de verdade.</em>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-base md:text-lg leading-relaxed mb-8 max-w-md" style="color: hsl(var(--primary-foreground) / 0.75);">
+          Responsabilidade comprovada, atendimento ágil e anos de experiência cuidando das suas obrigações fiscais e contábeis.
+        </p>
+
+        <!-- Rating -->
+        <div class="flex items-center gap-2 mb-8">
+          <div class="flex gap-0.5">
+            <span style="color: hsl(var(--accent));">★★★★★</span>
+          </div>
+          <span class="text-sm font-medium" style="color: hsl(var(--primary-foreground) / 0.9);">5 no Google</span>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="https://wa.me/5543988542459" target="_blank" rel="noopener"
+             class="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-semibold text-sm transition-opacity hover:opacity-90 w-full sm:w-auto"
+             style="background-color: #25d366; color: #fff;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Falar no WhatsApp
+          </a>
+          <a href="tel:+5543988542459"
+             class="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-semibold text-sm border-2 transition-all hover:bg-white/10 w-full sm:w-auto"
+             style="border-color: hsl(var(--primary-foreground) / 0.4); color: hsl(var(--primary-foreground));">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            (43) 98854-2459
+          </a>
+        </div>
+      </div>
+
+      <!-- Right — image with diagonal clip -->
+      <div class="relative hidden md:block">
+        <div class="hero-image-diagonal absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=1500&fit=crop&q=80&auto=format"
+            alt="tax documents calculator desk"
+            class="w-full h-full object-cover"
+          />
+          <!-- Overlay tint -->
+          <div class="absolute inset-0" style="background: hsl(var(--primary) / 0.15);"></div>
+        </div>
+
+        <!-- Floating badge — desktop only -->
+        <div class="hidden sm:flex absolute bottom-16 left-8 z-20 items-center gap-3 px-5 py-3 rounded-2xl shadow-xl"
+             style="background-color: hsl(var(--card)); border: 1px solid hsl(var(--border));">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+               style="background-color: hsl(var(--accent) / 0.15);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--accent));">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs font-semibold" style="color: hsl(var(--foreground));">Nota 5 no Google</p>
+            <p class="text-xs" style="color: hsl(var(--muted-foreground));">Avaliação máxima</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Mobile hero image -->
+    <div class="block md:hidden w-full h-56 relative overflow-hidden">
+      <img
+        src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=500&fit=crop&q=80&auto=format"
+        alt="tax documents calculator desk"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0" style="background: hsl(var(--primary) / 0.3);"></div>
+    </div>
+
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- STATS BAR — after-hero -->
+  <!-- ============================================================ -->
+  <section class="w-full" style="background-color: hsl(var(--primary));">
+    <div class="border-t" style="border-color: hsl(var(--primary-foreground) / 0.1);">
+      <div class="max-w-5xl mx-auto px-4 py-10 md:py-12">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-0 md:divide-x" style="--tw-divide-opacity: 0.15;">
+          <div class="text-center md:px-8">
+            <p class="stat-number text-4xl md:text-5xl font-bold mb-1" style="color: hsl(var(--accent));">5★</p>
+            <p class="text-xs font-semibold uppercase tracking-widest" style="color: hsl(var(--primary-foreground) / 0.6);">Rating Google</p>
+          </div>
+          <div class="text-center md:px-8">
+            <p class="stat-number text-4xl md:text-5xl font-bold mb-1" style="color: hsl(var(--accent));">100%</p>
+            <p class="text-xs font-semibold uppercase tracking-widest" style="color: hsl(var(--primary-foreground) / 0.6);">Recomendam</p>
+          </div>
+          <div class="col-span-2 md:col-span-1 text-center md:px-8">
+            <p class="stat-number text-4xl md:text-5xl font-bold mb-1" style="color: hsl(var(--accent));">Top</p>
+            <p class="text-xs font-semibold uppercase tracking-widest" style="color: hsl(var(--primary-foreground) / 0.6);">Escritório da Região</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SOBRE -->
+  <!-- ============================================================ -->
+  <section id="sobre" class="py-16 md:py-28 px-4 md:px-6" style="background-color: hsl(var(--background));">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <!-- Images column -->
+        <div class="grid grid-cols-2 gap-4 order-2 md:order-1">
+          <div class="rounded-[var(--radius)] overflow-hidden shadow-lg">
+            <img
+              src="https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?w=800&h=900&fit=crop&q=80&auto=format"
+              alt="coins plant growth financial concept"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="rounded-[var(--radius)] overflow-hidden shadow-lg mt-8">
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=900&fit=crop&q=80&auto=format"
+              alt="financial dashboard charts laptop"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        <!-- Text column -->
+        <div class="order-1 md:order-2">
+          <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-6" style="color: hsl(var(--accent));">
+            Sobre Moreira e Ribeiro
+          </p>
+          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6" style="color: hsl(var(--foreground));">
+            Responsabilidade que<br />
+            <em style="color: hsl(var(--accent));">você pode contar.</em>
+          </h2>
+          <p class="text-base leading-relaxed mb-4" style="color: hsl(var(--muted-foreground));">
+            Somos especialistas em contabilidade consultiva, cuidando das obrigações fiscais e contábeis com precisão e responsabilidade. Atendemos empresários e profissionais que precisam de um contador de confiança, que conhece a fundo o negócio do cliente.
+          </p>
+          <p class="text-base leading-relaxed mb-10" style="color: hsl(var(--muted-foreground));">
+            Nossa equipe é reconhecida pela agilidade, pelo relacionamento próximo e pela capacidade de resolver o que parece complicado de forma direta e sem burocracia desnecessária.
+          </p>
+
+          <!-- Micro-benefits grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: hsl(var(--accent) / 0.15);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--accent));">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold mb-0.5" style="color: hsl(var(--foreground));">Profissional responsável</p>
+                <p class="text-xs" style="color: hsl(var(--muted-foreground));">Comprometimento em cada entrega</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: hsl(var(--accent) / 0.15);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--accent));">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold mb-0.5" style="color: hsl(var(--foreground));">Melhor da região</p>
+                <p class="text-xs" style="color: hsl(var(--muted-foreground));">Reconhecido pelos clientes</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: hsl(var(--accent) / 0.15);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--accent));">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold mb-0.5" style="color: hsl(var(--foreground));">Atendimento ágil</p>
+                <p class="text-xs" style="color: hsl(var(--muted-foreground));">Respostas rápidas, sem enrolação</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: hsl(var(--accent) / 0.15);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--accent));">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold mb-0.5" style="color: hsl(var(--foreground));">Indicação garantida</p>
+                <p class="text-xs" style="color: hsl(var(--muted-foreground));">Quem conhece, recomenda</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ESPECIALIDADES — list-with-icons -->
+  <!-- ============================================================ -->
+  <section id="especialidades" class="py-16 md:py-28 px-4 md:px-6" style="background-color: hsl(var(--muted));">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Header -->
+      <div class="text-center mb-14">
+        <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-6 inline-block" style="color: hsl(var(--accent));">
+          O que fazemos
+        </p>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" style="color: hsl(var(--foreground));">
+          Especialidades e<br />
+          <em style="color: hsl(var(--accent));">serviços contábeis</em>
+        </h2>
+      </div>
+
+      <!-- Services list -->
+      <div class="flex flex-col divide-y" style="border-color: hsl(var(--border));">
+
+        <!-- Item 1 — Principal -->
+        <div class="service-item flex items-start gap-5 py-6 group cursor-default">
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 transition-colors" style="background-color: hsl(var(--accent) / 0.15);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--accent));">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <h3 class="font-display text-lg md:text-xl font-bold" style="color: hsl(var(--foreground));">Contabilidade Consultiva</h3>
+              <span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full" style="background-color: hsl(var(--accent) / 0.15); color: hsl(var(--accent));">Especialidade Principal</span>
+            </div>
+            <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">Análise contábil estratégica, apoio na tomada de decisões e acompanhamento próximo das finanças do negócio.</p>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="service-item flex items-start gap-5 py-6 group cursor-default">
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style="background-color: hsl(var(--primary) / 0.08);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--primary));">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-display text-lg md:text-xl font-bold mb-1" style="color: hsl(var(--foreground));">Escrituração Fiscal e Tributária</h3>
+            <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">Apuração de impostos, obrigações acessórias e planejamento tributário para reduzir a carga fiscal dentro da lei.</p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="service-item flex items-start gap-5 py-6 group cursor-default">
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style="background-color: hsl(var(--primary) / 0.08);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--primary));">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-display text-lg md:text-xl font-bold mb-1" style="color: hsl(var(--foreground));">Departamento Pessoal</h3>
+            <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">Folha de pagamento, admissão, demissão, férias e eSocial. Cumprimento rigoroso das obrigações trabalhistas.</p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="service-item flex items-start gap-5 py-6 group cursor-default">
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style="background-color: hsl(var(--primary) / 0.08);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--primary));">
+              <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-display text-lg md:text-xl font-bold mb-1" style="color: hsl(var(--foreground));">Abertura e Regularização de Empresas</h3>
+            <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">Abertura de CNPJ, enquadramento societário, regularização de pendências junto à Receita Federal e órgãos estaduais.</p>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="service-item flex items-start gap-5 py-6 group cursor-default">
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style="background-color: hsl(var(--primary) / 0.08);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--primary));">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-display text-lg md:text-xl font-bold mb-1" style="color: hsl(var(--foreground));">Atendimento a Pessoas Físicas</h3>
+            <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">Declaração de Imposto de Renda, planejamento patrimonial e orientação fiscal para profissionais liberais e autônomos.</p>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="service-item flex items-start gap-5 py-6 group cursor-default">
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style="background-color: hsl(var(--primary) / 0.08);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--primary));">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-display text-lg md:text-xl font-bold mb-1" style="color: hsl(var(--foreground));">Relacionamento de Longo Prazo</h3>
+            <p class="text-sm leading-relaxed" style="color: hsl(var(--muted-foreground));">Acompanhamos clientes por anos com consistência. Conhecemos o histórico do negócio e entregamos orientação contínua, não apenas documentação.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- AVALIAÇÕES — masonry-3col -->
+  <!-- ============================================================ -->
+  <section id="avaliacoes" class="py-16 md:py-28 px-4 md:px-6" style="background-color: hsl(var(--background));">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Header -->
+      <div class="text-center mb-14">
+        <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-6 inline-block" style="color: hsl(var(--accent));">
+          O que os clientes dizem
+        </p>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4" style="color: hsl(var(--foreground));">
+          Avaliações reais,<br />
+          <em style="color: hsl(var(--accent));">nota máxima.</em>
+        </h2>
+        <p class="text-base max-w-xl mx-auto" style="color: hsl(var(--muted-foreground));">Todos os depoimentos são de clientes reais coletados no Google.</p>
+      </div>
+
+      <!-- Masonry grid -->
+      <div class="masonry-grid">
+
+        <!-- Review 1 -->
+        <div class="masonry-item review-card rounded-[var(--radius)] p-6 shadow-sm border" style="background-color: hsl(var(--card)); border-color: hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4">
+            <span style="color: hsl(var(--accent));">★★★★★</span>
+          </div>
+          <p class="text-sm leading-relaxed mb-5 relative z-10" style="color: hsl(var(--foreground));">
+            "Excelente profissional, responsável. Meu contador há alguns anos, super indico!"
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">
+              A
+            </div>
+            <p class="text-sm font-semibold" style="color: hsl(var(--foreground));">Antonio Marcos Nunes</p>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="masonry-item review-card rounded-[var(--radius)] p-6 shadow-sm border" style="background-color: hsl(var(--card)); border-color: hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4">
+            <span style="color: hsl(var(--accent));">★★★★★</span>
+          </div>
+          <p class="text-sm leading-relaxed mb-5 relative z-10" style="color: hsl(var(--foreground));">
+            "Melhor escritório de contabilidade da região, estão de parabéns!"
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">
+              F
+            </div>
+            <p class="text-sm font-semibold" style="color: hsl(var(--foreground));">Fredson Henrique</p>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="masonry-item review-card rounded-[var(--radius)] p-6 shadow-sm border" style="background-color: hsl(var(--card)); border-color: hsl(var(--border));">
+          <div class="flex gap-0.5 mb-4">
+            <span style="color: hsl(var(--accent));">★★★★★</span>
+          </div>
+          <p class="text-sm leading-relaxed mb-5 relative z-10" style="color: hsl(var(--foreground));">
+            "Excelente."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">
+              L
+            </div>
+            <p class="text-sm font-semibold" style="color: hsl(var(--foreground));">Luciane Donato</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Link to Google -->
+      <div class="text-center mt-10">
+        <a href="https://maps.google.com/?cid=4835864816976445056&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+           target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 text-sm font-medium underline-offset-4 hover:underline transition-colors"
+           style="color: hsl(var(--accent));">
+          Ver avaliações no Google
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- CONTATO -->
+  <!-- ============================================================ -->
+  <section id="contato" class="py-16 md:py-28 px-4 md:px-6" style="background-color: hsl(var(--muted));">
+    <div class="max-w-5xl mx-auto">
+
+      <!-- Header -->
+      <div class="text-center mb-14">
+        <p class="eyebrow-line text-xs font-semibold uppercase tracking-widest mb-6 inline-block" style="color: hsl(var(--accent));">
+          Fale conosco
+        </p>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" style="color: hsl(var(--foreground));">
+          Entre em<br />
+          <em style="color: hsl(var(--accent));">contato agora</em>
+        </h2>
+      </div>
+
+      <!-- Contact cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Phone -->
+        <a href="tel:+5543988542459"
+           class="contact-card rounded-[var(--radius)] p-6 border shadow-sm transition-all hover:shadow-md hover:-translate-y-1 block"
+           style="background-color: hsl(var(--card)); border-color: hsl(var(--border));">
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4" style="background-color: hsl(var(--primary) / 0.08);">
+            <svg class="contact-icon transition-colors" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--primary));">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <p class="text-xs font-semibold uppercase tracking-widest mb-1" style="color: hsl(var(--muted-foreground));">Telefone</p>
+          <p class="font-bold text-base mb-1" style="color: hsl(var(--foreground));">(43) 98854-2459</p>
+          <p class="text-xs" style="color: hsl(var(--muted-foreground));">Ligue ou mande mensagem</p>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/5543988542459" target="_blank" rel="noopener"
+           class="contact-card rounded-[var(--radius)] p-6 border shadow-sm transition-all hover:shadow-md hover:-translate-y-1 block"
+           style="background-color: hsl(var(--card)); border-color: hsl(var(--border));">
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4" style="background-color: #25d36620;">
+            <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="color: #25d366;">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </div>
+          <p class="text-xs font-semibold uppercase tracking-widest mb-1" style="color: hsl(var(--muted-foreground));">WhatsApp</p>
+          <p class="font-bold text-base mb-1" style="color: hsl(var(--foreground));">(43) 98854-2459</p>
+          <p class="text-xs" style="color: hsl(var(--muted-foreground));">Resposta rápida</p>
+        </a>
+
+        <!-- Endereço -->
+        <a href="https://maps.google.com/?cid=4835864816976445056&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+           target="_blank" rel="noopener"
+           class="contact-card rounded-[var(--radius)] p-6 border shadow-sm transition-all hover:shadow-md hover:-translate-y-1 block"
+           style="background-color: hsl(var(--card)); border-color: hsl(var(--border));">
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4" style="background-color: hsl(var(--accent) / 0.15);">
+            <svg class="contact-icon transition-colors" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(var(--accent));">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <p class="text-xs font-semibold uppercase tracking-widest mb-1" style="color: hsl(var(--muted-foreground));">Endereço</p>
+          <p class="font-bold text-sm mb-1 leading-snug" style="color: hsl(var(--foreground));">R. Piauí, 211, 7° Andar, Sala 71</p>
+          <p class="text-xs" style="color: hsl(var(--muted-foreground));">Vila Rica, Londrina, PR</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- CTA FINAL -->
+  <!-- ============================================================ -->
+  <section class="py-16 md:py-28 px-4 md:px-6" style="background-color: hsl(var(--background));">
+    <div class="max-w-4xl mx-auto">
+      <div class="relative overflow-hidden rounded-[var(--radius)] px-8 md:px-16 py-14 md:py-20 text-center" style="background-color: hsl(var(--primary));">
+
+        <!-- Blob decoration -->
+        <div class="blob w-64 h-64 top-0 right-0 z-0" style="background-color: hsl(var(--accent) / 0.25);"></div>
+        <div class="blob w-48 h-48 bottom-0 left-0 z-0" style="background-color: hsl(var(--accent) / 0.15);"></div>
+
+        <!-- Dot pattern -->
+        <div class="dot-pattern absolute inset-0 z-0"></div>
+
+        <div class="relative z-10">
+          <p class="text-xs font-semibold uppercase tracking-widest mb-6" style="color: hsl(var(--accent));">Pronto para começar?</p>
+          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6" style="color: hsl(var(--primary-foreground));">
+            Contabilidade precisa,<br />
+            <em style="color: hsl(var(--accent));">sem complicação.</em>
+          </h2>
+          <p class="text-base mb-10 max-w-lg mx-auto" style="color: hsl(var(--primary-foreground) / 0.75);">
+            Fale com nossa equipe agora e resolva as obrigações do seu negócio com quem é reconhecido pela responsabilidade e resultado.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://wa.me/5543988542459" target="_blank" rel="noopener"
+               class="flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-sm transition-opacity hover:opacity-90 w-full sm:w-auto"
+               style="background-color: #25d366; color: #fff;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Falar no WhatsApp
+            </a>
+            <a href="tel:+5543988542459"
+               class="flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-sm border-2 transition-all hover:bg-white/10 w-full sm:w-auto"
+               style="border-color: hsl(var(--primary-foreground) / 0.3); color: hsl(var(--primary-foreground));">
+              Ligar agora
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER -->
+  <!-- ============================================================ -->
+  <footer class="py-8 px-4 md:px-6 border-t" style="background-color: hsl(var(--muted)); border-color: hsl(var(--border));">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0" style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground));">
+          M
+        </div>
+        <span class="text-sm font-medium" style="color: hsl(var(--foreground));">Moreira e Ribeiro Contabilidade Consultiva</span>
+      </div>
+      <p class="text-xs" style="color: hsl(var(--muted-foreground));">
+        Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ============================================================ -->
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <!-- ============================================================ -->
+  <a href="https://wa.me/5543988542459" target="_blank" rel="noopener"
+     class="whatsapp-pulse fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-xl transition-transform hover:scale-110"
+     style="background-color: #25d366;"
+     aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="white">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- ============================================================ -->
+  <!-- JS — Hamburger menu -->
+  <!-- ============================================================ -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const hamburgerIcon = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+      const isOpen = menu.classList.contains('open');
+      if (isOpen) {
+        menu.classList.remove('open');
+        hamburgerIcon.style.display = 'block';
+        closeIcon.style.display = 'none';
+      } else {
+        menu.classList.add('open');
+        hamburgerIcon.style.display = 'none';
+        closeIcon.style.display = 'block';
+      }
+    }
+    function closeMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const hamburgerIcon = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+      menu.classList.remove('open');
+      hamburgerIcon.style.display = 'block';
+      closeIcon.style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
