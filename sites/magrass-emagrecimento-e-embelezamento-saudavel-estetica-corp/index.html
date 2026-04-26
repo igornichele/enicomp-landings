@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magrass Emagrecimento e Estética Corporal em Ibiporã - PR</title>
+  <meta name="description" content="Emagrecimento saudável, estética corporal, facial e mapeamento genético. Equipe especializada, ambiente acolhedor e resultados reais. Agende sua consulta." />
+  <meta property="og:title" content="Magrass Emagrecimento e Embelezamento Saudável | Ibiporã - PR" />
+  <meta property="og:description" content="Emagrecimento saudável, estética corporal, facial e mapeamento genético. Equipe especializada, ambiente acolhedor e resultados reais." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=630&fit=crop&q=80&auto=format" />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+              DEFAULT: 'hsl(var(--primary))',
+              foreground: 'hsl(var(--primary-foreground))',
+            },
+            accent: {
+              DEFAULT: 'hsl(var(--accent))',
+              foreground: 'hsl(var(--accent-foreground))',
+            },
+            muted: {
+              DEFAULT: 'hsl(var(--muted))',
+              foreground: 'hsl(var(--muted-foreground))',
+            },
+            card: {
+              DEFAULT: 'hsl(var(--card))',
+            },
+            border: 'hsl(var(--border))',
+          },
+          borderRadius: {
+            DEFAULT: 'var(--radius)',
+            lg: 'var(--radius)',
+            md: 'calc(var(--radius) - 0.25rem)',
+            sm: 'calc(var(--radius) - 0.5rem)',
+          },
+          fontFamily: {
+            sans: ['Figtree', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    :root {
+      --background: 20 15% 97%;
+      --foreground: 220 15% 12%;
+      --primary: 0 45% 25%;
+      --primary-foreground: 0 0% 98%;
+      --accent: 40 75% 58%;
+      --accent-foreground: 220 15% 12%;
+      --muted: 20 15% 94%;
+      --muted-foreground: 220 10% 40%;
+      --card: 0 0% 100%;
+      --border: 220 15% 90%;
+      --radius: 1.25rem;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Figtree', sans-serif; background-color: hsl(var(--background)); color: hsl(var(--foreground)); }
+
+    /* Section scroll offset for sticky header */
+    section[id] { scroll-margin-top: 72px; }
+
+    /* Eyebrow accent underline */
+    .eyebrow-line {
+      display: inline-block;
+      position: relative;
+    }
+    .eyebrow-line::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 48px;
+      height: 2px;
+      background-color: hsl(var(--accent));
+    }
+
+    /* Hero diagonal clip */
+    .hero-image-clip {
+      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    /* Marquee animation */
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      display: flex;
+      gap: 1.5rem;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+    .marquee-fade-left {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 80px;
+      background: linear-gradient(to right, hsl(var(--background)), transparent);
+      z-index: 10; pointer-events: none;
+    }
+    .marquee-fade-right {
+      position: absolute; right: 0; top: 0; bottom: 0; width: 80px;
+      background: linear-gradient(to left, hsl(var(--background)), transparent);
+      z-index: 10; pointer-events: none;
+    }
+
+    /* Review quote decoration */
+    .review-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .review-card::before {
+      content: '"';
+      font-family: 'Instrument Serif', serif;
+      font-size: 120px;
+      line-height: 1;
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      color: hsl(var(--accent));
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    /* Service card hover */
+    .service-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.10);
+    }
+
+    /* Contact card icon hover */
+    .contact-card:hover .contact-icon {
+      color: hsl(var(--accent));
+    }
+
+    /* Blob */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    /* Dot pattern */
+    .dot-pattern {
+      background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    /* WhatsApp pulse */
+    @keyframes waPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+      50% { box-shadow: 0 0 0 10px rgba(37,211,102,0); }
+    }
+    .wa-pulse { animation: waPulse 2s ease-in-out infinite; }
+
+    /* Neo-brutalist header */
+    .header-neo {
+      background-color: hsl(var(--primary));
+      border-bottom: 2px solid black;
+      box-shadow: 0 4px 0 0 black;
+    }
+
+    /* Stats overlay cards */
+    .stat-card-overlay {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* Pill tags */
+    .pill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      background-color: hsl(var(--muted));
+      color: hsl(var(--foreground));
+      border: 1px solid hsl(var(--border));
+      transition: background 0.2s, color 0.2s;
+    }
+    .pill-tag:hover {
+      background-color: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- ============ HEADER ============ -->
+  <header class="header-neo sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
+      <!-- Logo / Nome -->
+      <a href="#hero" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-accent flex items-center justify-center border-2 border-black shadow-[2px_2px_0_0_black] shrink-0">
+          <span class="font-serif text-lg font-bold text-black leading-none">M</span>
+        </div>
+        <span class="font-serif text-accent text-lg font-bold leading-tight hidden sm:block">Magrass</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="#sobre" class="text-primary-foreground/80 hover:text-accent text-sm font-medium transition-colors">Sobre</a>
+        <a href="#especialidades" class="text-primary-foreground/80 hover:text-accent text-sm font-medium transition-colors">Especialidades</a>
+        <a href="#avaliacoes" class="text-primary-foreground/80 hover:text-accent text-sm font-medium transition-colors">Avaliações</a>
+        <a href="#contato" class="text-primary-foreground/80 hover:text-accent text-sm font-medium transition-colors">Contato</a>
+        <a href="https://wa.me/5543984467640" target="_blank" rel="noopener"
+          class="bg-accent text-accent-foreground text-sm font-semibold px-4 py-2 rounded-md border-2 border-black shadow-[2px_2px_0_0_black] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-all">
+          Agendar
+        </a>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <button id="menu-toggle" class="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 border-2 border-accent rounded-md" aria-label="Abrir menu">
+        <span class="w-5 h-0.5 bg-accent block transition-all" id="bar1"></span>
+        <span class="w-5 h-0.5 bg-accent block transition-all" id="bar2"></span>
+        <span class="w-5 h-0.5 bg-accent block transition-all" id="bar3"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t-2 border-black bg-primary px-4 py-4 flex flex-col gap-4">
+      <a href="#sobre" onclick="closeMobileMenu()" class="text-primary-foreground/80 hover:text-accent text-base font-medium transition-colors">Sobre</a>
+      <a href="#especialidades" onclick="closeMobileMenu()" class="text-primary-foreground/80 hover:text-accent text-base font-medium transition-colors">Especialidades</a>
+      <a href="#avaliacoes" onclick="closeMobileMenu()" class="text-primary-foreground/80 hover:text-accent text-base font-medium transition-colors">Avaliações</a>
+      <a href="#contato" onclick="closeMobileMenu()" class="text-primary-foreground/80 hover:text-accent text-base font-medium transition-colors">Contato</a>
+      <a href="https://wa.me/5543984467640" target="_blank" rel="noopener"
+        class="bg-accent text-accent-foreground text-sm font-semibold px-4 py-2.5 rounded-md border-2 border-black shadow-[2px_2px_0_0_black] text-center">
+        Agendar via WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <!-- ============ HERO (image-split-diagonal + inside-hero-overlay stats) ============ -->
+  <section id="hero" class="relative overflow-hidden bg-primary min-h-[520px] md:min-h-[600px]">
+
+    <!-- Dot pattern overlay -->
+    <div class="dot-pattern absolute inset-0 z-0"></div>
+
+    <!-- Blob decorations -->
+    <div class="blob w-72 h-72 bg-accent top-[-60px] left-[-60px] z-0" style="opacity:0.3"></div>
+    <div class="blob w-56 h-56 bg-accent bottom-[-40px] left-[30%] z-0" style="opacity:0.18"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto grid md:grid-cols-2 min-h-[520px] md:min-h-[600px]">
+
+      <!-- Left: Content -->
+      <div class="flex flex-col justify-center px-6 md:px-10 lg:px-16 py-12 md:py-16">
+
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 mb-6 self-start">
+          <span class="bg-accent text-accent-foreground text-xs font-semibold px-3 py-1.5 rounded-full border-2 border-black shadow-[2px_2px_0_0_black] uppercase tracking-wide">
+            Referência em emagrecimento saudável
+          </span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.4rem] leading-tight text-primary-foreground mb-4">
+          Transformação real,<br />
+          <em class="not-italic text-accent">com cuidado de verdade</em>
+        </h1>
+
+        <!-- Subtítulo -->
+        <p class="text-primary-foreground/80 text-base md:text-lg leading-relaxed mb-6 max-w-md">
+          Unimos emagrecimento saudável, estética corporal e facial, e mapeamento genético em uma experiência cuidada, pensada para resultados que duram.
+        </p>
+
+        <!-- Rating -->
+        <div class="flex items-center gap-2 mb-8">
+          <div class="flex text-accent text-lg">★★★★★</div>
+          <span class="text-primary-foreground/90 font-semibold text-sm">4.3 no Google</span>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="https://wa.me/5543984467640" target="_blank" rel="noopener"
+            class="inline-flex items-center justify-center gap-2 bg-[#25d366] text-white font-semibold px-6 py-3 rounded-lg border-2 border-black shadow-[3px_3px_0_0_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.508 5.84L.057 23.999l6.305-1.654A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.659-.52-5.177-1.427l-.371-.22-3.844 1.008 1.027-3.745-.242-.386A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+            </svg>
+            Falar no WhatsApp
+          </a>
+          <a href="tel:+5543984467640"
+            class="inline-flex items-center justify-center gap-2 bg-transparent text-primary-foreground font-semibold px-6 py-3 rounded-lg border-2 border-primary-foreground/60 hover:border-accent hover:text-accent transition-all text-sm">
+            <i data-lucide="phone" class="w-4 h-4"></i>
+            (43) 98446-7640
+          </a>
+        </div>
+
+        <!-- Stats overlay (inside-hero-overlay) -->
+        <div class="mt-10 grid grid-cols-2 gap-3 max-w-sm">
+          <div class="stat-card-overlay rounded-xl p-3.5">
+            <p class="font-serif text-2xl text-accent font-bold leading-none">4.3<span class="text-base ml-0.5">★</span></p>
+            <p class="text-primary-foreground/70 text-xs uppercase tracking-widest mt-1">Google Rating</p>
+          </div>
+          <div class="stat-card-overlay rounded-xl p-3.5">
+            <p class="font-serif text-2xl text-accent font-bold leading-none">100%</p>
+            <p class="text-primary-foreground/70 text-xs uppercase tracking-widest mt-1">Recomendam</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Image with diagonal clip (hidden on mobile, shown on md+) -->
+      <div class="hidden md:block relative">
+        <div class="hero-image-clip absolute inset-0 overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1503174971373-b1f69850bded?w=1200&h=1500&fit=crop&q=80&auto=format"
+            alt="clean modern building facade"
+            class="w-full h-full object-cover"
+          />
+          <!-- Overlay tint -->
+          <div class="absolute inset-0 bg-primary/20"></div>
+        </div>
+
+        <!-- Floating badge (desktop only) -->
+        <div class="hidden sm:block absolute top-8 right-8 z-20 bg-card border-2 border-black shadow-[4px_4px_0_0_black] rounded-xl px-4 py-3 max-w-[180px]">
+          <div class="flex items-center gap-1.5 mb-1">
+            <span class="text-accent text-sm">★★★★★</span>
+          </div>
+          <p class="text-foreground text-xs font-semibold leading-snug">"Melhor clínica de emagrecimento saudável de Ibiporã!"</p>
+          <p class="text-muted-foreground text-xs mt-1">Camila Camata</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile hero image strip -->
+    <div class="md:hidden w-full h-52 overflow-hidden">
+      <img
+        src="https://images.unsplash.com/photo-1503174971373-b1f69850bded?w=1200&h=1500&fit=crop&q=80&auto=format"
+        alt="clean modern building facade"
+        class="w-full h-full object-cover object-top"
+      />
+    </div>
+  </section>
+
+  <!-- ============ AVALIAÇÕES (marquee-scroll) ============ -->
+  <section id="avaliacoes" class="py-16 md:py-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 text-center mb-12">
+      <p class="eyebrow-line text-xs uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-4">O QUE OS CLIENTES DIZEM</p>
+      <h2 class="font-serif text-3xl md:text-5xl text-foreground mt-6 mb-4">
+        Quem conhece, <em>recomenda</em>
+      </h2>
+      <p class="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">Cada avaliação é um resultado real. Veja o que nossos clientes compartilham.</p>
+    </div>
+
+    <!-- Marquee -->
+    <div class="marquee-wrapper relative py-4">
+      <div class="marquee-fade-left"></div>
+      <div class="marquee-fade-right"></div>
+      <div class="marquee-track">
+        <!-- Review 1 -->
+        <div class="review-card w-80 shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm">
+          <div class="flex text-accent text-sm mb-3">★★★★★</div>
+          <p class="text-foreground text-sm leading-relaxed mb-5">"Top, top demais."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold shrink-0">D</div>
+            <span class="text-sm font-semibold text-foreground">Diego Borges</span>
+          </div>
+        </div>
+        <!-- Review 2 -->
+        <div class="review-card w-80 shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm">
+          <div class="flex text-accent text-sm mb-3">★★★★★</div>
+          <p class="text-foreground text-sm leading-relaxed mb-5">"Melhor clínica de emagrecimento saudável e estética de Ibiporã. Equipe incrível e clínica linda. Super recomendo!"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold shrink-0">C</div>
+            <span class="text-sm font-semibold text-foreground">Camila Camata</span>
+          </div>
+        </div>
+        <!-- Review 3 -->
+        <div class="review-card w-80 shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm">
+          <div class="flex text-accent text-sm mb-3">★★★★★</div>
+          <p class="text-foreground text-sm leading-relaxed mb-5">"Lugar acolhedor, incrível e com uma equipe maravilhosa!"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold shrink-0">C</div>
+            <span class="text-sm font-semibold text-foreground">Camila Neves</span>
+          </div>
+        </div>
+        <!-- Review 4 -->
+        <div class="review-card w-80 shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm">
+          <div class="flex text-accent text-sm mb-3">★★★★★</div>
+          <p class="text-foreground text-sm leading-relaxed mb-5">"Clínica linda, excelente atendimento e resultado incrível. Super recomendo!"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold shrink-0">A</div>
+            <span class="text-sm font-semibold text-foreground">Adriana Fonseca</span>
+          </div>
+        </div>
+        <!-- Review 5 -->
+        <div class="review-card w-80 shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm">
+          <div class="flex text-accent text-sm mb-3">★★★★★</div>
+          <p class="text-foreground text-sm leading-relaxed mb-5">"Atendimento nota 10. Muito obrigado, meninas."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold shrink-0">A</div>
+            <span class="text-sm font-semibold text-foreground">ACHEcorrespondentes</span>
+          </div>
+        </div>
+        <!-- Duplicata para loop contínuo -->
+        <div class="review-card w-80 shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm">
+          <div class="flex text-accent text-sm mb-3">★★★★★</div>
+          <p class="text-foreground text-sm leading-relaxed mb-5">"Top, top demais."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold shrink-0">D</div>
+            <span class="text-sm font-semibold text-foreground">Diego Borges</span>
+          </div>
+        </div>
+        <div class="review-card w-80 shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm">
+          <div class="flex text-accent text-sm mb-3">★★★★★</div>
+          <p class="text-foreground text-sm leading-relaxed mb-5">"Melhor clínica de emagrecimento saudável e estética de Ibiporã. Equipe incrível e clínica linda. Super recomendo!"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold shrink-0">C</div>
+            <span class="text-sm font-semibold text-foreground">Camila Camata</span>
+          </div>
+        </div>
+        <div class="review-card w-80 shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm">
+          <div class="flex text-accent text-sm mb-3">★★★★★</div>
+          <p class="text-foreground text-sm leading-relaxed mb-5">"Lugar acolhedor, incrível e com uma equipe maravilhosa!"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold shrink-0">C</div>
+            <span class="text-sm font-semibold text-foreground">Camila Neves</span>
+          </div>
+        </div>
+        <div class="review-card w-80 shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm">
+          <div class="flex text-accent text-sm mb-3">★★★★★</div>
+          <p class="text-foreground text-sm leading-relaxed mb-5">"Clínica linda, excelente atendimento e resultado incrível. Super recomendo!"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold shrink-0">A</div>
+            <span class="text-sm font-semibold text-foreground">Adriana Fonseca</span>
+          </div>
+        </div>
+        <div class="review-card w-80 shrink-0 bg-card border border-border rounded-[var(--radius)] p-6 shadow-sm">
+          <div class="flex text-accent text-sm mb-3">★★★★★</div>
+          <p class="text-foreground text-sm leading-relaxed mb-5">"Atendimento nota 10. Muito obrigado, meninas."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold shrink-0">A</div>
+            <span class="text-sm font-semibold text-foreground">ACHEcorrespondentes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Link Google -->
+    <div class="text-center mt-10">
+      <a href="https://maps.google.com/?cid=11728222315704127137&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+        target="_blank" rel="noopener"
+        class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent transition-colors underline underline-offset-4">
+        Ver avaliações no Google
+        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ SOBRE ============ -->
+  <section id="sobre" class="py-16 md:py-28 bg-muted">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-12 items-center">
+
+      <!-- Imagens -->
+      <div class="grid grid-cols-2 gap-4 relative">
+        <div class="rounded-[var(--radius)] overflow-hidden shadow-lg aspect-[4/5]">
+          <img
+            src="https://images.unsplash.com/photo-1604176354204-9268737828e4?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="boutique interior warm"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="rounded-[var(--radius)] overflow-hidden shadow-lg aspect-[4/5] mt-8">
+          <img
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="cozy interior warm light"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <!-- Accent blob -->
+        <div class="blob w-48 h-48 bg-accent bottom-[-30px] left-[-30px] z-0" style="opacity:0.25"></div>
+      </div>
+
+      <!-- Texto -->
+      <div class="relative z-10">
+        <p class="eyebrow-line text-xs uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-4">SOBRE A MAGRASS</p>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground leading-tight mt-6 mb-6">
+          Um ambiente pensado<br />
+          <em>para você se sentir bem</em>
+        </h2>
+        <p class="text-muted-foreground text-base leading-relaxed mb-4">
+          Somos uma clínica especializada em emagrecimento saudável, estética corporal, facial e mapeamento genético. Nosso foco é oferecer tratamentos eficazes em um espaço acolhedor, com uma equipe que cuida de cada detalhe da sua experiência.
+        </p>
+        <p class="text-muted-foreground text-base leading-relaxed mb-8">
+          Combinamos tecnologia e atenção personalizada para que cada cliente alcance seus objetivos com segurança, bem-estar e resultados visíveis.
+        </p>
+
+        <!-- Micro-benefícios -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg bg-accent/15 flex items-center justify-center shrink-0 mt-0.5">
+              <i data-lucide="check-circle" class="w-4 h-4 text-accent"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm text-foreground">Ambiente acolhedor</p>
+              <p class="text-muted-foreground text-xs mt-0.5">Clínica pensada para o seu conforto</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg bg-accent/15 flex items-center justify-center shrink-0 mt-0.5">
+              <i data-lucide="check-circle" class="w-4 h-4 text-accent"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm text-foreground">Equipe especializada</p>
+              <p class="text-muted-foreground text-xs mt-0.5">Profissionais dedicados ao seu resultado</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg bg-accent/15 flex items-center justify-center shrink-0 mt-0.5">
+              <i data-lucide="check-circle" class="w-4 h-4 text-accent"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm text-foreground">Resultados reais</p>
+              <p class="text-muted-foreground text-xs mt-0.5">Tratamentos com eficácia comprovada</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg bg-accent/15 flex items-center justify-center shrink-0 mt-0.5">
+              <i data-lucide="check-circle" class="w-4 h-4 text-accent"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-sm text-foreground">Atendimento nota 10</p>
+              <p class="text-muted-foreground text-xs mt-0.5">Atenção e cuidado em cada consulta</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ESPECIALIDADES (pills-plus-detail) ============ -->
+  <section id="especialidades" class="py-16 md:py-28">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-12">
+        <p class="eyebrow-line text-xs uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-4">NOSSOS SERVIÇOS</p>
+        <h2 class="font-serif text-3xl md:text-5xl text-foreground mt-6 mb-4">
+          Tudo o que <em>você precisa</em>
+        </h2>
+        <p class="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">Oferecemos um amplo portfólio de tratamentos para corpo, pele e saúde, com abordagem integrada e personalizada.</p>
+      </div>
+
+      <!-- Pills (catálogo completo) -->
+      <div class="flex flex-wrap gap-2 justify-center mb-14">
+        <span class="pill-tag"><i data-lucide="zap" class="w-3.5 h-3.5"></i> Emagrecimento Saudável</span>
+        <span class="pill-tag"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Estética Corporal</span>
+        <span class="pill-tag"><i data-lucide="smile" class="w-3.5 h-3.5"></i> Estética Facial</span>
+        <span class="pill-tag"><i data-lucide="dna" class="w-3.5 h-3.5"></i> Mapeamento Genético</span>
+        <span class="pill-tag"><i data-lucide="heart-pulse" class="w-3.5 h-3.5"></i> Tratamento Corporal</span>
+        <span class="pill-tag"><i data-lucide="sun" class="w-3.5 h-3.5"></i> Rejuvenescimento Facial</span>
+        <span class="pill-tag"><i data-lucide="activity" class="w-3.5 h-3.5"></i> Acompanhamento Nutricional</span>
+        <span class="pill-tag"><i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Tratamentos Preventivos</span>
+        <span class="pill-tag"><i data-lucide="user-check" class="w-3.5 h-3.5"></i> Consulta Personalizada</span>
+      </div>
+
+      <!-- 3 cards detalhados -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Card principal: Emagrecimento Saudável -->
+        <div class="service-card bg-card border-2 border-black shadow-[4px_4px_0_0_black] rounded-[var(--radius)] p-6 relative overflow-hidden">
+          <div class="absolute top-4 right-4">
+            <span class="text-[10px] font-bold uppercase tracking-widest bg-accent text-accent-foreground px-2.5 py-1 rounded-full border border-black">Especialidade Principal</span>
+          </div>
+          <div class="w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center mb-5 mt-2">
+            <i data-lucide="zap" class="w-6 h-6 text-accent"></i>
+          </div>
+          <h3 class="font-serif text-xl text-foreground mb-2">Emagrecimento Saudável</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">
+            Protocolos individualizados que combinam acompanhamento profissional, tecnologia e orientação nutricional para resultados sustentáveis, sem comprometer a saúde.
+          </p>
+        </div>
+
+        <!-- Card 2: Estética Corporal e Facial -->
+        <div class="service-card bg-card border border-border rounded-[var(--radius)] p-6 hover:border-accent transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+            <i data-lucide="sparkles" class="w-6 h-6 text-primary"></i>
+          </div>
+          <h3 class="font-serif text-xl text-foreground mb-2">Estética Corporal e Facial</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">
+            Tratamentos para o corpo e o rosto que aliam bem-estar e beleza. Do rejuvenescimento à modelagem corporal, cuidamos de você de forma completa.
+          </p>
+        </div>
+
+        <!-- Card 3: Mapeamento Genético -->
+        <div class="service-card bg-card border border-border rounded-[var(--radius)] p-6 hover:border-accent transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+            <i data-lucide="dna" class="w-6 h-6 text-primary"></i>
+          </div>
+          <h3 class="font-serif text-xl text-foreground mb-2">Mapeamento Genético</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">
+            Entenda o que o seu genoma revela sobre metabolismo, predisposições e resposta a dietas. Uma abordagem precisa para personalizar o seu cuidado com a saúde.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTATO ============ -->
+  <section id="contato" class="py-16 md:py-28 bg-muted">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-12">
+        <p class="eyebrow-line text-xs uppercase tracking-[0.2em] font-semibold text-muted-foreground mb-4">FALE CONOSCO</p>
+        <h2 class="font-serif text-3xl md:text-5xl text-foreground mt-6 mb-4">
+          Prontos para <em>atender você</em>
+        </h2>
+        <p class="text-muted-foreground text-base md:text-lg max-w-md mx-auto">Entre em contato pelo canal que preferir. Respondemos com agilidade.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+
+        <!-- Telefone -->
+        <div class="contact-card bg-card border border-border rounded-[var(--radius)] p-6 text-center hover:shadow-md transition-shadow cursor-pointer group"
+          onclick="window.location.href='tel:+5543984467640'">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 transition-colors group-hover:bg-accent/15">
+            <i data-lucide="phone" class="contact-icon w-6 h-6 text-primary transition-colors"></i>
+          </div>
+          <p class="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-2">TELEFONE</p>
+          <p class="font-bold text-foreground text-lg">(43) 98446-7640</p>
+          <p class="text-muted-foreground text-sm mt-1">Ligue agora</p>
+        </div>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/5543984467640" target="_blank" rel="noopener"
+          class="contact-card bg-card border border-border rounded-[var(--radius)] p-6 text-center hover:shadow-md transition-shadow group block">
+          <div class="w-12 h-12 rounded-xl bg-[#25d366]/10 flex items-center justify-center mx-auto mb-4 transition-colors group-hover:bg-[#25d366]/20">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#25d366]" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.508 5.84L.057 23.999l6.305-1.654A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.659-.52-5.177-1.427l-.371-.22-3.844 1.008 1.027-3.745-.242-.386A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+            </svg>
+          </div>
+          <p class="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-2">WHATSAPP</p>
+          <p class="font-bold text-foreground text-lg">(43) 98446-7640</p>
+          <p class="text-muted-foreground text-sm mt-1">Falar agora</p>
+        </a>
+
+        <!-- Endereço -->
+        <a href="https://maps.google.com/?cid=11728222315704127137&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+          target="_blank" rel="noopener"
+          class="contact-card bg-card border border-border rounded-[var(--radius)] p-6 text-center hover:shadow-md transition-shadow group block">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 transition-colors group-hover:bg-accent/15">
+            <i data-lucide="map-pin" class="contact-icon w-6 h-6 text-primary transition-colors"></i>
+          </div>
+          <p class="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-2">ENDEREÇO</p>
+          <p class="font-bold text-foreground text-sm leading-snug">R. 19 de Dezembro, 27</p>
+          <p class="text-muted-foreground text-sm mt-1">Centro, Ibiporã - PR</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="py-16 md:py-28 px-4 md:px-6">
+    <div class="max-w-3xl mx-auto bg-primary rounded-[var(--radius)] relative overflow-hidden px-8 py-14 md:px-14 md:py-20 text-center">
+      <!-- Blob decorativo -->
+      <div class="blob w-64 h-64 bg-accent top-[-40px] right-[-40px]" style="opacity:0.25"></div>
+      <div class="blob w-48 h-48 bg-accent bottom-[-30px] left-[-30px]" style="opacity:0.15"></div>
+
+      <div class="relative z-10">
+        <h2 class="font-serif text-3xl md:text-5xl text-primary-foreground leading-tight mb-4">
+          Cuide de você com<br />
+          <em class="text-accent">quem entende do assunto</em>
+        </h2>
+        <p class="text-primary-foreground/75 text-base md:text-lg max-w-md mx-auto mb-10">
+          Agende sua avaliação e descubra o tratamento ideal para o seu objetivo. Respondemos com agilidade.
+        </p>
+        <a href="https://wa.me/5543984467640" target="_blank" rel="noopener"
+          class="inline-flex items-center justify-center gap-2 bg-[#25d366] text-white font-semibold px-8 py-4 rounded-xl border-2 border-black shadow-[4px_4px_0_0_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all text-base">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.508 5.84L.057 23.999l6.305-1.654A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.659-.52-5.177-1.427l-.371-.22-3.844 1.008 1.027-3.745-.242-.386A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+          Agendar pelo WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="border-t border-border bg-card py-8 px-4 md:px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0">
+          <span class="font-serif text-sm font-bold text-primary-foreground">M</span>
+        </div>
+        <span class="font-serif text-foreground font-medium text-sm">Magrass Emagrecimento e Embelezamento</span>
+      </div>
+      <p class="text-muted-foreground text-xs max-w-sm">Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.</p>
+    </div>
+  </footer>
+
+  <!-- ============ WHATSAPP FLUTUANTE ============ -->
+  <a href="https://wa.me/5543984467640" target="_blank" rel="noopener" aria-label="WhatsApp"
+    class="wa-pulse fixed bottom-5 right-5 z-50 w-14 h-14 bg-[#25d366] rounded-full flex items-center justify-center shadow-lg border-2 border-white">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.508 5.84L.057 23.999l6.305-1.654A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.659-.52-5.177-1.427l-.371-.22-3.844 1.008 1.027-3.745-.242-.386A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+    </svg>
+  </a>
+
+  <!-- ============ JS ============ -->
+  <script>
+    // Lucide icons init
+    lucide.createIcons();
+
+    // Mobile menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const bar1 = document.getElementById('bar1');
+    const bar2 = document.getElementById('bar2');
+    const bar3 = document.getElementById('bar3');
+    let menuOpen = false;
+
+    menuToggle.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      if (menuOpen) {
+        mobileMenu.classList.remove('hidden');
+        bar1.style.transform = 'translateY(8px) rotate(45deg)';
+        bar2.style.opacity = '0';
+        bar3.style.transform = 'translateY(-8px) rotate(-45deg)';
+      } else {
+        mobileMenu.classList.add('hidden');
+        bar1.style.transform = '';
+        bar2.style.opacity = '';
+        bar3.style.transform = '';
+      }
+    });
+
+    function closeMobileMenu() {
+      menuOpen = false;
+      mobileMenu.classList.add('hidden');
+      bar1.style.transform = '';
+      bar2.style.opacity = '';
+      bar3.style.transform = '';
+    }
+  </script>
+</body>
+</html>
