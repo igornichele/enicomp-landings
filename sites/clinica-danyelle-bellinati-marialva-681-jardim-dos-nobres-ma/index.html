@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica Danyelle Bellinati | Pilates, Fisioterapia e Estética | Marialva</title>
+  <meta name="description" content="Clínica com equipe especializada em Pilates, fisioterapia e estética em Marialva. Atendimento atencioso e profissional reconhecido pelos pacientes." />
+  <meta property="og:title" content="Clínica Danyelle Bellinati | Pilates, Fisioterapia e Estética" />
+  <meta property="og:description" content="Clínica com equipe especializada em Pilates, fisioterapia e estética em Marialva. Atendimento atencioso e profissional reconhecido pelos pacientes." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1528747045269-390fe33c19f2?w=1200&h=630&fit=crop&q=80&auto=format" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+              DEFAULT: 'hsl(var(--primary))',
+              foreground: 'hsl(var(--primary-foreground))',
+            },
+            accent: {
+              DEFAULT: 'hsl(var(--accent))',
+              foreground: 'hsl(var(--accent-foreground))',
+            },
+            muted: {
+              DEFAULT: 'hsl(var(--muted))',
+              foreground: 'hsl(var(--muted-foreground))',
+            },
+            card: {
+              DEFAULT: 'hsl(var(--card))',
+            },
+            border: 'hsl(var(--border))',
+          },
+          borderRadius: {
+            DEFAULT: 'var(--radius)',
+          },
+          fontFamily: {
+            sans: ['Work Sans', 'sans-serif'],
+            serif: ['DM Serif Display', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --background: 20 15% 97%;
+      --foreground: 220 15% 12%;
+      --primary: 240 20% 22%;
+      --primary-foreground: 0 0% 98%;
+      --accent: 50 75% 55%;
+      --accent-foreground: 220 15% 12%;
+      --muted: 20 15% 94%;
+      --muted-foreground: 220 10% 40%;
+      --card: 0 0% 100%;
+      --border: 220 15% 90%;
+      --radius: 0.5rem;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Work Sans', sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+    }
+
+    .font-serif { font-family: 'DM Serif Display', serif; }
+
+    /* Header gradient-border */
+    #site-header {
+      background-color: hsl(var(--card));
+      border-bottom: 2px solid transparent;
+      border-image: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)), transparent) 1;
+    }
+
+    /* Section eyebrow underline */
+    .eyebrow-line {
+      display: inline-block;
+      position: relative;
+    }
+    .eyebrow-line::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 2px;
+      background-color: hsl(var(--accent));
+      margin-top: 6px;
+    }
+
+    /* Scroll margin for sticky header */
+    section[id] {
+      scroll-margin-top: 72px;
+    }
+
+    /* Review quote decoration */
+    .review-card {
+      position: relative;
+      break-inside: avoid;
+      margin-bottom: 1.25rem;
+    }
+    .review-card::before {
+      content: '\201C';
+      font-family: 'DM Serif Display', serif;
+      font-size: 120px;
+      line-height: 1;
+      color: hsl(var(--accent) / 0.12);
+      position: absolute;
+      top: -24px;
+      left: 12px;
+      pointer-events: none;
+    }
+
+    /* Masonry columns */
+    .masonry-grid {
+      column-count: 1;
+      column-gap: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .masonry-grid { column-count: 2; }
+    }
+    @media (min-width: 1024px) {
+      .masonry-grid { column-count: 3; }
+    }
+
+    /* Alternating rows */
+    .service-row { display: flex; flex-direction: column; }
+    @media (min-width: 768px) {
+      .service-row { flex-direction: row; align-items: center; }
+      .service-row.reverse { flex-direction: row-reverse; }
+    }
+
+    /* Dots pattern */
+    .dots-pattern {
+      background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Blob */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    /* WhatsApp pulse */
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: 0.7; }
+      70% { transform: scale(1.35); opacity: 0; }
+      100% { transform: scale(1.35); opacity: 0; }
+    }
+    .wa-pulse::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #25d366;
+      animation: pulse-ring 2s ease-out infinite;
+    }
+
+    /* Card hover */
+    .hover-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .hover-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    }
+
+    /* Stats inside hero */
+    .stat-card-glass {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* Contact card icon color transition */
+    .contact-card:hover .contact-icon-box {
+      background-color: hsl(var(--accent) / 0.2);
+    }
+    .contact-card:hover .contact-icon-box i {
+      color: hsl(var(--accent-foreground));
+    }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: block; }
+  </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+  <!-- ===== HEADER ===== -->
+  <header id="site-header" class="fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between h-16">
+      <!-- Logo / Nome -->
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-primary-foreground" style="background-color: hsl(var(--primary));">D</div>
+        <span class="font-semibold text-sm md:text-base text-foreground leading-tight">
+          Clínica Danyelle<br class="hidden sm:block" /><span class="hidden sm:inline text-xs font-normal text-muted-foreground">Bellinati</span>
+        </span>
+      </div>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
+        <a href="#avaliacoes" class="hover:text-foreground transition-colors">Avaliações</a>
+        <a href="#sobre" class="hover:text-foreground transition-colors">Sobre</a>
+        <a href="#especialidades" class="hover:text-foreground transition-colors">Especialidades</a>
+        <a href="#contato" class="hover:text-foreground transition-colors">Contato</a>
+        <a href="https://wa.me/554432323217" target="_blank" rel="noopener"
+          class="px-4 py-2 rounded text-sm font-semibold text-white transition-opacity hover:opacity-90"
+          style="background-color: #25d366;">
+          WhatsApp
+        </a>
+      </nav>
+
+      <!-- Hamburguer -->
+      <button id="menu-btn" class="md:hidden p-2 rounded" aria-label="Menu" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+        <i data-lucide="menu" class="w-5 h-5 text-foreground"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden border-t border-border" style="background-color: hsl(var(--card));">
+      <nav class="flex flex-col px-4 py-4 gap-4 text-sm font-medium text-foreground">
+        <a href="#avaliacoes" onclick="document.getElementById('mobile-menu').classList.remove('open')" class="hover:text-primary">Avaliações</a>
+        <a href="#sobre" onclick="document.getElementById('mobile-menu').classList.remove('open')" class="hover:text-primary">Sobre</a>
+        <a href="#especialidades" onclick="document.getElementById('mobile-menu').classList.remove('open')" class="hover:text-primary">Especialidades</a>
+        <a href="#contato" onclick="document.getElementById('mobile-menu').classList.remove('open')" class="hover:text-primary">Contato</a>
+        <a href="https://wa.me/554432323217" target="_blank" rel="noopener"
+          class="px-4 py-2 rounded text-center text-white font-semibold" style="background-color: #25d366;">
+          Falar no WhatsApp
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO — image-background-full + stats inside-hero-overlay ===== -->
+  <section id="hero" class="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16">
+    <!-- Imagem de fundo -->
+    <img
+      src="https://images.unsplash.com/photo-1604176354204-9268737828e4?w=1200&h=1500&fit=crop&q=80&auto=format"
+      alt="boutique store interior"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <!-- Overlay -->
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom right, rgba(0,0,0,0.72), hsl(240 20% 22% / 0.45));"></div>
+    <!-- Dots pattern -->
+    <div class="dots-pattern absolute inset-0"></div>
+    <!-- Blobs -->
+    <div class="blob w-72 h-72 -top-20 -left-20" style="background-color: hsl(var(--accent)); opacity: 0.18;"></div>
+    <div class="blob w-56 h-56 bottom-20 right-0" style="background-color: hsl(var(--primary)); opacity: 0.25;"></div>
+
+    <!-- Conteúdo -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-28 flex flex-col items-center text-center text-white">
+
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-6"
+        style="background-color: hsl(var(--accent) / 0.22); border: 1px solid hsl(var(--accent) / 0.45); color: hsl(var(--accent));">
+        <i data-lucide="award" class="w-3.5 h-3.5"></i>
+        Quem conhece, recomenda
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 max-w-4xl">
+        Cuidamos de você com<br />
+        <em class="not-italic" style="color: hsl(var(--accent));">atenção e profissionalismo</em>
+      </h1>
+
+      <!-- Subtítulo -->
+      <p class="text-base md:text-xl text-white/80 max-w-2xl mb-8 leading-relaxed">
+        Nossa equipe oferece atendimento especializado em Pilates, fisioterapia e estética, com dedicação reconhecida pelos pacientes há anos.
+      </p>
+
+      <!-- Rating -->
+      <div class="flex items-center gap-2 mb-10 text-white/90 text-sm font-medium">
+        <span class="text-lg tracking-tight" style="color: hsl(var(--accent));">★★★★★</span>
+        <span class="font-semibold">4.6 no Google</span>
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto mb-16 md:mb-20">
+        <a href="https://wa.me/554432323217" target="_blank" rel="noopener"
+          class="flex items-center justify-center gap-2 px-7 py-3.5 rounded font-semibold text-white text-base transition-opacity hover:opacity-90 w-full sm:w-auto"
+          style="background-color: #25d366;">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L0 24l6.335-1.652A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.012-1.376l-.36-.213-3.732.979.997-3.643-.234-.374A9.818 9.818 0 1112 21.818z"/>
+          </svg>
+          Falar no WhatsApp
+        </a>
+        <a href="tel:+554432323217"
+          class="flex items-center justify-center gap-2 px-7 py-3.5 rounded font-semibold text-white text-base border border-white/40 hover:bg-white/10 transition-colors w-full sm:w-auto">
+          <i data-lucide="phone" class="w-5 h-5 shrink-0"></i>
+          (44) 3232-3217
+        </a>
+      </div>
+
+      <!-- Stats inside hero overlay -->
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 w-full max-w-2xl">
+        <div class="stat-card-glass rounded p-4 text-center">
+          <div class="font-serif text-3xl md:text-4xl text-white font-bold mb-1">4.6</div>
+          <div class="text-xs uppercase tracking-widest text-white/70 font-medium">Avaliação Google</div>
+        </div>
+        <div class="stat-card-glass rounded p-4 text-center">
+          <div class="font-serif text-3xl md:text-4xl font-bold mb-1" style="color: hsl(var(--accent));">★</div>
+          <div class="text-xs uppercase tracking-widest text-white/70 font-medium">Excelência reconhecida</div>
+        </div>
+        <div class="stat-card-glass rounded p-4 text-center col-span-2 md:col-span-1">
+          <div class="font-serif text-2xl md:text-3xl text-white font-bold mb-1">100%</div>
+          <div class="text-xs uppercase tracking-widest text-white/70 font-medium">Recomendam</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AVALIAÇÕES — masonry-3col ===== -->
+  <section id="avaliacoes" class="py-16 md:py-28" style="background-color: hsl(var(--muted));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <!-- Header da seção -->
+      <div class="text-center mb-12 md:mb-16">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3 eyebrow-line" style="color: hsl(var(--accent));">
+          O que os pacientes dizem
+        </p>
+        <h2 class="font-serif text-3xl md:text-5xl text-foreground mt-4">
+          Relatos de quem<br /><em class="not-italic" style="color: hsl(var(--primary));">viveu a experiência</em>
+        </h2>
+        <p class="mt-4 text-muted-foreground max-w-xl mx-auto">
+          Cada depoimento reflete o cuidado que dedicamos a quem nos confia sua saúde e bem-estar.
+        </p>
+      </div>
+
+      <!-- Masonry grid -->
+      <div class="masonry-grid">
+
+        <!-- Review 1 -->
+        <div class="review-card bg-card rounded-lg p-6 hover-card border border-border">
+          <div class="flex mb-3">
+            <span style="color: hsl(var(--accent));">★★★★★</span>
+          </div>
+          <p class="text-foreground text-sm leading-relaxed mb-5">
+            "Sou paciente da clínica há anos, sempre fui muito bem atendida em tudo que procurei. Toda a equipe é sempre muito atenciosa e extremamente profissional. Simplesmente adoro, excelentes profissionais."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-primary-foreground shrink-0" style="background-color: hsl(var(--primary));">E</div>
+            <span class="text-sm font-semibold text-foreground">Elisangela Campana</span>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card bg-card rounded-lg p-6 hover-card border border-border">
+          <div class="flex mb-3">
+            <span style="color: hsl(var(--accent));">★★★★★</span>
+          </div>
+          <p class="text-foreground text-sm leading-relaxed mb-5">
+            "Experiência incrível! Todos são muito simpáticos e atenciosos. Os procedimentos são impecáveis!"
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-primary-foreground shrink-0" style="background-color: hsl(var(--primary));">I</div>
+            <span class="text-sm font-semibold text-foreground">Isabela Carrion</span>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card bg-card rounded-lg p-6 hover-card border border-border">
+          <div class="flex mb-3">
+            <span style="color: hsl(var(--accent));">★★★★★</span>
+          </div>
+          <p class="text-foreground text-sm leading-relaxed mb-5">
+            "Lugar incrível, de pessoas incríveis!"
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-primary-foreground shrink-0" style="background-color: hsl(var(--primary));">B</div>
+            <span class="text-sm font-semibold text-foreground">Beatriz Matias</span>
+          </div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="review-card bg-card rounded-lg p-6 hover-card border border-border">
+          <div class="flex mb-3">
+            <span style="color: hsl(var(--accent));">★★★★★</span>
+          </div>
+          <p class="text-foreground text-sm leading-relaxed mb-5">
+            "Fui muito bem atendida."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-primary-foreground shrink-0" style="background-color: hsl(var(--primary));">I</div>
+            <span class="text-sm font-semibold text-foreground">Isacris Espajari</span>
+          </div>
+        </div>
+
+        <!-- Review 5 (3 estrelas, formatada com cuidado) -->
+        <div class="review-card bg-card rounded-lg p-6 hover-card border border-border">
+          <div class="flex mb-3">
+            <span style="color: hsl(var(--accent));">★★★</span><span class="text-muted-foreground/40">★★</span>
+          </div>
+          <p class="text-foreground text-sm leading-relaxed mb-5">
+            "O Studio de Pilates é ótimo, assim como as fisioterapeutas que atendem, com ótimo valor. Recomendo."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-primary-foreground shrink-0" style="background-color: hsl(var(--primary));">N</div>
+            <span class="text-sm font-semibold text-foreground">Nyelen</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Link Google -->
+      <div class="text-center mt-10">
+        <a href="https://maps.google.com/?cid=13495392285742361896&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+          target="_blank" rel="noopener"
+          class="inline-flex items-center gap-2 text-sm font-medium hover:underline transition-all"
+          style="color: hsl(var(--primary));">
+          Ver avaliações no Google
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOBRE ===== -->
+  <section id="sobre" class="py-16 md:py-28" style="background-color: hsl(var(--background));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+        <!-- Imagens -->
+        <div class="grid grid-cols-2 gap-4 relative">
+          <img
+            src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="retail shop shelves warm"
+            class="w-full rounded-lg object-cover aspect-[4/5]"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="shopkeeper arranging products"
+            class="w-full rounded-lg object-cover aspect-[4/5] mt-8"
+          />
+          <!-- Blob decorativo -->
+          <div class="blob w-48 h-48 -bottom-8 -left-8 z-0" style="background-color: hsl(var(--accent)); opacity: 0.2;"></div>
+        </div>
+
+        <!-- Texto -->
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest mb-3 eyebrow-line" style="color: hsl(var(--accent));">
+            Sobre a Clínica
+          </p>
+          <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl leading-snug mt-4 mb-6 text-foreground">
+            Uma equipe que<br /><em class="not-italic" style="color: hsl(var(--primary));">cuida de verdade</em>
+          </h2>
+          <p class="text-muted-foreground leading-relaxed mb-4">
+            Há anos dedicamos nosso trabalho ao bem-estar dos pacientes de Marialva e região. Nosso compromisso é oferecer atendimento de excelência, com profissionais altamente qualificados e um ambiente acolhedor.
+          </p>
+          <p class="text-muted-foreground leading-relaxed mb-8">
+            Do Studio de Pilates à fisioterapia e aos procedimentos estéticos, cada serviço é conduzido com técnica refinada e atenção individualizada, porque sabemos que cada paciente é único.
+          </p>
+
+          <!-- Micro-benefícios -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded flex items-center justify-center shrink-0 mt-0.5" style="background-color: hsl(var(--accent) / 0.15);">
+                <i data-lucide="check" class="w-4 h-4" style="color: hsl(var(--accent-foreground));"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-foreground">Equipe atenciosa</p>
+                <p class="text-xs text-muted-foreground">Profissionalismo reconhecido pelos pacientes</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded flex items-center justify-center shrink-0 mt-0.5" style="background-color: hsl(var(--accent) / 0.15);">
+                <i data-lucide="check" class="w-4 h-4" style="color: hsl(var(--accent-foreground));"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-foreground">Procedimentos impecáveis</p>
+                <p class="text-xs text-muted-foreground">Técnica e capricho em cada atendimento</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded flex items-center justify-center shrink-0 mt-0.5" style="background-color: hsl(var(--accent) / 0.15);">
+                <i data-lucide="check" class="w-4 h-4" style="color: hsl(var(--accent-foreground));"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-foreground">Atendimento humanizado</p>
+                <p class="text-xs text-muted-foreground">Cuidado personalizado para cada paciente</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded flex items-center justify-center shrink-0 mt-0.5" style="background-color: hsl(var(--accent) / 0.15);">
+                <i data-lucide="check" class="w-4 h-4" style="color: hsl(var(--accent-foreground));"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-foreground">Ótimo custo-benefício</p>
+                <p class="text-xs text-muted-foreground">Qualidade acessível e transparente</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ESPECIALIDADES — alternating-rows ===== -->
+  <section id="especialidades" class="py-16 md:py-28" style="background-color: hsl(var(--muted));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <!-- Header -->
+      <div class="text-center mb-12 md:mb-16">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3 eyebrow-line" style="color: hsl(var(--accent));">
+          O que oferecemos
+        </p>
+        <h2 class="font-serif text-3xl md:text-5xl text-foreground mt-4">
+          Especialidades que<br /><em class="not-italic" style="color: hsl(var(--primary));">transformam vidas</em>
+        </h2>
+      </div>
+
+      <!-- Row 1 — Pilates (destaque, imagem à direita) -->
+      <div class="service-row gap-0 mb-2">
+        <div class="flex-1 p-8 md:p-12 flex flex-col justify-center order-2 md:order-1 bg-card rounded-tl-lg rounded-bl-lg md:rounded-tr-none rounded-tr-lg">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 self-start" style="background-color: hsl(var(--accent) / 0.18); color: hsl(var(--accent-foreground));">
+            <i data-lucide="star" class="w-3 h-3"></i>
+            Especialidade principal
+          </div>
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5" style="background-color: hsl(var(--accent) / 0.15);">
+            <i data-lucide="activity" class="w-6 h-6" style="color: hsl(var(--accent-foreground));"></i>
+          </div>
+          <h3 class="font-serif text-2xl md:text-3xl text-foreground mb-3">Studio de Pilates</h3>
+          <p class="text-muted-foreground leading-relaxed max-w-md">
+            Nosso studio oferece aulas de Pilates com instrutoras qualificadas, equipamentos modernos e método individualizado. Reconhecido pelos pacientes como referência de qualidade e bom custo-benefício.
+          </p>
+        </div>
+        <div class="flex-1 order-1 md:order-2 min-h-[280px] md:min-h-[380px]">
+          <img
+            src="https://images.unsplash.com/photo-1604176354204-9268737828e4?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="boutique store interior"
+            class="w-full h-full object-cover rounded-tr-lg rounded-br-lg md:rounded-tl-none rounded-tl-lg md:rounded-bl-none"
+            style="min-height: 280px;"
+          />
+        </div>
+      </div>
+
+      <!-- Row 2 — Fisioterapia (imagem à esquerda) -->
+      <div class="service-row reverse gap-0 mb-2">
+        <div class="flex-1 min-h-[280px] md:min-h-[320px]">
+          <img
+            src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="retail shop shelves warm"
+            class="w-full h-full object-cover"
+            style="min-height: 280px;"
+          />
+        </div>
+        <div class="flex-1 p-8 md:p-12 flex flex-col justify-center bg-card">
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5" style="background-color: hsl(var(--primary) / 0.1);">
+            <i data-lucide="heart-pulse" class="w-6 h-6" style="color: hsl(var(--primary));"></i>
+          </div>
+          <h3 class="font-serif text-2xl md:text-3xl text-foreground mb-3">Fisioterapia</h3>
+          <p class="text-muted-foreground leading-relaxed max-w-md">
+            Contamos com fisioterapeutas experientes e dedicadas, que oferecem tratamentos personalizados para recuperação, reabilitação e melhora da qualidade de vida. Atendimento que faz a diferença no dia a dia.
+          </p>
+        </div>
+      </div>
+
+      <!-- Row 3 — Estética (imagem à direita) -->
+      <div class="service-row gap-0 mb-2">
+        <div class="flex-1 p-8 md:p-12 flex flex-col justify-center bg-card rounded-none">
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5" style="background-color: hsl(var(--primary) / 0.1);">
+            <i data-lucide="sparkles" class="w-6 h-6" style="color: hsl(var(--primary));"></i>
+          </div>
+          <h3 class="font-serif text-2xl md:text-3xl text-foreground mb-3">Procedimentos Estéticos</h3>
+          <p class="text-muted-foreground leading-relaxed max-w-md">
+            Realizamos procedimentos estéticos com técnica apurada e protocolos seguros. Cada tratamento é conduzido com impecabilidade, respeitando as necessidades e expectativas de cada pessoa.
+          </p>
+        </div>
+        <div class="flex-1 min-h-[280px] md:min-h-[320px]">
+          <img
+            src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="shopkeeper arranging products"
+            class="w-full h-full object-cover"
+            style="min-height: 280px;"
+          />
+        </div>
+      </div>
+
+      <!-- Row 4 — Atendimento personalizado (imagem à esquerda) -->
+      <div class="service-row reverse gap-0">
+        <div class="flex-1 min-h-[280px] md:min-h-[320px]">
+          <img
+            src="https://images.unsplash.com/photo-1604176354204-9268737828e4?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="boutique store interior"
+            class="w-full h-full object-cover rounded-bl-lg rounded-tl-lg md:rounded-none"
+            style="min-height: 280px;"
+          />
+        </div>
+        <div class="flex-1 p-8 md:p-12 flex flex-col justify-center bg-card rounded-br-lg rounded-tr-lg md:rounded-none">
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5" style="background-color: hsl(var(--primary) / 0.1);">
+            <i data-lucide="users" class="w-6 h-6" style="color: hsl(var(--primary));"></i>
+          </div>
+          <h3 class="font-serif text-2xl md:text-3xl text-foreground mb-3">Atendimento de Excelência</h3>
+          <p class="text-muted-foreground leading-relaxed max-w-md">
+            Mais do que tratar, nos preocupamos com a experiência completa de quem nos visita. Nossa equipe é simpática, atenciosa e comprometida em fazer cada paciente se sentir verdadeiramente bem cuidado.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== CONTATO ===== -->
+  <section id="contato" class="py-16 md:py-28" style="background-color: hsl(var(--background));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-12">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3 eyebrow-line" style="color: hsl(var(--accent));">
+          Fale conosco
+        </p>
+        <h2 class="font-serif text-3xl md:text-5xl text-foreground mt-4">
+          Estamos prontos<br /><em class="not-italic" style="color: hsl(var(--primary));">para atendê-lo</em>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Telefone -->
+        <div class="contact-card bg-card border border-border rounded-lg p-7 hover-card flex flex-col items-start gap-4 transition-all cursor-pointer">
+          <div class="contact-icon-box w-12 h-12 rounded-lg flex items-center justify-center transition-all" style="background-color: hsl(var(--primary) / 0.1);">
+            <i data-lucide="phone" class="w-5 h-5 transition-colors" style="color: hsl(var(--primary));"></i>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-widest mb-1 text-muted-foreground">Telefone</p>
+            <p class="font-bold text-foreground text-lg">(44) 3232-3217</p>
+            <p class="text-sm text-muted-foreground mt-1">Ligue e fale com nossa equipe</p>
+          </div>
+          <a href="tel:+554432323217" class="mt-auto text-sm font-medium hover:underline" style="color: hsl(var(--primary));">
+            Ligar agora →
+          </a>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="contact-card bg-card border border-border rounded-lg p-7 hover-card flex flex-col items-start gap-4 transition-all cursor-pointer">
+          <div class="contact-icon-box w-12 h-12 rounded-lg flex items-center justify-center transition-all" style="background-color: hsl(50 75% 55% / 0.15);">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-colors" viewBox="0 0 24 24" fill="#25d366">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L0 24l6.335-1.652A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.012-1.376l-.36-.213-3.732.979.997-3.643-.234-.374A9.818 9.818 0 1112 21.818z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-widest mb-1 text-muted-foreground">WhatsApp</p>
+            <p class="font-bold text-foreground text-lg">(44) 3232-3217</p>
+            <p class="text-sm text-muted-foreground mt-1">Resposta rápida e sem enrolação</p>
+          </div>
+          <a href="https://wa.me/554432323217" target="_blank" rel="noopener" class="mt-auto text-sm font-medium hover:underline" style="color: #25d366;">
+            Enviar mensagem →
+          </a>
+        </div>
+
+        <!-- Endereço -->
+        <div class="contact-card bg-card border border-border rounded-lg p-7 hover-card flex flex-col items-start gap-4 transition-all cursor-pointer">
+          <div class="contact-icon-box w-12 h-12 rounded-lg flex items-center justify-center transition-all" style="background-color: hsl(var(--primary) / 0.1);">
+            <i data-lucide="map-pin" class="w-5 h-5 transition-colors" style="color: hsl(var(--primary));"></i>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-widest mb-1 text-muted-foreground">Endereço</p>
+            <p class="font-bold text-foreground text-base leading-snug">R. Campos Sáles, 681<br />Jardim dos Nobres, Marialva - PR</p>
+            <p class="text-sm text-muted-foreground mt-1">CEP 86990-000</p>
+          </div>
+          <a href="https://maps.google.com/?cid=13495392285742361896&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+            target="_blank" rel="noopener"
+            class="mt-auto text-sm font-medium hover:underline flex items-center gap-1" style="color: hsl(var(--primary));">
+            Ver no mapa
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section id="cta-final" class="py-16 md:py-28" style="background-color: hsl(var(--muted));">
+    <div class="max-w-5xl mx-auto px-4 md:px-6">
+      <div class="relative rounded-lg overflow-hidden px-8 py-14 md:px-16 md:py-20 text-center" style="background-color: hsl(var(--primary));">
+        <!-- Blob decorativo -->
+        <div class="blob w-56 h-56 -top-12 -right-12" style="background-color: hsl(var(--accent)); opacity: 0.2;"></div>
+        <div class="blob w-40 h-40 -bottom-10 -left-10" style="background-color: hsl(var(--accent)); opacity: 0.12;"></div>
+
+        <div class="relative z-10">
+          <p class="text-xs font-semibold uppercase tracking-widest mb-4" style="color: hsl(var(--accent));">Agende sua consulta</p>
+          <h2 class="font-serif text-3xl md:text-5xl text-white leading-tight mb-4">
+            Dê o primeiro passo<br /><em class="not-italic" style="color: hsl(var(--accent));">para o seu bem-estar</em>
+          </h2>
+          <p class="text-white/75 max-w-xl mx-auto mb-8 text-base leading-relaxed">
+            Entre em contato agora e descubra como podemos ajudá-lo a viver com mais saúde, disposição e qualidade de vida.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://wa.me/554432323217" target="_blank" rel="noopener"
+              class="flex items-center justify-center gap-2 px-8 py-4 rounded font-bold text-white text-base transition-opacity hover:opacity-90 w-full sm:w-auto"
+              style="background-color: #25d366;">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L0 24l6.335-1.652A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.012-1.376l-.36-.213-3.732.979.997-3.643-.234-.374A9.818 9.818 0 1112 21.818z"/>
+              </svg>
+              Falar no WhatsApp
+            </a>
+            <a href="tel:+554432323217"
+              class="flex items-center justify-center gap-2 px-8 py-4 rounded font-semibold text-white text-base border border-white/30 hover:bg-white/10 transition-colors w-full sm:w-auto">
+              <i data-lucide="phone" class="w-5 h-5 shrink-0"></i>
+              (44) 3232-3217
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="py-8" style="background-color: hsl(var(--foreground));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 text-center">
+      <p class="text-xs text-white/40 leading-relaxed">
+        Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===== BOTÃO FLUTUANTE WHATSAPP ===== -->
+  <a href="https://wa.me/554432323217" target="_blank" rel="noopener"
+    class="wa-pulse fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
+    style="background-color: #25d366;"
+    aria-label="Falar no WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white relative z-10" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L0 24l6.335-1.652A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.012-1.376l-.36-.213-3.732.979.997-3.643-.234-.374A9.818 9.818 0 1112 21.818z"/>
+    </svg>
+  </a>
+
+  <script>
+    // Init Lucide icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
