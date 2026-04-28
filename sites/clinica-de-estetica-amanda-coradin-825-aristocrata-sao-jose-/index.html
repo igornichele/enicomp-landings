@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica de Estética Amanda Coradin | Esteticista em São José dos Pinhais</title>
+  <meta name="description" content="Criolipólise, ultraformer, enzimas e muito mais. Resultados reais com precisão e cuidado. 5 estrelas no Google com 66 avaliações." />
+  <meta property="og:title" content="Clínica de Estética Amanda Coradin | Esteticista" />
+  <meta property="og:description" content="Criolipólise, ultraformer, enzimas e muito mais. Resultados reais com precisão e cuidado. 5 estrelas no Google com 66 avaliações." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=1200&h=630&fit=crop&q=80&auto=format" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+              DEFAULT: 'hsl(var(--primary))',
+              foreground: 'hsl(var(--primary-foreground))',
+            },
+            accent: {
+              DEFAULT: 'hsl(var(--accent))',
+              foreground: 'hsl(var(--accent-foreground))',
+            },
+            muted: {
+              DEFAULT: 'hsl(var(--muted))',
+              foreground: 'hsl(var(--muted-foreground))',
+            },
+            card: {
+              DEFAULT: 'hsl(var(--card))',
+            },
+            border: 'hsl(var(--border))',
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['Crimson Pro', 'serif'],
+          },
+          borderRadius: {
+            DEFAULT: 'var(--radius)',
+            sm: 'calc(var(--radius) - 2px)',
+            lg: 'calc(var(--radius) + 4px)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --background: 45 20% 98%;
+      --foreground: 220 15% 12%;
+      --primary: 340 20% 25%;
+      --primary-foreground: 0 0% 98%;
+      --accent: 25 40% 80%;
+      --accent-foreground: 220 15% 12%;
+      --muted: 45 20% 94%;
+      --muted-foreground: 220 10% 40%;
+      --card: 0 0% 100%;
+      --border: 220 15% 90%;
+      --radius: 0.25rem;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Outfit', sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+    }
+
+    body { overflow-x: hidden; }
+
+    .font-serif { font-family: 'Crimson Pro', serif; }
+
+    /* Header magnetic underline */
+    .nav-link {
+      position: relative;
+      text-decoration: none;
+      color: hsl(var(--foreground));
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding-bottom: 2px;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      right: 50%;
+      height: 2px;
+      background-color: hsl(var(--primary));
+      transition: left 0.3s ease, right 0.3s ease;
+    }
+    .nav-link:hover::after {
+      left: 0;
+      right: 0;
+    }
+
+    /* Section eyebrow underline */
+    .eyebrow {
+      position: relative;
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: hsl(var(--muted-foreground));
+      padding-bottom: 8px;
+      margin-bottom: 0.75rem;
+    }
+    .eyebrow::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 48px;
+      height: 2px;
+      background-color: hsl(var(--accent));
+    }
+
+    /* Dot pattern background */
+    .dot-pattern {
+      background-image: radial-gradient(circle, hsl(var(--foreground) / 0.07) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Blob */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    /* Marquee */
+    .marquee-track {
+      display: flex;
+      gap: 1.5rem;
+      animation: marquee-scroll 35s linear infinite;
+      width: max-content;
+    }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+    @keyframes marquee-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-fade {
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+
+    /* Review card quote */
+    .review-card {
+      position: relative;
+    }
+    .review-card::before {
+      content: '\201C';
+      position: absolute;
+      top: -8px;
+      left: 16px;
+      font-family: 'Crimson Pro', serif;
+      font-size: 120px;
+      line-height: 1;
+      color: hsl(var(--accent) / 0.12);
+      pointer-events: none;
+    }
+
+    /* Card hover */
+    .service-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px hsl(var(--primary) / 0.12);
+      border-color: hsl(var(--accent));
+    }
+
+    /* Scroll margin for sticky header */
+    section[id] {
+      scroll-margin-top: 72px;
+    }
+
+    /* WhatsApp pulse */
+    @keyframes wa-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+    }
+    .wa-float {
+      animation: wa-pulse 2.5s ease infinite;
+    }
+
+    /* Pills */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background-color: hsl(var(--muted));
+      color: hsl(var(--muted-foreground));
+      border: 1px solid hsl(var(--border));
+      transition: background 0.2s, color 0.2s;
+      cursor: default;
+      white-space: nowrap;
+    }
+    .pill:hover {
+      background-color: hsl(var(--accent) / 0.25);
+      color: hsl(var(--foreground));
+    }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header id="header" style="position:sticky;top:0;z-index:50;background:hsl(var(--background)/0.92);backdrop-filter:blur(12px);border-bottom:1px solid hsl(var(--border));">
+    <div style="max-width:1200px;margin:0 auto;padding:0 1rem;height:68px;display:flex;align-items:center;justify-content:space-between;">
+
+      <!-- Logo / Nome -->
+      <a href="#" style="display:flex;align-items:center;gap:0.625rem;text-decoration:none;">
+        <div style="width:36px;height:36px;border-radius:var(--radius);background:hsl(var(--primary));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="color:hsl(var(--primary-foreground));font-family:'Crimson Pro',serif;font-size:1.125rem;font-weight:700;">A</span>
+        </div>
+        <span style="font-family:'Crimson Pro',serif;font-size:1.1rem;font-weight:600;color:hsl(var(--foreground));line-height:1.2;">Amanda Coradin<br><span style="font-size:0.7rem;font-weight:400;font-family:'Outfit',sans-serif;color:hsl(var(--muted-foreground));letter-spacing:0.08em;text-transform:uppercase;">Clínica de Estética</span></span>
+      </a>
+
+      <!-- Nav desktop -->
+      <nav style="display:none;" class="md-nav">
+        <div style="display:flex;align-items:center;gap:2rem;">
+          <a href="#avaliacoes" class="nav-link">Avaliações</a>
+          <a href="#especialidades" class="nav-link">Especialidades</a>
+          <a href="#sobre" class="nav-link">Sobre</a>
+          <a href="#contato" class="nav-link">Contato</a>
+          <a href="https://wa.me/5541996260506" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 1.1rem;background:#25d366;color:white;border-radius:var(--radius);font-size:0.82rem;font-weight:600;text-decoration:none;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" style="width:15px;height:15px;"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.464-1.318.115-.301.215-.63.215-.946 0-.058 0-.144-.014-.201-.1-.18-2.32-1.246-2.722-1.246zm-2.205 5.605c-3.39 0-6.535-2.005-7.595-5.21-.93-2.788.045-5.79 2.262-7.605 1.547-1.245 3.396-1.93 5.318-1.93.715 0 1.43.083 2.13.247 4.143.95 6.665 5.135 5.708 9.275-.953 4.135-5.13 6.66-9.27 5.71-.518-.115-1.052-.272-1.553-.487zM16.756 4C9.97 4 4.5 9.466 4.5 16.21c0 2.218.6 4.378 1.733 6.295L4 28.6l6.31-2.207a12.16 12.16 0 0 0 6.45 1.85c6.785 0 12.255-5.467 12.255-12.21S23.54 4 16.755 4z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </nav>
+
+      <!-- Hamburguer mobile -->
+      <button id="menu-btn" aria-label="Abrir menu" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid hsl(var(--border));background:transparent;border-radius:var(--radius);cursor:pointer;" onclick="toggleMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--foreground))" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" style="flex-direction:column;gap:0;border-top:1px solid hsl(var(--border));background:hsl(var(--background));">
+      <a href="#avaliacoes" class="nav-link" onclick="closeMenu()" style="padding:1rem 1.5rem;border-bottom:1px solid hsl(var(--border));display:block;">Avaliações</a>
+      <a href="#especialidades" class="nav-link" onclick="closeMenu()" style="padding:1rem 1.5rem;border-bottom:1px solid hsl(var(--border));display:block;">Especialidades</a>
+      <a href="#sobre" class="nav-link" onclick="closeMenu()" style="padding:1rem 1.5rem;border-bottom:1px solid hsl(var(--border));display:block;">Sobre</a>
+      <a href="#contato" class="nav-link" onclick="closeMenu()" style="padding:1rem 1.5rem;border-bottom:1px solid hsl(var(--border));display:block;">Contato</a>
+      <div style="padding:1rem 1.5rem;">
+        <a href="https://wa.me/5541996260506" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;padding:0.7rem;background:#25d366;color:white;border-radius:var(--radius);font-size:0.875rem;font-weight:600;text-decoration:none;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" style="width:16px;height:16px;"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.464-1.318.115-.301.215-.63.215-.946 0-.058 0-.144-.014-.201-.1-.18-2.32-1.246-2.722-1.246zm-2.205 5.605c-3.39 0-6.535-2.005-7.595-5.21-.93-2.788.045-5.79 2.262-7.605 1.547-1.245 3.396-1.93 5.318-1.93.715 0 1.43.083 2.13.247 4.143.95 6.665 5.135 5.708 9.275-.953 4.135-5.13 6.66-9.27 5.71-.518-.115-1.052-.272-1.553-.487zM16.756 4C9.97 4 4.5 9.466 4.5 16.21c0 2.218.6 4.378 1.733 6.295L4 28.6l6.31-2.207a12.16 12.16 0 0 0 6.45 1.85c6.785 0 12.255-5.467 12.255-12.21S23.54 4 16.755 4z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== HERO (no-image-typographic) ========== -->
+  <section id="hero" style="position:relative;overflow:hidden;min-height:88vh;display:flex;align-items:center;" class="dot-pattern">
+
+    <!-- Blobs -->
+    <div class="blob" style="width:420px;height:420px;background:hsl(var(--primary));top:-100px;left:-140px;"></div>
+    <div class="blob" style="width:360px;height:360px;background:hsl(var(--accent));bottom:-80px;right:-100px;"></div>
+
+    <div style="position:relative;z-index:1;max-width:960px;margin:0 auto;padding:4rem 1.25rem 3rem;text-align:center;width:100%;">
+
+      <!-- Badge -->
+      <div style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.9rem;border:1px solid hsl(var(--accent));border-radius:999px;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:hsl(var(--primary));background:hsl(var(--accent)/0.18);margin-bottom:2rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Referência em Resultados Estéticos
+      </div>
+
+      <!-- Headline -->
+      <h1 style="font-family:'Crimson Pro',serif;font-size:clamp(2.6rem,8vw,5.5rem);font-weight:600;line-height:1.1;color:hsl(var(--foreground));margin-bottom:1.25rem;letter-spacing:-0.01em;">
+        Resultados que<br><em style="color:hsl(var(--primary));font-style:italic;">você vê e sente.</em>
+      </h1>
+
+      <!-- Subtítulo -->
+      <p style="font-size:clamp(1rem,2.5vw,1.15rem);color:hsl(var(--muted-foreground));max-width:540px;margin:0 auto 1.5rem;line-height:1.6;font-weight:400;">
+        Criolipólise, ultraformer, enzimas e protocolos personalizados. Cada procedimento escolhido com precisão — sem indicar o que não faz sentido para você.
+      </p>
+
+      <!-- Rating line -->
+      <p style="font-size:0.85rem;color:hsl(var(--muted-foreground));margin-bottom:2.25rem;display:flex;align-items:center;justify-content:center;gap:0.35rem;">
+        <span style="color:#f59e0b;letter-spacing:1px;">★★★★★</span>
+        <strong style="color:hsl(var(--foreground));">5 no Google</strong>
+        <span>·</span>
+        <span>66 avaliações</span>
+      </p>
+
+      <!-- CTAs -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
+        <a href="https://wa.me/5541996260506" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;width:100%;max-width:320px;padding:0.875rem 1.5rem;background:#25d366;color:white;border-radius:var(--radius);font-size:0.95rem;font-weight:600;text-decoration:none;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" style="width:18px;height:18px;flex-shrink:0;"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.464-1.318.115-.301.215-.63.215-.946 0-.058 0-.144-.014-.201-.1-.18-2.32-1.246-2.722-1.246zm-2.205 5.605c-3.39 0-6.535-2.005-7.595-5.21-.93-2.788.045-5.79 2.262-7.605 1.547-1.245 3.396-1.93 5.318-1.93.715 0 1.43.083 2.13.247 4.143.95 6.665 5.135 5.708 9.275-.953 4.135-5.13 6.66-9.27 5.71-.518-.115-1.052-.272-1.553-.487zM16.756 4C9.97 4 4.5 9.466 4.5 16.21c0 2.218.6 4.378 1.733 6.295L4 28.6l6.31-2.207a12.16 12.16 0 0 0 6.45 1.85c6.785 0 12.255-5.467 12.255-12.21S23.54 4 16.755 4z"/></svg>
+          Agendar pelo WhatsApp
+        </a>
+        <a href="tel:+5541996260506" style="display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;width:100%;max-width:320px;padding:0.875rem 1.5rem;border:1.5px solid hsl(var(--border));color:hsl(var(--foreground));border-radius:var(--radius);font-size:0.95rem;font-weight:500;text-decoration:none;background:hsl(var(--card));transition:border-color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='hsl(var(--accent))';this.style.background='hsl(var(--muted))'" onmouseout="this.style.borderColor='hsl(var(--border))';this.style.background='hsl(var(--card))'">
+          <i data-lucide="phone" style="width:16px;height:16px;flex-shrink:0;"></i>
+          (41) 99626-0506
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== AVALIAÇÕES (marquee-scroll) ========== -->
+  <section id="avaliacoes" style="padding:4rem 0 4.5rem;background:hsl(var(--muted));">
+    <div style="max-width:1200px;margin:0 auto;padding:0 1.25rem;text-align:center;margin-bottom:2.5rem;">
+      <span class="eyebrow">O que os clientes dizem</span>
+      <h2 style="font-family:'Crimson Pro',serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:600;color:hsl(var(--foreground));margin-bottom:0.5rem;">Resultados que falam<br><em style="color:hsl(var(--primary));">por si mesmos.</em></h2>
+      <p style="font-size:0.9rem;color:hsl(var(--muted-foreground));">5 estrelas em 66 avaliações verificadas no Google.</p>
+    </div>
+
+    <!-- Marquee -->
+    <div class="marquee-fade" style="overflow:hidden;width:100%;">
+      <div class="marquee-track" id="marquee-track">
+
+        <!-- Review 1 -->
+        <div class="review-card" style="width:320px;flex-shrink:0;background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:var(--radius);padding:1.75rem 1.25rem 1.25rem;">
+          <div style="display:flex;gap:2px;margin-bottom:0.75rem;">
+            <span style="color:#f59e0b;font-size:0.875rem;">★★★★★</span>
+          </div>
+          <p style="font-size:0.875rem;line-height:1.6;color:hsl(var(--muted-foreground));margin-bottom:1rem;">"É uma profissional extremamente dedicada, cuidadosa e muito competente. Dá para perceber o quanto ela ama o que faz e o cuidado que tem com cada procedimento. Sempre explica tudo com muita paciência, passa muita segurança e faz a gente se sentir muito bem atendida. Os resultados são incríveis."</p>
+          <div style="display:flex;align-items:center;gap:0.625rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:hsl(var(--primary));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span style="color:hsl(var(--primary-foreground));font-size:0.8rem;font-weight:700;">A</span>
+            </div>
+            <div>
+              <p style="font-size:0.82rem;font-weight:600;color:hsl(var(--foreground));">Aline Martins</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card" style="width:320px;flex-shrink:0;background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:var(--radius);padding:1.75rem 1.25rem 1.25rem;">
+          <div style="display:flex;gap:2px;margin-bottom:0.75rem;">
+            <span style="color:#f59e0b;font-size:0.875rem;">★★★★★</span>
+          </div>
+          <p style="font-size:0.875rem;line-height:1.6;color:hsl(var(--muted-foreground));margin-bottom:1rem;">"Foi maravilhosa do começo ao fim. Na avaliação fez sugestões e até se recusou a fazer certos procedimentos desnecessários ou perigosos. Fizemos criolipólise, remoção de vasinhos, ultraformer e botox. Só me arrependi de não ter ficado mais tempo em São José dos Pinhais nessa viagem."</p>
+          <div style="display:flex;align-items:center;gap:0.625rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:hsl(var(--accent));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span style="color:hsl(var(--accent-foreground));font-size:0.8rem;font-weight:700;">C</span>
+            </div>
+            <div>
+              <p style="font-size:0.82rem;font-weight:600;color:hsl(var(--foreground));">Clóris Junges</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card" style="width:320px;flex-shrink:0;background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:var(--radius);padding:1.75rem 1.25rem 1.25rem;">
+          <div style="display:flex;gap:2px;margin-bottom:0.75rem;">
+            <span style="color:#f59e0b;font-size:0.875rem;">★★★★★</span>
+          </div>
+          <p style="font-size:0.875rem;line-height:1.6;color:hsl(var(--muted-foreground));margin-bottom:1rem;">"Profissional maravilhosa! Me ajudou muito a dar início ao meu processo de emagrecimento. Fiz aplicação de enzimas e super recomendo. A Amanda é incrível, extremamente qualificada, atenciosa e dedicada."</p>
+          <div style="display:flex;align-items:center;gap:0.625rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:hsl(var(--primary));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span style="color:hsl(var(--primary-foreground));font-size:0.8rem;font-weight:700;">R</span>
+            </div>
+            <div>
+              <p style="font-size:0.82rem;font-weight:600;color:hsl(var(--foreground));">Rita Carla</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="review-card" style="width:320px;flex-shrink:0;background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:var(--radius);padding:1.75rem 1.25rem 1.25rem;">
+          <div style="display:flex;gap:2px;margin-bottom:0.75rem;">
+            <span style="color:#f59e0b;font-size:0.875rem;">★★★★★</span>
+          </div>
+          <p style="font-size:0.875rem;line-height:1.6;color:hsl(var(--muted-foreground));margin-bottom:1rem;">"Realizei o protocolo de criolipólise com a Dra. Amanda e foi incrível! Atendimento e cuidado nota 10, e resultados incríveis! Recomendo muito."</p>
+          <div style="display:flex;align-items:center;gap:0.625rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:hsl(var(--accent));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span style="color:hsl(var(--accent-foreground));font-size:0.8rem;font-weight:700;">A</span>
+            </div>
+            <div>
+              <p style="font-size:0.82rem;font-weight:600;color:hsl(var(--foreground));">Ana Luiza Vonijone</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 5 -->
+        <div class="review-card" style="width:320px;flex-shrink:0;background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:var(--radius);padding:1.75rem 1.25rem 1.25rem;">
+          <div style="display:flex;gap:2px;margin-bottom:0.75rem;">
+            <span style="color:#f59e0b;font-size:0.875rem;">★★★★★</span>
+          </div>
+          <p style="font-size:0.875rem;line-height:1.6;color:hsl(var(--muted-foreground));margin-bottom:1rem;">"Com a Amanda foi completamente diferente. Desde a consulta, a paz e a segurança que ela transmite são algo incrível. Me senti acolhida, tranquila e confiante em todo o processo. O resultado foi simplesmente magnífico, superando todas as minhas expectativas."</p>
+          <div style="display:flex;align-items:center;gap:0.625rem;">
+            <div style="width:32px;height:32px;border-radius:50%;background:hsl(var(--primary));display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span style="color:hsl(var(--primary-foreground));font-size:0.8rem;font-weight:700;">N</span>
+            </div>
+            <div>
+              <p style="font-size:0.82rem;font-weight:600;color:hsl(var(--foreground));">Nicole Santa Cruz</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Duplicar pra marquee contínua -->
+        <div class="review-card" style="width:320px;flex-shrink:0;background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:var(--radius);padding:1.75rem 1.25rem 1.25rem;">
+          <div style="display:flex;gap:2px;margin-bottom:0.75rem;"><span style="color:#f59e0b;font-size:0.875rem;">★★★★★</span></div>
+          <p style="font-size:0.875rem;line-height:1.6;color:hsl(var(--muted-foreground));margin-bottom:1rem;">"É uma profissional extremamente dedicada, cuidadosa e muito competente. Dá para perceber o quanto ela ama o que faz e o cuidado que tem com cada procedimento. Sempre explica tudo com muita paciência, passa muita segurança e faz a gente se sentir muito bem atendida. Os resultados são incríveis."</p>
+          <div style="display:flex;align-items:center;gap:0.625rem;"><div style="width:32px;height:32px;border-radius:50%;background:hsl(var(--primary));display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:hsl(var(--primary-foreground));font-size:0.8rem;font-weight:700;">A</span></div><div><p style="font-size:0.82rem;font-weight:600;color:hsl(var(--foreground));">Aline Martins</p></div></div>
+        </div>
+        <div class="review-card" style="width:320px;flex-shrink:0;background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:var(--radius);padding:1.75rem 1.25rem 1.25rem;">
+          <div style="display:flex;gap:2px;margin-bottom:0.75rem;"><span style="color:#f59e0b;font-size:0.875rem;">★★★★★</span></div>
+          <p style="font-size:0.875rem;line-height:1.6;color:hsl(var(--muted-foreground));margin-bottom:1rem;">"Foi maravilhosa do começo ao fim. Na avaliação fez sugestões e até se recusou a fazer certos procedimentos desnecessários ou perigosos. Fizemos criolipólise, remoção de vasinhos, ultraformer e botox."</p>
+          <div style="display:flex;align-items:center;gap:0.625rem;"><div style="width:32px;height:32px;border-radius:50%;background:hsl(var(--accent));display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:hsl(var(--accent-foreground));font-size:0.8rem;font-weight:700;">C</span></div><div><p style="font-size:0.82rem;font-weight:600;color:hsl(var(--foreground));">Clóris Junges</p></div></div>
+        </div>
+        <div class="review-card" style="width:320px;flex-shrink:0;background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:var(--radius);padding:1.75rem 1.25rem 1.25rem;">
+          <div style="display:flex;gap:2px;margin-bottom:0.75rem;"><span style="color:#f59e0b;font-size:0.875rem;">★★★★★</span></div>
+          <p style="font-size:0.875rem;line-height:1.6;color:hsl(var(--muted-foreground));margin-bottom:1rem;">"Profissional maravilhosa! Me ajudou muito a dar início ao meu processo de emagrecimento. Fiz aplicação de enzimas e super recomendo."</p>
+          <div style="display:flex;align-items:center;gap:0.625rem;"><div style="width:32px;height:32px;border-radius:50%;background:hsl(var(--primary));display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:hsl(var(--primary-foreground));font-size:0.8rem;font-weight:700;">R</span></div><div><p style="font-size:0.82rem;font-weight:600;color:hsl(var(--foreground));">Rita Carla</p></div></div>
+        </div>
+        <div class="review-card" style="width:320px;flex-shrink:0;background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:var(--radius);padding:1.75rem 1.25rem 1.25rem;">
+          <div style="display:flex;gap:2px;margin-bottom:0.75rem;"><span style="color:#f59e0b;font-size:0.875rem;">★★★★★</span></div>
+          <p style="font-size:0.875rem;line-height:1.6;color:hsl(var(--muted-foreground));margin-bottom:1rem;">"Realizei o protocolo de criolipólise com a Dra. Amanda e foi incrível! Atendimento e cuidado nota 10, e resultados incríveis! Recomendo muito."</p>
+          <div style="display:flex;align-items:center;gap:0.625rem;"><div style="width:32px;height:32px;border-radius:50%;background:hsl(var(--accent));display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:hsl(var(--accent-foreground));font-size:0.8rem;font-weight:700;">A</span></div><div><p style="font-size:0.82rem;font-weight:600;color:hsl(var(--foreground));">Ana Luiza Vonijone</p></div></div>
+        </div>
+        <div class="review-card" style="width:320px;flex-shrink:0;background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:var(--radius);padding:1.75rem 1.25rem 1.25rem;">
+          <div style="display:flex;gap:2px;margin-bottom:0.75rem;"><span style="color:#f59e0b;font-size:0.875rem;">★★★★★</span></div>
+          <p style="font-size:0.875rem;line-height:1.6;color:hsl(var(--muted-foreground));margin-bottom:1rem;">"Com a Amanda foi completamente diferente. Me senti acolhida, tranquila e confiante em todo o processo. O resultado foi simplesmente magnífico, superando todas as minhas expectativas."</p>
+          <div style="display:flex;align-items:center;gap:0.625rem;"><div style="width:32px;height:32px;border-radius:50%;background:hsl(var(--primary));display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:hsl(var(--primary-foreground));font-size:0.8rem;font-weight:700;">N</span></div><div><p style="font-size:0.82rem;font-weight:600;color:hsl(var(--foreground));">Nicole Santa Cruz</p></div></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Link Google Reviews -->
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="https://maps.google.com/?cid=5734780003050954623&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.85rem;font-weight:500;color:hsl(var(--primary));text-decoration:none;border-bottom:1px solid hsl(var(--accent));padding-bottom:1px;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.72'" onmouseout="this.style.opacity='1'">
+        Ver todas as 66 avaliações no Google
+        <i data-lucide="arrow-up-right" style="width:14px;height:14px;"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== ESPECIALIDADES (pills-plus-detail) ========== -->
+  <section id="especialidades" style="padding:4rem 0 4.5rem;background:hsl(var(--background));">
+    <div style="max-width:1200px;margin:0 auto;padding:0 1.25rem;">
+
+      <div style="text-align:center;margin-bottom:2.5rem;">
+        <span class="eyebrow">Especialidades</span>
+        <h2 style="font-family:'Crimson Pro',serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:600;color:hsl(var(--foreground));margin-bottom:0.5rem;">Cada tratamento com<br><em style="color:hsl(var(--primary));">propósito definido.</em></h2>
+        <p style="font-size:0.9rem;color:hsl(var(--muted-foreground));max-width:480px;margin:0 auto;">Protocolos selecionados individualmente. Sem indicações genéricas.</p>
+      </div>
+
+      <!-- Pills -->
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-bottom:3rem;">
+        <span class="pill">Criolipólise</span>
+        <span class="pill">Ultraformer</span>
+        <span class="pill">Botox</span>
+        <span class="pill">Enzimas emagrecedoras</span>
+        <span class="pill">Remoção de vasinhos</span>
+        <span class="pill">Tratamentos faciais</span>
+        <span class="pill">Protocolos corporais</span>
+        <span class="pill">Avaliação personalizada</span>
+      </div>
+
+      <!-- Cards detalhados -->
+      <div style="display:grid;grid-template-columns:1fr;gap:1.25rem;">
+
+        <!-- Card principal -->
+        <div class="service-card" style="background:hsl(var(--card));border:1.5px solid hsl(var(--accent));border-radius:var(--radius);padding:1.75rem;position:relative;">
+          <div style="position:absolute;top:1rem;right:1rem;">
+            <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:hsl(var(--accent));color:hsl(var(--accent-foreground));padding:0.25rem 0.6rem;border-radius:999px;">Especialidade principal</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:1rem;">
+            <div style="width:48px;height:48px;border-radius:var(--radius);background:hsl(var(--accent)/0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i data-lucide="snowflake" style="width:22px;height:22px;color:hsl(var(--accent-foreground));"></i>
+            </div>
+            <div>
+              <h3 style="font-family:'Crimson Pro',serif;font-size:1.35rem;font-weight:600;color:hsl(var(--foreground));margin-bottom:0.4rem;">Criolipólise</h3>
+              <p style="font-size:0.88rem;line-height:1.6;color:hsl(var(--muted-foreground));">Eliminação localizada de gordura por resfriamento controlado. Protocolo sem cirurgia, com resultados progressivos e duradouros. Avaliação prévia obrigatória para indicação correta da sessão.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="service-card" style="background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:var(--radius);padding:1.75rem;">
+          <div style="display:flex;align-items:flex-start;gap:1rem;">
+            <div style="width:48px;height:48px;border-radius:var(--radius);background:hsl(var(--primary)/0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i data-lucide="zap" style="width:22px;height:22px;color:hsl(var(--primary));"></i>
+            </div>
+            <div>
+              <h3 style="font-family:'Crimson Pro',serif;font-size:1.35rem;font-weight:600;color:hsl(var(--foreground));margin-bottom:0.4rem;">Ultraformer</h3>
+              <p style="font-size:0.88rem;line-height:1.6;color:hsl(var(--muted-foreground));">Lifting não invasivo por ultrassom microfocado. Tensionamento da pele com estímulo de colágeno profundo. Indicado para flacidez facial e corporal com resultados visíveis em poucas sessões.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="service-card" style="background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:var(--radius);padding:1.75rem;">
+          <div style="display:flex;align-items:flex-start;gap:1rem;">
+            <div style="width:48px;height:48px;border-radius:var(--radius);background:hsl(var(--primary)/0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i data-lucide="droplets" style="width:22px;height:22px;color:hsl(var(--primary));"></i>
+            </div>
+            <div>
+              <h3 style="font-family:'Crimson Pro',serif;font-size:1.35rem;font-weight:600;color:hsl(var(--foreground));margin-bottom:0.4rem;">Enzimas e Botox</h3>
+              <p style="font-size:0.88rem;line-height:1.6;color:hsl(var(--muted-foreground));">Aplicação de enzimas para redução de adiposidade localizada e emagrecimento. Botox para harmonização e prevenção. Cada procedimento indicado com base na avaliação, não no protocolo padrão.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SOBRE ========== -->
+  <section id="sobre" style="padding:4rem 0 4.5rem;background:hsl(var(--muted));">
+    <div style="max-width:1200px;margin:0 auto;padding:0 1.25rem;">
+      <div style="display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;">
+
+        <!-- Imagens -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&h=900&fit=crop&q=80&auto=format" alt="esthetician applying brown facial mask" style="width:100%;height:auto;border-radius:var(--radius);object-fit:cover;aspect-ratio:3/4;" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&h=900&fit=crop&q=80&auto=format" alt="facial treatment esthetician hands" style="width:100%;height:auto;border-radius:var(--radius);object-fit:cover;aspect-ratio:3/4;margin-top:2rem;" loading="lazy" />
+        </div>
+
+        <!-- Texto -->
+        <div>
+          <span class="eyebrow">Sobre Amanda Coradin</span>
+          <h2 style="font-family:'Crimson Pro',serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:600;color:hsl(var(--foreground));margin-bottom:1.25rem;line-height:1.15;">Competência técnica.<br><em style="color:hsl(var(--primary));">Cuidado que se percebe.</em></h2>
+          <p style="font-size:0.95rem;line-height:1.7;color:hsl(var(--muted-foreground));margin-bottom:1rem;">Atendemos com uma premissa simples: cada cliente merece uma avaliação honesta. Isso significa recusar procedimentos desnecessários, explicar cada etapa com clareza e construir protocolos que fazem sentido para o perfil de cada pessoa.</p>
+          <p style="font-size:0.95rem;line-height:1.7;color:hsl(var(--muted-foreground));margin-bottom:2rem;">Dos procedimentos corporais aos faciais, atuamos com equipamentos de referência e atualização constante. O resultado que as clientes relatam não é coincidência — é método.</p>
+
+          <!-- Micro-benefícios -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div style="display:flex;gap:0.625rem;align-items:flex-start;">
+              <div style="width:28px;height:28px;border-radius:var(--radius);background:hsl(var(--accent)/0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+                <i data-lucide="check" style="width:14px;height:14px;color:hsl(var(--primary));"></i>
+              </div>
+              <div>
+                <p style="font-size:0.82rem;font-weight:600;color:hsl(var(--foreground));">Avaliação honesta</p>
+                <p style="font-size:0.75rem;color:hsl(var(--muted-foreground));">Sem indicar o que não é necessário</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:0.625rem;align-items:flex-start;">
+              <div style="width:28px;height:28px;border-radius:var(--radius);background:hsl(var(--accent)/0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+                <i data-lucide="check" style="width:14px;height:14px;color:hsl(var(--primary));"></i>
+              </div>
+              <div>
+                <p style="font-size:0.82rem;font-weight:600;color:hsl(var(--foreground));">Segurança no processo</p>
+                <p style="font-size:0.75rem;color:hsl(var(--muted-foreground));">Explicação detalhada em cada etapa</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:0.625rem;align-items:flex-start;">
+              <div style="width:28px;height:28px;border-radius:var(--radius);background:hsl(var(--accent)/0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+                <i data-lucide="check" style="width:14px;height:14px;color:hsl(var(--primary));"></i>
+              </div>
+              <div>
+                <p style="font-size:0.82rem;font-weight:600;color:hsl(var(--foreground));">Resultados documentados</p>
+                <p style="font-size:0.75rem;color:hsl(var(--muted-foreground));">66 clientes. Nota 5 no Google</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:0.625rem;align-items:flex-start;">
+              <div style="width:28px;height:28px;border-radius:var(--radius);background:hsl(var(--accent)/0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+                <i data-lucide="check" style="width:14px;height:14px;color:hsl(var(--primary));"></i>
+              </div>
+              <div>
+                <p style="font-size:0.82rem;font-weight:600;color:hsl(var(--foreground));">Atendimento cuidadoso</p>
+                <p style="font-size:0.75rem;color:hsl(var(--muted-foreground));">Inclusive para grupos de risco (gestantes, lactantes)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTATO ========== -->
+  <section id="contato" style="padding:4rem 0 4.5rem;background:hsl(var(--background));">
+    <div style="max-width:1200px;margin:0 auto;padding:0 1.25rem;">
+
+      <div style="text-align:center;margin-bottom:2.5rem;">
+        <span class="eyebrow">Contato</span>
+        <h2 style="font-family:'Crimson Pro',serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:600;color:hsl(var(--foreground));margin-bottom:0.4rem;">Fale conosco.</h2>
+        <p style="font-size:0.9rem;color:hsl(var(--muted-foreground));">Escolha o canal que preferir. Respondemos rápido.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr;gap:1.25rem;max-width:800px;margin:0 auto;">
+
+        <!-- Telefone -->
+        <a href="tel:+5541996260506" style="display:flex;align-items:center;gap:1rem;background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:var(--radius);padding:1.5rem;text-decoration:none;transition:border-color 0.2s,box-shadow 0.2s;" onmouseover="this.style.borderColor='hsl(var(--accent))';this.style.boxShadow='0 4px 16px hsl(var(--primary)/0.08)'" onmouseout="this.style.borderColor='hsl(var(--border))';this.style.boxShadow='none'">
+          <div style="width:44px;height:44px;border-radius:var(--radius);background:hsl(var(--primary)/0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.2s;">
+            <i data-lucide="phone" style="width:20px;height:20px;color:hsl(var(--primary));"></i>
+          </div>
+          <div>
+            <p style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:hsl(var(--muted-foreground));margin-bottom:0.2rem;">Telefone</p>
+            <p style="font-size:1.05rem;font-weight:700;color:hsl(var(--foreground));">(41) 99626-0506</p>
+            <p style="font-size:0.78rem;color:hsl(var(--muted-foreground));">Ligue para agendar</p>
+          </div>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/5541996260506" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:1rem;background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:var(--radius);padding:1.5rem;text-decoration:none;transition:border-color 0.2s,box-shadow 0.2s;" onmouseover="this.style.borderColor='#25d366';this.style.boxShadow='0 4px 16px rgba(37,211,102,0.12)'" onmouseout="this.style.borderColor='hsl(var(--border))';this.style.boxShadow='none'">
+          <div style="width:44px;height:44px;border-radius:var(--radius);background:rgba(37,211,102,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="#25d366" style="width:22px;height:22px;"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.464-1.318.115-.301.215-.63.215-.946 0-.058 0-.144-.014-.201-.1-.18-2.32-1.246-2.722-1.246zm-2.205 5.605c-3.39 0-6.535-2.005-7.595-5.21-.93-2.788.045-5.79 2.262-7.605 1.547-1.245 3.396-1.93 5.318-1.93.715 0 1.43.083 2.13.247 4.143.95 6.665 5.135 5.708 9.275-.953 4.135-5.13 6.66-9.27 5.71-.518-.115-1.052-.272-1.553-.487zM16.756 4C9.97 4 4.5 9.466 4.5 16.21c0 2.218.6 4.378 1.733 6.295L4 28.6l6.31-2.207a12.16 12.16 0 0 0 6.45 1.85c6.785 0 12.255-5.467 12.255-12.21S23.54 4 16.755 4z"/></svg>
+          </div>
+          <div>
+            <p style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:hsl(var(--muted-foreground));margin-bottom:0.2rem;">WhatsApp</p>
+            <p style="font-size:1.05rem;font-weight:700;color:hsl(var(--foreground));">(41) 99626-0506</p>
+            <p style="font-size:0.78rem;color:hsl(var(--muted-foreground));">Atendimento pelo app</p>
+          </div>
+        </a>
+
+        <!-- Endereço -->
+        <a href="https://maps.google.com/?cid=5734780003050954623&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:1rem;background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:var(--radius);padding:1.5rem;text-decoration:none;transition:border-color 0.2s,box-shadow 0.2s;" onmouseover="this.style.borderColor='hsl(var(--accent))';this.style.boxShadow='0 4px 16px hsl(var(--primary)/0.08)'" onmouseout="this.style.borderColor='hsl(var(--border))';this.style.boxShadow='none'">
+          <div style="width:44px;height:44px;border-radius:var(--radius);background:hsl(var(--primary)/0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="map-pin" style="width:20px;height:20px;color:hsl(var(--primary));"></i>
+          </div>
+          <div>
+            <p style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:hsl(var(--muted-foreground));margin-bottom:0.2rem;">Endereço</p>
+            <p style="font-size:0.95rem;font-weight:700;color:hsl(var(--foreground));">R. Zacarias Alves Pereira, 825</p>
+            <p style="font-size:0.78rem;color:hsl(var(--muted-foreground));">Aristocrata, São José dos Pinhais - PR, 83030-480</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA FINAL ========== -->
+  <section id="cta-final" style="padding:4rem 1.25rem;background:hsl(var(--primary));position:relative;overflow:hidden;text-align:center;">
+    <!-- Blob decorativo -->
+    <div style="position:absolute;width:300px;height:300px;border-radius:50%;background:hsl(var(--accent)/0.15);filter:blur(60px);top:-80px;right:-60px;pointer-events:none;"></div>
+    <div style="position:absolute;width:200px;height:200px;border-radius:50%;background:hsl(var(--accent)/0.1);filter:blur(50px);bottom:-40px;left:-40px;pointer-events:none;"></div>
+
+    <div style="position:relative;z-index:1;max-width:600px;margin:0 auto;">
+      <h2 style="font-family:'Crimson Pro',serif;font-size:clamp(1.75rem,4.5vw,3rem);font-weight:600;color:hsl(var(--primary-foreground));line-height:1.15;margin-bottom:1rem;">
+        Agende sua avaliação.<br><em style="opacity:0.82;">Sem compromisso.</em>
+      </h2>
+      <p style="font-size:0.95rem;color:hsl(var(--primary-foreground)/0.75);margin-bottom:2rem;line-height:1.6;">A avaliação é o primeiro passo para o protocolo certo. Atendemos com hora marcada, sem filas e sem pressa.</p>
+      <a href="https://wa.me/5541996260506" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.9rem 2rem;background:#25d366;color:white;border-radius:var(--radius);font-size:1rem;font-weight:700;text-decoration:none;transition:opacity 0.2s;width:100%;max-width:320px;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" style="width:20px;height:20px;flex-shrink:0;"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.464-1.318.115-.301.215-.63.215-.946 0-.058 0-.144-.014-.201-.1-.18-2.32-1.246-2.722-1.246zm-2.205 5.605c-3.39 0-6.535-2.005-7.595-5.21-.93-2.788.045-5.79 2.262-7.605 1.547-1.245 3.396-1.93 5.318-1.93.715 0 1.43.083 2.13.247 4.143.95 6.665 5.135 5.708 9.275-.953 4.135-5.13 6.66-9.27 5.71-.518-.115-1.052-.272-1.553-.487zM16.756 4C9.97 4 4.5 9.466 4.5 16.21c0 2.218.6 4.378 1.733 6.295L4 28.6l6.31-2.207a12.16 12.16 0 0 0 6.45 1.85c6.785 0 12.255-5.467 12.255-12.21S23.54 4 16.755 4z"/></svg>
+        Agendar pelo WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer style="background:hsl(var(--foreground));padding:2rem 1.25rem;text-align:center;">
+    <p style="font-size:0.78rem;color:hsl(0 0% 60%);line-height:1.6;">
+      © 2024 Clínica de Estética Amanda Coradin. Todos os direitos reservados.<br>
+      <span style="font-size:0.72rem;opacity:0.6;">Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.</span>
+    </p>
+  </footer>
+
+  <!-- ========== WHATSAPP FLOAT ========== -->
+  <a href="https://wa.me/5541996260506" target="_blank" rel="noopener" class="wa-float" aria-label="Abrir WhatsApp" style="position:fixed;bottom:1.25rem;right:1.25rem;z-index:100;width:56px;height:56px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,0.35);text-decoration:none;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" class="w-7 h-7"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.464-1.318.115-.301.215-.63.215-.946 0-.058 0-.144-.014-.201-.1-.18-2.32-1.246-2.722-1.246zm-2.205 5.605c-3.39 0-6.535-2.005-7.595-5.21-.93-2.788.045-5.79 2.262-7.605 1.547-1.245 3.396-1.93 5.318-1.93.715 0 1.43.083 2.13.247 4.143.95 6.665 5.135 5.708 9.275-.953 4.135-5.13 6.66-9.27 5.71-.518-.115-1.052-.272-1.553-.487zM16.756 4C9.97 4 4.5 9.466 4.5 16.21c0 2.218.6 4.378 1.733 6.295L4 28.6l6.31-2.207a12.16 12.16 0 0 0 6.45 1.85c6.785 0 12.255-5.467 12.255-12.21S23.54 4 16.755 4z"/></svg>
+  </a>
+
+  <!-- ========== JS ========== -->
+  <script>
+    // Lucide icons
+    lucide.createIcons();
+
+    // Desktop nav show/hide
+    (function() {
+      var nav = document.querySelector('.md-nav');
+      var btn = document.getElementById('menu-btn');
+      function checkWidth() {
+        if (window.innerWidth >= 768) {
+          nav.style.display = 'flex';
+          btn.style.display = 'none';
+        } else {
+          nav.style.display = 'none';
+          btn.style.display = 'flex';
+        }
+      }
+      checkWidth();
+      window.addEventListener('resize', checkWidth);
+    })();
+
+    // Mobile menu toggle
+    function toggleMenu() {
+      var m = document.getElementById('mobile-menu');
+      m.classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('mobile-menu').classList.remove('open');
+    }
+  </script>
+</body>
+</html>
