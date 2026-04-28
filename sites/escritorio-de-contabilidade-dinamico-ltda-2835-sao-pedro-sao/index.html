@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escritório de Contabilidade Dinâmico Ltda | Consultoria Contábil | São José dos Pinhais</title>
+  <meta name="description" content="Confiança e pronto atendimento em consultoria contábil. O Escritório Dinâmico cuida da sua empresa com responsabilidade, agilidade e tradição." />
+  <meta property="og:title" content="Escritório de Contabilidade Dinâmico Ltda | Consultoria Contábil" />
+  <meta property="og:description" content="Confiança e pronto atendimento em consultoria contábil. Resolução ágil, atendimento tradicional e comprometido." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=630&fit=crop&q=80&auto=format" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+              DEFAULT: 'hsl(var(--primary))',
+              foreground: 'hsl(var(--primary-foreground))',
+            },
+            accent: {
+              DEFAULT: 'hsl(var(--accent))',
+              foreground: 'hsl(var(--accent-foreground))',
+            },
+            muted: {
+              DEFAULT: 'hsl(var(--muted))',
+              foreground: 'hsl(var(--muted-foreground))',
+            },
+            card: {
+              DEFAULT: 'hsl(var(--card))',
+            },
+            border: 'hsl(var(--border))',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          },
+          borderRadius: {
+            DEFAULT: 'var(--radius)',
+            sm: 'calc(var(--radius) - 2px)',
+            md: 'var(--radius)',
+            lg: 'calc(var(--radius) + 2px)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --background: 0 0% 98%;
+      --foreground: 220 15% 12%;
+      --primary: 200 35% 22%;
+      --primary-foreground: 0 0% 98%;
+      --accent: 45 70% 58%;
+      --accent-foreground: 220 15% 12%;
+      --muted: 0 0% 94%;
+      --muted-foreground: 220 10% 40%;
+      --card: 0 0% 100%;
+      --border: 220 15% 90%;
+      --radius: 0.25rem;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+    }
+
+    .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Eyebrow accent line */
+    .eyebrow-line {
+      display: inline-block;
+      position: relative;
+    }
+    .eyebrow-line::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 2px;
+      background-color: hsl(var(--accent));
+      margin-top: 6px;
+    }
+
+    /* Scroll margin for sticky header */
+    section[id] {
+      scroll-margin-top: 72px;
+    }
+
+    /* Neo-brutalist header */
+    .neo-header {
+      background-color: hsl(var(--primary));
+      border-bottom: 3px solid black;
+      box-shadow: 0 4px 0 0 black;
+    }
+
+    /* Hero pattern dots */
+    .hero-pattern {
+      background-image: radial-gradient(circle, hsl(var(--foreground) / 0.07) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* Stats bar */
+    .stats-bar {
+      background-color: hsl(var(--primary));
+    }
+
+    /* Service card hover */
+    .service-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      border: 2px solid hsl(var(--border));
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px hsl(var(--primary) / 0.15);
+      border-color: hsl(var(--accent));
+    }
+
+    /* Review card */
+    .review-card {
+      break-inside: avoid;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .review-card::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 120px;
+      line-height: 1;
+      color: hsl(var(--accent) / 0.12);
+      position: absolute;
+      top: -24px;
+      left: 12px;
+      pointer-events: none;
+    }
+
+    /* Masonry */
+    .masonry-grid {
+      columns: 1;
+    }
+    @media (min-width: 768px) {
+      .masonry-grid {
+        columns: 2;
+      }
+    }
+    @media (min-width: 1024px) {
+      .masonry-grid {
+        columns: 3;
+      }
+    }
+
+    /* Contact card hover */
+    .contact-card:hover .contact-icon {
+      color: hsl(var(--accent));
+    }
+
+    /* WhatsApp pulse */
+    @keyframes wa-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+    }
+    .wa-float {
+      animation: wa-pulse 2.5s infinite;
+    }
+
+    /* Blob */
+    .blob {
+      filter: blur(60px);
+      opacity: 0.45;
+      border-radius: 9999px;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    /* Neo-brutalist nav links */
+    .nav-link {
+      color: hsl(var(--primary-foreground));
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 4px 2px;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.15s;
+    }
+    .nav-link:hover {
+      border-bottom-color: hsl(var(--accent));
+    }
+
+    /* Mobile menu */
+    #mobile-menu {
+      display: none;
+      background-color: hsl(var(--primary));
+      border-top: 2px solid black;
+    }
+    #mobile-menu.open {
+      display: block;
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="neo-header sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-sm bg-accent border-2 border-black flex items-center justify-center shadow-[2px_2px_0_0_black] shrink-0">
+          <span class="font-serif font-bold text-lg text-foreground leading-none">D</span>
+        </div>
+        <span class="font-serif font-semibold text-primary-foreground text-base leading-tight hidden sm:block">
+          Contabilidade Dinâmico
+        </span>
+        <span class="font-serif font-semibold text-primary-foreground text-sm leading-tight sm:hidden">
+          C. Dinâmico
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-7">
+        <a href="#especialidades" class="nav-link text-sm">Especialidades</a>
+        <a href="#avaliacoes" class="nav-link text-sm">Avaliações</a>
+        <a href="#sobre" class="nav-link text-sm">Sobre</a>
+        <a href="#contato" class="nav-link text-sm">Contato</a>
+        <a href="https://wa.me/5541996474626" target="_blank" rel="noopener"
+           class="ml-2 px-4 py-2 text-sm font-semibold border-2 border-black bg-accent text-foreground shadow-[3px_3px_0_0_black] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0_0_black] transition-all">
+          Falar agora
+        </a>
+      </nav>
+
+      <!-- Hamburger -->
+      <button id="hamburger" class="md:hidden text-primary-foreground p-1" aria-label="Abrir menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu">
+      <nav class="flex flex-col px-4 py-4 gap-4">
+        <a href="#especialidades" class="nav-link text-sm" onclick="closeMobileMenu()">Especialidades</a>
+        <a href="#avaliacoes" class="nav-link text-sm" onclick="closeMobileMenu()">Avaliações</a>
+        <a href="#sobre" class="nav-link text-sm" onclick="closeMobileMenu()">Sobre</a>
+        <a href="#contato" class="nav-link text-sm" onclick="closeMobileMenu()">Contato</a>
+        <a href="https://wa.me/5541996474626" target="_blank" rel="noopener"
+           class="px-4 py-2 text-sm font-semibold border-2 border-black bg-accent text-foreground shadow-[3px_3px_0_0_black] text-center">
+          Falar agora
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero" class="relative overflow-hidden hero-pattern min-h-[80vh] flex items-center">
+    <!-- Blobs -->
+    <div class="blob w-72 h-72 bg-accent top-0 -left-20" style="position:absolute;"></div>
+    <div class="blob w-56 h-56 bg-primary bottom-10 right-0" style="position:absolute;"></div>
+
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 w-full relative z-10">
+      <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+
+        <!-- Conteúdo esquerda -->
+        <div class="order-1">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 border-2 border-black bg-accent text-foreground text-xs font-semibold uppercase tracking-wider shadow-[3px_3px_0_0_black] mb-6">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+            Atendimento ágil e sem enrolação
+          </div>
+
+          <!-- Headline -->
+          <h1 class="font-serif text-3xl md:text-5xl font-bold leading-tight mb-5 text-foreground">
+            Contabilidade que<br />
+            <em class="not-italic text-primary">age com confiança</em><br />
+            e pronto atendimento.
+          </h1>
+
+          <!-- Subtítulo -->
+          <p class="text-base md:text-lg text-muted-foreground leading-relaxed mb-8 max-w-md">
+            Respondemos com agilidade, agimos com responsabilidade e cuidamos das obrigações contábeis da sua empresa com o comprometimento que você merece.
+          </p>
+
+          <!-- Prova social qualitativa -->
+          <p class="text-sm text-muted-foreground mb-8 italic">Veja o que dizem os clientes ↓</p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://wa.me/5541996474626" target="_blank" rel="noopener"
+               class="flex items-center justify-center gap-2 px-6 py-3 font-semibold border-2 border-black text-white shadow-[4px_4px_0_0_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_black] transition-all text-sm w-full sm:w-auto"
+               style="background-color:#25d366;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" class="w-4 h-4"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.464-1.318.115-.301.215-.63.215-.946 0-.058 0-.144-.014-.201-.1-.18-2.32-1.246-2.722-1.246zm-2.205 5.605c-3.39 0-6.535-2.005-7.595-5.21-.93-2.788.045-5.79 2.262-7.605 1.547-1.245 3.396-1.93 5.318-1.93.715 0 1.43.083 2.13.247 4.143.95 6.665 5.135 5.708 9.275-.953 4.135-5.13 6.66-9.27 5.71-.518-.115-1.052-.272-1.553-.487zM16.756 4C9.97 4 4.5 9.466 4.5 16.21c0 2.218.6 4.378 1.733 6.295L4 28.6l6.31-2.207a12.16 12.16 0 0 0 6.45 1.85c6.785 0 12.255-5.467 12.255-12.21S23.54 4 16.755 4z"/></svg>
+              WhatsApp
+            </a>
+            <a href="tel:+5541996474626"
+               class="flex items-center justify-center gap-2 px-6 py-3 font-semibold border-2 border-black text-foreground bg-card shadow-[4px_4px_0_0_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_black] transition-all text-sm w-full sm:w-auto">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+              (41) 99647-4626
+            </a>
+          </div>
+        </div>
+
+        <!-- Imagem direita -->
+        <div class="order-2 relative">
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=1500&fit=crop&q=80&auto=format"
+              alt="business meeting documents laptops"
+              class="w-full object-cover border-4 border-black shadow-[8px_8px_0_0_black]"
+              style="aspect-ratio:4/5;"
+            />
+            <!-- Badge flutuante -->
+            <div class="hidden sm:flex absolute -bottom-4 -left-4 bg-accent border-2 border-black shadow-[4px_4px_0_0_black] px-4 py-3 flex-col items-start">
+              <span class="font-serif font-bold text-xl text-foreground leading-none">Confiança</span>
+              <span class="text-xs text-foreground/70 font-medium uppercase tracking-wide">e pronto atendimento</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STATS BAR ===================== -->
+  <div class="stats-bar border-y-2 border-black">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-white/20">
+
+        <!-- Stat 1: Especialidade -->
+        <div class="flex flex-col items-center text-center py-2 md:py-0 md:px-8">
+          <span class="font-serif font-bold text-4xl md:text-5xl text-accent leading-none mb-1">100%</span>
+          <span class="text-primary-foreground/80 text-xs uppercase tracking-widest font-medium mt-1">Comprometimento</span>
+        </div>
+
+        <!-- Stat 2: Resposta ágil -->
+        <div class="flex flex-col items-center text-center py-2 md:py-0 md:px-8">
+          <span class="font-serif font-bold text-4xl md:text-5xl text-accent leading-none mb-1">Ágil</span>
+          <span class="text-primary-foreground/80 text-xs uppercase tracking-widest font-medium mt-1">Atendimento rápido</span>
+        </div>
+
+        <!-- Stat 3: Confiança -->
+        <div class="flex flex-col items-center text-center col-span-2 md:col-span-1 py-2 md:py-0 md:px-8">
+          <span class="font-serif font-bold text-4xl md:text-5xl text-accent leading-none mb-1">Confiável</span>
+          <span class="text-primary-foreground/80 text-xs uppercase tracking-widest font-medium mt-1">Recomendado pelos clientes</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== ESPECIALIDADES ===================== -->
+  <section id="especialidades" class="py-16 md:py-28 bg-background">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+
+      <!-- Cabeçalho -->
+      <div class="text-center mb-12 md:mb-16">
+        <span class="eyebrow-line text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground mx-auto block w-fit">Nossas especialidades</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mt-4 text-foreground">
+          Soluções contábeis com <br class="hidden md:block" />
+          <em class="not-italic text-primary">tradição e eficiência</em>
+        </h2>
+        <p class="text-muted-foreground mt-4 max-w-xl mx-auto text-sm md:text-base">
+          Atendemos empresas de diferentes portes com responsabilidade, agilidade e o conhecimento técnico de quem leva a contabilidade a sério.
+        </p>
+      </div>
+
+      <!-- Grid 2 colunas -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Card 1 — principal -->
+        <div class="service-card bg-card rounded-sm p-8 relative overflow-hidden">
+          <span class="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-widest bg-accent text-foreground px-2 py-1 border border-black">Especialidade principal</span>
+          <div class="w-14 h-14 rounded-sm flex items-center justify-center bg-accent/15 text-accent border border-accent/30 mb-5">
+            <i data-lucide="calculator" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-serif text-xl font-bold mb-3 text-foreground">Consultoria Contábil</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">
+            Orientamos empresas em todas as etapas da gestão contábil: análise de balanços, enquadramento tributário, obrigações acessórias e planejamento financeiro com foco em resultado sustentável.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="service-card bg-card rounded-sm p-8">
+          <div class="w-14 h-14 rounded-sm flex items-center justify-center bg-primary/10 text-primary border border-primary/20 mb-5">
+            <i data-lucide="file-text" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-serif text-xl font-bold mb-3 text-foreground">Abertura e Regularização de Empresas</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">
+            Cuidamos de todo o processo de abertura, alteração ou encerramento de empresas: registro, CNPJ, inscrições estaduais e municipais, com agilidade e segurança jurídica.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="service-card bg-card rounded-sm p-8">
+          <div class="w-14 h-14 rounded-sm flex items-center justify-center bg-primary/10 text-primary border border-primary/20 mb-5">
+            <i data-lucide="receipt" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-serif text-xl font-bold mb-3 text-foreground">Planejamento Tributário</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">
+            Analisamos o enquadramento ideal (Simples Nacional, Lucro Presumido ou Real) para reduzir a carga tributária da sua empresa de forma legal e estratégica.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="service-card bg-card rounded-sm p-8">
+          <div class="w-14 h-14 rounded-sm flex items-center justify-center bg-primary/10 text-primary border border-primary/20 mb-5">
+            <i data-lucide="users" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-serif text-xl font-bold mb-3 text-foreground">Departamento Pessoal</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">
+            Gerenciamos folhas de pagamento, admissões, demissões, férias e encargos trabalhistas. Sua empresa em dia com o eSocial e a legislação vigente.
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="service-card bg-card rounded-sm p-8">
+          <div class="w-14 h-14 rounded-sm flex items-center justify-center bg-primary/10 text-primary border border-primary/20 mb-5">
+            <i data-lucide="trending-up" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-serif text-xl font-bold mb-3 text-foreground">Relacionamento de Longo Prazo</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">
+            Acreditamos que contabilidade é parceria. Acompanhamos o crescimento da sua empresa, antecipamos problemas e somos parceiros confiáveis em cada decisão importante.
+          </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="service-card bg-card rounded-sm p-8">
+          <div class="w-14 h-14 rounded-sm flex items-center justify-center bg-primary/10 text-primary border border-primary/20 mb-5">
+            <i data-lucide="shield" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-serif text-xl font-bold mb-3 text-foreground">Segurança e Conformidade</h3>
+          <p class="text-muted-foreground text-sm leading-relaxed">
+            Mantemos sua empresa em conformidade com todas as obrigações fiscais e legais, evitando multas, autuações e surpresas desagradáveis com o fisco.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== AVALIAÇÕES ===================== -->
+  <section id="avaliacoes" class="py-16 md:py-28" style="background-color: hsl(var(--muted));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+
+      <!-- Cabeçalho -->
+      <div class="text-center mb-12 md:mb-14">
+        <span class="eyebrow-line text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground mx-auto block w-fit">O que os clientes dizem</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mt-4 text-foreground">
+          Avaliações de quem já<br />
+          <em class="not-italic text-primary">confiou no nosso trabalho</em>
+        </h2>
+        <p class="text-muted-foreground mt-4 max-w-md mx-auto text-sm">
+          Depoimentos reais de clientes que escolheram o Escritório Dinâmico para cuidar de sua empresa.
+        </p>
+      </div>
+
+      <!-- Masonry 3 colunas -->
+      <div class="masonry-grid">
+
+        <!-- Review 1 -->
+        <div class="review-card bg-card border-2 border-border rounded-sm p-6 shadow-sm">
+          <div class="flex gap-1 mb-4">
+            <i data-lucide="star" class="w-4 h-4 fill-current" style="color:hsl(var(--accent))"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current" style="color:hsl(var(--accent))"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current" style="color:hsl(var(--accent))"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current" style="color:hsl(var(--accent))"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-current" style="color:hsl(var(--accent))"></i>
+          </div>
+          <p class="text-foreground text-sm leading-relaxed mb-5">
+            "Confiança e pronto atendimento."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold text-sm shrink-0">A</div>
+            <span class="font-semibold text-sm text-foreground">Aloisio Figueiredo</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Link Google Maps (discreto) -->
+      <div class="text-center mt-10">
+        <a href="https://maps.google.com/?cid=6692766528179202899&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+           target="_blank" rel="noopener"
+           class="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors border-b border-dashed border-muted-foreground/40 hover:border-primary pb-0.5">
+          Ver no Google Maps
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== SOBRE ===================== -->
+  <section id="sobre" class="py-16 md:py-28 bg-background">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+
+        <!-- Imagens -->
+        <div class="relative grid grid-cols-2 gap-4">
+          <img
+            src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="tax documents calculator desk"
+            class="w-full object-cover border-2 border-black shadow-[4px_4px_0_0_black]"
+            style="aspect-ratio:4/5;"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1586281380117-5a60ae2050cc?w=800&h=900&fit=crop&q=80&auto=format"
+            alt="clipboard open projects laptop desk"
+            class="w-full object-cover border-2 border-black shadow-[4px_4px_0_0_black] mt-8"
+            style="aspect-ratio:4/5;"
+          />
+        </div>
+
+        <!-- Texto -->
+        <div>
+          <span class="eyebrow-line text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">Sobre o escritório dinâmico</span>
+          <h2 class="font-serif text-3xl md:text-4xl font-bold mt-4 leading-tight text-foreground">
+            Comprometimento que<br />
+            <em class="not-italic text-primary">nasce do respeito</em><br />
+            ao seu negócio.
+          </h2>
+          <p class="text-muted-foreground mt-5 leading-relaxed text-sm md:text-base">
+            No Escritório de Contabilidade Dinâmico, levamos a sério cada obrigação contábil e cada prazo do seu negócio. Nosso atendimento é reconhecido pela confiança que transmitimos e pela prontidão com que respondemos às necessidades dos clientes.
+          </p>
+          <p class="text-muted-foreground mt-3 leading-relaxed text-sm md:text-base">
+            Acreditamos que uma contabilidade de qualidade não deve ser distante ou burocrática, mas próxima, clara e comprometida com os resultados da sua empresa.
+          </p>
+
+          <!-- Micro-benefícios 2x2 -->
+          <div class="grid grid-cols-2 gap-4 mt-8">
+            <div class="flex gap-3 items-start">
+              <div class="w-7 h-7 rounded-sm bg-accent/15 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 text-accent"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-foreground">Pronto atendimento</p>
+                <p class="text-xs text-muted-foreground mt-0.5">Respondemos com agilidade às suas demandas</p>
+              </div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="w-7 h-7 rounded-sm bg-accent/15 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 text-accent"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-foreground">Confiança comprovada</p>
+                <p class="text-xs text-muted-foreground mt-0.5">Recomendado por quem já foi atendido</p>
+              </div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="w-7 h-7 rounded-sm bg-accent/15 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 text-accent"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-foreground">Compromisso com prazos</p>
+                <p class="text-xs text-muted-foreground mt-0.5">Sua empresa sempre em dia com as obrigações</p>
+              </div>
+            </div>
+            <div class="flex gap-3 items-start">
+              <div class="w-7 h-7 rounded-sm bg-accent/15 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 text-accent"></i>
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-foreground">Relacionamento duradouro</p>
+                <p class="text-xs text-muted-foreground mt-0.5">Parceiros de verdade no crescimento do seu negócio</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTATO ===================== -->
+  <section id="contato" class="py-16 md:py-28" style="background-color: hsl(var(--muted));">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+
+      <!-- Cabeçalho -->
+      <div class="text-center mb-12">
+        <span class="eyebrow-line text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground mx-auto block w-fit">Entre em contato</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold mt-4 text-foreground">
+          Estamos prontos para <br />
+          <em class="not-italic text-primary">atendê-lo agora</em>
+        </h2>
+      </div>
+
+      <!-- 3 cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Telefone -->
+        <a href="tel:+5541996474626"
+           class="contact-card bg-card border-2 border-border rounded-sm p-7 flex flex-col items-center text-center hover:border-accent hover:shadow-[4px_4px_0_0_hsl(var(--accent))] transition-all group cursor-pointer">
+          <div class="w-14 h-14 rounded-sm bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+            <i data-lucide="phone" class="w-7 h-7 contact-icon text-primary transition-colors"></i>
+          </div>
+          <span class="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">Telefone</span>
+          <span class="font-bold text-lg text-foreground">(41) 99647-4626</span>
+          <span class="text-xs text-muted-foreground mt-1">Ligue agora</span>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/5541996474626" target="_blank" rel="noopener"
+           class="contact-card bg-card border-2 border-border rounded-sm p-7 flex flex-col items-center text-center hover:border-accent hover:shadow-[4px_4px_0_0_hsl(var(--accent))] transition-all group cursor-pointer">
+          <div class="w-14 h-14 rounded-sm flex items-center justify-center mb-4 group-hover:opacity-90 transition-opacity" style="background-color:#25d366;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" class="w-7 h-7"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.464-1.318.115-.301.215-.63.215-.946 0-.058 0-.144-.014-.201-.1-.18-2.32-1.246-2.722-1.246zm-2.205 5.605c-3.39 0-6.535-2.005-7.595-5.21-.93-2.788.045-5.79 2.262-7.605 1.547-1.245 3.396-1.93 5.318-1.93.715 0 1.43.083 2.13.247 4.143.95 6.665 5.135 5.708 9.275-.953 4.135-5.13 6.66-9.27 5.71-.518-.115-1.052-.272-1.553-.487zM16.756 4C9.97 4 4.5 9.466 4.5 16.21c0 2.218.6 4.378 1.733 6.295L4 28.6l6.31-2.207a12.16 12.16 0 0 0 6.45 1.85c6.785 0 12.255-5.467 12.255-12.21S23.54 4 16.755 4z"/></svg>
+          </div>
+          <span class="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">WhatsApp</span>
+          <span class="font-bold text-lg text-foreground">(41) 99647-4626</span>
+          <span class="text-xs text-muted-foreground mt-1">Mensagem rápida</span>
+        </a>
+
+        <!-- Endereço -->
+        <a href="https://maps.google.com/?cid=6692766528179202899&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA"
+           target="_blank" rel="noopener"
+           class="contact-card bg-card border-2 border-border rounded-sm p-7 flex flex-col items-center text-center hover:border-accent hover:shadow-[4px_4px_0_0_hsl(var(--accent))] transition-all group cursor-pointer">
+          <div class="w-14 h-14 rounded-sm bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+            <i data-lucide="map-pin" class="w-7 h-7 contact-icon text-primary transition-colors"></i>
+          </div>
+          <span class="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">Endereço</span>
+          <span class="font-bold text-sm text-foreground leading-snug">R. Joinville, 2835</span>
+          <span class="text-xs text-muted-foreground mt-1">São Pedro, São José dos Pinhais - PR</span>
+          <span class="text-xs text-muted-foreground">CEP 83020-000</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA FINAL ===================== -->
+  <section id="cta-final" class="py-16 md:py-24 relative overflow-hidden" style="background-color:hsl(var(--primary));">
+    <!-- Blob decorativo -->
+    <div class="blob w-80 h-80 -top-20 -right-20" style="background-color:hsl(var(--accent)); position:absolute;"></div>
+    <div class="blob w-48 h-48 bottom-0 -left-12" style="background-color:hsl(var(--accent)); position:absolute;"></div>
+
+    <div class="max-w-2xl mx-auto px-4 md:px-6 text-center relative z-10">
+      <span class="text-xs font-semibold uppercase tracking-[0.15em] text-white/60 block mb-4">Fale conosco</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-white leading-tight mb-5">
+        Comece hoje a ter uma<br />
+        <em class="not-italic" style="color:hsl(var(--accent));">contabilidade de confiança</em>
+      </h2>
+      <p class="text-white/75 text-sm md:text-base leading-relaxed mb-8 max-w-lg mx-auto">
+        Respondemos com pronto atendimento. Entre em contato agora e descubra como podemos cuidar das obrigações contábeis da sua empresa com agilidade e segurança.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://wa.me/5541996474626" target="_blank" rel="noopener"
+           class="flex items-center justify-center gap-2 px-8 py-3.5 font-bold border-2 border-black text-foreground shadow-[4px_4px_0_0_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_black] transition-all text-sm w-full sm:w-auto"
+           style="background-color:#25d366; color:white;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" class="w-5 h-5"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.464-1.318.115-.301.215-.63.215-.946 0-.058 0-.144-.014-.201-.1-.18-2.32-1.246-2.722-1.246zm-2.205 5.605c-3.39 0-6.535-2.005-7.595-5.21-.93-2.788.045-5.79 2.262-7.605 1.547-1.245 3.396-1.93 5.318-1.93.715 0 1.43.083 2.13.247 4.143.95 6.665 5.135 5.708 9.275-.953 4.135-5.13 6.66-9.27 5.71-.518-.115-1.052-.272-1.553-.487zM16.756 4C9.97 4 4.5 9.466 4.5 16.21c0 2.218.6 4.378 1.733 6.295L4 28.6l6.31-2.207a12.16 12.16 0 0 0 6.45 1.85c6.785 0 12.255-5.467 12.255-12.21S23.54 4 16.755 4z"/></svg>
+          Chamar no WhatsApp
+        </a>
+        <a href="tel:+5541996474626"
+           class="flex items-center justify-center gap-2 px-8 py-3.5 font-bold border-2 border-white/50 text-white hover:border-white hover:bg-white/10 transition-all text-sm w-full sm:w-auto">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          (41) 99647-4626
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-foreground text-white/50 py-8">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 text-center">
+      <p class="text-xs leading-relaxed">
+        Escritório de Contabilidade Dinâmico Ltda &middot; R. Joinville, 2835, São Pedro, São José dos Pinhais - PR
+      </p>
+      <p class="text-xs mt-2">
+        Página criada para divulgação. Dados públicos do Google. Entre em contato para remover.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===================== BOTÃO FLUTUANTE WHATSAPP ===================== -->
+  <a href="https://wa.me/5541996474626" target="_blank" rel="noopener" aria-label="WhatsApp"
+     class="wa-float fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full flex items-center justify-center border-2 border-black shadow-[3px_3px_0_0_black]"
+     style="background-color:#25d366;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" class="w-7 h-7"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.464-1.318.115-.301.215-.63.215-.946 0-.058 0-.144-.014-.201-.1-.18-2.32-1.246-2.722-1.246zm-2.205 5.605c-3.39 0-6.535-2.005-7.595-5.21-.93-2.788.045-5.79 2.262-7.605 1.547-1.245 3.396-1.93 5.318-1.93.715 0 1.43.083 2.13.247 4.143.95 6.665 5.135 5.708 9.275-.953 4.135-5.13 6.66-9.27 5.71-.518-.115-1.052-.272-1.553-.487zM16.756 4C9.97 4 4.5 9.466 4.5 16.21c0 2.218.6 4.378 1.733 6.295L4 28.6l6.31-2.207a12.16 12.16 0 0 0 6.45 1.85c6.785 0 12.255-5.467 12.255-12.21S23.54 4 16.755 4z"/></svg>
+  </a>
+
+  <!-- ===================== JS ===================== -->
+  <script>
+    // Lucide icons init
+    lucide.createIcons();
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+    }
+  </script>
+</body>
+</html>
